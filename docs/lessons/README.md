@@ -25,6 +25,15 @@ et supprimer ce qui s'avère faux. Le préfixe `p8` rappelle qu'il s'agit du hui
 | [Une mesure de détection se lit contrôle par contrôle](p8-une-mesure-de-detection-se-lit-par-controle.md) | Un rappel et une précision globaux ne veulent rien dire quand les contrôles n'ont pas la même nature : le détail a révélé un contrôle inutilisable que la moyenne cachait. |
 | [Orchestrateur et métier ne partagent pas leurs dépendances](p8-orchestrateur-et-metier-ne-partagent-pas-leurs-dependances.md) | Airflow, l'ERP et dbt ne cohabitent pas dans un même environnement Python ; trois environnements isolés et des appels en ligne de commande évitent l'installation qui casse. |
 
+## Module 3, pilotage
+
+| Leçon | Résumé |
+| --- | --- |
+| [Le recalcul SQL doit suivre la règle de l'application](p8-sql-et-application-appliquent-la-meme-regle.md) | Le modèle dbt qui contrôle les commissions ignorait la règle D24 appliquée par le code : deux tests de contrôle échouaient sur 1 184 appels, et l'intégration continue n'exécute pas dbt. |
+| [Un test sur des vues empilées peut changer de plan](p8-un-test-dbt-sur-vues-empilees-peut-deriver.md) | Une colonne ajoutée a fait passer un test de 4 secondes à 24 minutes ; matérialiser le modèle en table l'a ramené à 2 secondes. |
+| [Un indicateur d'assurance se définit par ses pièges](p8-un-indicateur-d-assurance-se-definit-par-ses-pieges.md) | Les variantes fausses chiffrées côte à côte montrent ce que chaque piège coûte, et ont révélé un ratio sinistres sur primes supérieur à 100 % dû au générateur. |
+| [Actualiser et évaluer un PBIP depuis un script](p8-pbip-actualiser-et-evaluer-sans-cliquer.md) | Une commande TMSL remplace le clic sur Actualiser ; les mesures se comparent au SQL et la fenêtre se capture sans interface. |
+
 ## À lire aussi, hors de ce dépôt
 
 Les leçons des projets précédents du portfolio sont dans `Portfolio/site/docs/lessons/`. Deux sont

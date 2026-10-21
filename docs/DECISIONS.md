@@ -70,6 +70,17 @@ même profil, les aligner sur la valeur la plus basse était une erreur de dimen
 | D24 Commission quand la compagnie encaisse elle-même | Commissionner sur la **cotisation appelée hors taxe**, et compter le cas à part | Écarter ces appels, comme avant | Un courtier dont la compagnie encaisse directement est commissionné quand même : la compagnie encaisse, calcule la commission due et la verse avec son bordereau de commissions. Les écarter faisait disparaître 31 pour cent du portefeuille des bordereaux, soit 1 184 appels sur 3 776. L'assiette appelée est la meilleure assiette observable par le cabinet sur ces produits. |
 | D25 Bordereau de commissions reçu de la compagnie | Hors périmètre, et déclaré tel quel | L'ingérer comme quatrième flux entrant | Ce serait la source qui fait foi sur les produits de D24, et le calcul deviendrait une attente à rapprocher. Le rapprochement commission attendue contre commission versée est un module à part entière ; l'annoncer sans le faire serait pire que de poser la limite. |
 
+## Module 3, pilotage
+
+| Décision | Choix retenu | Alternative écartée | Raison |
+| --- | --- | --- | --- |
+| D26 Cotisations acquises | Fait dédié `fct_cotisations_acquises`, un appel par mois couvert, réparti au prorata des jours en dbt | Répartir dans le DAX à chaque évaluation, ou prendre les cotisations émises | Le ratio sinistres sur primes exige des cotisations acquises. Les émises donnent 133,27 % au lieu de 121,18 % en 2026. Répartie une fois en dbt et testée (somme des parts égale à l'appel), la cotisation acquise se lit en une somme. |
+| D27 Portefeuille à une date | Cliché de fin de mois, une ligne par contrat (`fct_portefeuille_mensuel`), reconstitué depuis les avenants datés | Calcul à la volée dans le DAX, ou lecture du statut courant | Le statut courant ne dit rien du passé. Le cliché permet de lire l'effectif de début de période, dénominateur du taux de résiliation, et une identité stock et flux la teste. |
+| D28 Rattachement des mouvements | Apporteur et cotisation de la version du contrat au jour du mouvement | Apporteur et cotisation courants du contrat | En 2025, 26 des 834 affaires ont changé d'apporteur depuis, et la cotisation courante gonfle la production de 37 161,60 €. |
+| D29 Source de Power BI | CSV exportés des marts, chemin passé en paramètre | Connexion directe à PostgreSQL | Le projet s'ouvre sans pilote ni identifiant ; le coût est un chemin absolu à adapter après un clone, documenté. |
+| D30 Périmètre du ratio sinistres sur primes | Produits dont une convention de délégation en vigueur confie la gestion des prestations, lu dans `dim_produit` | Tous les produits | La prévoyance a des cotisations et aucune prestation chez le cabinet : tous produits, le ratio de 2025 tombe de 152,96 % à 109,67 %. |
+| D31 Recalcul SQL des commissions | Reprend la règle D24 : repli sur la cotisation appelée hors taxe quand l'encaissement n'est pas délégué ; matérialisé en table | Laisser le recalcul en vue sans la règle | Défaut préexistant trouvé par le module 3 : le contrôle ignorait D24 et deux tests échouaient sur 1 184 appels. La table évite une dérive du plan (24 minutes mesurées sur une vue). Voir `docs/lessons/p8-sql-et-application-appliquent-la-meme-regle.md`. |
+
 ## Journal des contraintes de la machine
 
 | Date | Constat | Conséquence |

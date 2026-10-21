@@ -210,6 +210,11 @@ les memes baremes dates que le code applicatif. Un test de severite erreur compa
 chemins de calcul independants qui divergent signalent une erreur dans l'un des deux, et c'est le seul
 moyen de la trouver sans la reproduire.
 
+Ce recalcul doit suivre chaque regle que le code applique. Il avait ete laisse en arriere sur la regle D24
+(commission sur la cotisation appelee quand la compagnie encaisse elle-meme) : deux tests echouaient sur
+1 184 appels. Il la reprend depuis le module 3, est materialise en table, et la lecon est dans
+`docs/lessons/p8-sql-et-application-appliquent-la-meme-regle.md`.
+
 Les tests de severite erreur portent sur l'identite des objets et sur les invariants du calcul. Les
 quatre tests de severite avertissement portent sur des jugements de gestion et laissent passer le build.
 

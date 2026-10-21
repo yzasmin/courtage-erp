@@ -1,19 +1,19 @@
-État réel du projet courtage-erp : ce qui est fait, ce qui reste, et comment reprendre. Mis à jour le 20/10/2026.
+État réel du projet courtage-erp : ce qui est fait, ce qui reste, et comment reprendre. Mis à jour le 22/10/2026.
 
 # Avancement
 
 ## État en une ligne
 
 **Module 1, cœur ERP : fait et prouvé sur les deux moteurs. Module 2, flux financiers : fait et
-mesuré.** Reste la capture d'écran du graphe Airflow, qui demande le moteur Docker, arrêté sur ce poste
-le 20/10 au soir.
+mesuré. Module 3, pilotage : fait, projet Power BI ouvert et mesures contrôlées contre le SQL.** Reste la
+capture d'écran du graphe Airflow (module 2), qui demande le moteur Docker.
 
 | Étape | État |
 | --- | --- |
 | 0, connaître la cible | vérifié, 19/10/2026, `la note de cadrage metier, conservee hors du depot` |
 | 1, cœur ERP | **fait**, preuves dans `results/` |
 | 2, flux financiers Airflow et dbt | **fait**, preuves dans `results/`, une capture d'écran en attente |
-| 3, pilotage Power BI | à faire, dépend de l'étape 2 |
+| 3, pilotage Power BI | **fait**, preuves dans `results/`, captures dans `docs/captures/08` à `13` |
 | 4a, agent de pré-remplissage | à faire, dépend de l'étape 2 |
 | 4b, RAG conditions générales | à faire, si le temps le permet |
 | 5, prédiction de résiliation | à faire, dépend de l'étape 2 |
@@ -175,11 +175,8 @@ Tous ont été trouvés par les tests ou par le passage sur PostgreSQL, et aucun
 
 ### Modules suivants
 
-Les étapes 3, 4a et 5 ne dépendent plus que du module 2 et ne partagent aucun fichier : elles peuvent
-être menées en parallèle. Le modèle en étoile que le module 3 attend existe déjà dans les marts dbt
-(`dim_date`, `dim_produit`, `dim_compagnie`, `dim_apporteur`, `fct_cotisations`, `fct_prestations`,
-`fct_commissions`), et le tableau de bord Power BI se déclare en exposure à côté des deux déjà
-présentes dans `dbt/models/marts/exposures.yml`.
+Les étapes 4a et 5 ne dépendent plus que du module 2 et ne partagent aucun fichier : elles peuvent
+être menées en parallèle. L'étape 3 est faite (section « Module 3 » plus bas).
 
 ## Module 2 : ce qui est livré
 
@@ -278,6 +275,70 @@ mauvaise raison.
 - *`_montant` écrirait `12,5` au lieu de `12,50`.* Vérifié par exécution : `centimes_vers_euros(1250)`
   rend `Decimal('12.50')`. La remarque ne tenait pas.
 
+## Module 3 : ce qui est livré
+
+### Le modèle en étoile
+
+Complété, pas refait : les marts du module 2 (`dim_date`, `dim_produit`, `dim_compagnie`, `dim_apporteur`,
+`fct_cotisations`, `fct_prestations`, `fct_commissions`) sont conservés. Ajoutés : `dim_branche`,
+`dim_adherent` (tranche d'âge, département, sans donnée nominative), `fct_cotisations_acquises`,
+`fct_mouvements_portefeuille` (affaires nouvelles et résiliations), `fct_portefeuille_mensuel` (cliché de fin de
+mois), et `int_contrat_versions` (versions successives d'un contrat). `dim_date` couvre désormais le portefeuille
+dès 2019, `dim_produit` porte le périmètre de délégation des prestations. Le tableau de bord est déclaré en
+exposure (`tableau_de_bord_pilotage`, onze marts en parents), visible dans le lineage
+(`docs/captures/13-lineage-dbt-tableau-de-bord.jpg`).
+
+### Indicateurs, requêtes de contrôle, tableau de bord
+
+| Livrable | Où | Preuve |
+| --- | --- | --- |
+| Quatre indicateurs définis, avec pièges chiffrés | `docs/kpi.md` | valeurs de `results/kpi_sql.json` |
+| Une requête de contrôle par indicateur, et une requête des pièges | `sql/kpi/` (8 fichiers) | `make preuve-kpi` |
+| Projet Power BI PBIP, modèle TMDL, 26 mesures commentées, 5 pages, 49 visuels | `powerbi/` | ouvert dans Power BI Desktop 2.159.883.0, captures `docs/captures/08` à `12` |
+| Maquette | `docs/powerbi-maquette.md` | |
+| Concordance DAX contre SQL | `docs/kpi.md`, `results/concordance_dax_sql.csv` | 302 comparaisons, 21 mesures, 46 contextes, écart relatif maximal 2,9e-14 |
+| Sortie de `dbt build` | `results/dbt_build.txt` | 52 modèles, 151 tests, 3 exposures : 199 réussites, 4 avertissements, 0 erreur |
+
+### Les quatre indicateurs mesurés
+
+| Indicateur | Valeur | Source |
+| --- | --- | --- |
+| Ratio sinistres sur primes | 177,67 % en 2024, 152,96 % en 2025, 121,18 % sur 9 mois de 2026 | `results/kpi_sql.json`, `01_ratio_sinistres_primes` |
+| Taux de résiliation | 10,98 % en 2024, 11,67 % en 2025, 8,67 % sur 9 mois de 2026 (11,59 % annualisé) | `02_taux_resiliation` |
+| Production par apporteur | 834 affaires et 655 274,04 € annualisés en 2025, dix apporteurs | `03_production_par_apporteur` |
+| Portefeuille par branche | 3 926 contrats, dont 36 suspendus, et 3 478 836,36 € annualisés au 30/09/2026 | `04_portefeuille_par_branche` |
+
+### Défauts trouvés pendant le module
+
+| Défaut | Comment il a été trouvé | État |
+| --- | --- | --- |
+| Le recalcul SQL des commissions ignorait la règle D24, que le code applique : deux tests de sévérité erreur échouaient sur 1 184 appels | premier `dbt build` complet sur la base régénérée | **corrigé** (D31), voir `docs/lessons/p8-sql-et-application-appliquent-la-meme-regle.md` |
+| Un test passait de 4 secondes à 24 minutes après la correction | commande dépassant son délai, requête encore active dans `pg_stat_activity` | **corrigé** : modèle matérialisé en table, 2 secondes |
+| La base PostgreSQL du compose contenait un jeu antérieur à la reprise du 21/10 (50 126 prestations et 2 520 commissions au lieu de 49 398 et 3 704) | comptage avant le premier build | **corrigé** : base recréée et régénérée, empreinte `3311d29f…` retrouvée, identique à SQLite |
+| Le ratio sinistres sur primes dépasse 100 % sur toutes les périodes | premières valeurs mesurées | **ouvert** : le générateur tire les prestations sans lien avec les cotisations (`docs/kpi.md`) |
+| Power BI Desktop installé est en 2.159.883.0, non en 2.157.1354.0 | `Get-AppxPackage` | consigné, vérification faite sur la version installée |
+
+### Limites ouvertes
+
+- **Le niveau absolu du ratio sinistres sur primes n'est pas réaliste.** Corriger le calibrage du générateur change
+  l'empreinte du jeu et tous les chiffres du dépôt : décision à prendre pour l'ensemble du projet.
+- **L'intégration continue n'exécute pas dbt** (il demande PostgreSQL et la chaîne de flux). Le défaut D24 est resté
+  invisible pour cette raison. Les tests de `tests/test_pbip.py` couvrent la cohérence du projet Power BI sans Power BI.
+- **Le projet Power BI versionné porte un chemin d'exemple** pour les données : à adapter après un clone
+  (`make pbip DONNEES=...`). Les CSV (18 Mo) ne sont pas versionnés.
+- **Les captures du tableau de bord sont celles d'un seul poste**, à une résolution (voir `docs/powerbi-maquette.md`).
+
+### Commandes du module 3
+
+```bash
+make marts-pilotage       # dbt build : modèle en étoile et tests (PostgreSQL du compose)
+make preuve-kpi           # requêtes de sql/kpi, écrit results/kpi_sql.json
+make exporter-powerbi     # marts vers powerbi/donnees/*.csv
+make pbip DONNEES="C:\chemin\vers\courtage-erp\powerbi\donnees"
+.\scripts\executer_dax.ps1 -Actualiser   # PowerShell, projet ouvert dans Power BI Desktop
+make concordance-kpi      # DAX contre SQL
+```
+
 ## Commandes pour reprendre
 
 Sans Docker, sur SQLite, pour développer et tester vite :
@@ -307,6 +368,12 @@ make tests-demonstration         # active les tests de signaux realistes
 `make aide` liste toutes les commandes.
 
 ## Journal
+
+- **22/10/2026** : module 3 réalisé. Modèle en étoile complété (cotisations acquises, mouvements, cliché
+  mensuel du portefeuille, adhérent, branche), quatre indicateurs définis avec leurs pièges chiffrés, projet
+  Power BI PBIP ouvert dans Power BI Desktop et actualisé par commande, 302 comparaisons DAX contre SQL sans
+  écart. Défaut préexistant corrigé : le recalcul SQL des commissions ne reprenait pas la règle D24.
+  Le moteur Docker a été relancé en démarrant Docker Desktop.
 
 - **20/10/2026** : module 2 réalisé de bout en bout. Générateur de fichiers reçus et manifeste,
   huit contrôles bloquants, rapprochement par référence puis par montant et date, commissions au
