@@ -1,0 +1,63 @@
+/// Cotisations ACQUISES, une ligne par appel et par mois couvert (cle : premier jour du mois).
+table fct_cotisations_acquises
+	lineageTag: 2d4cbbfd-baa0-5136-983a-6b9de37303f9
+
+	column appel_id
+		dataType: int64
+		isHidden
+		lineageTag: daf72480-5c1d-51d0-9654-5953d9f44555
+		summarizeBy: none
+		sourceColumn: appel_id
+
+	column mois_acquisition
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 2c529294-80d8-58ac-a04c-1e155e09e6d7
+		summarizeBy: none
+		sourceColumn: mois_acquisition
+
+	column produit_id
+		dataType: int64
+		isHidden
+		lineageTag: 9583be36-30e4-55e1-ae6f-12eb6f87fdca
+		summarizeBy: none
+		sourceColumn: produit_id
+
+	column compagnie_id
+		dataType: int64
+		isHidden
+		lineageTag: 847b256e-aee7-5491-a3f1-a436d2c94579
+		summarizeBy: none
+		sourceColumn: compagnie_id
+
+	column branche_id
+		dataType: int64
+		isHidden
+		lineageTag: 8892d86a-27bb-59f9-a396-6ac5b32fe44a
+		summarizeBy: none
+		sourceColumn: branche_id
+
+	column apporteur_id
+		dataType: int64
+		isHidden
+		lineageTag: a3ebdcc2-49d4-5047-94cb-af13307592ca
+		summarizeBy: none
+		sourceColumn: apporteur_id
+
+	column cotisation_acquise_ht_euros
+		dataType: double
+		formatString: #,0.00 €
+		lineageTag: 671f1407-cc01-5e3b-a517-2082fad6a0c2
+		summarizeBy: sum
+		sourceColumn: cotisation_acquise_ht_euros
+
+	partition fct_cotisations_acquises = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\fct_cotisations_acquises.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"appel_id", Int64.Type}, {"mois_acquisition", type date}, {"produit_id", Int64.Type}, {"compagnie_id", Int64.Type}, {"branche_id", Int64.Type}, {"apporteur_id", Int64.Type}, {"cotisation_acquise_ht_euros", type number}}, "en-US")
+				in
+				    Types
+

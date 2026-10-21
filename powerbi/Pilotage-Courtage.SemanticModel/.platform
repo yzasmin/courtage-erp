@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Pilotage-Courtage"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "791d63ca-6632-5621-a9f0-c3a4076ee0b5"
+  }
+}

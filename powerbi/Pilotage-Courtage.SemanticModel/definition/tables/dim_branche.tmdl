@@ -1,0 +1,33 @@
+/// Branche : sante individuelle, sante collective, prevoyance.
+table dim_branche
+	lineageTag: 5c845b55-fdda-5425-beb8-fd503ca455d3
+
+	column branche_id
+		dataType: int64
+		isHidden
+		lineageTag: d3e1656b-05f2-5113-bf99-29c6a059f36a
+		summarizeBy: none
+		sourceColumn: branche_id
+
+	column code_branche
+		dataType: string
+		lineageTag: 29a541a1-6eef-5197-8c36-30bbf08c454f
+		summarizeBy: none
+		sourceColumn: code_branche
+
+	column libelle_branche
+		dataType: string
+		lineageTag: 0a59299a-72cc-586b-ac7f-7939f45092c9
+		summarizeBy: none
+		sourceColumn: libelle_branche
+
+	partition dim_branche = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\dim_branche.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"branche_id", Int64.Type}, {"code_branche", type text}, {"libelle_branche", type text}}, "en-US")
+				in
+				    Types
+

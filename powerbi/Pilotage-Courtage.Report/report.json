@@ -1,0 +1,475 @@
+{
+  "config": "{\"version\": \"5.55\", \"themeCollection\": {\"baseTheme\": {\"name\": \"CY24SU10\", \"version\": \"5.55\", \"type\": 2}}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useStylableVisualContainerHeader\": true}}",
+  "filters": "[{\"name\": \"filtreAnneeMinimale\", \"expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Entity\": \"dim_date\"}}, \"Property\": \"annee\"}}, \"type\": \"Advanced\", \"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"Comparison\": {\"ComparisonKind\": 2, \"Left\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}, \"Right\": {\"Literal\": {\"Value\": \"2024L\"}}}}}]}, \"howCreated\": 0}]",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Synthèse",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "pageSynthese",
+      "ordinal": 0,
+      "visualContainers": [
+        {
+          "x": 16,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"synSP\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Ratio sinistres sur primes\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Ratio sinistres sur primes\"}, \"Name\": \"Mesures.Ratio sinistres sur primes\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ratio sinistres sur primes'\"}}}}}]}}}"
+        },
+        {
+          "x": 283,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"synRes\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 283, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Taux de résiliation\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Taux de résiliation\"}, \"Name\": \"Mesures.Taux de résiliation\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Taux de résiliation'\"}}}}}]}}}"
+        },
+        {
+          "x": 550,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"synAff\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 550, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Affaires nouvelles\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Affaires nouvelles\"}, \"Name\": \"Mesures.Affaires nouvelles\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Affaires nouvelles'\"}}}}}]}}}"
+        },
+        {
+          "x": 817,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"synPtf\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 817, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Contrats au portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille\"}, \"Name\": \"Mesures.Contrats au portefeuille\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Contrats au portefeuille'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 140,
+          "z": 0,
+          "width": 520,
+          "height": 280,
+          "config": "{\"name\": \"synCourbeSP\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 140, \"z\": 0, \"width\": 520, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.annee_trimestre\"}], \"Y\": [{\"queryRef\": \"Mesures.Ratio sinistres sur primes\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_trimestre\"}, \"Name\": \"dim_date.annee_trimestre\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Ratio sinistres sur primes\"}, \"Name\": \"Mesures.Ratio sinistres sur primes\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_trimestre\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ratio sinistres sur primes par trimestre'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 140,
+          "z": 0,
+          "width": 524,
+          "height": 280,
+          "config": "{\"name\": \"synFlux\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 140, \"z\": 0, \"width\": 524, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"columnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.annee_trimestre\"}], \"Y\": [{\"queryRef\": \"Mesures.Affaires nouvelles\"}, {\"queryRef\": \"Mesures.Résiliations toutes\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_trimestre\"}, \"Name\": \"dim_date.annee_trimestre\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Affaires nouvelles\"}, \"Name\": \"Mesures.Affaires nouvelles\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations toutes\"}, \"Name\": \"Mesures.Résiliations toutes\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_trimestre\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Entrées et sorties du portefeuille par trimestre'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 434,
+          "z": 0,
+          "width": 520,
+          "height": 270,
+          "config": "{\"name\": \"synBranche\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 434, \"z\": 0, \"width\": 520, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"columnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_branche.libelle_branche\"}], \"Y\": [{\"queryRef\": \"Mesures.Contrats au portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille\"}, \"Name\": \"Mesures.Contrats au portefeuille\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Contrats au portefeuille par branche'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 434,
+          "z": 0,
+          "width": 524,
+          "height": 270,
+          "config": "{\"name\": \"synTableau\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 434, \"z\": 0, \"width\": 524, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_date.annee\"}, {\"queryRef\": \"Mesures.Ratio sinistres sur primes\"}, {\"queryRef\": \"Mesures.Taux de résiliation\"}, {\"queryRef\": \"Mesures.Affaires nouvelles\"}, {\"queryRef\": \"Mesures.Contrats au portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Ratio sinistres sur primes\"}, \"Name\": \"Mesures.Ratio sinistres sur primes\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Taux de résiliation\"}, \"Name\": \"Mesures.Taux de résiliation\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Affaires nouvelles\"}, \"Name\": \"Mesures.Affaires nouvelles\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille\"}, \"Name\": \"Mesures.Contrats au portefeuille\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Les quatre indicateurs par année'\"}}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 16,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"synSegAnnee\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 16, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_date.annee\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Année'\"}}}}}]}, \"objects\": {\"general\": [{\"properties\": {\"filter\": {\"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"In\": {\"Expressions\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}], \"Values\": [[{\"Literal\": {\"Value\": \"2025L\"}}]]}}}]}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 176,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"synSegBranche\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 176, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_branche.libelle_branche\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Branche'\"}}}}}]}}}"
+        }
+      ],
+      "width": 1280.0
+    },
+    {
+      "config": "{}",
+      "displayName": "Sinistres sur primes",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "pageSinistres",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "x": 16,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"spCarte\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Ratio sinistres sur primes\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Ratio sinistres sur primes\"}, \"Name\": \"Mesures.Ratio sinistres sur primes\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ratio sinistres sur primes'\"}}}}}]}}}"
+        },
+        {
+          "x": 283,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"spPrest\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 283, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Prestations réglées périmètre délégué\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Prestations réglées périmètre délégué\"}, \"Name\": \"Mesures.Prestations réglées périmètre délégué\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Prestations réglées périmètre délégué'\"}}}}}]}}}"
+        },
+        {
+          "x": 550,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"spAcq\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 550, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Cotisations acquises HT périmètre délégué\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisations acquises HT périmètre délégué\"}, \"Name\": \"Mesures.Cotisations acquises HT périmètre délégué\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Cotisations acquises HT périmètre délégué'\"}}}}}]}}}"
+        },
+        {
+          "x": 817,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"spEmises\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 817, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Contrôle ratio sur cotisations émises\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrôle ratio sur cotisations émises\"}, \"Name\": \"Mesures.Contrôle ratio sur cotisations émises\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Contrôle ratio sur cotisations émises'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 140,
+          "z": 0,
+          "width": 520,
+          "height": 280,
+          "config": "{\"name\": \"spColonnes\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 140, \"z\": 0, \"width\": 520, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"columnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.annee\"}], \"Y\": [{\"queryRef\": \"Mesures.Prestations réglées périmètre délégué\"}, {\"queryRef\": \"Mesures.Cotisations acquises HT périmètre délégué\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Prestations réglées périmètre délégué\"}, \"Name\": \"Mesures.Prestations réglées périmètre délégué\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisations acquises HT périmètre délégué\"}, \"Name\": \"Mesures.Cotisations acquises HT périmètre délégué\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Prestations réglées et cotisations acquises par année'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 140,
+          "z": 0,
+          "width": 524,
+          "height": 280,
+          "config": "{\"name\": \"spCourbes\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 140, \"z\": 0, \"width\": 524, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.annee_trimestre\"}], \"Y\": [{\"queryRef\": \"Mesures.Ratio sinistres sur primes\"}, {\"queryRef\": \"Mesures.Contrôle ratio en date de soins\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_trimestre\"}, \"Name\": \"dim_date.annee_trimestre\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Ratio sinistres sur primes\"}, \"Name\": \"Mesures.Ratio sinistres sur primes\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrôle ratio en date de soins\"}, \"Name\": \"Mesures.Contrôle ratio en date de soins\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_trimestre\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ratio par trimestre : date de règlement et date de soins'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 434,
+          "z": 0,
+          "width": 520,
+          "height": 270,
+          "config": "{\"name\": \"spBranche\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 434, \"z\": 0, \"width\": 520, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_branche.libelle_branche\"}, {\"queryRef\": \"Mesures.Prestations réglées périmètre délégué\"}, {\"queryRef\": \"Mesures.Cotisations acquises HT périmètre délégué\"}, {\"queryRef\": \"Mesures.Ratio sinistres sur primes\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Prestations réglées périmètre délégué\"}, \"Name\": \"Mesures.Prestations réglées périmètre délégué\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisations acquises HT périmètre délégué\"}, \"Name\": \"Mesures.Cotisations acquises HT périmètre délégué\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Ratio sinistres sur primes\"}, \"Name\": \"Mesures.Ratio sinistres sur primes\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ratio par branche'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 434,
+          "z": 0,
+          "width": 524,
+          "height": 270,
+          "config": "{\"name\": \"spCompagnie\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 434, \"z\": 0, \"width\": 524, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_compagnie.raison_sociale\"}, {\"queryRef\": \"Mesures.Prestations réglées périmètre délégué\"}, {\"queryRef\": \"Mesures.Cotisations acquises HT périmètre délégué\"}, {\"queryRef\": \"Mesures.Ratio sinistres sur primes\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_compagnie\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"raison_sociale\"}, \"Name\": \"dim_compagnie.raison_sociale\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Prestations réglées périmètre délégué\"}, \"Name\": \"Mesures.Prestations réglées périmètre délégué\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisations acquises HT périmètre délégué\"}, \"Name\": \"Mesures.Cotisations acquises HT périmètre délégué\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Ratio sinistres sur primes\"}, \"Name\": \"Mesures.Ratio sinistres sur primes\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"raison_sociale\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Ratio par compagnie'\"}}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 16,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"spSegAnnee\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 16, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_date.annee\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Année'\"}}}}}]}, \"objects\": {\"general\": [{\"properties\": {\"filter\": {\"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"In\": {\"Expressions\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}], \"Values\": [[{\"Literal\": {\"Value\": \"2025L\"}}]]}}}]}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 176,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"spSegBranche\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 176, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_branche.libelle_branche\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Branche'\"}}}}}]}}}"
+        }
+      ],
+      "width": 1280.0
+    },
+    {
+      "config": "{}",
+      "displayName": "Résiliations",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "pageResiliations",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "x": 16,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"reCarte\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Taux de résiliation\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Taux de résiliation\"}, \"Name\": \"Mesures.Taux de résiliation\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Taux de résiliation'\"}}}}}]}}}"
+        },
+        {
+          "x": 283,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"reAnn\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 283, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Taux de résiliation annualisé\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Taux de résiliation annualisé\"}, \"Name\": \"Mesures.Taux de résiliation annualisé\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Taux de résiliation annualisé'\"}}}}}]}}}"
+        },
+        {
+          "x": 550,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"reNb\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 550, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Résiliations de la cohorte\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations de la cohorte\"}, \"Name\": \"Mesures.Résiliations de la cohorte\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Résiliations de la cohorte'\"}}}}}]}}}"
+        },
+        {
+          "x": 817,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"reDebut\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 817, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Contrats au portefeuille en début de période\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille en début de période\"}, \"Name\": \"Mesures.Contrats au portefeuille en début de période\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Contrats au portefeuille en début de période'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 140,
+          "z": 0,
+          "width": 520,
+          "height": 280,
+          "config": "{\"name\": \"reMotif\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 140, \"z\": 0, \"width\": 520, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"columnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fct_mouvements_portefeuille.motif_resiliation\"}], \"Y\": [{\"queryRef\": \"Mesures.Résiliations de la cohorte\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"fct_mouvements_portefeuille\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"motif_resiliation\"}, \"Name\": \"fct_mouvements_portefeuille.motif_resiliation\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations de la cohorte\"}, \"Name\": \"Mesures.Résiliations de la cohorte\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations de la cohorte\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Résiliations par motif'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 140,
+          "z": 0,
+          "width": 524,
+          "height": 280,
+          "config": "{\"name\": \"reAge\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 140, \"z\": 0, \"width\": 524, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"columnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"fct_mouvements_portefeuille.tranche_age_au_mouvement\"}], \"Y\": [{\"queryRef\": \"Mesures.Résiliations de la cohorte\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"fct_mouvements_portefeuille\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"tranche_age_au_mouvement\"}, \"Name\": \"fct_mouvements_portefeuille.tranche_age_au_mouvement\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations de la cohorte\"}, \"Name\": \"Mesures.Résiliations de la cohorte\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"tranche_age_au_mouvement\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Résiliations par tranche d'âge au moment de la résiliation'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 434,
+          "z": 0,
+          "width": 520,
+          "height": 270,
+          "config": "{\"name\": \"reAnnees\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 434, \"z\": 0, \"width\": 520, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_date.annee\"}, {\"queryRef\": \"Mesures.Résiliations de la cohorte\"}, {\"queryRef\": \"Mesures.Résiliations toutes\"}, {\"queryRef\": \"Mesures.Contrats au portefeuille en début de période\"}, {\"queryRef\": \"Mesures.Taux de résiliation\"}, {\"queryRef\": \"Mesures.Taux de résiliation annualisé\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations de la cohorte\"}, \"Name\": \"Mesures.Résiliations de la cohorte\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations toutes\"}, \"Name\": \"Mesures.Résiliations toutes\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille en début de période\"}, \"Name\": \"Mesures.Contrats au portefeuille en début de période\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Taux de résiliation\"}, \"Name\": \"Mesures.Taux de résiliation\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Taux de résiliation annualisé\"}, \"Name\": \"Mesures.Taux de résiliation annualisé\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Taux de résiliation par année'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 434,
+          "z": 0,
+          "width": 524,
+          "height": 270,
+          "config": "{\"name\": \"reProduit\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 434, \"z\": 0, \"width\": 524, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_produit.libelle_produit\"}, {\"queryRef\": \"Mesures.Résiliations de la cohorte\"}, {\"queryRef\": \"Mesures.Contrats au portefeuille en début de période\"}, {\"queryRef\": \"Mesures.Taux de résiliation\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_produit\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_produit\"}, \"Name\": \"dim_produit.libelle_produit\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Résiliations de la cohorte\"}, \"Name\": \"Mesures.Résiliations de la cohorte\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille en début de période\"}, \"Name\": \"Mesures.Contrats au portefeuille en début de période\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Taux de résiliation\"}, \"Name\": \"Mesures.Taux de résiliation\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_produit\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Taux de résiliation par produit'\"}}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 16,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"reSegAnnee\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 16, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_date.annee\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Année'\"}}}}}]}, \"objects\": {\"general\": [{\"properties\": {\"filter\": {\"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"In\": {\"Expressions\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}], \"Values\": [[{\"Literal\": {\"Value\": \"2025L\"}}]]}}}]}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 176,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"reSegBranche\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 176, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_branche.libelle_branche\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Branche'\"}}}}}]}}}"
+        }
+      ],
+      "width": 1280.0
+    },
+    {
+      "config": "{}",
+      "displayName": "Production par apporteur",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "pageProduction",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "x": 16,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"prAff\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Affaires nouvelles\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Affaires nouvelles\"}, \"Name\": \"Mesures.Affaires nouvelles\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Affaires nouvelles'\"}}}}}]}}}"
+        },
+        {
+          "x": 283,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"prCot\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 283, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Cotisation annualisée des affaires nouvelles\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée des affaires nouvelles\"}, \"Name\": \"Mesures.Cotisation annualisée des affaires nouvelles\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Cotisation annualisée des affaires nouvelles'\"}}}}}]}}}"
+        },
+        {
+          "x": 550,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"prMoy\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 550, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Cotisation annualisée moyenne par affaire\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée moyenne par affaire\"}, \"Name\": \"Mesures.Cotisation annualisée moyenne par affaire\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Cotisation annualisée moyenne par affaire'\"}}}}}]}}}"
+        },
+        {
+          "x": 817,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"prNet\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 817, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Variation nette du portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Variation nette du portefeuille\"}, \"Name\": \"Mesures.Variation nette du portefeuille\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Variation nette du portefeuille'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 140,
+          "z": 0,
+          "width": 520,
+          "height": 564,
+          "config": "{\"name\": \"prBarres\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 140, \"z\": 0, \"width\": 520, \"height\": 564}}], \"singleVisual\": {\"visualType\": \"barChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_apporteur.nom_apporteur\"}], \"Y\": [{\"queryRef\": \"Mesures.Cotisation annualisée des affaires nouvelles\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_apporteur\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"nom_apporteur\"}, \"Name\": \"dim_apporteur.nom_apporteur\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée des affaires nouvelles\"}, \"Name\": \"Mesures.Cotisation annualisée des affaires nouvelles\"}], \"OrderBy\": [{\"Direction\": 2, \"Expression\": {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée des affaires nouvelles\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Cotisation annualisée des affaires nouvelles par apporteur'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 140,
+          "z": 0,
+          "width": 524,
+          "height": 400,
+          "config": "{\"name\": \"prTableau\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 140, \"z\": 0, \"width\": 524, \"height\": 400}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_apporteur.nom_apporteur\"}, {\"queryRef\": \"Mesures.Affaires nouvelles\"}, {\"queryRef\": \"Mesures.Cotisation annualisée des affaires nouvelles\"}, {\"queryRef\": \"Mesures.Cotisation annualisée moyenne par affaire\"}, {\"queryRef\": \"Mesures.Part de la production\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_apporteur\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"nom_apporteur\"}, \"Name\": \"dim_apporteur.nom_apporteur\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Affaires nouvelles\"}, \"Name\": \"Mesures.Affaires nouvelles\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée des affaires nouvelles\"}, \"Name\": \"Mesures.Cotisation annualisée des affaires nouvelles\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée moyenne par affaire\"}, \"Name\": \"Mesures.Cotisation annualisée moyenne par affaire\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Part de la production\"}, \"Name\": \"Mesures.Part de la production\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"nom_apporteur\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Production par apporteur'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 552,
+          "z": 0,
+          "width": 524,
+          "height": 152,
+          "config": "{\"name\": \"prMois\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 552, \"z\": 0, \"width\": 524, \"height\": 152}}], \"singleVisual\": {\"visualType\": \"columnChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.annee_mois\"}], \"Y\": [{\"queryRef\": \"Mesures.Affaires nouvelles\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_mois\"}, \"Name\": \"dim_date.annee_mois\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Affaires nouvelles\"}, \"Name\": \"Mesures.Affaires nouvelles\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_mois\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Affaires nouvelles par mois'\"}}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 16,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"prSegAnnee\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 16, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_date.annee\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Année'\"}}}}}]}, \"objects\": {\"general\": [{\"properties\": {\"filter\": {\"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"In\": {\"Expressions\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}], \"Values\": [[{\"Literal\": {\"Value\": \"2025L\"}}]]}}}]}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 176,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"prSegBranche\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 176, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_branche.libelle_branche\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Branche'\"}}}}}]}}}"
+        }
+      ],
+      "width": 1280.0
+    },
+    {
+      "config": "{}",
+      "displayName": "Portefeuille par branche",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.0,
+      "name": "pagePortefeuille",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "x": 16,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"poCtr\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Contrats au portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille\"}, \"Name\": \"Mesures.Contrats au portefeuille\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Contrats au portefeuille'\"}}}}}]}}}"
+        },
+        {
+          "x": 283,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"poCot\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 283, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Cotisation annualisée du portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée du portefeuille\"}, \"Name\": \"Mesures.Cotisation annualisée du portefeuille\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Cotisation annualisée du portefeuille'\"}}}}}]}}}"
+        },
+        {
+          "x": 550,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"poSusp\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 550, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.dont suspendus\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"dont suspendus\"}, \"Name\": \"Mesures.dont suspendus\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'dont suspendus'\"}}}}}]}}}"
+        },
+        {
+          "x": 817,
+          "y": 16,
+          "z": 0,
+          "width": 255,
+          "height": 110,
+          "config": "{\"name\": \"poMoy\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 817, \"y\": 16, \"z\": 0, \"width\": 255, \"height\": 110}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Mesures.Cotisation annualisée moyenne par contrat\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée moyenne par contrat\"}, \"Name\": \"Mesures.Cotisation annualisée moyenne par contrat\"}]}, \"objects\": {\"categoryLabels\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"false\"}}}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Cotisation annualisée moyenne par contrat'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 140,
+          "z": 0,
+          "width": 520,
+          "height": 280,
+          "config": "{\"name\": \"poBarres\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 140, \"z\": 0, \"width\": 520, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"barChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_branche.libelle_branche\"}], \"Y\": [{\"queryRef\": \"Mesures.Cotisation annualisée du portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée du portefeuille\"}, \"Name\": \"Mesures.Cotisation annualisée du portefeuille\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Cotisation annualisée par branche'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 140,
+          "z": 0,
+          "width": 524,
+          "height": 280,
+          "config": "{\"name\": \"poCourbe\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 140, \"z\": 0, \"width\": 524, \"height\": 280}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"dim_date.annee_mois\"}], \"Y\": [{\"queryRef\": \"Mesures.Contrats au portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_mois\"}, \"Name\": \"dim_date.annee_mois\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille\"}, \"Name\": \"Mesures.Contrats au portefeuille\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee_mois\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Contrats au portefeuille à chaque fin de mois'\"}}}}}]}}}"
+        },
+        {
+          "x": 16,
+          "y": 434,
+          "z": 0,
+          "width": 520,
+          "height": 270,
+          "config": "{\"name\": \"poTableau\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 16, \"y\": 434, \"z\": 0, \"width\": 520, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_branche.libelle_branche\"}, {\"queryRef\": \"Mesures.Contrats au portefeuille\"}, {\"queryRef\": \"Mesures.dont suspendus\"}, {\"queryRef\": \"Mesures.Cotisation annualisée du portefeuille\"}, {\"queryRef\": \"Mesures.Cotisation annualisée moyenne par contrat\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_branche\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}, \"Name\": \"dim_branche.libelle_branche\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille\"}, \"Name\": \"Mesures.Contrats au portefeuille\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"dont suspendus\"}, \"Name\": \"Mesures.dont suspendus\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée du portefeuille\"}, \"Name\": \"Mesures.Cotisation annualisée du portefeuille\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée moyenne par contrat\"}, \"Name\": \"Mesures.Cotisation annualisée moyenne par contrat\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"libelle_branche\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Portefeuille par branche'\"}}}}}]}}}"
+        },
+        {
+          "x": 548,
+          "y": 434,
+          "z": 0,
+          "width": 524,
+          "height": 270,
+          "config": "{\"name\": \"poAge\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 548, \"y\": 434, \"z\": 0, \"width\": 524, \"height\": 270}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_adherent.tranche_age\"}, {\"queryRef\": \"Mesures.Contrats au portefeuille\"}, {\"queryRef\": \"Mesures.Cotisation annualisée du portefeuille\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_adherent\", \"Type\": 0}, {\"Name\": \"m\", \"Entity\": \"Mesures\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"tranche_age\"}, \"Name\": \"dim_adherent.tranche_age\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Contrats au portefeuille\"}, \"Name\": \"Mesures.Contrats au portefeuille\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"m\"}}, \"Property\": \"Cotisation annualisée du portefeuille\"}, \"Name\": \"Mesures.Cotisation annualisée du portefeuille\"}], \"OrderBy\": [{\"Direction\": 1, \"Expression\": {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"tranche_age\"}}}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Portefeuille par tranche d'âge de l'adhérent'\"}}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 16,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"poSegAnnee\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 16, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_date.annee\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}, \"Name\": \"dim_date.annee\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Année'\"}}}}}]}, \"objects\": {\"general\": [{\"properties\": {\"filter\": {\"filter\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_date\", \"Type\": 0}], \"Where\": [{\"Condition\": {\"In\": {\"Expressions\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"annee\"}}], \"Values\": [[{\"Literal\": {\"Value\": \"2025L\"}}]]}}}]}}}}]}}}"
+        },
+        {
+          "x": 1100,
+          "y": 176,
+          "z": 0,
+          "width": 164,
+          "height": 150,
+          "config": "{\"name\": \"poSegDep\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1100, \"y\": 176, \"z\": 0, \"width\": 164, \"height\": 150}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"dim_adherent.departement\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"d\", \"Entity\": \"dim_adherent\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"d\"}}, \"Property\": \"departement\"}, \"Name\": \"dim_adherent.departement\"}]}, \"drillFilterOtherVisuals\": true, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Département'\"}}}}}]}}}"
+        }
+      ],
+      "width": 1280.0
+    }
+  ]
+}

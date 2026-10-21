@@ -1,0 +1,51 @@
+/// Adherent : departement et tranche d'age a la date d'arret. Aucune donnee nominative.
+table dim_adherent
+	lineageTag: f18dd848-e20d-50e3-8a1e-e4da882acaa0
+
+	column adherent_id
+		dataType: int64
+		isHidden
+		lineageTag: 2a25e8b3-f9de-5a18-8b82-1d90e7d72da4
+		summarizeBy: none
+		sourceColumn: adherent_id
+
+	column numero_adherent
+		dataType: string
+		lineageTag: e78b74ef-bbf9-558a-9da8-25d315003559
+		summarizeBy: none
+		sourceColumn: numero_adherent
+
+	column sexe
+		dataType: string
+		lineageTag: 602acc22-4ab5-56ef-a85f-aac960c64e00
+		summarizeBy: none
+		sourceColumn: sexe
+
+	column departement
+		dataType: string
+		lineageTag: f363897b-bb5b-5145-8bf4-96df61e9828e
+		summarizeBy: none
+		sourceColumn: departement
+
+	column type_couverture
+		dataType: string
+		lineageTag: dd43f518-1222-56f8-b6e3-3f195dc448a2
+		summarizeBy: none
+		sourceColumn: type_couverture
+
+	column tranche_age
+		dataType: string
+		lineageTag: abae8f24-0e33-5243-ac7a-897cea27bc1b
+		summarizeBy: none
+		sourceColumn: tranche_age
+
+	partition dim_adherent = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\dim_adherent.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"adherent_id", Int64.Type}, {"numero_adherent", type text}, {"sexe", type text}, {"departement", type text}, {"type_couverture", type text}, {"tranche_age", type text}}, "en-US")
+				in
+				    Types
+

@@ -61,3 +61,6 @@ ignore = ["RUF001", "RUF002", "RUF003"]
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["E402"]
 "migrations/versions/*" = ["E501"]
+# Generateurs de fichiers de configuration et requetes SQL : des lignes longues y sont plus lisibles coupees.
+"scripts/construire_pbip.py" = ["E501"]
+"scripts/concordance_kpi.py" = ["E501"]

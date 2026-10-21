@@ -1,0 +1,63 @@
+/// Cotisations EMISES, une ligne par appel, rattachees a la date d'echeance.
+table fct_cotisations
+	lineageTag: 12c49385-bb64-5fc9-add2-58b8a757469e
+
+	column appel_id
+		dataType: int64
+		isHidden
+		lineageTag: de63554b-026a-5d84-86de-e0072615a224
+		summarizeBy: none
+		sourceColumn: appel_id
+
+	column date_echeance
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: 17c6f3b0-7813-566b-87e9-b3240f32dc28
+		summarizeBy: none
+		sourceColumn: date_echeance
+
+	column produit_id
+		dataType: int64
+		isHidden
+		lineageTag: 927ca014-6011-578e-9eef-a23fe2836941
+		summarizeBy: none
+		sourceColumn: produit_id
+
+	column compagnie_id
+		dataType: int64
+		isHidden
+		lineageTag: c1e5f6c0-4138-51d5-9b68-900a4c24d4c0
+		summarizeBy: none
+		sourceColumn: compagnie_id
+
+	column branche_id
+		dataType: int64
+		isHidden
+		lineageTag: 851c08f6-027f-5431-8447-90c3390aef82
+		summarizeBy: none
+		sourceColumn: branche_id
+
+	column apporteur_id
+		dataType: int64
+		isHidden
+		lineageTag: ae69010e-f6d3-5b34-abb1-f0ae3c389cad
+		summarizeBy: none
+		sourceColumn: apporteur_id
+
+	column cotisation_ht_euros
+		dataType: double
+		formatString: #,0.00 €
+		lineageTag: 22afe438-1780-5ed5-8693-3544a9bfdf9f
+		summarizeBy: sum
+		sourceColumn: cotisation_ht_euros
+
+	partition fct_cotisations = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\fct_cotisations.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"appel_id", Int64.Type}, {"date_echeance", type date}, {"produit_id", Int64.Type}, {"compagnie_id", Int64.Type}, {"branche_id", Int64.Type}, {"apporteur_id", Int64.Type}, {"cotisation_ht_euros", type number}}, "en-US")
+				in
+				    Types
+

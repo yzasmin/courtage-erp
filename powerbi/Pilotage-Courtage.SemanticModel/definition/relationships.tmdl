@@ -1,0 +1,116 @@
+relationship cfc77899-e527-59b9-9d54-650a7c364696
+	fromColumn: fct_cotisations.date_echeance
+	toColumn: dim_date.date_jour
+
+relationship 0d38e8be-5c3f-556d-9647-5dd0cac944ed
+	fromColumn: fct_cotisations_acquises.mois_acquisition
+	toColumn: dim_date.date_jour
+
+relationship a8e15b49-10fc-55b8-96f0-c436a6a96bfb
+	fromColumn: fct_prestations.date_reglement
+	toColumn: dim_date.date_jour
+
+relationship dbab403a-c51c-5801-946e-5243f67bbf83
+	isActive: false
+	fromColumn: fct_prestations.date_soins
+	toColumn: dim_date.date_jour
+
+relationship 200e4df1-8cdc-5ff4-acb9-9a699370ae62
+	fromColumn: fct_mouvements_portefeuille.date_mouvement
+	toColumn: dim_date.date_jour
+
+relationship 4dcb56a0-0b5b-58e4-a011-3029ce0a2cc4
+	fromColumn: fct_portefeuille_mensuel.date_cliche
+	toColumn: dim_date.date_jour
+
+relationship 8bafd412-aa97-5472-9597-6e581d8560cf
+	fromColumn: fct_cotisations.produit_id
+	toColumn: dim_produit.produit_id
+
+relationship e58c8e4d-9917-55e1-ac01-2fe52b9e728b
+	fromColumn: fct_cotisations.compagnie_id
+	toColumn: dim_compagnie.compagnie_id
+
+relationship 9ed262e4-1f85-5558-ae6c-3dde370e6ae4
+	fromColumn: fct_cotisations.branche_id
+	toColumn: dim_branche.branche_id
+
+relationship fd004b7d-b1c9-5f0c-b168-df061aa744a3
+	fromColumn: fct_cotisations.apporteur_id
+	toColumn: dim_apporteur.apporteur_id
+
+relationship b5ebc682-0d0d-536f-b922-9afa34e46f19
+	fromColumn: fct_cotisations_acquises.produit_id
+	toColumn: dim_produit.produit_id
+
+relationship 826d5742-06ff-5a4b-a512-1ae40f777dd2
+	fromColumn: fct_cotisations_acquises.compagnie_id
+	toColumn: dim_compagnie.compagnie_id
+
+relationship 6d988a50-f824-5bf3-8547-7405dfdcb3dc
+	fromColumn: fct_cotisations_acquises.branche_id
+	toColumn: dim_branche.branche_id
+
+relationship 414db4ff-30e8-5964-b84e-8ed41b144c48
+	fromColumn: fct_cotisations_acquises.apporteur_id
+	toColumn: dim_apporteur.apporteur_id
+
+relationship ce627b3c-61c6-581e-82c0-73efa83fd16e
+	fromColumn: fct_prestations.produit_id
+	toColumn: dim_produit.produit_id
+
+relationship 0533d494-e632-5cfe-8d69-636d6aefc61d
+	fromColumn: fct_prestations.compagnie_id
+	toColumn: dim_compagnie.compagnie_id
+
+relationship 5a0a1cef-dea2-564f-b467-a6c2701100d7
+	fromColumn: fct_prestations.branche_id
+	toColumn: dim_branche.branche_id
+
+relationship aa2fb9d0-c6db-5d8b-b093-bfd5cc5d7aec
+	fromColumn: fct_prestations.apporteur_id
+	toColumn: dim_apporteur.apporteur_id
+
+relationship a749b273-8682-550d-9968-c9caa86c8724
+	fromColumn: fct_mouvements_portefeuille.produit_id
+	toColumn: dim_produit.produit_id
+
+relationship 8a4816e7-9050-5bd2-9454-565f404bf896
+	fromColumn: fct_mouvements_portefeuille.compagnie_id
+	toColumn: dim_compagnie.compagnie_id
+
+relationship bc819c8a-40bf-59d0-a918-7edf5bf284b1
+	fromColumn: fct_mouvements_portefeuille.branche_id
+	toColumn: dim_branche.branche_id
+
+relationship 6fc3f45f-80e5-5f9c-882b-d26e1def9e58
+	fromColumn: fct_mouvements_portefeuille.apporteur_id
+	toColumn: dim_apporteur.apporteur_id
+
+relationship 97f085d4-67d0-5eef-ac18-514ada75cdea
+	fromColumn: fct_portefeuille_mensuel.produit_id
+	toColumn: dim_produit.produit_id
+
+relationship 55611e7c-c059-5c3f-a0b8-df7900acc6a4
+	fromColumn: fct_portefeuille_mensuel.compagnie_id
+	toColumn: dim_compagnie.compagnie_id
+
+relationship 7ef217dc-14cd-50d0-a64f-c57f71087541
+	fromColumn: fct_portefeuille_mensuel.branche_id
+	toColumn: dim_branche.branche_id
+
+relationship 4c8ec42a-26bd-5a44-bc7d-18b0b888be69
+	fromColumn: fct_portefeuille_mensuel.apporteur_id
+	toColumn: dim_apporteur.apporteur_id
+
+relationship 7f92d579-6022-597c-b6c7-a5485a8841fe
+	fromColumn: fct_prestations.adherent_id
+	toColumn: dim_adherent.adherent_id
+
+relationship e15bdfe7-9fe1-52ff-a81d-d5d702f6f829
+	fromColumn: fct_mouvements_portefeuille.adherent_id
+	toColumn: dim_adherent.adherent_id
+
+relationship 170aef7e-e467-5ffc-877e-1870c2474a1c
+	fromColumn: fct_portefeuille_mensuel.adherent_id
+	toColumn: dim_adherent.adherent_id

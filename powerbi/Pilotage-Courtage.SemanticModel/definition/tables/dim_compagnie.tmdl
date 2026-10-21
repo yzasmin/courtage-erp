@@ -1,0 +1,33 @@
+/// Compagnie d'assurance porteuse du risque.
+table dim_compagnie
+	lineageTag: d0c0314a-f32c-55b8-b777-69fafd386708
+
+	column compagnie_id
+		dataType: int64
+		isHidden
+		lineageTag: 496ef390-4812-5d13-b4ac-6a00d661c4a6
+		summarizeBy: none
+		sourceColumn: compagnie_id
+
+	column code_compagnie
+		dataType: string
+		lineageTag: cabd6784-173a-57db-bf66-96b5fdc3b26f
+		summarizeBy: none
+		sourceColumn: code_compagnie
+
+	column raison_sociale
+		dataType: string
+		lineageTag: 697921cc-f9a2-5822-a219-6d66b7f752cd
+		summarizeBy: none
+		sourceColumn: raison_sociale
+
+	partition dim_compagnie = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\dim_compagnie.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"compagnie_id", Int64.Type}, {"code_compagnie", type text}, {"raison_sociale", type text}}, "en-US")
+				in
+				    Types
+

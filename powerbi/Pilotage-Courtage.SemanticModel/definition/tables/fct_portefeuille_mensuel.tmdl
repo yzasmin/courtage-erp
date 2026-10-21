@@ -1,0 +1,83 @@
+/// Portefeuille a chaque fin de mois (un stock : ne s'additionne pas dans le temps).
+table fct_portefeuille_mensuel
+	lineageTag: 05f8160c-0852-5472-980e-c5056e2b3973
+
+	column date_cliche
+		dataType: dateTime
+		formatString: dd/mm/yyyy
+		lineageTag: b540f5fa-4fff-5fbe-8e8f-967af60a5a7d
+		summarizeBy: none
+		sourceColumn: date_cliche
+
+	column contrat_id
+		dataType: int64
+		isHidden
+		lineageTag: b19ca405-e732-569d-9d8d-2742d603d152
+		summarizeBy: none
+		sourceColumn: contrat_id
+
+	column statut_contrat
+		dataType: string
+		lineageTag: 129d5a6d-c360-58cf-b994-64592ca1b9f6
+		summarizeBy: none
+		sourceColumn: statut_contrat
+
+	column produit_id
+		dataType: int64
+		isHidden
+		lineageTag: 5de84eb0-9049-5bbf-a909-50d09c0f091f
+		summarizeBy: none
+		sourceColumn: produit_id
+
+	column compagnie_id
+		dataType: int64
+		isHidden
+		lineageTag: 5f9d10b7-06d8-5fbc-932a-6078305c5120
+		summarizeBy: none
+		sourceColumn: compagnie_id
+
+	column branche_id
+		dataType: int64
+		isHidden
+		lineageTag: ed35116f-ba2c-59b0-a29b-4fa9e87fc93f
+		summarizeBy: none
+		sourceColumn: branche_id
+
+	column apporteur_id
+		dataType: int64
+		isHidden
+		lineageTag: 1c53ca0d-ba60-5f5b-8181-08853a713ec7
+		summarizeBy: none
+		sourceColumn: apporteur_id
+
+	column adherent_id
+		dataType: int64
+		isHidden
+		lineageTag: 52d917a8-7cef-5962-b023-29b929dbc961
+		summarizeBy: none
+		sourceColumn: adherent_id
+
+	column cotisation_mensuelle_euros
+		dataType: double
+		formatString: #,0.00 €
+		lineageTag: 27b6e70e-f4e5-5eaa-bd43-75ae845dace4
+		summarizeBy: sum
+		sourceColumn: cotisation_mensuelle_euros
+
+	column cotisation_annualisee_euros
+		dataType: double
+		formatString: #,0.00 €
+		lineageTag: ecccb0d2-ce31-55db-8906-1176b7d7689a
+		summarizeBy: sum
+		sourceColumn: cotisation_annualisee_euros
+
+	partition fct_portefeuille_mensuel = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\fct_portefeuille_mensuel.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"date_cliche", type date}, {"contrat_id", Int64.Type}, {"statut_contrat", type text}, {"produit_id", Int64.Type}, {"compagnie_id", Int64.Type}, {"branche_id", Int64.Type}, {"apporteur_id", Int64.Type}, {"adherent_id", Int64.Type}, {"cotisation_mensuelle_euros", type number}, {"cotisation_annualisee_euros", type number}}, "en-US")
+				in
+				    Types
+

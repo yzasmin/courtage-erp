@@ -1,0 +1,20 @@
+model Model
+	culture: fr-FR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+ref table dim_date
+ref table dim_produit
+ref table dim_branche
+ref table dim_compagnie
+ref table dim_apporteur
+ref table dim_adherent
+ref table fct_cotisations
+ref table fct_cotisations_acquises
+ref table fct_prestations
+ref table fct_mouvements_portefeuille
+ref table fct_portefeuille_mensuel
+ref table Mesures

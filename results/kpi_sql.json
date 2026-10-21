@@ -1,0 +1,449 @@
+{
+  "01_ratio_sinistres_primes": [
+    {
+      "periode": "2024",
+      "prestations_reglees_euros": 3230842.0,
+      "cotisations_acquises_euros": 1818408.62,
+      "ratio_sinistres_primes_pct": 177.6741
+    },
+    {
+      "periode": "2025",
+      "prestations_reglees_euros": 3393705.0,
+      "cotisations_acquises_euros": 2218682.28,
+      "ratio_sinistres_primes_pct": 152.9604
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "prestations_reglees_euros": 2279066.0,
+      "cotisations_acquises_euros": 1880726.55,
+      "ratio_sinistres_primes_pct": 121.1801
+    }
+  ],
+  "01b_ratio_sinistres_primes_pieges": [
+    {
+      "periode": "2024",
+      "reference_pct": 177.67,
+      "en_date_de_soins_pct": 178.69,
+      "sur_emises_pct": 174.56,
+      "sur_tous_produits_pct": 126.19,
+      "sur_ttc_emis_pct": 154.11,
+      "cotisations_acquises_euros": 1818408.62,
+      "cotisations_emises_euros": 1850865.85
+    },
+    {
+      "periode": "2025",
+      "reference_pct": 152.96,
+      "en_date_de_soins_pct": 153.93,
+      "sur_emises_pct": 151.39,
+      "sur_tous_produits_pct": 109.67,
+      "sur_ttc_emis_pct": 133.65,
+      "cotisations_acquises_euros": 2218682.28,
+      "cotisations_emises_euros": 2241765.21
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "reference_pct": 121.18,
+      "en_date_de_soins_pct": 111.43,
+      "sur_emises_pct": 133.27,
+      "sur_tous_produits_pct": 91.25,
+      "sur_ttc_emis_pct": 117.66,
+      "cotisations_acquises_euros": 1880726.55,
+      "cotisations_emises_euros": 1710100.57
+    }
+  ],
+  "02_taux_resiliation": [
+    {
+      "periode": "2024",
+      "resiliations_de_la_cohorte": 286,
+      "contrats_au_portefeuille_en_debut_de_periode": 2605,
+      "taux_resiliation_pct": 10.9789,
+      "jours_de_la_periode": 366,
+      "taux_annualise_pct": 10.9489
+    },
+    {
+      "periode": "2025",
+      "resiliations_de_la_cohorte": 379,
+      "contrats_au_portefeuille_en_debut_de_periode": 3249,
+      "taux_resiliation_pct": 11.6651,
+      "jours_de_la_periode": 365,
+      "taux_annualise_pct": 11.6651
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "resiliations_de_la_cohorte": 321,
+      "contrats_au_portefeuille_en_debut_de_periode": 3704,
+      "taux_resiliation_pct": 8.6663,
+      "jours_de_la_periode": 273,
+      "taux_annualise_pct": 11.5868
+    }
+  ],
+  "02b_taux_resiliation_pieges": [
+    {
+      "periode": "2024",
+      "effectif_debut": 2605,
+      "effectif_fin": 3249,
+      "resiliations_cohorte": 286,
+      "resiliations_toutes": 286,
+      "nees_et_resiliees_dans_la_periode": 0,
+      "reference_pct": 10.9789,
+      "toutes_resiliations_pct": 10.9789,
+      "sur_effectif_de_fin_pct": 8.8027,
+      "sur_effectif_moyen_pct": 9.7711
+    },
+    {
+      "periode": "2025",
+      "effectif_debut": 3249,
+      "effectif_fin": 3704,
+      "resiliations_cohorte": 379,
+      "resiliations_toutes": 379,
+      "nees_et_resiliees_dans_la_periode": 0,
+      "reference_pct": 11.6651,
+      "toutes_resiliations_pct": 11.6651,
+      "sur_effectif_de_fin_pct": 10.2322,
+      "sur_effectif_moyen_pct": 10.9018
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "effectif_debut": 3704,
+      "effectif_fin": 3926,
+      "resiliations_cohorte": 321,
+      "resiliations_toutes": 321,
+      "nees_et_resiliees_dans_la_periode": 0,
+      "reference_pct": 8.6663,
+      "toutes_resiliations_pct": 8.6663,
+      "sur_effectif_de_fin_pct": 8.1763,
+      "sur_effectif_moyen_pct": 8.4142
+    }
+  ],
+  "03_production_par_apporteur": [
+    {
+      "periode": "2024",
+      "code_apporteur": "AP08",
+      "nom_apporteur": "Devis-Sante.fr",
+      "affaires_nouvelles": 116,
+      "cotisation_annualisee_euros": 94499.04
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP04",
+      "nom_apporteur": "Comparassur en ligne",
+      "affaires_nouvelles": 97,
+      "cotisation_annualisee_euros": 75758.4
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP01",
+      "nom_apporteur": "Cabinet Vidal Courtage",
+      "affaires_nouvelles": 95,
+      "cotisation_annualisee_euros": 75718.8
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP09",
+      "nom_apporteur": "Production directe, equipe commerciale",
+      "affaires_nouvelles": 93,
+      "cotisation_annualisee_euros": 72774.24
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP03",
+      "nom_apporteur": "Reseau Garrigue Assurances",
+      "affaires_nouvelles": 92,
+      "cotisation_annualisee_euros": 71061.12
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP05",
+      "nom_apporteur": "Mireille Fabre, agent general",
+      "affaires_nouvelles": 89,
+      "cotisation_annualisee_euros": 70872.6
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP07",
+      "nom_apporteur": "Cevennes Prevoyance Conseil",
+      "affaires_nouvelles": 90,
+      "cotisation_annualisee_euros": 69706.44
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP06",
+      "nom_apporteur": "Littoral Conseil Entreprises",
+      "affaires_nouvelles": 90,
+      "cotisation_annualisee_euros": 67978.2
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP10",
+      "nom_apporteur": "Production directe, guichet en ligne",
+      "affaires_nouvelles": 85,
+      "cotisation_annualisee_euros": 67108.56
+    },
+    {
+      "periode": "2024",
+      "code_apporteur": "AP02",
+      "nom_apporteur": "Occitane Patrimoine",
+      "affaires_nouvelles": 83,
+      "cotisation_annualisee_euros": 64714.68
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP06",
+      "nom_apporteur": "Littoral Conseil Entreprises",
+      "affaires_nouvelles": 94,
+      "cotisation_annualisee_euros": 74565.84
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP05",
+      "nom_apporteur": "Mireille Fabre, agent general",
+      "affaires_nouvelles": 92,
+      "cotisation_annualisee_euros": 71826.6
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP10",
+      "nom_apporteur": "Production directe, guichet en ligne",
+      "affaires_nouvelles": 93,
+      "cotisation_annualisee_euros": 71497.68
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP04",
+      "nom_apporteur": "Comparassur en ligne",
+      "affaires_nouvelles": 83,
+      "cotisation_annualisee_euros": 67097.16
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP02",
+      "nom_apporteur": "Occitane Patrimoine",
+      "affaires_nouvelles": 85,
+      "cotisation_annualisee_euros": 65784.6
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP03",
+      "nom_apporteur": "Reseau Garrigue Assurances",
+      "affaires_nouvelles": 84,
+      "cotisation_annualisee_euros": 64998.72
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP01",
+      "nom_apporteur": "Cabinet Vidal Courtage",
+      "affaires_nouvelles": 83,
+      "cotisation_annualisee_euros": 64087.68
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP07",
+      "nom_apporteur": "Cevennes Prevoyance Conseil",
+      "affaires_nouvelles": 73,
+      "cotisation_annualisee_euros": 59788.92
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP09",
+      "nom_apporteur": "Production directe, equipe commerciale",
+      "affaires_nouvelles": 76,
+      "cotisation_annualisee_euros": 59558.28
+    },
+    {
+      "periode": "2025",
+      "code_apporteur": "AP08",
+      "nom_apporteur": "Devis-Sante.fr",
+      "affaires_nouvelles": 71,
+      "cotisation_annualisee_euros": 56068.56
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP05",
+      "nom_apporteur": "Mireille Fabre, agent general",
+      "affaires_nouvelles": 61,
+      "cotisation_annualisee_euros": 49340.88
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP03",
+      "nom_apporteur": "Reseau Garrigue Assurances",
+      "affaires_nouvelles": 59,
+      "cotisation_annualisee_euros": 46290.72
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP06",
+      "nom_apporteur": "Littoral Conseil Entreprises",
+      "affaires_nouvelles": 61,
+      "cotisation_annualisee_euros": 46024.44
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP02",
+      "nom_apporteur": "Occitane Patrimoine",
+      "affaires_nouvelles": 57,
+      "cotisation_annualisee_euros": 45685.32
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP09",
+      "nom_apporteur": "Production directe, equipe commerciale",
+      "affaires_nouvelles": 55,
+      "cotisation_annualisee_euros": 44716.68
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP08",
+      "nom_apporteur": "Devis-Sante.fr",
+      "affaires_nouvelles": 61,
+      "cotisation_annualisee_euros": 44275.92
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP01",
+      "nom_apporteur": "Cabinet Vidal Courtage",
+      "affaires_nouvelles": 54,
+      "cotisation_annualisee_euros": 41976.36
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP04",
+      "nom_apporteur": "Comparassur en ligne",
+      "affaires_nouvelles": 54,
+      "cotisation_annualisee_euros": 40352.52
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP10",
+      "nom_apporteur": "Production directe, guichet en ligne",
+      "affaires_nouvelles": 43,
+      "cotisation_annualisee_euros": 32312.28
+    },
+    {
+      "periode": "2026 (9 mois)",
+      "code_apporteur": "AP07",
+      "nom_apporteur": "Cevennes Prevoyance Conseil",
+      "affaires_nouvelles": 38,
+      "cotisation_annualisee_euros": 29289.12
+    }
+  ],
+  "03b_production_par_apporteur_pieges": [
+    {
+      "affaires_nouvelles_2025": 834,
+      "contrats_dont_l_apporteur_a_change": 26,
+      "annualisee_a_la_mise_en_vigueur_euros": 655274.04,
+      "annualisee_courante_euros": 692435.64,
+      "mises_et_remises_en_vigueur": 900,
+      "dont_remises_en_vigueur": 66
+    }
+  ],
+  "04_portefeuille_par_branche": [
+    {
+      "date_cliche": "2023-12-31",
+      "code_branche": "PV",
+      "libelle_branche": "Prévoyance",
+      "contrats_au_portefeuille": 754,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 678740.52
+    },
+    {
+      "date_cliche": "2023-12-31",
+      "code_branche": "SC",
+      "libelle_branche": "Santé collective",
+      "contrats_au_portefeuille": 922,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 757466.52
+    },
+    {
+      "date_cliche": "2023-12-31",
+      "code_branche": "SI",
+      "libelle_branche": "Santé individuelle",
+      "contrats_au_portefeuille": 929,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 761296.8
+    },
+    {
+      "date_cliche": "2024-12-31",
+      "code_branche": "PV",
+      "libelle_branche": "Prévoyance",
+      "contrats_au_portefeuille": 893,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 809265.96
+    },
+    {
+      "date_cliche": "2024-12-31",
+      "code_branche": "SC",
+      "libelle_branche": "Santé collective",
+      "contrats_au_portefeuille": 1267,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 1053239.28
+    },
+    {
+      "date_cliche": "2024-12-31",
+      "code_branche": "SI",
+      "libelle_branche": "Santé individuelle",
+      "contrats_au_portefeuille": 1089,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 904688.04
+    },
+    {
+      "date_cliche": "2025-12-31",
+      "code_branche": "PV",
+      "libelle_branche": "Prévoyance",
+      "contrats_au_portefeuille": 993,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 918298.68
+    },
+    {
+      "date_cliche": "2025-12-31",
+      "code_branche": "SC",
+      "libelle_branche": "Santé collective",
+      "contrats_au_portefeuille": 1528,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 1297353.12
+    },
+    {
+      "date_cliche": "2025-12-31",
+      "code_branche": "SI",
+      "libelle_branche": "Santé individuelle",
+      "contrats_au_portefeuille": 1183,
+      "dont_suspendus": 0,
+      "cotisation_annualisee_euros": 1012997.64
+    },
+    {
+      "date_cliche": "2026-09-30",
+      "code_branche": "PV",
+      "libelle_branche": "Prévoyance",
+      "contrats_au_portefeuille": 1024,
+      "dont_suspendus": 10,
+      "cotisation_annualisee_euros": 962832.12
+    },
+    {
+      "date_cliche": "2026-09-30",
+      "code_branche": "SC",
+      "libelle_branche": "Santé collective",
+      "contrats_au_portefeuille": 1683,
+      "dont_suspendus": 13,
+      "cotisation_annualisee_euros": 1457565.96
+    },
+    {
+      "date_cliche": "2026-09-30",
+      "code_branche": "SI",
+      "libelle_branche": "Santé individuelle",
+      "contrats_au_portefeuille": 1219,
+      "dont_suspendus": 13,
+      "cotisation_annualisee_euros": 1058438.28
+    }
+  ],
+  "04b_portefeuille_par_branche_pieges": [
+    {
+      "reference_contrats": 3926,
+      "statut_courant_contrats": 3926,
+      "avec_devis_contrats": 4269,
+      "somme_des_12_cliches_2025": 41542,
+      "annualisee_reference_euros": 3478836.36,
+      "annualisee_statut_courant_euros": 3478836.36,
+      "annualisee_suspendus_inclus_euros": 3511851.36
+    }
+  ]
+}

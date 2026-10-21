@@ -1,0 +1,11 @@
+// La production par apporteur et par annee.
+EVALUATE
+SUMMARIZECOLUMNS (
+    dim_date[annee],
+    dim_apporteur[code_apporteur],
+    FILTER ( ALL ( dim_date[annee] ), dim_date[annee] >= 2024 ),
+    "Affaires nouvelles", [Affaires nouvelles],
+    "Annualisee nouvelles", [Cotisation annualisée des affaires nouvelles],
+    "Part", [Part de la production]
+)
+ORDER BY dim_date[annee], dim_apporteur[code_apporteur]

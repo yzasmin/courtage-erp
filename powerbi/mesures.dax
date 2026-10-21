@@ -1,0 +1,271 @@
+// =====================================================================================================
+// Mesures du tableau de bord de pilotage du cabinet de courtage delegataire.
+//
+// Source unique des mesures : scripts/construire_pbip.py lit ce fichier pour ecrire le modele TMDL.
+// Chaque mesure est precedee de son commentaire de definition (repris comme description dans Power BI),
+// de son dossier d'affichage (@dossier) et de son format (@format). Les definitions metier completes,
+// avec leurs pieges, sont dans docs/kpi.md.
+//
+// Convention : un bloc est separe du suivant par une ligne vide. Aucune ligne vide dans un bloc.
+// =====================================================================================================
+
+// Prestations remboursees, statut "reglee", rattachees a leur DATE DE REGLEMENT (relation active).
+// Une prestation rejetee ou en cours n'a pas ete payee : elle n'est pas un sinistre regle.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: #,0 €
+[Prestations réglées] =
+CALCULATE (
+    SUM ( fct_prestations[rembourse_euros] ),
+    fct_prestations[statut_prestation] = "reglee"
+)
+
+// Prestations reglees sur les seuls produits dont la compagnie a delegue le reglement des prestations.
+// Hors de ce perimetre le cabinet ne voit aucune prestation, et un ratio calcule serait un artefact.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: #,0 €
+[Prestations réglées périmètre délégué] =
+CALCULATE (
+    [Prestations réglées],
+    dim_produit[gestion_prestations_deleguee] = TRUE ()
+)
+
+// Cotisations ACQUISES hors taxe : la part de chaque appel qui correspond au risque couru dans la periode,
+// repartie au prorata des jours (table fct_cotisations_acquises, un appel par mois couvert).
+// @dossier: 1 Ratio sinistres sur primes
+// @format: #,0 €
+[Cotisations acquises HT] =
+SUM ( fct_cotisations_acquises[cotisation_acquise_ht_euros] )
+
+// Cotisations acquises hors taxe sur le meme perimetre de produits que le numerateur.
+// Le numerateur et le denominateur doivent toujours porter sur le meme perimetre.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: #,0 €
+[Cotisations acquises HT périmètre délégué] =
+CALCULATE (
+    [Cotisations acquises HT],
+    dim_produit[gestion_prestations_deleguee] = TRUE ()
+)
+
+// Cotisations EMISES hors taxe : ce qui a ete appele a une echeance de la periode (relation active sur
+// la date d'echeance). A NE PAS utiliser comme denominateur du ratio : voir la mesure de controle ci-dessous.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: #,0 €
+[Cotisations émises HT] =
+SUM ( fct_cotisations[cotisation_ht_euros] )
+
+// INDICATEUR 1. Ratio sinistres sur primes = prestations reglees de la periode / cotisations acquises de
+// la meme periode, perimetre des produits a prestations deleguees. 100 % = chaque euro de cotisation
+// couru a ete rembourse.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: 0.0 %
+[Ratio sinistres sur primes] =
+DIVIDE (
+    [Prestations réglées périmètre délégué],
+    [Cotisations acquises HT périmètre délégué]
+)
+
+// Controle, a ne pas afficher : meme ratio avec les prestations rattachees a leur date de SOINS.
+// Sous-estime la fin de l'historique, car les soins recents ne sont pas tous deja regles.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: 0.0 %
+[Contrôle ratio en date de soins] =
+DIVIDE (
+    CALCULATE (
+        [Prestations réglées périmètre délégué],
+        USERELATIONSHIP ( fct_prestations[date_soins], dim_date[date_jour] )
+    ),
+    [Cotisations acquises HT périmètre délégué]
+)
+
+// Controle, a ne pas afficher : meme numerateur rapporte aux cotisations EMISES au lieu d'acquises.
+// Compare des prestations d'une periode a des appels dont la couverture deborde sur d'autres periodes.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: 0.0 %
+[Contrôle ratio sur cotisations émises] =
+DIVIDE (
+    [Prestations réglées périmètre délégué],
+    CALCULATE (
+        [Cotisations émises HT],
+        dim_produit[gestion_prestations_deleguee] = TRUE ()
+    )
+)
+
+// Controle, a ne pas afficher : denominateur de TOUS les produits, prevoyance comprise.
+// La prevoyance n'a aucune prestation chez le cabinet, ce qui dilue artificiellement le ratio.
+// @dossier: 1 Ratio sinistres sur primes
+// @format: 0.0 %
+[Contrôle ratio tous produits] =
+DIVIDE (
+    [Prestations réglées périmètre délégué],
+    [Cotisations acquises HT]
+)
+
+// Contrats au portefeuille la VEILLE du premier jour de la periode : cliche de fin du mois precedent.
+// Suspendus compris, devis exclus. C'est l'effectif de debut de periode, jamais celui de fin.
+// REMOVEFILTERS retire le filtre de dates pour lire le cliche voulu, les autres filtres sont conserves.
+// @dossier: 2 Taux de résiliation
+// @format: #,0
+[Contrats au portefeuille en début de période] =
+VAR debut = MIN ( dim_date[date_jour] )
+RETURN
+    CALCULATE (
+        COUNTROWS ( fct_portefeuille_mensuel ),
+        REMOVEFILTERS ( dim_date ),
+        fct_portefeuille_mensuel[date_cliche] = debut - 1
+    )
+
+// Resiliations prenant effet dans la periode, sur des contrats deja au portefeuille au premier jour :
+// la date d'effet du contrat est anterieure au debut. Une affaire nee et resiliee dans la periode
+// n'est pas dans le denominateur, elle ne doit pas etre dans le numerateur.
+// @dossier: 2 Taux de résiliation
+// @format: #,0
+[Résiliations de la cohorte] =
+VAR debut = MIN ( dim_date[date_jour] )
+RETURN
+    CALCULATE (
+        COUNTROWS ( fct_mouvements_portefeuille ),
+        fct_mouvements_portefeuille[type_mouvement] = "resiliation",
+        fct_mouvements_portefeuille[date_effet_contrat] < debut
+    )
+
+// Toutes les resiliations de la periode, y compris celles de contrats nes dans la periode.
+// @dossier: 2 Taux de résiliation
+// @format: #,0
+[Résiliations toutes] =
+CALCULATE (
+    COUNTROWS ( fct_mouvements_portefeuille ),
+    fct_mouvements_portefeuille[type_mouvement] = "resiliation"
+)
+
+// INDICATEUR 2. Taux de resiliation = resiliations de la cohorte / contrats au portefeuille en debut de
+// periode. Lu sur une periode complete (annee) ; sur une periode courte, voir le taux annualise.
+// @dossier: 2 Taux de résiliation
+// @format: 0.0 %
+[Taux de résiliation] =
+DIVIDE (
+    [Résiliations de la cohorte],
+    [Contrats au portefeuille en début de période]
+)
+
+// Nombre de jours couverts par le filtre de dates, bornes incluses.
+// @dossier: 2 Taux de résiliation
+// @format: 0
+[Jours de la période] =
+DATEDIFF ( MIN ( dim_date[date_jour] ), MAX ( dim_date[date_jour] ), DAY ) + 1
+
+// Taux de resiliation ramene a 365 jours, par proportionnalite lineaire. Approximation : valable pour un
+// taux faible et une periode d'au moins un trimestre. Sert a comparer 9 mois de 2026 aux annees pleines.
+// @dossier: 2 Taux de résiliation
+// @format: 0.0 %
+[Taux de résiliation annualisé] =
+[Taux de résiliation] * 365 / [Jours de la période]
+
+// Controle, a ne pas afficher : taux rapporte au portefeuille de FIN de periode.
+// Le denominateur contient des contrats qui n'existaient pas au debut : le taux est sous-estime.
+// @dossier: 2 Taux de résiliation
+// @format: 0.0 %
+[Contrôle taux sur effectif de fin] =
+VAR fin = MAX ( dim_date[date_jour] )
+VAR cliche = IF ( fin = EOMONTH ( fin, 0 ), fin, EOMONTH ( fin, -1 ) )
+RETURN
+    DIVIDE (
+        [Résiliations de la cohorte],
+        CALCULATE (
+            COUNTROWS ( fct_portefeuille_mensuel ),
+            REMOVEFILTERS ( dim_date ),
+            fct_portefeuille_mensuel[date_cliche] = cliche
+        )
+    )
+
+// Affaires nouvelles : contrats mis en vigueur dans la periode, rattaches a l'apporteur en vigueur le
+// jour de la mise en vigueur. Une remise en vigueur apres suspension n'est pas une affaire nouvelle.
+// @dossier: 3 Production par apporteur
+// @format: #,0
+[Affaires nouvelles] =
+CALCULATE (
+    COUNTROWS ( fct_mouvements_portefeuille ),
+    fct_mouvements_portefeuille[type_mouvement] = "affaire_nouvelle"
+)
+
+// INDICATEUR 3. Cotisation annualisee des affaires nouvelles = cotisation mensuelle hors taxe au jour de
+// la mise en vigueur x 12. Ce n'est ni la cotisation appelee dans la periode, ni la cotisation courante.
+// @dossier: 3 Production par apporteur
+// @format: #,0 €
+[Cotisation annualisée des affaires nouvelles] =
+CALCULATE (
+    SUM ( fct_mouvements_portefeuille[cotisation_annualisee_euros] ),
+    fct_mouvements_portefeuille[type_mouvement] = "affaire_nouvelle"
+)
+
+// Cotisation annualisee moyenne d'une affaire nouvelle.
+// @dossier: 3 Production par apporteur
+// @format: #,0 €
+[Cotisation annualisée moyenne par affaire] =
+DIVIDE ( [Cotisation annualisée des affaires nouvelles], [Affaires nouvelles] )
+
+// Part de chaque apporteur dans la cotisation annualisee nouvelle : total tous apporteurs au denominateur.
+// @dossier: 3 Production par apporteur
+// @format: 0.0 %
+[Part de la production] =
+DIVIDE (
+    [Cotisation annualisée des affaires nouvelles],
+    CALCULATE ( [Cotisation annualisée des affaires nouvelles], REMOVEFILTERS ( dim_apporteur ) )
+)
+
+// Solde du portefeuille sur la periode : affaires nouvelles moins resiliations.
+// @dossier: 3 Production par apporteur
+// @format: #,0
+[Variation nette du portefeuille] =
+[Affaires nouvelles] - [Résiliations toutes]
+
+// INDICATEUR 4. Contrats au portefeuille a la FIN de la periode : en cours et suspendus, devis et
+// resilies exclus. C'est un stock : lu au cliche de fin de periode, jamais additionne dans le temps.
+// Sur un filtre en cours de mois, le dernier cliche disponible est celui de la fin du mois precedent.
+// @dossier: 4 Portefeuille par branche
+// @format: #,0
+[Contrats au portefeuille] =
+VAR fin = MAX ( dim_date[date_jour] )
+VAR cliche = IF ( fin = EOMONTH ( fin, 0 ), fin, EOMONTH ( fin, -1 ) )
+RETURN
+    CALCULATE (
+        COUNTROWS ( fct_portefeuille_mensuel ),
+        REMOVEFILTERS ( dim_date ),
+        fct_portefeuille_mensuel[date_cliche] = cliche
+    )
+
+// Parmi les contrats au portefeuille, ceux dont la garantie est suspendue : ils restent au portefeuille
+// mais ne donnent lieu a aucun appel.
+// @dossier: 4 Portefeuille par branche
+// @format: #,0
+[dont suspendus] =
+CALCULATE ( [Contrats au portefeuille], fct_portefeuille_mensuel[statut_contrat] = "suspendu" )
+
+// Cotisation annualisee du portefeuille = cotisation mensuelle hors taxe x 12 des seuls contrats EN COURS
+// au cliche de fin de periode (la colonne vaut zero pour un contrat suspendu).
+// @dossier: 4 Portefeuille par branche
+// @format: #,0 €
+[Cotisation annualisée du portefeuille] =
+VAR fin = MAX ( dim_date[date_jour] )
+VAR cliche = IF ( fin = EOMONTH ( fin, 0 ), fin, EOMONTH ( fin, -1 ) )
+RETURN
+    CALCULATE (
+        SUM ( fct_portefeuille_mensuel[cotisation_annualisee_euros] ),
+        REMOVEFILTERS ( dim_date ),
+        fct_portefeuille_mensuel[date_cliche] = cliche
+    )
+
+// Cotisation annualisee moyenne par contrat en cours.
+// @dossier: 4 Portefeuille par branche
+// @format: #,0 €
+[Cotisation annualisée moyenne par contrat] =
+DIVIDE (
+    [Cotisation annualisée du portefeuille],
+    [Contrats au portefeuille] - [dont suspendus]
+)
+
+// Date de fin des donnees : dernier jour de la table de dates, donc dernier cliche du portefeuille.
+// Insensible aux filtres de dates.
+// @dossier: 5 Repères
+// @format: dd/mm/yyyy
+[Date de fin des données] =
+CALCULATE ( MAX ( dim_date[date_jour] ), REMOVEFILTERS ( dim_date ) )

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Pilotage-Courtage"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3e78c36a-a5e4-5a42-ab6d-3b9f04f4ad4a"
+  }
+}

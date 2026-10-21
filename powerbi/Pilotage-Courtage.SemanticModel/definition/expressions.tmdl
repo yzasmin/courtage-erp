@@ -1,0 +1,6 @@
+/// Dossier contenant les CSV produits par scripts/exporter_marts_powerbi.py.
+/// Apres un clone, adapter ce parametre au chemin local du dossier powerbi/donnees.
+expression DossierDonnees = "C:\cheminers\courtage-erp\powerbi\donnees" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 8a82d313-c4ec-5dfd-98a7-56e64cfde8fd
+
+	annotation PBI_ResultType = Text

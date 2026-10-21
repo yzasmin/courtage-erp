@@ -13,7 +13,7 @@ ADRESSE ?= http://127.0.0.1:8000
 
 .PHONY: aide installer migrer demigrer generer regenerer empreinte tests tests-demonstration style \
         servir pile arret journaux etat preuve-migrations preuve-reproductibilite preuve-postgres \
-        preuve-api preuve-coherence preuve-contraintes preuve-mutation preuves capture nettoyer
+        preuve-api preuve-coherence preuve-contraintes preuve-mutation preuves capture nettoyer \n        marts-pilotage preuve-kpi exporter-powerbi pbip concordance-kpi
 
 aide: ## Liste les commandes
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-24s\033[0m %s\n", $$1, $$2}'
@@ -104,6 +104,24 @@ preuves: ## Enchaine toutes les preuves du module 1 sur SQLite
 
 capture: ## Capture les ecrans de l'interface dans docs/captures/
 	python -m uv run python scripts/captures.py
+
+# --- Module 3 : pilotage ------------------------------------------------------------------------
+# Les marts dbt n'existent que sur PostgreSQL : ces commandes lisent la base du compose (POSTGRES_LOCAL).
+
+marts-pilotage: ## Construit et teste le modele en etoile (dbt build, PostgreSQL)
+	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run dbt build --project-dir dbt --profiles-dir dbt --target-path cible
+
+preuve-kpi: ## Execute les requetes de controle des quatre indicateurs (sql/kpi) vers results/kpi_sql.json
+	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run python scripts/preuve_kpi.py
+
+exporter-powerbi: ## Exporte les marts en CSV vers powerbi/donnees (source du projet Power BI)
+	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run python scripts/exporter_marts_powerbi.py
+
+pbip: ## Regenere le projet Power BI ; passer DONNEES=<chemin absolu de powerbi/donnees> pour l'ouvrir en local
+	python -m uv run python scripts/construire_pbip.py $(if $(DONNEES),--dossier-donnees "$(DONNEES)",)
+
+concordance-kpi: ## Compare les mesures DAX (results/powerbi) aux requetes SQL
+	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run python scripts/concordance_kpi.py
 
 nettoyer: ## Supprime la pile Docker et ses volumes (destructif)
 	docker compose down -v

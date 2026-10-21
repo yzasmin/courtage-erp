@@ -1,0 +1,39 @@
+/// Produit. gestion_prestations_deleguee delimite le perimetre du ratio sinistres sur primes.
+table dim_produit
+	lineageTag: b155ad53-6979-5cd0-be4b-5c7c44bd99f2
+
+	column produit_id
+		dataType: int64
+		isHidden
+		lineageTag: c50f48e0-362a-5383-b0a1-02ba1cfbbfcf
+		summarizeBy: none
+		sourceColumn: produit_id
+
+	column code_produit
+		dataType: string
+		lineageTag: 4305bfd9-17bb-55b7-bf76-4b30a0374ff6
+		summarizeBy: none
+		sourceColumn: code_produit
+
+	column libelle_produit
+		dataType: string
+		lineageTag: 98004dc5-0c67-516a-943c-22fc6150a278
+		summarizeBy: none
+		sourceColumn: libelle_produit
+
+	column gestion_prestations_deleguee
+		dataType: boolean
+		lineageTag: b6977133-2911-5bfd-8c62-52a1ce021745
+		summarizeBy: none
+		sourceColumn: gestion_prestations_deleguee
+
+	partition dim_produit = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\dim_produit.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"produit_id", Int64.Type}, {"code_produit", type text}, {"libelle_produit", type text}, {"gestion_prestations_deleguee", type logical}}, "en-US")
+				in
+				    Types
+

@@ -1,0 +1,28 @@
+// Toutes les mesures d'indicateur, par annee. Sert a la concordance avec les requetes SQL de sql/kpi.
+// 2026 ne couvre que 9 mois : la table de dates s'arrete au 30/09/2026.
+EVALUATE
+SUMMARIZECOLUMNS (
+    dim_date[annee],
+    FILTER ( ALL ( dim_date[annee] ), dim_date[annee] >= 2023 ),
+    "Prestations delegue", [Prestations réglées périmètre délégué],
+    "Acquises delegue", [Cotisations acquises HT périmètre délégué],
+    "Emises", [Cotisations émises HT],
+    "Ratio SP", [Ratio sinistres sur primes],
+    "Ratio date de soins", [Contrôle ratio en date de soins],
+    "Ratio sur emises", [Contrôle ratio sur cotisations émises],
+    "Ratio tous produits", [Contrôle ratio tous produits],
+    "Contrats debut", [Contrats au portefeuille en début de période],
+    "Resiliations cohorte", [Résiliations de la cohorte],
+    "Resiliations toutes", [Résiliations toutes],
+    "Taux resiliation", [Taux de résiliation],
+    "Jours", [Jours de la période],
+    "Taux annualise", [Taux de résiliation annualisé],
+    "Taux sur effectif de fin", [Contrôle taux sur effectif de fin],
+    "Affaires nouvelles", [Affaires nouvelles],
+    "Annualisee nouvelles", [Cotisation annualisée des affaires nouvelles],
+    "Variation nette", [Variation nette du portefeuille],
+    "Contrats portefeuille", [Contrats au portefeuille],
+    "Suspendus", [dont suspendus],
+    "Annualisee portefeuille", [Cotisation annualisée du portefeuille]
+)
+ORDER BY dim_date[annee]

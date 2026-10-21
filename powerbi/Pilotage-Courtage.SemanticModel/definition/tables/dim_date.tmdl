@@ -1,0 +1,78 @@
+/// Table de dates, du premier avenant a la fin de l'historique. Cle : date_jour.
+table dim_date
+	lineageTag: 3f966f9d-2ce9-5e8c-b488-f07f77b13cf2
+	dataCategory: Time
+
+	column date_jour
+		dataType: dateTime
+		isKey
+		formatString: dd/mm/yyyy
+		lineageTag: 5f10a0f9-7072-5693-a72d-e9f90ee2e5cf
+		summarizeBy: none
+		sourceColumn: date_jour
+
+	column annee
+		dataType: int64
+		formatString: 0
+		lineageTag: e330d61d-8900-5586-a82d-4796d955f92d
+		summarizeBy: none
+		sourceColumn: annee
+
+	column trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: fdfc36d6-5212-5b32-b7c2-140c784699ab
+		summarizeBy: none
+		sourceColumn: trimestre
+
+	column mois
+		dataType: int64
+		formatString: 0
+		lineageTag: 266a27cf-a1df-5290-ba72-051e94db412a
+		summarizeBy: none
+		sourceColumn: mois
+
+	column annee_mois
+		dataType: string
+		lineageTag: 2d653156-5bb7-5831-93f7-68a588e41ed0
+		summarizeBy: none
+		sourceColumn: annee_mois
+
+	column annee_trimestre
+		dataType: string
+		lineageTag: cb368488-bbc5-5c37-b977-80585f3dfcb6
+		summarizeBy: none
+		sourceColumn: annee_trimestre
+
+	column est_dernier_jour_du_mois
+		dataType: boolean
+		isHidden
+		lineageTag: 7785a71e-7d61-5c4c-9f54-e13249b35163
+		summarizeBy: none
+		sourceColumn: est_dernier_jour_du_mois
+
+	hierarchy Calendrier
+		lineageTag: caa7e556-72fb-5c41-8c62-c493d2508570
+
+		level Annee
+			lineageTag: f825ce0a-e4d3-57ef-81ac-19a76cd40d75
+			column: annee
+
+		level Trimestre
+			lineageTag: 5196a780-610a-5f79-a4bb-5443a2165a42
+			column: annee_trimestre
+
+		level Mois
+			lineageTag: 5a72ef36-d99d-5ce2-b7a6-3ef861606972
+			column: annee_mois
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "\dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"date_jour", type date}, {"annee", Int64.Type}, {"trimestre", Int64.Type}, {"mois", Int64.Type}, {"annee_mois", type text}, {"annee_trimestre", type text}, {"est_dernier_jour_du_mois", type logical}}, "en-US")
+				in
+				    Types
+

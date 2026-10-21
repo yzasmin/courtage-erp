@@ -1,0 +1,303 @@
+mesure,contexte,valeur_dax,valeur_sql,ecart_absolu,ecart_relatif
+Prestations réglées périmètre délégué,annee=2023,3076220.0,3076220.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,annee=2023,383602.734822789,383602.7348227895,5.238689482212067e-10,1.3656548837255162e-15
+Cotisations émises HT,annee=2023,712491.75,712491.75,0.0,0.0
+Ratio sinistres sur primes,annee=2023,8.01928589331123,8.019285893311219,1.0658141036401503e-14,1.329063607183692e-15
+Contrôle ratio en date de soins,annee=2023,8.10643855663998,8.106438556639972,7.105427357601002e-15,8.765165254698632e-16
+Contrôle ratio sur cotisations émises,annee=2023,6.1686196725391,6.168619672539103,3.552713678800501e-15,5.759333315062601e-16
+Contrôle ratio tous produits,annee=2023,5.57342633397582,5.573426333975832,1.2434497875801753e-14,2.231032964408366e-15
+Contrats au portefeuille en début de période,annee=2023,1959.0,1959.0,0.0,0.0
+Résiliations de la cohorte,annee=2023,219.0,219.0,0.0,0.0
+Résiliations toutes,annee=2023,219.0,219.0,0.0,0.0
+Taux de résiliation,annee=2023,0.111791730474732,0.11179173047473201,1.3877787807814457e-17,1.241396635411348e-16
+Jours de la période,annee=2023,365.0,365.0,0.0,0.0
+Taux de résiliation annualisé,annee=2023,0.111791730474732,0.11179173047473201,1.3877787807814457e-17,1.241396635411348e-16
+Contrôle taux sur effectif de fin,annee=2023,0.0840690978886756,0.08406909788867563,2.7755575615628914e-17,3.301519382589649e-16
+Affaires nouvelles,annee=2023,865.0,865.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,annee=2023,682839.36,682839.36,0.0,0.0
+Variation nette du portefeuille,annee=2023,646.0,646.0,0.0,0.0
+Contrats au portefeuille,annee=2023,2605.0,2605.0,0.0,0.0
+dont suspendus,annee=2023,0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,annee=2023,2197503.84,2197503.84,0.0,0.0
+Prestations réglées périmètre délégué,annee=2024,3230842.0,3230842.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,annee=2024,1818408.61583658,1818408.6158365877,7.683411240577698e-09,4.225349117718969e-15
+Cotisations émises HT,annee=2024,2602562.98,2602562.98,0.0,0.0
+Ratio sinistres sur primes,annee=2024,1.77674147156062,1.7767414715606151,4.884981308350689e-15,2.749404675098807e-15
+Contrôle ratio en date de soins,annee=2024,1.78692372643928,1.7869237264392752,4.884981308350689e-15,2.7337380079925278e-15
+Contrôle ratio sur cotisations émises,annee=2024,1.74558410054408,1.7455841005440778,2.220446049250313e-15,1.2720361330962092e-15
+Contrôle ratio tous produits,annee=2024,1.26187303603474,1.261873036034773,3.2862601528904634e-14,2.6042716335527634e-14
+Contrats au portefeuille en début de période,annee=2024,2605.0,2605.0,0.0,0.0
+Résiliations de la cohorte,annee=2024,286.0,286.0,0.0,0.0
+Résiliations toutes,annee=2024,286.0,286.0,0.0,0.0
+Taux de résiliation,annee=2024,0.10978886756238,0.10978886756238004,4.163336342344337e-17,3.792129780352097e-16
+Jours de la période,annee=2024,366.0,366.0,0.0,0.0
+Taux de résiliation annualisé,annee=2024,0.109488897978876,0.10948889797887627,2.7755575615628914e-16,2.5350127846737307e-15
+Contrôle taux sur effectif de fin,annee=2024,0.0880270852570022,0.08802708525700216,4.163336342344337e-17,4.729608313383479e-16
+Affaires nouvelles,annee=2024,930.0,930.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,annee=2024,730192.08,730192.08,0.0,0.0
+Variation nette du portefeuille,annee=2024,644.0,644.0,0.0,0.0
+Contrats au portefeuille,annee=2024,3249.0,3249.0,0.0,0.0
+dont suspendus,annee=2024,0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,annee=2024,2767193.28,2767193.28,0.0,0.0
+Prestations réglées périmètre délégué,annee=2025,3393705.0,3393705.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,annee=2025,2218682.27880048,2218682.27880049,9.778887033462524e-09,4.407520232572187e-15
+Cotisations émises HT,annee=2025,3123990.44,3123990.44,0.0,0.0
+Ratio sinistres sur primes,annee=2025,1.5296038700209,1.5296038700208916,8.43769498715119e-15,5.516261531840885e-15
+Contrôle ratio en date de soins,annee=2025,1.5392920530498,1.5392920530497933,6.661338147750939e-15,4.327533644153399e-15
+Contrôle ratio sur cotisations émises,annee=2025,1.51385389730444,1.513853897304437,2.886579864025407e-15,1.9067757259569374e-15
+Contrôle ratio tous produits,annee=2025,1.0967191374068,1.0967191374068317,3.175237850427948e-14,2.8952151395258116e-14
+Contrats au portefeuille en début de période,annee=2025,3249.0,3249.0,0.0,0.0
+Résiliations de la cohorte,annee=2025,379.0,379.0,0.0,0.0
+Résiliations toutes,annee=2025,379.0,379.0,0.0,0.0
+Taux de résiliation,annee=2025,0.116651277316097,0.11665127731609726,2.636779683484747e-16,2.260395037372544e-15
+Jours de la période,annee=2025,365.0,365.0,0.0,0.0
+Taux de résiliation annualisé,annee=2025,0.116651277316097,0.11665127731609726,2.636779683484747e-16,2.260395037372544e-15
+Contrôle taux sur effectif de fin,annee=2025,0.10232181425486,0.10232181425485962,3.885780586188048e-16,3.7976072008550206e-15
+Affaires nouvelles,annee=2025,834.0,834.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,annee=2025,655274.04,655274.04,0.0,0.0
+Variation nette du portefeuille,annee=2025,455.0,455.0,0.0,0.0
+Contrats au portefeuille,annee=2025,3704.0,3704.0,0.0,0.0
+dont suspendus,annee=2025,0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,annee=2025,3228649.44,3228649.44,0.0,0.0
+Prestations réglées périmètre délégué,annee=2026,2279066.0,2279066.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,annee=2026,1880726.55054012,1880726.550540133,1.280568540096283e-08,6.80890339814957e-15
+Cotisations émises HT,annee=2026,2265151.34,2265151.34,0.0,0.0
+Ratio sinistres sur primes,annee=2026,1.21180083268643,1.2118008326864245,5.551115123125783e-15,4.580880763070275e-15
+Contrôle ratio en date de soins,annee=2026,1.11430845669623,1.1143084566962302,2.220446049250313e-16,1.9926673228646465e-16
+Contrôle ratio sur cotisations émises,annee=2026,1.33270875408222,1.3327087540822233,3.3306690738754696e-15,2.499172503874751e-15
+Contrôle ratio tous produits,annee=2026,0.912545392299878,0.9125453922998857,7.771561172376096e-15,8.51635572098989e-15
+Contrats au portefeuille en début de période,annee=2026,3704.0,3704.0,0.0,0.0
+Résiliations de la cohorte,annee=2026,321.0,321.0,0.0,0.0
+Résiliations toutes,annee=2026,321.0,321.0,0.0,0.0
+Taux de résiliation,annee=2026,0.0866630669546436,0.08666306695464362,2.7755575615628914e-17,3.202699441753567e-16
+Jours de la période,annee=2026,273.0,273.0,0.0,0.0
+Taux de résiliation annualisé,annee=2026,0.115868203071227,0.11586820307122683,1.6653345369377348e-16,1.4372662152307788e-15
+Contrôle taux sur effectif de fin,annee=2026,0.0817626082526745,0.08176260825267448,2.7755575615628914e-17,3.394653889936421e-16
+Affaires nouvelles,annee=2026,543.0,543.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,annee=2026,420264.24,420264.24,0.0,0.0
+Variation nette du portefeuille,annee=2026,222.0,222.0,0.0,0.0
+Contrats au portefeuille,annee=2026,3926.0,3926.0,0.0,0.0
+dont suspendus,annee=2026,36.0,36.0,0.0,0.0
+Cotisation annualisée du portefeuille,annee=2026,3478836.36,3478836.36,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2023, branche=PV",0.0,0.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2023, branche=PV",0.0,0.0,0.0,0.0
+Ratio sinistres sur primes,"annee=2023, branche=PV",,,0.0,0.0
+Contrats au portefeuille en début de période,"annee=2023, branche=PV",644.0,644.0,0.0,0.0
+Résiliations de la cohorte,"annee=2023, branche=PV",79.0,79.0,0.0,0.0
+Taux de résiliation,"annee=2023, branche=PV",0.122670807453416,0.12267080745341614,1.3877787807814457e-16,1.1313032086370267e-15
+Affaires nouvelles,"annee=2023, branche=PV",189.0,189.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2023, branche=PV",158160.96,158160.96,0.0,0.0
+Contrats au portefeuille,"annee=2023, branche=PV",754.0,754.0,0.0,0.0
+dont suspendus,"annee=2023, branche=PV",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2023, branche=PV",678740.52,678740.52,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2023, branche=SC",1289572.5,1289572.5,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2023, branche=SC",194626.772622951,194626.7726229508,1.7462298274040222e-10,8.972197421096746e-16
+Ratio sinistres sur primes,"annee=2023, branche=SC",6.62587414167465,6.625874141674642,7.993605777301127e-15,1.2064228215600847e-15
+Contrats au portefeuille en début de période,"annee=2023, branche=SC",559.0,559.0,0.0,0.0
+Résiliations de la cohorte,"annee=2023, branche=SC",69.0,69.0,0.0,0.0
+Taux de résiliation,"annee=2023, branche=SC",0.123434704830054,0.12343470483005367,3.3306690738754696e-16,2.698324655502011e-15
+Affaires nouvelles,"annee=2023, branche=SC",432.0,432.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2023, branche=SC",341869.8,341869.8,0.0,0.0
+Contrats au portefeuille,"annee=2023, branche=SC",922.0,922.0,0.0,0.0
+dont suspendus,"annee=2023, branche=SC",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2023, branche=SC",757466.52,757466.52,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2023, branche=SI",1786647.5,1786647.5,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2023, branche=SI",188975.962199838,188975.96219983866,6.693881005048752e-10,3.5421864914068245e-15
+Ratio sinistres sur primes,"annee=2023, branche=SI",9.45436382067819,9.45436382067817,1.9539925233402755e-14,2.066762566368124e-15
+Contrats au portefeuille en début de période,"annee=2023, branche=SI",756.0,756.0,0.0,0.0
+Résiliations de la cohorte,"annee=2023, branche=SI",71.0,71.0,0.0,0.0
+Taux de résiliation,"annee=2023, branche=SI",0.0939153439153439,0.09391534391534391,1.3877787807814457e-17,1.4776912088320746e-16
+Affaires nouvelles,"annee=2023, branche=SI",244.0,244.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2023, branche=SI",182808.6,182808.6,0.0,0.0
+Contrats au portefeuille,"annee=2023, branche=SI",929.0,929.0,0.0,0.0
+dont suspendus,"annee=2023, branche=SI",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2023, branche=SI",761296.799999999,761296.8,1.0477378964424133e-09,1.3762541710964938e-15
+Prestations réglées périmètre délégué,"annee=2024, branche=PV",0.0,0.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2024, branche=PV",0.0,0.0,0.0,0.0
+Ratio sinistres sur primes,"annee=2024, branche=PV",,,0.0,0.0
+Contrats au portefeuille en début de période,"annee=2024, branche=PV",754.0,754.0,0.0,0.0
+Résiliations de la cohorte,"annee=2024, branche=PV",86.0,86.0,0.0,0.0
+Taux de résiliation,"annee=2024, branche=PV",0.114058355437666,0.11405835543766578,2.220446049250313e-16,1.946763164110158e-15
+Affaires nouvelles,"annee=2024, branche=PV",225.0,225.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, branche=PV",187374.72,187374.72,0.0,0.0
+Contrats au portefeuille,"annee=2024, branche=PV",893.0,893.0,0.0,0.0
+dont suspendus,"annee=2024, branche=PV",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2024, branche=PV",809265.959999999,809265.96,9.313225746154785e-10,1.1508238584698145e-15
+Prestations réglées périmètre délégué,"annee=2024, branche=SC",1726545.0,1726545.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2024, branche=SC",972798.837632958,972798.8376329576,3.4924596548080444e-10,3.590114954604591e-16
+Ratio sinistres sur primes,"annee=2024, branche=SC",1.77482222758518,1.7748222275851804,4.440892098500626e-16,2.5021616415875607e-16
+Contrats au portefeuille en début de période,"annee=2024, branche=SC",922.0,922.0,0.0,0.0
+Résiliations de la cohorte,"annee=2024, branche=SC",117.0,117.0,0.0,0.0
+Taux de résiliation,"annee=2024, branche=SC",0.126898047722343,0.12689804772234273,2.7755575615628914e-16,2.187234249368364e-15
+Affaires nouvelles,"annee=2024, branche=SC",462.0,462.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, branche=SC",361022.04,361022.04,0.0,0.0
+Contrats au portefeuille,"annee=2024, branche=SC",1267.0,1267.0,0.0,0.0
+dont suspendus,"annee=2024, branche=SC",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2024, branche=SC",1053239.28,1053239.28,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2024, branche=SI",1504297.0,1504297.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2024, branche=SI",845609.778203625,845609.7782036301,5.122274160385132e-09,6.0574916378883734e-15
+Ratio sinistres sur primes,"annee=2024, branche=SI",1.7789493910485,1.7789493910484941,5.773159728050814e-15,3.2452636129508856e-15
+Contrats au portefeuille en début de période,"annee=2024, branche=SI",929.0,929.0,0.0,0.0
+Résiliations de la cohorte,"annee=2024, branche=SI",83.0,83.0,0.0,0.0
+Taux de résiliation,"annee=2024, branche=SI",0.0893433799784715,0.08934337997847147,2.7755575615628914e-17,3.1066180417975015e-16
+Affaires nouvelles,"annee=2024, branche=SI",243.0,243.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, branche=SI",181795.32,181795.32,0.0,0.0
+Contrats au portefeuille,"annee=2024, branche=SI",1089.0,1089.0,0.0,0.0
+dont suspendus,"annee=2024, branche=SI",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2024, branche=SI",904688.040000001,904688.04,9.313225746154785e-10,1.0294405733665701e-15
+Prestations réglées périmètre délégué,"annee=2025, branche=PV",0.0,0.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2025, branche=PV",0.0,0.0,0.0,0.0
+Ratio sinistres sur primes,"annee=2025, branche=PV",,,0.0,0.0
+Contrats au portefeuille en début de période,"annee=2025, branche=PV",893.0,893.0,0.0,0.0
+Résiliations de la cohorte,"annee=2025, branche=PV",89.0,89.0,0.0,0.0
+Taux de résiliation,"annee=2025, branche=PV",0.0996640537513998,0.09966405375139978,2.7755575615628914e-17,2.7849133735681595e-16
+Affaires nouvelles,"annee=2025, branche=PV",189.0,189.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, branche=PV",157839.6,157839.6,0.0,0.0
+Contrats au portefeuille,"annee=2025, branche=PV",993.0,993.0,0.0,0.0
+dont suspendus,"annee=2025, branche=PV",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2025, branche=PV",918298.68,918298.68,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2025, branche=SC",1947830.5,1947830.5,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2025, branche=SC",1241810.12402981,1241810.124029806,4.190951585769653e-09,3.3748731023142006e-15
+Ratio sinistres sur primes,"annee=2025, branche=SC",1.56854132713871,1.5685413271387119,1.7763568394002505e-15,1.1324896632724556e-15
+Contrats au portefeuille en début de période,"annee=2025, branche=SC",1267.0,1267.0,0.0,0.0
+Résiliations de la cohorte,"annee=2025, branche=SC",184.0,184.0,0.0,0.0
+Taux de résiliation,"annee=2025, branche=SC",0.145224940805051,0.1452249408050513,3.0531133177191805e-16,2.1023340073642402e-15
+Affaires nouvelles,"annee=2025, branche=SC",445.0,445.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, branche=SC",353218.56,353218.56,0.0,0.0
+Contrats au portefeuille,"annee=2025, branche=SC",1528.0,1528.0,0.0,0.0
+dont suspendus,"annee=2025, branche=SC",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2025, branche=SC",1297353.12,1297353.12,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2025, branche=SI",1445874.5,1445874.5,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2025, branche=SI",976872.154770678,976872.1547706838,5.820766091346741e-09,5.958575093905853e-15
+Ratio sinistres sur primes,"annee=2025, branche=SI",1.48010616633803,1.4801061663380222,7.771561172376096e-15,5.250678193986559e-15
+Contrats au portefeuille en début de période,"annee=2025, branche=SI",1089.0,1089.0,0.0,0.0
+Résiliations de la cohorte,"annee=2025, branche=SI",106.0,106.0,0.0,0.0
+Taux de résiliation,"annee=2025, branche=SI",0.0973370064279155,0.09733700642791551,1.3877787807814457e-17,1.4257463134632023e-16
+Affaires nouvelles,"annee=2025, branche=SI",200.0,200.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, branche=SI",144215.88,144215.88,0.0,0.0
+Contrats au portefeuille,"annee=2025, branche=SI",1183.0,1183.0,0.0,0.0
+dont suspendus,"annee=2025, branche=SI",0.0,0.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2025, branche=SI",1012997.64,1012997.64,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2026, branche=PV",0.0,0.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2026, branche=PV",0.0,0.0,0.0,0.0
+Ratio sinistres sur primes,"annee=2026, branche=PV",,,0.0,0.0
+Contrats au portefeuille en début de période,"annee=2026, branche=PV",993.0,993.0,0.0,0.0
+Résiliations de la cohorte,"annee=2026, branche=PV",88.0,88.0,0.0,0.0
+Taux de résiliation,"annee=2026, branche=PV",0.0886203423967774,0.08862034239677745,5.551115123125783e-17,6.26392876961807e-16
+Affaires nouvelles,"annee=2026, branche=PV",119.0,119.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, branche=PV",99480.24,99480.24,0.0,0.0
+Contrats au portefeuille,"annee=2026, branche=PV",1024.0,1024.0,0.0,0.0
+dont suspendus,"annee=2026, branche=PV",10.0,10.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2026, branche=PV",962832.12,962832.12,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2026, branche=SC",1330284.0,1330284.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2026, branche=SC",1090696.65571429,1090696.6557142858,4.190951585769653e-09,3.842453870022223e-15
+Ratio sinistres sur primes,"annee=2026, branche=SC",1.21966450802841,1.2196645080284132,3.1086244689504383e-15,2.5487537339063244e-15
+Contrats au portefeuille en début de période,"annee=2026, branche=SC",1528.0,1528.0,0.0,0.0
+Résiliations de la cohorte,"annee=2026, branche=SC",128.0,128.0,0.0,0.0
+Taux de résiliation,"annee=2026, branche=SC",0.0837696335078534,0.08376963350785341,1.3877787807814457e-17,1.6566609195578508e-16
+Affaires nouvelles,"annee=2026, branche=SC",283.0,283.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, branche=SC",218908.56,218908.56,0.0,0.0
+Contrats au portefeuille,"annee=2026, branche=SC",1683.0,1683.0,0.0,0.0
+dont suspendus,"annee=2026, branche=SC",13.0,13.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2026, branche=SC",1457565.96,1457565.96,0.0,0.0
+Prestations réglées périmètre délégué,"annee=2026, branche=SI",948782.0,948782.0,0.0,0.0
+Cotisations acquises HT périmètre délégué,"annee=2026, branche=SI",790029.89482584,790029.8948258474,7.334165275096893e-09,9.283402214435977e-15
+Ratio sinistres sur primes,"annee=2026, branche=SI",1.20094442781707,1.200944427817061,9.103828801926284e-15,7.580557926792816e-15
+Contrats au portefeuille en début de période,"annee=2026, branche=SI",1183.0,1183.0,0.0,0.0
+Résiliations de la cohorte,"annee=2026, branche=SI",105.0,105.0,0.0,0.0
+Taux de résiliation,"annee=2026, branche=SI",0.0887573964497041,0.08875739644970414,4.163336342344337e-17,4.690692279041287e-16
+Affaires nouvelles,"annee=2026, branche=SI",141.0,141.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, branche=SI",101875.44,101875.44,0.0,0.0
+Contrats au portefeuille,"annee=2026, branche=SI",1219.0,1219.0,0.0,0.0
+dont suspendus,"annee=2026, branche=SI",13.0,13.0,0.0,0.0
+Cotisation annualisée du portefeuille,"annee=2026, branche=SI",1058438.28,1058438.28,0.0,0.0
+Affaires nouvelles,"annee=2024, apporteur=AP01",95.0,95.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP01",75718.8,75718.8,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP01",0.10369709844018,0.1036970984401803,2.914335439641036e-16,2.8104310375880262e-15
+Affaires nouvelles,"annee=2024, apporteur=AP02",83.0,83.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP02",64714.68,64714.68,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP02",0.0886269267669953,0.08862692676699534,4.163336342344337e-17,4.697597552141188e-16
+Affaires nouvelles,"annee=2024, apporteur=AP03",92.0,92.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP03",71061.12,71061.12,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP03",0.0973183932644134,0.09731839326441338,1.3877787807814457e-17,1.4260190024005643e-16
+Affaires nouvelles,"annee=2024, apporteur=AP04",97.0,97.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP04",75758.4,75758.4,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP04",0.10375133074574,0.10375133074574021,2.0816681711721685e-16,2.0064014178995357e-15
+Affaires nouvelles,"annee=2024, apporteur=AP05",89.0,89.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP05",70872.6,70872.6,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP05",0.0970602146218841,0.09706021462188416,5.551115123125783e-17,5.719248761968195e-16
+Affaires nouvelles,"annee=2024, apporteur=AP06",90.0,90.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP06",67978.2,67978.2,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP06",0.093096326106413,0.09309632610641298,1.3877787807814457e-17,1.4906912429553413e-16
+Affaires nouvelles,"annee=2024, apporteur=AP07",90.0,90.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP07",69706.44,69706.44,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP07",0.0954631553933042,0.09546315539330419,1.3877787807814457e-17,1.4537323589020867e-16
+Affaires nouvelles,"annee=2024, apporteur=AP08",116.0,116.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP08",94499.04,94499.04,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP08",0.129416687181817,0.1294166871818166,4.163336342344337e-16,3.217001171182272e-15
+Affaires nouvelles,"annee=2024, apporteur=AP09",93.0,93.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP09",72774.24,72774.24,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP09",0.0996645156709999,0.09966451567099989,1.3877787807814457e-17,1.3924502331026305e-16
+Affaires nouvelles,"annee=2024, apporteur=AP10",85.0,85.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2024, apporteur=AP10",67108.56,67108.56,0.0,0.0
+Part de la production,"annee=2024, apporteur=AP10",0.091905351808253,0.09190535180825297,2.7755575615628914e-17,3.0200173406154677e-16
+Affaires nouvelles,"annee=2025, apporteur=AP01",83.0,83.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP01",64087.68,64087.68,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP01",0.0978028673316587,0.09780286733165867,2.7755575615628914e-17,2.837910213972271e-16
+Affaires nouvelles,"annee=2025, apporteur=AP02",85.0,85.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP02",65784.6,65784.6,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP02",0.100392501433446,0.10039250143344608,8.326672684688674e-17,8.294118152050165e-16
+Affaires nouvelles,"annee=2025, apporteur=AP03",84.0,84.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP03",64998.72,64998.72,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP03",0.0991931864109862,0.09919318641098615,5.551115123125783e-17,5.59626656222727e-16
+Affaires nouvelles,"annee=2025, apporteur=AP04",83.0,83.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP04",67097.16,67097.16,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP04",0.102395571782456,0.10239557178245609,9.71445146547012e-17,9.487179275788312e-16
+Affaires nouvelles,"annee=2025, apporteur=AP05",92.0,92.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP05",71826.6,71826.6,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP05",0.1096130711969,0.10961307119689954,4.579669976578771e-16,4.178032716875749e-15
+Affaires nouvelles,"annee=2025, apporteur=AP06",94.0,94.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP06",74565.84,74565.84,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP06",0.113793368038813,0.11379336803881318,1.8041124150158794e-16,1.5854284358650182e-15
+Affaires nouvelles,"annee=2025, apporteur=AP07",73.0,73.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP07",59788.92,59788.92,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP07",0.0912426196526876,0.0912426196526876,0.0,0.0
+Affaires nouvelles,"annee=2025, apporteur=AP08",71.0,71.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP08",56068.56,56068.56,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP08",0.0855650561099597,0.08556505610995972,2.7755575615628914e-17,3.24379797986227e-16
+Affaires nouvelles,"annee=2025, apporteur=AP09",76.0,76.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP09",59558.28,59558.28,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP09",0.0908906447751234,0.09089064477512339,1.3877787807814457e-17,1.5268664714779077e-16
+Affaires nouvelles,"annee=2025, apporteur=AP10",93.0,93.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2025, apporteur=AP10",71497.68,71497.68,0.0,0.0
+Part de la production,"annee=2025, apporteur=AP10",0.10911111326797,0.10911111326796952,4.85722573273506e-16,4.4516324572787025e-15
+Affaires nouvelles,"annee=2026, apporteur=AP01",54.0,54.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP01",41976.36,41976.36,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP01",0.0998808749466764,0.09988087494667641,1.3877787807814457e-17,1.3894339447089763e-16
+Affaires nouvelles,"annee=2026, apporteur=AP02",57.0,57.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP02",45685.32,45685.32,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP02",0.108706179712078,0.10870617971207829,2.914335439641036e-16,2.6809289475170707e-15
+Affaires nouvelles,"annee=2026, apporteur=AP03",59.0,59.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP03",46290.72,46290.72,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP03",0.110146701989206,0.11014670198920565,3.469446951953614e-16,3.1498418829586193e-15
+Affaires nouvelles,"annee=2026, apporteur=AP04",54.0,54.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP04",40352.52,40352.52,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP04",0.0960170201490377,0.09601702014903765,4.163336342344337e-17,4.336039939462821e-16
+Affaires nouvelles,"annee=2026, apporteur=AP05",61.0,61.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP05",49340.88,49340.88,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP05",0.117404421561064,0.11740442156106358,4.163336342344337e-16,3.5461495291120116e-15
+Affaires nouvelles,"annee=2026, apporteur=AP06",61.0,61.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP06",46024.44,46024.44,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP06",0.109513100614985,0.10951310061498452,4.718447854656915e-16,4.308569320163415e-15
+Affaires nouvelles,"annee=2026, apporteur=AP07",38.0,38.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP07",29289.12,29289.12,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP07",0.0696921536793138,0.06969215367931375,5.551115123125783e-17,7.965193827513301e-16
+Affaires nouvelles,"annee=2026, apporteur=AP08",61.0,61.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP08",44275.92,44275.92,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP08",0.105352575322611,0.10535257532261132,3.191891195797325e-16,3.029722990655991e-15
+Affaires nouvelles,"annee=2026, apporteur=AP09",55.0,55.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP09",44716.68,44716.68,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP09",0.106401344068675,0.1064013440686745,4.996003610813204e-16,4.695432801665211e-15
+Affaires nouvelles,"annee=2026, apporteur=AP10",43.0,43.0,0.0,0.0
+Cotisation annualisée des affaires nouvelles,"annee=2026, apporteur=AP10",32312.28,32312.28,0.0,0.0
+Part de la production,"annee=2026, apporteur=AP10",0.0768856279563543,0.07688562795635431,1.3877787807814457e-17,1.8049911507118684e-16

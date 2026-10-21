@@ -1,0 +1,19 @@
+// Les mesures d'indicateur par annee et par branche.
+EVALUATE
+SUMMARIZECOLUMNS (
+    dim_date[annee],
+    dim_branche[code_branche],
+    FILTER ( ALL ( dim_date[annee] ), dim_date[annee] >= 2023 ),
+    "Prestations delegue", [Prestations réglées périmètre délégué],
+    "Acquises delegue", [Cotisations acquises HT périmètre délégué],
+    "Ratio SP", [Ratio sinistres sur primes],
+    "Contrats debut", [Contrats au portefeuille en début de période],
+    "Resiliations cohorte", [Résiliations de la cohorte],
+    "Taux resiliation", [Taux de résiliation],
+    "Affaires nouvelles", [Affaires nouvelles],
+    "Annualisee nouvelles", [Cotisation annualisée des affaires nouvelles],
+    "Contrats portefeuille", [Contrats au portefeuille],
+    "Suspendus", [dont suspendus],
+    "Annualisee portefeuille", [Cotisation annualisée du portefeuille]
+)
+ORDER BY dim_date[annee], dim_branche[code_branche]

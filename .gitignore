@@ -28,3 +28,7 @@ dbt/logs/
 dbt/dbt_packages/
 # Identifiant anonyme genere par dbt au premier lancement, propre a chaque poste.
 dbt/.user.yml
+
+# Power BI : donnees exportees des marts (regenerees par scripts/exporter_marts_powerbi.py) et cache local
+powerbi/donnees/
+powerbi/**/.pbi/
