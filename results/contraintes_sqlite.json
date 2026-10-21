@@ -1,0 +1,49 @@
+{
+  "mesure_le": "2026-10-21T16:48:37Z",
+  "moteur": "sqlite",
+  "tentatives": 5,
+  "echecs": 0,
+  "conforme": true,
+  "resultats": [
+    {
+      "regle": "un appel s'adresse à un contrat ou à une police, jamais aux deux",
+      "contrainte": "ck_appel_cotisation_destinataire_unique",
+      "refusee": true,
+      "contrainte_nommee_par_le_moteur": true,
+      "message_du_moteur": "CHECK constraint failed: ck_appel_cotisation_destinataire_unique",
+      "pourquoi_la_regle_compte": "un appel portant les deux porteurs serait quittancé deux fois, une fois sur la fiche du contrat individuel et une fois sur la police collective"
+    },
+    {
+      "regle": "un appel s'adresse à un porteur, jamais à aucun",
+      "contrainte": "ck_appel_cotisation_destinataire_unique",
+      "refusee": true,
+      "contrainte_nommee_par_le_moteur": true,
+      "message_du_moteur": "CHECK constraint failed: ck_appel_cotisation_destinataire_unique",
+      "pourquoi_la_regle_compte": "un appel sans porteur n'est rattachable à personne, ni au quittancement ni au rapprochement bancaire"
+    },
+    {
+      "regle": "un appel couvre au moins un affilié",
+      "contrainte": "ck_appel_cotisation_au_moins_un_affilie",
+      "refusee": true,
+      "contrainte_nommee_par_le_moteur": true,
+      "message_du_moteur": "CHECK constraint failed: ck_appel_cotisation_au_moins_un_affilie",
+      "pourquoi_la_regle_compte": "un appel groupé à zéro affilié fausse la cotisation moyenne par tête des bordereaux"
+    },
+    {
+      "regle": "une commission porte le même porteur unique que l'appel qu'elle rémunère",
+      "contrainte": "ck_commission_destinataire_unique",
+      "refusee": true,
+      "contrainte_nommee_par_le_moteur": true,
+      "message_du_moteur": "CHECK constraint failed: ck_commission_destinataire_unique",
+      "pourquoi_la_regle_compte": "une commission à deux porteurs serait comptée deux fois dans le bordereau de l'apporteur"
+    },
+    {
+      "regle": "une commission porte un porteur, jamais aucun",
+      "contrainte": "ck_commission_destinataire_unique",
+      "refusee": true,
+      "contrainte_nommee_par_le_moteur": true,
+      "message_du_moteur": "CHECK constraint failed: ck_commission_destinataire_unique",
+      "pourquoi_la_regle_compte": "une commission sans porteur ne se rattache à aucune affaire, donc à aucun apporteur"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+# Image Airflow du projet : l'orchestrateur, plus deux environnements virtuels isoles.
+#
+# Le point important de ce fichier est l'isolation, et elle merite une explication parce qu'elle va a
+# l'encontre de ce que l'on fait spontanement.
+#
+# Airflow contraint strictement ses dependances : il impose encore SQLAlchemy 1.4 la ou l'application
+# ERP utilise SQLAlchemy 2, et dbt impose ses propres versions de Jinja et de protobuf. Installer les
+# trois dans le meme environnement produit une resolution de dependances qui tient le jour de
+# l'installation et casse a la premiere montee de version. C'est la cause la plus banale des
+# installations d'Airflow qui ne se mettent plus a jour.
+#
+# La solution retenue est celle que documente Airflow : un environnement virtuel par logiciel, et des
+# appels en ligne de commande entre eux. Le graphe n'importe donc aucun code metier ; il execute
+# `courtage flux <etape>` et `dbt build`, et il lit un code de retour. Trois consequences concretes :
+# l'orchestrateur se met a jour sans toucher au metier, chaque etape s'execute aussi a la main sur un
+# poste sans Airflow, et une erreur de dependance ne peut pas rendre le graphe illisible.
+#
+# Le cout est un peu de place disque, et il est assume.
+
+FROM apache/airflow:2.10.5-python3.12
+
+# Les paquets de compilation sont necessaires a psycopg et a quelques roues de dbt. Installes en root,
+# puis la main est rendue a l'utilisateur airflow : aucun processus ne tourne en root dans cette image.
+USER root
+RUN apt-get update \
+    && apt-get install --no-install-recommends --yes build-essential libpq-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Les dossiers sont crees et donnes a l'utilisateur airflow **avant** de lui rendre la main. Sous
+# `/opt`, seul root ecrit par defaut, et un `python -m venv` lance ensuite echoue sur une permission
+# refusee. Aucun processus ne tourne en root dans cette image pour autant : la main est rendue juste
+# apres, et tout le reste de la construction se fait sans privileges.
+RUN mkdir -p /opt/courtage /opt/courtage-venv /opt/dbt-venv \
+    && chown -R airflow:root /opt/courtage /opt/courtage-venv /opt/dbt-venv \
+    && chmod -R 775 /opt/courtage /opt/courtage-venv /opt/dbt-venv
+
+USER airflow
+
+# --- Environnement de l'application ERP -----------------------------------------------------------
+# Le paquet `courtage` est installe depuis les sources du depot, avec ses dependances verrouillees par
+# `uv.lock`. Il fournit l'executable `courtage`, celui-la meme que le developpeur appelle sur son poste.
+COPY --chown=airflow:root pyproject.toml uv.lock README.md /opt/courtage/
+COPY --chown=airflow:root src /opt/courtage/src
+RUN python -m venv /opt/courtage-venv \
+    && /opt/courtage-venv/bin/pip install --no-cache-dir --upgrade pip \
+    && /opt/courtage-venv/bin/pip install --no-cache-dir /opt/courtage
+
+# --- Environnement dbt ----------------------------------------------------------------------------
+# Versions bornees : une version majeure ne doit pas entrer sans avoir ete testee, ici comme dans
+# `pyproject.toml`.
+RUN python -m venv /opt/dbt-venv \
+    && /opt/dbt-venv/bin/pip install --no-cache-dir --upgrade pip \
+    && /opt/dbt-venv/bin/pip install --no-cache-dir "dbt-core>=1.8,<2" "dbt-postgres>=1.8,<2"
+
+# Le projet dbt et les graphes sont montes en volume par le compose, pour qu'une correction de modele ne
+# demande pas de reconstruire l'image.
+ENV COURTAGE_EXECUTABLE=/opt/courtage-venv/bin/courtage \
+    DBT_EXECUTABLE=/opt/dbt-venv/bin/dbt \
+    DBT_PROJET=/opt/courtage/dbt \
+    PYTHONDONTWRITEBYTECODE=1

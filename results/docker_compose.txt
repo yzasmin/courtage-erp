@@ -1,0 +1,50 @@
+Preuve d'execution de la pile Docker sur le poste de Yasmina, module 1.
+Mesure du 20/10/2026, apres les corrections metier. Commande : docker compose up -d --build
+
+=== docker info (machine virtuelle Docker) ===
+version 29.8.2 | linux | 8 processeurs | 4031537152 octets
+Docker Compose version v5.6.0
+
+=== etat des conteneurs ===
+SERVICE    STATE     <no value>   PORTS
+erp        running   healthy      0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+postgres   running   healthy      127.0.0.1:5432->5432/tcp
+
+=== empreinte memoire reelle (docker stats) ===
+NAME                      MEM USAGE / LIMIT   MEM %     CPU %
+courtage-erp-erp-1        66.21MiB / 512MiB   12.93%    0.16%
+courtage-erp-postgres-1   101.5MiB / 512MiB   19.82%    0.04%
+
+=== service erp-init : migrations puis generation ===
+code de sortie : 0
+INFO  [alembic.runtime.migration] Running upgrade 0002 -> 0003, Police collective, appel groupe, commission sur police et auteur de l avenant
+INFO  [alembic.runtime.migration] Running upgrade 0003 -> 0004, Couche brute des flux financiers, journal des lots et rapprochement
+schema a la revision head sur postgresql
+genere en 55.3 s sur postgresql, avec la graine 20261019
+  entreprises                 40
+  adherents                 5382
+  contrats                  5737
+  avenants                 28816
+  polices_collectives         40
+  appels_cotisation        51324
+  lignes_appel_cotisation     23855
+  encaissements            37154
+  prestations              50126
+  sequences recalees           9
+compte rendu : /app/results/generation.json
+
+=== reponses HTTP de l'application en conteneur ===
+  200  60 octets  /sante
+  200  34352 octets  /api/openapi.json
+  200  1015 octets  /api/doc
+  200  10885 octets  /
+  200  11298 octets  /adherents
+  200  16426 octets  /contrats
+  200  7022 octets  /contrats/nouveau
+  200  35233 octets  /anomalies
+  200  3220 octets  /dossiers-a-valider
+  200  9994 octets  /reseau
+
+=== bases presentes dans le conteneur PostgreSQL ===
+airflow
+courtage

@@ -1,0 +1,221 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Droits minimaux : ce workflow ne fait que lire le depot et deposer des artefacts.
+permissions:
+  contents: read
+
+env:
+  COURTAGE_GRAINE: "20261019"
+  COURTAGE_DATE_REFERENCE: "2026-09-30"
+
+jobs:
+  qualite-code:
+    name: style et tests sur SQLite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+
+      - name: Style
+        run: uv run ruff check src tests scripts
+
+      - name: Tests unitaires, sur une base temporaire
+        run: |
+          set -o pipefail
+          mkdir -p results
+          uv run pytest -q 2>&1 | tee results/pytest.txt
+
+      - name: Les migrations montent et redescendent sur SQLite
+        run: uv run python scripts/preuve_migrations.py
+
+      - name: La generation est reproductible sur SQLite
+        run: uv run python scripts/preuve_reproductibilite.py
+
+      - name: Les donnees generees sont coherentes avec le metier
+        run: uv run python scripts/preuve_coherence_metier.py
+
+      - name: La base refuse les ecritures interdites, en SQL direct
+        # Alembic n'autogenere pas les contraintes de verification : trois d'entre elles ont vecu deux
+        # revisions sans etre emises. Ce controle ecrit hors de SQLAlchemy et exige un refus du moteur.
+        run: uv run python scripts/preuve_contraintes.py
+
+      - name: Les tests detectent bien les defauts qu'ils couvrent
+        # Reintroduit six defauts dans le code, exige que les tests tombent, puis remet en etat.
+        run: uv run python scripts/preuve_mutation.py
+
+      - name: Rejouer la suite contre la base de demonstration
+        # Active les tests de signaux realistes, qui se declarent sautes faute de portefeuille.
+        env:
+          COURTAGE_BASE_URL: sqlite+pysqlite:///${{ github.workspace }}/courtage.db
+        run: |
+          set -o pipefail
+          uv run pytest -q 2>&1 | tee results/pytest_base_demonstration.txt
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: resultats-sqlite
+          path: results/
+
+  postgresql:
+    name: le meme code sur la base de production
+    runs-on: ubuntu-latest
+    # Ce qui est prouve ici : le schema, le generateur et toute la suite tournent a l'identique sur
+    # PostgreSQL, qui est la base du compose. Le poste de developpement utilise SQLite ; sans ce job,
+    # la portabilite ne serait qu'une affirmation.
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: courtage
+          POSTGRES_PASSWORD: courtage
+          POSTGRES_DB: courtage
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U courtage"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      COURTAGE_BASE_URL: postgresql+psycopg://courtage:courtage@localhost:5432/courtage
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+
+      - name: Les migrations montent et redescendent sur PostgreSQL
+        run: |
+          set -o pipefail
+          mkdir -p results
+          uv run python scripts/preuve_migrations.py 2>&1 | tee results/migrations_postgresql.txt
+
+      - name: La generation est reproductible sur PostgreSQL
+        run: |
+          set -o pipefail
+          uv run python scripts/preuve_reproductibilite.py 2>&1 | tee results/reproductibilite_postgresql.txt
+
+      - name: La meme graine donne la meme empreinte sur les deux moteurs
+        # Preuve la plus forte de la portabilite : octet pour octet, les deux moteurs produisent le
+        # meme jeu de donnees. Le job SQLite produit la sienne de son cote ; ici on recalcule celle de
+        # SQLite et on compare aux deux empreintes PostgreSQL.
+        run: |
+          COURTAGE_BASE_URL="sqlite+pysqlite:///${{ github.workspace }}/comparaison.db" \
+            uv run python scripts/preuve_reproductibilite.py
+          uv run python - <<'PY'
+          import json, sys
+          from pathlib import Path
+          pg = json.loads(Path("results/reproductibilite_postgresql.json").read_text(encoding="utf-8"))
+          lite = json.loads(Path("results/reproductibilite_sqlite.json").read_text(encoding="utf-8"))
+          print("PostgreSQL :", pg["empreinte_execution_1"], pg["total_lignes"], "lignes")
+          print("SQLite     :", lite["empreinte_execution_1"], lite["total_lignes"], "lignes")
+          ecarts = [
+              table
+              for table in sorted(pg["empreintes_par_table"])
+              if pg["empreintes_par_table"][table] != lite["empreintes_par_table"].get(table)
+          ]
+          if ecarts:
+              print("tables differentes entre les deux moteurs :", ecarts, file=sys.stderr)
+              sys.exit(1)
+          print("les deux moteurs produisent un jeu de donnees identique")
+          PY
+
+      - name: Les donnees generees sont coherentes, sur PostgreSQL aussi
+        run: uv run python scripts/preuve_coherence_metier.py
+
+      - name: La base refuse les ecritures interdites, sur PostgreSQL aussi
+        run: uv run python scripts/preuve_contraintes.py
+
+      - name: Toute la suite sur PostgreSQL
+        run: |
+          set -o pipefail
+          uv run pytest -q 2>&1 | tee results/pytest_postgresql.txt
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: resultats-postgresql
+          path: results/
+
+  pile-docker:
+    name: demarrage de la pile en une commande
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # Sur le poste de Yasmina, `docker compose up` est execute reellement et la preuve est dans
+    # results/docker_compose.txt. Ce job rejoue la meme commande pour un lecteur exterieur, qui n'a
+    # pas ce poste sous la main.
+    env:
+      POSTGRES_MEM_LIMIT: 1g
+      ERP_MEM_LIMIT: 1g
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Le fichier compose est valide
+        run: docker compose config --quiet
+
+      - name: Monter la pile
+        run: docker compose up -d --build
+
+      - name: L'espace de travail des flux a ete prepare
+        run: |
+          mkdir -p results
+          docker compose logs --no-color espace-flux | tee results/espace_flux.txt
+          test "$(docker inspect -f '{{.State.ExitCode}}' "$(docker compose ps -aq espace-flux)")" = "0"
+
+      - name: Le service d'initialisation a migre et genere sans erreur
+        run: |
+          mkdir -p results
+          code=$(docker inspect -f '{{.State.ExitCode}}' "$(docker compose ps -aq erp-init)")
+          docker compose logs --no-color erp-init | tee results/erp_init.txt
+          test "$code" = "0"
+
+      - name: Attendre que l'application reponde
+        run: |
+          for _ in $(seq 1 30); do
+            if docker compose ps --format '{{.Service}} {{.Health}}' | grep -q 'erp healthy'; then
+              break
+            fi
+            sleep 5
+          done
+          docker compose ps --format 'table {{.Service}}\t{{.State}}\t{{.Health}}' | tee results/docker_compose_ps.txt
+          docker compose ps --format '{{.Service}} {{.Health}}' | grep -q 'erp healthy'
+
+      - name: Les ecrans et l'API repondent
+        run: |
+          for chemin in /sante /api/openapi.json / /adherents /contrats /contrats/nouveau /anomalies /dossiers-a-valider /reseau; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "http://127.0.0.1:8000$chemin")
+            echo "$code $chemin"
+            test "$code" = "200"
+          done | tee results/reponses_http.txt
+
+      - name: Empreinte memoire de la pile
+        run: docker stats --no-stream --format 'table {{.Name}}\t{{.MemUsage}}\t{{.MemPerc}}' | tee results/docker_stats.txt
+
+      - name: Journaux en cas d'echec
+        if: failure()
+        # `docker compose logs` seul noie le vrai message : le serveur web Airflow produit des
+        # centaines de lignes au premier demarrage et pousse hors du cadre la trace du service a
+        # execution unique qui a echoue. Les services courts sont donc affiches a part, en premier.
+        run: |
+          for service in espace-flux erp-init flux-init airflow-init; do
+            echo "=== $service ==="
+            docker compose logs --no-color --tail 60 "$service" || true
+          done
+          echo "=== pile complete ==="
+          docker compose logs --tail 150
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: resultats-pile-docker
+          path: results/
+
+      - name: Arret propre
+        if: always()
+        run: docker compose down -v

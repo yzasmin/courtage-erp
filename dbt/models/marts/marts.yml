@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: dim_date
+    columns:
+      - name: date_jour
+        tests: [unique, not_null]
+
+  - name: dim_compagnie
+    columns:
+      - name: compagnie_id
+        tests: [unique, not_null]
+
+  - name: dim_apporteur
+    columns:
+      - name: apporteur_id
+        tests: [unique, not_null]
+
+  - name: dim_produit
+    columns:
+      - name: produit_id
+        tests: [unique, not_null]
+
+  - name: fct_cotisations
+    description: Fait cotisations, une ligne par appel, montants en euros.
+    columns:
+      - name: appel_id
+        tests: [unique, not_null]
+      - name: produit_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_produit')
+                  field: produit_id
+      - name: compagnie_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_compagnie')
+                  field: compagnie_id
+
+  - name: fct_prestations
+    columns:
+      - name: prestation_id
+        tests: [unique, not_null]
+
+  - name: fct_commissions
+    description: Fait commissions et retrocessions, une ligne par commission.
+    columns:
+      - name: commission_id
+        tests: [unique, not_null]
+      - name: appel_id
+        tests: [unique, not_null]
+
+  - name: mart_bordereau_retrocessions_apporteur
+    description: Bordereau mensuel par apporteur, agrege.
+    columns:
+      - name: retrocession_cents
+        tests: [not_null]
+
+  - name: mart_qualite_des_lots
+    columns:
+      - name: rejet_integral_respecte
+        tests:
+          - accepted_values:
+                arguments:
+                  values: [true]
+                  quote: false

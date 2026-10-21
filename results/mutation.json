@@ -1,0 +1,102 @@
+{
+  "mesure_le": "2026-10-21T16:51:39Z",
+  "mutations": 9,
+  "detectees": 9,
+  "code_remis_en_etat": true,
+  "conforme": true,
+  "detail": [
+    {
+      "code": "compteur_de_reference_global",
+      "description": "Reprendre le compteur de reference de prestation sur toutes les periodes au lieu du seul mois des soins",
+      "fichier": "src/courtage/services/prestations.py",
+      "tests": [
+        "tests/test_prestations.py::test_deux_saisies_sur_un_mois_anterieur_ne_collisionnent_pas"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "ecran_anomalies_exclut_les_appels_groupes",
+      "description": "Revenir a la jointure interne sur contrat_id dans l'ecran des anomalies, ce qui exclut les ecarts portant sur un appel groupe",
+      "fichier": "src/courtage/interface/vues.py",
+      "tests": [
+        "tests/test_api.py::test_l_ecran_des_anomalies_montre_le_rapprochement_et_les_lots_rejetes"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "borne_de_resiliation_relachee",
+      "description": "Relacher la borne du controle de periode : accepter une periode qui commence le jour meme de la resiliation",
+      "fichier": "src/courtage/flux/controles.py",
+      "tests": [
+        "tests/flux/test_controles_bloquants.py::test_periode_commencant_le_jour_de_la_resiliation_rejette_le_lot"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "type_avenant_non_controle",
+      "description": "Ne plus verifier que le type d'avenant correspond a la transition demandee",
+      "fichier": "src/courtage/domaine/cycle_vie.py",
+      "tests": [
+        "tests/test_cycle_vie.py::test_le_type_d_avenant_est_refuse_a_travers_le_service",
+        "tests/test_cycle_vie.py::test_une_suspension_etiquetee_remise_en_vigueur_est_refusee"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "cotisation_non_reportee",
+      "description": "Ne plus reporter la cotisation de l'avenant sur le contrat",
+      "fichier": "src/courtage/domaine/avenants.py",
+      "tests": [
+        "tests/test_avenants.py::test_le_contrat_reprend_la_cotisation_de_son_dernier_avenant",
+        "tests/test_avenants.py::test_le_cache_du_contrat_egale_la_reconstitution"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "debut_validite_ignore",
+      "description": "Ignorer la date de debut de validite d'une convention de delegation",
+      "fichier": "src/courtage/domaine/delegation.py",
+      "tests": [
+        "tests/test_delegation.py::test_une_convention_pas_encore_en_vigueur_n_autorise_rien"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "plafond_non_cumule",
+      "description": "Appliquer le plafond annuel a chaque prestation au lieu de le cumuler",
+      "fichier": "src/courtage/services/prestations.py",
+      "tests": [
+        "tests/test_prestations.py::test_le_plafond_annuel_se_consomme_sur_l_annee"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "garantie_suspendue_ignoree",
+      "description": "Servir une prestation sur un contrat dont la garantie est suspendue",
+      "fichier": "src/courtage/services/prestations.py",
+      "tests": [
+        "tests/test_prestations.py::test_un_contrat_suspendu_n_ouvre_droit_a_rien"
+      ],
+      "applicable": true,
+      "detecte": true
+    },
+    {
+      "code": "delegation_prestation_ignoree",
+      "description": "Ne plus verifier la delegation avant d'enregistrer une prestation",
+      "fichier": "src/courtage/services/prestations.py",
+      "tests": [
+        "tests/test_prestations.py::test_une_prestation_est_refusee_quand_la_gestion_n_est_pas_deleguee",
+        "tests/test_prestations.py::test_le_refus_de_prestation_repond_409"
+      ],
+      "applicable": true,
+      "detecte": true
+    }
+  ]
+}

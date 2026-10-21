@@ -1,0 +1,19 @@
+# Profil dbt du projet. Lu par `dbt --profiles-dir dbt`.
+#
+# Aucune valeur secrete ici : tout vient de l'environnement, avec les valeurs du compose par defaut.
+# Le meme profil sert donc au poste et au conteneur Airflow, qui ne differe que par le nom d'hote.
+
+courtage:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('COURTAGE_PG_HOTE', 'localhost') }}"
+      port: "{{ env_var('COURTAGE_PG_PORT', '5432') | int }}"
+      user: "{{ env_var('COURTAGE_PG_UTILISATEUR', 'courtage') }}"
+      password: "{{ env_var('COURTAGE_PG_MOTDEPASSE', 'courtage') }}"
+      dbname: "{{ env_var('COURTAGE_PG_BASE', 'courtage') }}"
+      schema: "{{ env_var('COURTAGE_PG_SCHEMA', 'analytique') }}"
+      threads: 4
+      keepalives_idle: 0
+      connect_timeout: 10

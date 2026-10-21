@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: int_appels_enrichis
+    description: >
+      Chaque appel avec son porteur, son produit, sa compagnie et l'apporteur en vigueur a la date
+      d'echeance. Point d'entree de tout ce qui suit.
+    columns:
+      - name: appel_id
+        tests: [unique, not_null]
+      - name: numero_porteur
+        description: Numero de contrat en individuel, numero de police en collectif. Jamais nul.
+        tests: [not_null]
+      - name: produit_id
+        tests: [not_null]
+      - name: compagnie_id
+        tests: [not_null]
+
+  - name: int_rapprochement_cotisations
+    description: "Etat du rapprochement appel par appel : appele, encaisse, reste du, methode retenue."
+    columns:
+      - name: appel_id
+        tests: [unique, not_null]
+      - name: statut_rapprochement
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["non_rapproche", "rapproche", "partiel", "ecart"]
+      - name: methode_retenue
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["reference", "montant_date", "aucune"]
+
+  - name: int_commissions_attendues
+    description: Commission recalculee en SQL depuis les baremes dates, pour controler le calcul applicatif.
+    columns:
+      - name: appel_id
+        tests: [unique, not_null]
+      - name: taux_bp
+        tests: [not_null]
+
+  - name: int_qualite_lots
+    description: Qualite de chaque lot, y compris le respect du rejet integral.
+    columns:
+      - name: lot_id
+        tests: [unique, not_null]
+      - name: rejet_sans_ecriture_partielle
+        description: >
+          Faux signifie qu'un lot rejete a laisse des lignes en base. C'est l'exigence la plus
+          importante du module, et le test associe est de severite erreur.
+        tests:
+          - accepted_values:
+                arguments:
+                  values: [true]
+                  quote: false
+
+  - name: int_cotisations_recues_vs_appelees
+    description: Bordereau de la compagnie confronte au quittancement du cabinet.
+    columns:
+      - name: verdict
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["conforme", "ecart_de_montant", "appel_inconnu"]

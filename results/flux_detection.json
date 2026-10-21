@@ -1,0 +1,225 @@
+{
+  "etape": "detection",
+  "lots_traites": 27,
+  "lots_ignores": 0,
+  "lots_rejetes": 0,
+  "lignes_chargees": 0,
+  "details": [
+    {
+      "nom_fichier": "COTISATIONS_LIT_202607.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202607-71ae9db7",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-07-01",
+      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766"
+    },
+    {
+      "nom_fichier": "COTISATIONS_LIT_202607_copie.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202607_copie-71ae9db7",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-07-01",
+      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766"
+    },
+    {
+      "nom_fichier": "COTISATIONS_LIT_202608.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202608-5cdbe93f",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-08-01",
+      "sha256": "5cdbe93f96d2c6e0209b9597a35f21749f35c6662043cdbb7094242a834dc386"
+    },
+    {
+      "nom_fichier": "COTISATIONS_LIT_202608_R2.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202608_R2-03d571c4",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-08-01",
+      "sha256": "03d571c4cadc3e42f8cf0ed9af76a0735c70d935a48d06334de9cc54135941f9"
+    },
+    {
+      "nom_fichier": "COTISATIONS_LIT_202609.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202609-c1fe1712",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-09-01",
+      "sha256": "c1fe1712baf71e45aaa4f37d1dcdae668101b302e2831f11c751a48e81779237"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202607.csv",
+      "reference_lot": "COTISATIONS_OCE_202607-d9442664",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-07-01",
+      "sha256": "d9442664f0e70a904c84112d6d2548738cdd51d8acc057144866c21d21a0d34f"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202607_R2.csv",
+      "reference_lot": "COTISATIONS_OCE_202607_R2-eee1a91d",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-07-01",
+      "sha256": "eee1a91d19beb113af2f82b4fdb53367b2d804e199a56a41a96fb74d2c91b909"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202608.csv",
+      "reference_lot": "COTISATIONS_OCE_202608-0b7e7e9d",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-08-01",
+      "sha256": "0b7e7e9dfa4cc778e81664844687003f214c0136e7fa5b526c6a7fec80ab824a"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202608_R2.csv",
+      "reference_lot": "COTISATIONS_OCE_202608_R2-7d511586",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-08-01",
+      "sha256": "7d511586898ca3ec19f04b0744f12efc2f0e3b6bf07878b998f4de4886a61fc3"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202609.csv",
+      "reference_lot": "COTISATIONS_OCE_202609-b44db9ea",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-09-01",
+      "sha256": "b44db9eace5d097b99c1a4bced94810a20922775029f84e7fde9aca5c8622e17"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202609_R2.csv",
+      "reference_lot": "COTISATIONS_OCE_202609_R2-2360e155",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-09-01",
+      "sha256": "2360e15506c563b00df3c551972279e8317a78b560c5770d6858905651ec49c8"
+    },
+    {
+      "nom_fichier": "COTISATIONS_PYR_202607.csv",
+      "reference_lot": "COTISATIONS_PYR_202607-cdfee976",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-07-01",
+      "sha256": "cdfee976331671b9472757ea4e7fe9bb58f2ce2f6e9fe8a44cd3d1fd54d1efd2"
+    },
+    {
+      "nom_fichier": "COTISATIONS_PYR_202608.csv",
+      "reference_lot": "COTISATIONS_PYR_202608-bbde47eb",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-08-01",
+      "sha256": "bbde47eb1e0be55021e1be0effe3fe491a78e0ba8878c6f33f1e1755087d1ab0"
+    },
+    {
+      "nom_fichier": "COTISATIONS_PYR_202609.csv",
+      "reference_lot": "COTISATIONS_PYR_202609-e6cd06e8",
+      "statut": "detecte",
+      "type_flux": "cotisations",
+      "periode": "2026-09-01",
+      "sha256": "e6cd06e829ddfb372e9a1eeb0d346ccd1e816cfeeffe8ff5e9ab3897460af577"
+    },
+    {
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202607.csv",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202607-398f8227",
+      "statut": "detecte",
+      "type_flux": "encaissements",
+      "periode": "2026-07-01",
+      "sha256": "398f82278da8f066f990b6fa1c0d653c14c56d46f42f05151e631f9d70bcaff5"
+    },
+    {
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202608.csv",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202608-12492954",
+      "statut": "detecte",
+      "type_flux": "encaissements",
+      "periode": "2026-08-01",
+      "sha256": "124929546e4cdc84a66600e9398e2f31d7f1fba0e4b2aaeab5a27bfc3dbbd89e"
+    },
+    {
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202609.csv",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-a9b2eef4",
+      "statut": "detecte",
+      "type_flux": "encaissements",
+      "periode": "2026-09-01",
+      "sha256": "a9b2eef4616dfbb184a88b0d32bb82824a6e95910f8ec10f550abcbcaec99cc5"
+    },
+    {
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202609_R2.csv",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609_R2-d82bc99e",
+      "statut": "detecte",
+      "type_flux": "encaissements",
+      "periode": "2026-09-01",
+      "sha256": "d82bc99e2c8eb10615ac5b1ba23a76b0df30ee4e12347dccb9c9bfc1cfb25971"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202607.csv",
+      "reference_lot": "PRESTATIONS_OCE_202607-4550f66b",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-07-01",
+      "sha256": "4550f66b8e83e0fb90099beeacc8fb91a597f5280d5e0f102151496de9404ebe"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202607_R2.csv",
+      "reference_lot": "PRESTATIONS_OCE_202607_R2-b902dba3",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-07-01",
+      "sha256": "b902dba3f3781707fc14a7a40d5bb7f9cabf895c5f1eff5e38433569cff98ad9"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202608.csv",
+      "reference_lot": "PRESTATIONS_OCE_202608-144a2fb7",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-08-01",
+      "sha256": "144a2fb734bf8534ed59759e7969e9b62edbdad61a436e5a94e073c0b8639357"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202608_R2.csv",
+      "reference_lot": "PRESTATIONS_OCE_202608_R2-f707b4d1",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-08-01",
+      "sha256": "f707b4d110256048ff7b84149d1c08a182a9fe4f87511423f0eab2cf59e04b16"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202609.csv",
+      "reference_lot": "PRESTATIONS_OCE_202609-ed12b821",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-09-01",
+      "sha256": "ed12b82153ceafebb7f8e4fc82b4227fcdefe632caa82d033c6f8e0eb9fa4d31"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
+      "reference_lot": "PRESTATIONS_OCE_202609_R2-d7b3bba9",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-09-01",
+      "sha256": "d7b3bba99716b41022819fcef34cb4cd06b815929ee3f8b82dd6361adf4ca07a"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_PYR_202607.csv",
+      "reference_lot": "PRESTATIONS_PYR_202607-d66dfc55",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-07-01",
+      "sha256": "d66dfc55ed1a697913741ff5d0aee5b9ba1cd8823902c96af1201bfcb7774340"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_PYR_202608.csv",
+      "reference_lot": "PRESTATIONS_PYR_202608-5fdb8bd6",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-08-01",
+      "sha256": "5fdb8bd60c1efd2305b35a6094dc62c31e7331abaa60cc77fc9295542593f4de"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_PYR_202609.csv",
+      "reference_lot": "PRESTATIONS_PYR_202609-46e842a4",
+      "statut": "detecte",
+      "type_flux": "prestations",
+      "periode": "2026-09-01",
+      "sha256": "46e842a45a6fde0873f5205610f7eeb5c1718c79182cb2b3c237b804aa8fb4db"
+    }
+  ]
+}

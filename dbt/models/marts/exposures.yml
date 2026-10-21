@@ -1,0 +1,38 @@
+version: 2
+
+# Une exposure declare ce qui consomme les marts. Elle apparait dans le lineage, donc un relecteur voit
+# d'un coup d'oeil quels modeles un ecran casse s'il est modifie.
+#
+# Le tableau de bord Power BI du module 3 sera declare ici par ce module. Les deux exposures ci-dessous
+# sont celles du module 2, et elles existent reellement : ce sont les deux ecrans de l'ERP et les
+# bordereaux envoyes aux apporteurs.
+
+exposures:
+  - name: ecran_anomalies_erp
+    label: Ecran des anomalies de rapprochement
+    type: application
+    maturity: high
+    url: http://localhost:8000/anomalies
+    description: >
+      Ecran de gestion de l'ERP. Il affiche les lots rejetes, les ecarts de rapprochement et les
+      mouvements bancaires qu'aucun appel ne reclame.
+    depends_on:
+      - ref('mart_anomalies_rapprochement')
+      - ref('mart_mouvements_non_rapproches')
+      - ref('mart_qualite_des_lots')
+    owner:
+      name: Cabinet Grossiste Occitanie
+      email: gestion@exemple.invalid
+
+  - name: bordereaux_apporteurs
+    label: Bordereaux mensuels de retrocession
+    type: analysis
+    maturity: high
+    description: >
+      Bordereau mensuel envoye a chaque apporteur, produit en base et en CSV par la chaine Airflow.
+    depends_on:
+      - ref('mart_bordereau_retrocessions_apporteur')
+      - ref('fct_commissions')
+    owner:
+      name: Cabinet Grossiste Occitanie
+      email: gestion@exemple.invalid

@@ -1,0 +1,16 @@
+{
+  "graine": 20261019,
+  "date_reference": "2026-09-30",
+  "entreprises": 40,
+  "adherents": 5382,
+  "contrats": 5737,
+  "avenants": 28816,
+  "polices_collectives": 40,
+  "appels_cotisation": 51324,
+  "lignes_appel_cotisation": 23855,
+  "encaissements": 37154,
+  "prestations": 49398,
+  "sequences_recalees": [],
+  "moteur": "sqlite",
+  "duree_generation_s": 12.83
+}

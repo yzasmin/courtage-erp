@@ -1,0 +1,73 @@
+{
+  "mesure_le": "2026-10-20T11:22:52Z",
+  "moteur": "postgresql",
+  "python": "3.12.0",
+  "revisions": [
+    "0001",
+    "0002",
+    "0003",
+    "0004"
+  ],
+  "conforme": true,
+  "tables_attendues": 31,
+  "tables_au_sommet": 31,
+  "tables_manquantes_au_sommet": [],
+  "tables_en_trop_au_sommet": [],
+  "residus_apres_descente_complete": [],
+  "tables_apres_remontee": 31,
+  "duree_totale_s": 4.72,
+  "etapes": [
+    {
+      "sens": "montee",
+      "revision": "0001",
+      "duree_s": 0.922,
+      "tables_apres": 20
+    },
+    {
+      "sens": "montee",
+      "revision": "0002",
+      "duree_s": 0.156,
+      "tables_apres": 23
+    },
+    {
+      "sens": "montee",
+      "revision": "0003",
+      "duree_s": 0.219,
+      "tables_apres": 25
+    },
+    {
+      "sens": "montee",
+      "revision": "0004",
+      "duree_s": 0.282,
+      "tables_apres": 31
+    },
+    {
+      "sens": "descente",
+      "revision": "0004",
+      "vers": "0003",
+      "duree_s": 0.172,
+      "tables_apres": 25
+    },
+    {
+      "sens": "descente",
+      "revision": "0003",
+      "vers": "0002",
+      "duree_s": 0.125,
+      "tables_apres": 23
+    },
+    {
+      "sens": "descente",
+      "revision": "0002",
+      "vers": "0001",
+      "duree_s": 0.109,
+      "tables_apres": 20
+    },
+    {
+      "sens": "descente",
+      "revision": "0001",
+      "vers": "base",
+      "duree_s": 0.375,
+      "tables_apres": 0
+    }
+  ]
+}

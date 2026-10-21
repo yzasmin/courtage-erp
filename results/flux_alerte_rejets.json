@@ -1,0 +1,78 @@
+{
+  "depuis": "2026-10-20T16:50:42",
+  "lots_rejetes": 9,
+  "detail": [
+    {
+      "reference_lot": "PRESTATIONS_OCE_202609-ed12b821",
+      "nom_fichier": "PRESTATIONS_OCE_202609.csv",
+      "type_flux": "prestations",
+      "periode": "2026-09-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : adherent_inconnu (1)",
+      "rejete_le": "2026-10-21T18:50:30.095939"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202608-144a2fb7",
+      "nom_fichier": "PRESTATIONS_OCE_202608.csv",
+      "type_flux": "prestations",
+      "periode": "2026-08-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : periode_incoherente (1)",
+      "rejete_le": "2026-10-21T18:50:30.054423"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202607-4550f66b",
+      "nom_fichier": "PRESTATIONS_OCE_202607.csv",
+      "type_flux": "prestations",
+      "periode": "2026-07-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : total_incoherent (1)",
+      "rejete_le": "2026-10-21T18:50:30.010927"
+    },
+    {
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-a9b2eef4",
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202609.csv",
+      "type_flux": "encaissements",
+      "periode": "2026-09-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
+      "rejete_le": "2026-10-21T18:50:29.900375"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202609-b44db9ea",
+      "nom_fichier": "COTISATIONS_OCE_202609.csv",
+      "type_flux": "cotisations",
+      "periode": "2026-09-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
+      "rejete_le": "2026-10-21T18:50:29.295315"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202608-0b7e7e9d",
+      "nom_fichier": "COTISATIONS_OCE_202608.csv",
+      "type_flux": "cotisations",
+      "periode": "2026-08-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : doublon_cle_metier (1)",
+      "rejete_le": "2026-10-21T18:50:29.183193"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202607-d9442664",
+      "nom_fichier": "COTISATIONS_OCE_202607.csv",
+      "type_flux": "cotisations",
+      "periode": "2026-07-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : contrat_inconnu (1)",
+      "rejete_le": "2026-10-21T18:50:29.072234"
+    },
+    {
+      "reference_lot": "COTISATIONS_LIT_202608-5cdbe93f",
+      "nom_fichier": "COTISATIONS_LIT_202608.xlsx",
+      "type_flux": "cotisations",
+      "periode": "2026-08-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : acte_non_delegue (1)",
+      "rejete_le": "2026-10-21T18:50:28.728151"
+    },
+    {
+      "reference_lot": "COTISATIONS_LIT_202607_copie-71ae9db7",
+      "nom_fichier": "COTISATIONS_LIT_202607_copie.xlsx",
+      "type_flux": "cotisations",
+      "periode": "2026-07-01",
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : fichier_deja_charge (1)",
+      "rejete_le": "2026-10-21T18:50:28.586307"
+    }
+  ]
+}

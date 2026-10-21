@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  # Les deux sources sont dans le meme schema physique, et ce n'est pas un raccourci. La couche brute
+  # porte le prefixe `brut_` au lieu de vivre dans un schema separe parce que le meme schema doit monter
+  # sur SQLite, qui ne connait pas les schemas. La separation logique, elle, est ici : deux sources
+  # distinctes, deux significations distinctes, et le lineage les montre separement.
+  - name: coeur_erp
+    description: >
+      Tables du coeur ERP, ce que le cabinet tient pour vrai : son portefeuille, son quittancement,
+      ses encaissements, ses prestations et ses commissions.
+    schema: public
+    tables:
+      - name: branche
+      - name: compagnie
+      - name: apporteur
+      - name: produit
+      - name: garantie
+      - name: formule
+      - name: formule_garantie
+      - name: taux_commission
+      - name: taux_retrocession
+      - name: taux_taxe
+      - name: entreprise_souscriptrice
+      - name: adherent
+      - name: police_collective
+      - name: contrat
+      - name: avenant
+      - name: appel_cotisation
+      - name: ligne_appel_cotisation
+      - name: encaissement
+      - name: prestation
+      - name: commission
+      - name: retrocession
+      - name: bordereau
+
+  - name: fichiers_recus
+    description: >
+      Couche brute et journal de la chaine d'ingestion : ce que les compagnies et la banque ont envoye,
+      jamais corrige, avec l'empreinte du fichier d'origine et le verdict de chaque controle.
+    schema: public
+    tables:
+      - name: lot_fichier
+        description: un fichier recu, son empreinte SHA-256, son etat d'avancement et son motif de rejet
+      - name: anomalie_lot
+      - name: brut_cotisation
+      - name: brut_encaissement
+      - name: brut_prestation
+      - name: rapprochement_ligne

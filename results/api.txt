@@ -1,0 +1,109 @@
+Transcription des comportements cles de l'API du mini-ERP de courtage.
+Adresse : http://127.0.0.1:8000
+Enregistree le : 2026-10-20T11:12:14Z
+Python : 3.12.0
+Application : Courtage ERP version 0.1.0
+
+====================================================================================================
+1. Fiche du contrat SI-2023-00002
+====================================================================================================
+  produit          : SI-EQUILIBRE, Sante Equilibre, particuliers
+  compagnie        : Pyrene Mutuelle
+  branche          : Sante individuelle
+  statut courant   : en_cours
+  cotisation       : 75,63 €
+  garanties        : 5
+  avenants         : 7
+
+  Historique des avenants :
+    rang 0  2023-11-17  souscription               devis      formule F1  apporteur AP02         63,66 €
+    rang 1  2023-12-01  mise_en_vigueur            en_cours   formule F1  apporteur AP02         63,66 €
+    rang 2  2024-01-01  revalorisation_tarifaire   en_cours   formule F1  apporteur AP02         67,16 €
+    rang 3  2025-01-01  revalorisation_tarifaire   en_cours   formule F1  apporteur AP02         71,02 €
+    rang 4  2026-01-01  revalorisation_tarifaire   en_cours   formule F1  apporteur AP02         75,63 €
+    rang 5  2026-07-01  suspension                 suspendu   formule F1  apporteur AP02         75,63 €
+    rang 6  2026-09-01  remise_en_vigueur          en_cours   formule F1  apporteur AP02         75,63 €
+
+====================================================================================================
+2. Etat du contrat a la date D, par reconstitution des avenants
+====================================================================================================
+  La reponse indique de quel avenant provient la valeur retournee.
+
+  2023-11-16 -> 404  etat_introuvable : le contrat SI-2023-00002 n'existait pas le 16/11/2023 : il a ete souscrit le 17/11/2023
+  2023-11-24 -> 200  devis      au portefeuille : non  formule F1  apporteur AP02         63,66 €  (avenant 0, souscription)
+  2023-12-16 -> 200  en_cours   au portefeuille : oui  formule F1  apporteur AP02         63,66 €  (avenant 1, mise_en_vigueur)
+  2024-07-02 -> 200  en_cours   au portefeuille : oui  formule F1  apporteur AP02         67,16 €  (avenant 2, revalorisation_tarifaire)
+  2025-07-02 -> 200  en_cours   au portefeuille : oui  formule F1  apporteur AP02         71,02 €  (avenant 3, revalorisation_tarifaire)
+  2026-04-01 -> 200  en_cours   au portefeuille : oui  formule F1  apporteur AP02         75,63 €  (avenant 4, revalorisation_tarifaire)
+  2026-08-01 -> 200  suspendu   au portefeuille : oui  formule F1  apporteur AP02         75,63 €  (avenant 5, suspension)
+  2026-10-16 -> 200  en_cours   au portefeuille : oui  formule F1  apporteur AP02         75,63 €  (avenant 6, remise_en_vigueur)
+
+====================================================================================================
+3. Perimetre delegue par chaque compagnie, produit par produit
+====================================================================================================
+  Ce que l'ERP autorise depend de cette liste, et uniquement de cette liste.
+
+  SI-ESSENTIEL   convention CONV-OCE-2020, portee declaree totale
+      delegue     : affiliation d'un adherent
+      delegue     : encaissement des cotisations
+      delegue     : gestion et reglement des prestations
+      delegue     : quittancement, ou emission des appels de cotisation
+      delegue     : radiation, ou resiliation d'un contrat
+      delegue     : saisie d'un avenant
+  SI-EQUILIBRE   convention CONV-PYR-2020, portee declaree partielle
+      delegue     : affiliation d'un adherent
+      delegue     : gestion et reglement des prestations
+      delegue     : quittancement, ou emission des appels de cotisation
+      delegue     : radiation, ou resiliation d'un contrat
+      delegue     : saisie d'un avenant
+  PV-DECES       convention CONV-LIT-2020, portee declaree partielle
+      delegue     : affiliation d'un adherent
+      delegue     : encaissement des cotisations
+      delegue     : quittancement, ou emission des appels de cotisation
+      delegue     : radiation, ou resiliation d'un contrat
+      delegue     : saisie d'un avenant
+
+====================================================================================================
+4. Refus metier, et format unique des reponses d'erreur
+====================================================================================================
+
+  resilier un devis : il n'a jamais pris effet, il n'y a rien a resilier
+      POST /api/v1/contrats/SC-2026-00037/resiliation
+      -> 409  code « transition_interdite »
+         passage de devis a resilie refuse : les seules suites possibles de devis sont ['en_cours']
+
+  resilier sans motif : le motif est obligatoire
+      POST /api/v1/contrats/SI-2023-00002/resiliation
+      -> 422  code « requete_invalide »
+         motif : Field required
+
+  saisir un avenant anterieur au dernier avenant du contrat
+      POST /api/v1/contrats/SI-2023-00002/avenants
+      -> 409  code « date_avenant_incoherente »
+         la date d'effet 01/01/2020 precede celle du dernier avenant (01/09/2026, rang 6)
+
+  contrat inconnu
+      GET /api/v1/contrats/XX-9999-99999
+      -> 404  code « contrat_introuvable »
+         aucun contrat ne porte le numero XX-9999-99999
+
+  adherent inconnu
+      GET /api/v1/adherents/A000000
+      -> 404  code « adherent_introuvable »
+         aucun adherent ne porte le numero A000000
+
+  produit inconnu
+      GET /api/v1/produits/ZZ-INEXISTANT/delegation
+      -> 404  code « produit_introuvable »
+         aucun produit ne porte le code ZZ-INEXISTANT
+
+  etat a une date anterieure au contrat
+      GET /api/v1/contrats/SI-2023-00002/etat?a_la_date=2015-01-01
+      -> 404  code « etat_introuvable »
+         le contrat SI-2023-00002 n'existait pas le 01/01/2015 : il a ete souscrit le 17/11/2023
+
+  souscrire pour un adherent inconnu
+      POST /api/v1/contrats
+      -> 422  code « reference_invalide »
+         aucun adherent ne porte le numero A000000
+

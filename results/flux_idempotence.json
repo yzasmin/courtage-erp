@@ -1,0 +1,144 @@
+{
+  "moteur": "sqlite",
+  "fichiers_redeposes": 27,
+  "noms_redeposes": [
+    "COTISATIONS_LIT_202607.xlsx",
+    "COTISATIONS_LIT_202607_copie.xlsx",
+    "COTISATIONS_LIT_202608.xlsx",
+    "COTISATIONS_LIT_202608_R2.xlsx",
+    "COTISATIONS_LIT_202609.xlsx",
+    "COTISATIONS_OCE_202607.csv",
+    "COTISATIONS_OCE_202607_R2.csv",
+    "COTISATIONS_OCE_202608.csv",
+    "COTISATIONS_OCE_202608_R2.csv",
+    "COTISATIONS_OCE_202609.csv",
+    "COTISATIONS_OCE_202609_R2.csv",
+    "COTISATIONS_PYR_202607.csv",
+    "COTISATIONS_PYR_202608.csv",
+    "COTISATIONS_PYR_202609.csv",
+    "ENCAISSEMENTS_BANQUE_202607.csv",
+    "ENCAISSEMENTS_BANQUE_202608.csv",
+    "ENCAISSEMENTS_BANQUE_202609.csv",
+    "ENCAISSEMENTS_BANQUE_202609_R2.csv",
+    "PRESTATIONS_OCE_202607.csv",
+    "PRESTATIONS_OCE_202607_R2.csv",
+    "PRESTATIONS_OCE_202608.csv",
+    "PRESTATIONS_OCE_202608_R2.csv",
+    "PRESTATIONS_OCE_202609.csv",
+    "PRESTATIONS_OCE_202609_R2.csv",
+    "PRESTATIONS_PYR_202607.csv",
+    "PRESTATIONS_PYR_202608.csv",
+    "PRESTATIONS_PYR_202609.csv"
+  ],
+  "comptes_avant": {
+    "lot_fichier": 27,
+    "anomalie_lot": 901,
+    "brut_cotisation": 3776,
+    "brut_encaissement": 2588,
+    "brut_prestation": 1347,
+    "rapprochement_ligne": 2562,
+    "commission": 2520,
+    "retrocession": 2050,
+    "bordereau": 30
+  },
+  "comptes_apres": {
+    "lot_fichier": 27,
+    "anomalie_lot": 901,
+    "brut_cotisation": 3776,
+    "brut_encaissement": 2588,
+    "brut_prestation": 1347,
+    "rapprochement_ligne": 2562,
+    "commission": 2520,
+    "retrocession": 2050,
+    "bordereau": 30
+  },
+  "tables_modifiees": {},
+  "empreinte_avant": "9dd4b4bd693ccfe84e237d22646f6ad0466581c06e483db78a0dfd98cdae7b3d",
+  "empreinte_apres": "9dd4b4bd693ccfe84e237d22646f6ad0466581c06e483db78a0dfd98cdae7b3d",
+  "empreintes_identiques": true,
+  "conforme": true,
+  "comptes_rendus_du_second_passage": {
+    "detection": {
+      "etape": "detection",
+      "lots_traites": 0,
+      "lots_ignores": 27,
+      "lots_rejetes": 0,
+      "lignes_chargees": 0
+    },
+    "archivage": {
+      "etape": "archivage",
+      "lots_traites": 0,
+      "lots_ignores": 0,
+      "lots_rejetes": 0,
+      "lignes_chargees": 0
+    },
+    "chargement": {
+      "etape": "chargement",
+      "lots_traites": 0,
+      "lots_ignores": 0,
+      "lots_rejetes": 0,
+      "lignes_chargees": 0
+    },
+    "rapprochement": {
+      "fenetre_jours": 15,
+      "lignes_examinees": 2588,
+      "par_statut": {
+        "ecart": 16,
+        "non_trouve": 24,
+        "partiel": 34,
+        "rapproche": 2488
+      },
+      "par_methode": {
+        "aucune": 24,
+        "montant_date": 294,
+        "reference": 2244
+      },
+      "actes_non_delegues_ignores": 26,
+      "mouvements_absents_du_coeur_erp": 31,
+      "ecart_total_cents": -107926
+    },
+    "commissions": {
+      "periodes": [
+        "2026-07-01",
+        "2026-08-01",
+        "2026-09-01"
+      ],
+      "appels_examines": 3776,
+      "commissions": {
+        "creees": 0,
+        "mises_a_jour": 0,
+        "inchangees": 2520,
+        "supprimees": 0,
+        "montant_cents": 4632066
+      },
+      "retrocessions": {
+        "creees": 0,
+        "mises_a_jour": 0,
+        "inchangees": 2050,
+        "supprimees": 0,
+        "montant_cents": 2318274
+      },
+      "appels_ecartes": {
+        "apporteur_sans_retrocession": 470,
+        "aucun_encaissement_rapproche": 72,
+        "encaissement_non_delegue_assiette_inconnue": 1184
+      },
+      "periodes_sans_releve_bancaire_charge": []
+    },
+    "bordereaux": {
+      "periodes": [
+        "2026-07-01",
+        "2026-08-01",
+        "2026-09-01"
+      ],
+      "bordereaux_de_commissions": 6,
+      "bordereaux_de_retrocessions": 24,
+      "crees": 0,
+      "mis_a_jour": 0,
+      "inchanges": 30,
+      "lignes_rattachees": 0,
+      "montant_commissions_cents": 4632066,
+      "montant_retrocessions_cents": 2318274
+    }
+  }
+}

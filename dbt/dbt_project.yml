@@ -1,0 +1,43 @@
+# Projet dbt du mini-ERP de courtage. Transformations, tests de qualite, documentation et lineage.
+#
+# Trois couches, et la raison de chacune :
+#
+#   staging        une vue par table source, qui renomme, type et rien d'autre. Aucune regle metier.
+#                  C'est le seul endroit du projet qui connait la forme physique des tables, de sorte
+#                  qu'un changement de colonne ne se propage pas dans tout le projet.
+#   intermediaire  les jointures et les regles de gestion : le rapprochement, l'assiette de commission
+#                  attendue, la qualite des lots. Des vues, parce qu'elles sont relues a chaque build et
+#                  que leur cout est negligeable sur ce volume.
+#   marts          le modele en etoile servi au pilotage, en tables, parce que Power BI les interroge et
+#                  qu'une vue imbriquee a quatre niveaux rendrait le rafraichissement lent.
+#
+# Les montants restent en centimes entiers dans staging et en intermediaire, et sont exposes en euros
+# dans les marts. La conversion a un seul endroit, a la frontiere de la restitution.
+
+name: courtage
+version: "0.1.0"
+config-version: 2
+
+profile: courtage
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+clean-targets: ["cible", "dbt_packages"]
+
+models:
+  courtage:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediaire:
+      +materialized: view
+      +schema: intermediaire
+    marts:
+      +materialized: table
+      +schema: marts
+
+tests:
+  courtage:
+    +store_failures: true
+    +schema: controles

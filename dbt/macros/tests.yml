@@ -1,0 +1,4 @@
+version: 2
+
+# Test generique du projet. dbt_utils n'est pas installe : une seule dependance externe pour un test de
+# trois lignes ne se justifie pas, et un paquet de moins est un paquet de moins a maintenir.

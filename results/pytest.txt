@@ -1,0 +1,26 @@
+........................................................................ [ 29%]
+.....................ss..............................................ss. [ 59%]
+................sss.sss................................................. [ 89%]
+.........................                                                [100%]
+============================== warnings summary ===============================
+tests/test_api.py::test_l_etat_de_service_repond
+  C:\Users\33769\Desktop\Offre d'emploi\Portfolio\projets-data\courtage-erp\tests\conftest.py:214: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient
+
+tests/test_api.py::test_l_etat_de_service_repond
+tests/test_api.py::test_l_etat_de_service_repond
+tests/test_api.py::test_l_etat_de_service_repond
+tests/test_api.py::test_l_etat_de_service_repond
+  C:\Users\33769\Desktop\Offre d'emploi\Portfolio\projets-data\courtage-erp\src\courtage\api\app.py:33: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    from courtage.api.routes import adherents, contrats, reseau
+
+tests/test_api.py::test_souscription_avec_un_adherent_inconnu_repond_422
+tests/test_api.py::test_souscription_avec_une_cotisation_negative_est_refusee
+tests/test_api.py::test_resiliation_sans_motif_est_refusee_par_le_schema
+tests/test_api.py::test_resiliation_avec_un_motif_inconnu_est_refusee
+tests/test_api.py::test_toutes_les_reponses_d_erreur_ont_le_meme_format
+  C:\Users\33769\Desktop\Offre d'emploi\Portfolio\projets-data\courtage-erp\.venv\Lib\site-packages\anyio\_backends\_asyncio.py:1100: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    result = context.run(func, *args)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+231 passed, 10 skipped, 10 warnings in 14.51s

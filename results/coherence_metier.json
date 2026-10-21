@@ -1,0 +1,116 @@
+{
+  "mesure_le": "2026-10-21T16:50:43Z",
+  "controles": 18,
+  "echecs": 0,
+  "conforme": true,
+  "detail": [
+    {
+      "code": "affiliation_sans_police",
+      "question": "Toute affiliation collective est rattachée à une police",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "appel_individuel_sur_collectif",
+      "question": "Aucune affiliation collective n'est quittancée pour elle-même",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "appel_groupe_sans_ligne",
+      "question": "Tout appel groupé porte le détail de ses affiliés",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "total_appel_groupe_faux",
+      "question": "Le total d'un appel groupé égale la somme de ses lignes",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "affilies_mal_comptes",
+      "question": "Le nombre d'affiliés annoncé par un appel groupé égale son nombre de lignes",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "prestation_pendant_suspension",
+      "question": "Aucune prestation n'est servie pendant une suspension de garanties, ouverte ou refermée",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "rejet_plafond_premature",
+      "question": "Un rejet pour plafond atteint tombe à une date où le plafond est réellement consommé",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "remboursement_au_dela_du_reste",
+      "question": "Aucun remboursement ne dépasse le reste de plafond à la date des soins",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "prestation_apres_resiliation",
+      "question": "Aucune prestation n'est servie après la résiliation du contrat",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "plafond_annuel_depasse",
+      "question": "Le cumul remboursé ne dépasse pas le plafond de la formule en vigueur aux soins",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "infra_annuelle_trop_tot",
+      "question": "Aucune résiliation infra-annuelle avant douze mois d'ancienneté",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "appel_encaisse_sans_encaissement",
+      "question": "Aucun appel encaissé ou partiel sans ligne d'encaissement",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "avenant_hors_ordre",
+      "question": "Les dates d'effet des avenants croissent avec leur rang",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "cache_contrat_faux",
+      "question": "Le cache du contrat égale la reconstitution par les avenants",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "avenant_sans_auteur",
+      "question": "Tout avenant porte l'auteur de sa saisie",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "quittancement_apres_convention_echue",
+      "question": "Aucun appel émis après l'expiration de la convention de délégation",
+      "compte": 0,
+      "conforme": true
+    },
+    {
+      "code": "portefeuille_initial",
+      "question": "Le portefeuille est déjà constitué à l'ouverture de l'historique",
+      "compte": 2570,
+      "conforme": true
+    },
+    {
+      "code": "convention_echue_presente",
+      "question": "Une convention arrivée à échéance existe, pour rendre le refus constatable",
+      "compte": 1,
+      "conforme": true
+    }
+  ]
+}

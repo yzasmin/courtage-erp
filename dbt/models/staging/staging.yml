@@ -1,0 +1,212 @@
+version: 2
+
+# Les tests de cette couche sont de severite **erreur** par defaut : ils portent sur l'identite des
+# objets, et une cle dupliquee ou absente rend tout ce qui suit faux. Les avertissements, eux, portent
+# sur des jugements de gestion et sont declares explicitement avec `severity: warn`.
+
+models:
+  - name: stg_appels_cotisation
+    description: Quittancement du cabinet, appel par appel. Deux formes, individuelle et groupee.
+    columns:
+      - name: appel_id
+        tests: [unique, not_null]
+      - name: reference_appel
+        tests: [unique, not_null]
+      - name: montant_total_cents
+        tests:
+          - not_null
+          - montant_non_negatif
+      - name: statut_appel
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["attendu", "encaisse", "partiel", "impaye"]
+
+  - name: stg_contrats
+    columns:
+      - name: contrat_id
+        tests: [unique, not_null]
+      - name: numero_contrat
+        tests: [unique, not_null]
+      - name: statut_contrat
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["devis", "en_cours", "suspendu", "resilie"]
+      - name: produit_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('stg_produits')
+                  field: produit_id
+
+  - name: stg_polices
+    columns:
+      - name: police_id
+        tests: [unique, not_null]
+      - name: numero_police
+        tests: [unique, not_null]
+      - name: produit_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('stg_produits')
+                  field: produit_id
+
+  - name: stg_encaissements
+    columns:
+      - name: encaissement_id
+        tests: [unique, not_null]
+      - name: reference_bancaire
+        tests: [unique, not_null]
+      - name: statut_rapprochement
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["non_rapproche", "rapproche", "partiel", "ecart", "non_trouve"]
+
+  - name: stg_prestations
+    columns:
+      - name: prestation_id
+        tests: [unique, not_null]
+      - name: reference_prestation
+        tests: [unique, not_null]
+      - name: statut_prestation
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["en_cours", "reglee", "rejetee"]
+
+  - name: stg_commissions
+    columns:
+      - name: commission_id
+        tests: [unique, not_null]
+      - name: appel_id
+        description: Une commission par appel, pas plus. Le double commissionnement est l'erreur la plus couteuse.
+        tests:
+          - unique
+          - not_null
+          - relationships:
+                arguments:
+                  to: ref('stg_appels_cotisation')
+                  field: appel_id
+
+  - name: stg_retrocessions
+    columns:
+      - name: retrocession_id
+        tests: [unique, not_null]
+      - name: commission_id
+        tests:
+          - unique
+          - not_null
+          - relationships:
+                arguments:
+                  to: ref('stg_commissions')
+                  field: commission_id
+      - name: apporteur_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('stg_apporteurs')
+                  field: apporteur_id
+
+  - name: stg_lots_recus
+    description: Journal des fichiers recus, un lot par fichier.
+    columns:
+      - name: lot_id
+        tests: [unique, not_null]
+      - name: reference_lot
+        tests: [unique, not_null]
+      - name: sha256
+        tests: [not_null]
+      - name: statut_lot
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["detecte", "archive", "charge", "rejete"]
+      - name: type_flux
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["cotisations", "encaissements", "prestations"]
+
+  - name: stg_anomalies_lot
+    columns:
+      - name: anomalie_id
+        tests: [unique, not_null]
+      - name: lot_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('stg_lots_recus')
+                  field: lot_id
+      - name: severite
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["bloquant", "avertissement"]
+      - name: code_anomalie
+        tests:
+          - accepted_values:
+                arguments:
+                  values:
+                    - schema_invalide
+                    - fichier_deja_charge
+                    - doublon_cle_metier
+                    - contrat_inconnu
+                    - adherent_inconnu
+                    - total_incoherent
+                    - periode_incoherente
+                    - acte_non_delegue
+                    - montant_atypique
+                    - prestation_proche_plafond
+
+  - name: stg_rapprochements
+    columns:
+      - name: rapprochement_id
+        tests: [unique, not_null]
+      - name: reference_bancaire
+        tests: [not_null]
+      - name: methode
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["reference", "montant_date", "aucune"]
+      - name: statut_rapprochement
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ["non_rapproche", "rapproche", "partiel", "ecart", "non_trouve"]
+
+  - name: stg_brut_cotisations
+    columns:
+      - name: brut_cotisation_id
+        tests: [unique, not_null]
+      - name: lot_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('stg_lots_recus')
+                  field: lot_id
+
+  - name: stg_brut_encaissements
+    columns:
+      - name: brut_encaissement_id
+        tests: [unique, not_null]
+      - name: lot_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('stg_lots_recus')
+                  field: lot_id
+
+  - name: stg_brut_prestations
+    columns:
+      - name: brut_prestation_id
+        tests: [unique, not_null]
+      - name: lot_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('stg_lots_recus')
+                  field: lot_id

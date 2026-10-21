@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block titre %}Dossiers a valider, {{ titre_application }}{% endblock %}
+{% block contenu %}
+  <h1>Dossiers pré-remplis à valider</h1>
+  <p class="sous-titre">
+    File d'attente des dossiers extraits automatiquement de documents recus, avant toute ecriture
+    definitive dans le portefeuille.
+  </p>
+
+  <div class="message information">
+    <strong>Écran en attente du module 4.</strong>
+    L'agent de pre-remplissage lira les demandes de remboursement, les factures et les attestations
+    recues, en extraira les champs, les confrontera au portefeuille, puis deposera ici un dossier au
+    statut « a valider ». Cet ecran est le point de controle humain : rien n'est ecrit dans le
+    portefeuille sans qu'un gestionnaire l'ait valide depuis cette page.
+  </div>
+
+  <div class="carte" style="padding: 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Document</th><th>Type</th><th>Adhérent rapproché</th><th>Contrat</th>
+          <th class="nombre">Montant</th><th>Confiance</th><th>Statut</th><th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="8" class="vide">
+            Aucun dossier en attente. Le module 4 n'est pas encore realise, donc aucun document n'a
+            encore ete traite.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Ce que cet écran contrôlera</h2>
+  <section class="carte">
+    <p class="sous-titre" style="margin: 0 0 8px">
+      Les controles prevus avant qu'un dossier puisse etre propose a la validation, tels que la
+      specification du module 4 les fixe :
+    </p>
+    <ul>
+      <li>l'adhérent et le contrat cités existent réellement dans le portefeuille ;</li>
+      <li>le nom lu sur le document se rapproche du nom de l'adhérent par similarité, et l'écart est affiché ;</li>
+      <li>les montants sont cohérents entre eux et avec la garantie invoquée ;</li>
+      <li>le contrat était bien en vigueur à la date des soins, ce que la reconstitution à date établit ;</li>
+      <li>la gestion des prestations est déléguée au cabinet sur ce produit, sinon le dossier est rejeté.</li>
+    </ul>
+  </section>
+{% endblock %}

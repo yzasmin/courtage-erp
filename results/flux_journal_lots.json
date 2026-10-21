@@ -1,0 +1,1418 @@
+{
+  "nombre_lots": 27,
+  "lots_par_statut": {
+    "archive": 0,
+    "charge": 18,
+    "detecte": 0,
+    "rejete": 9
+  },
+  "lignes_chargees": 7722,
+  "anomalies_enregistrees": 789,
+  "anomalies_bloquantes": 9,
+  "anomalies_avertissement": 780,
+  "lots": [
+    {
+      "reference_lot": "COTISATIONS_LIT_202607-71ae9db7",
+      "nom_fichier": "COTISATIONS_LIT_202607.xlsx",
+      "type_flux": "cotisations",
+      "format": "xlsx",
+      "periode": "2026-07-01",
+      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766",
+      "taille_octets": 29178,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_LIT_202607-71ae9db7.xlsx",
+      "lignes_fichier": 405,
+      "lignes_chargees": 405,
+      "total_declare_cents": 5379843,
+      "total_calcule_cents": 5379843,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 21,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 4,
+          "reference_ligne": "APP-PV-2019-00014-202607",
+          "message": "tarif mensuel par affilie de 25457 centimes contre 9066 centimes en mediane sur les 36 echeances connues de PV-2019-00014, ecart de 181%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 8,
+          "reference_ligne": "APP-PV-2019-00023-202607",
+          "message": "tarif mensuel par affilie de 23980 centimes contre 8912 centimes en mediane sur les 12 echeances connues de PV-2019-00023, ecart de 169%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 11,
+          "reference_ligne": "APP-PV-2019-00039-202607",
+          "message": "tarif mensuel par affilie de 22027 centimes contre 8088 centimes en mediane sur les 36 echeances connues de PV-2019-00039, ecart de 172%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 17,
+          "reference_ligne": "APP-PV-2019-00080-202607",
+          "message": "tarif mensuel par affilie de 30051 centimes contre 9103 centimes en mediane sur les 36 echeances connues de PV-2019-00080, ecart de 230%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 39,
+          "reference_ligne": "APP-PV-2019-00181-202607",
+          "message": "tarif mensuel par affilie de 2889 centimes contre 8745 centimes en mediane sur les 36 echeances connues de PV-2019-00181, ecart de 67%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:28.425837"
+    },
+    {
+      "reference_lot": "COTISATIONS_LIT_202607_copie-71ae9db7",
+      "nom_fichier": "COTISATIONS_LIT_202607_copie.xlsx",
+      "type_flux": "cotisations",
+      "format": "xlsx",
+      "periode": "2026-07-01",
+      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766",
+      "taille_octets": 29178,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_LIT_202607_copie-71ae9db7.xlsx",
+      "lignes_fichier": 405,
+      "lignes_chargees": 0,
+      "total_declare_cents": 5379843,
+      "total_calcule_cents": 5379843,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : fichier_deja_charge (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 21,
+      "detail_anomalies": [
+        {
+          "code": "fichier_deja_charge",
+          "severite": "bloquant",
+          "ligne_numero": null,
+          "reference_ligne": null,
+          "message": "contenu identique au fichier deja charge COTISATIONS_LIT_202607.xlsx, meme empreinte SHA-256"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 4,
+          "reference_ligne": "APP-PV-2019-00014-202607",
+          "message": "tarif mensuel par affilie de 25457 centimes contre 9066 centimes en mediane sur les 36 echeances connues de PV-2019-00014, ecart de 181%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 8,
+          "reference_ligne": "APP-PV-2019-00023-202607",
+          "message": "tarif mensuel par affilie de 23980 centimes contre 8912 centimes en mediane sur les 12 echeances connues de PV-2019-00023, ecart de 169%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 11,
+          "reference_ligne": "APP-PV-2019-00039-202607",
+          "message": "tarif mensuel par affilie de 22027 centimes contre 8088 centimes en mediane sur les 36 echeances connues de PV-2019-00039, ecart de 172%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 17,
+          "reference_ligne": "APP-PV-2019-00080-202607",
+          "message": "tarif mensuel par affilie de 30051 centimes contre 9103 centimes en mediane sur les 36 echeances connues de PV-2019-00080, ecart de 230%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:28.586307"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202607-d9442664",
+      "nom_fichier": "COTISATIONS_OCE_202607.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-07-01",
+      "sha256": "d9442664f0e70a904c84112d6d2548738cdd51d8acc057144866c21d21a0d34f",
+      "taille_octets": 63993,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_OCE_202607-d9442664.csv",
+      "lignes_fichier": 562,
+      "lignes_chargees": 0,
+      "total_declare_cents": 17459455,
+      "total_calcule_cents": 17459455,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : contrat_inconnu (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 37,
+      "detail_anomalies": [
+        {
+          "code": "contrat_inconnu",
+          "severite": "bloquant",
+          "ligne_numero": 357,
+          "reference_ligne": "APP-SI-2023-00232-202607",
+          "message": "contrat CT-2026-099999 absent du portefeuille"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 7,
+          "reference_ligne": "APP-POL-2020-0027-202607",
+          "message": "tarif mensuel par affilie de 3453 centimes contre 8834 centimes en mediane sur les 36 echeances connues de POL-2020-0027, ecart de 61%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 29,
+          "reference_ligne": "APP-SI-2019-00052-202607",
+          "message": "tarif mensuel par affilie de 16163 centimes contre 5026 centimes en mediane sur les 36 echeances connues de SI-2019-00052, ecart de 222%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 40,
+          "reference_ligne": "APP-SI-2019-00091-202607",
+          "message": "tarif mensuel par affilie de 20064 centimes contre 6128 centimes en mediane sur les 36 echeances connues de SI-2019-00091, ecart de 227%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 41,
+          "reference_ligne": "APP-SI-2019-00092-202607",
+          "message": "tarif mensuel par affilie de 3537 centimes contre 8973 centimes en mediane sur les 12 echeances connues de SI-2019-00092, ecart de 61%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.072234"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202607_R2-eee1a91d",
+      "nom_fichier": "COTISATIONS_OCE_202607_R2.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-07-01",
+      "sha256": "eee1a91d19beb113af2f82b4fdb53367b2d804e199a56a41a96fb74d2c91b909",
+      "taille_octets": 63992,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_OCE_202607_R2-eee1a91d.csv",
+      "lignes_fichier": 562,
+      "lignes_chargees": 562,
+      "total_declare_cents": 17459455,
+      "total_calcule_cents": 17459455,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 37,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 7,
+          "reference_ligne": "APP-POL-2020-0027-202607",
+          "message": "tarif mensuel par affilie de 3453 centimes contre 8834 centimes en mediane sur les 36 echeances connues de POL-2020-0027, ecart de 61%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 29,
+          "reference_ligne": "APP-SI-2019-00052-202607",
+          "message": "tarif mensuel par affilie de 16163 centimes contre 5026 centimes en mediane sur les 36 echeances connues de SI-2019-00052, ecart de 222%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 40,
+          "reference_ligne": "APP-SI-2019-00091-202607",
+          "message": "tarif mensuel par affilie de 20064 centimes contre 6128 centimes en mediane sur les 36 echeances connues de SI-2019-00091, ecart de 227%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 41,
+          "reference_ligne": "APP-SI-2019-00092-202607",
+          "message": "tarif mensuel par affilie de 3537 centimes contre 8973 centimes en mediane sur les 12 echeances connues de SI-2019-00092, ecart de 61%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 86,
+          "reference_ligne": "APP-SI-2020-00034-202607",
+          "message": "tarif mensuel par affilie de 42833 centimes contre 13350 centimes en mediane sur les 12 echeances connues de SI-2020-00034, ecart de 221%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.107251"
+    },
+    {
+      "reference_lot": "COTISATIONS_PYR_202607-cdfee976",
+      "nom_fichier": "COTISATIONS_PYR_202607.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-07-01",
+      "sha256": "cdfee976331671b9472757ea4e7fe9bb58f2ce2f6e9fe8a44cd3d1fd54d1efd2",
+      "taille_octets": 50744,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_PYR_202607-cdfee976.csv",
+      "lignes_fichier": 442,
+      "lignes_chargees": 442,
+      "total_declare_cents": 21624882,
+      "total_calcule_cents": 21624882,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 26,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 8,
+          "reference_ligne": "APP-POL-2020-0024-202607",
+          "message": "tarif mensuel par affilie de 21845 centimes contre 6428 centimes en mediane sur les 36 echeances connues de POL-2020-0024, ecart de 240%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 18,
+          "reference_ligne": "APP-POL-2022-0032-202607",
+          "message": "tarif mensuel par affilie de 2713 centimes contre 6794 centimes en mediane sur les 36 echeances connues de POL-2022-0032, ecart de 60%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 43,
+          "reference_ligne": "APP-SI-2019-00146-202607",
+          "message": "tarif mensuel par affilie de 30492 centimes contre 9280 centimes en mediane sur les 36 echeances connues de SI-2019-00146, ecart de 229%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 45,
+          "reference_ligne": "APP-SI-2019-00151-202607",
+          "message": "tarif mensuel par affilie de 27296 centimes contre 8467 centimes en mediane sur les 36 echeances connues de SI-2019-00151, ecart de 222%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 61,
+          "reference_ligne": "APP-SI-2019-00207-202607",
+          "message": "tarif mensuel par affilie de 3836 centimes contre 9848 centimes en mediane sur les 36 echeances connues de SI-2019-00207, ecart de 61%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.416345"
+    },
+    {
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202607-398f8227",
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202607.csv",
+      "type_flux": "encaissements",
+      "format": "csv",
+      "periode": "2026-07-01",
+      "sha256": "398f82278da8f066f990b6fa1c0d653c14c56d46f42f05151e631f9d70bcaff5",
+      "taille_octets": 111718,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\ENCAISSEMENTS_BANQUE_202607-398f8227.csv",
+      "lignes_fichier": 964,
+      "lignes_chargees": 964,
+      "total_declare_cents": 22576454,
+      "total_calcule_cents": 22576454,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 0,
+      "detail_anomalies": [],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.656244"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202607-4550f66b",
+      "nom_fichier": "PRESTATIONS_OCE_202607.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-07-01",
+      "sha256": "4550f66b8e83e0fb90099beeacc8fb91a597f5280d5e0f102151496de9404ebe",
+      "taille_octets": 13254,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_OCE_202607-4550f66b.csv",
+      "lignes_fichier": 178,
+      "lignes_chargees": 0,
+      "total_declare_cents": 6887750,
+      "total_calcule_cents": 6886500,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : total_incoherent (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 54,
+      "detail_anomalies": [
+        {
+          "code": "total_incoherent",
+          "severite": "bloquant",
+          "ligne_numero": null,
+          "reference_ligne": null,
+          "message": "ligne de total incoherente : colonne montant_rembourse : total declare 6887750 centimes, somme des lignes 6886500 centimes, ecart 1250"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 2,
+          "reference_ligne": "PRE-202607-0000154",
+          "message": "cette prestation porte la consommation 2026 de 0 a 40000 centimes sur la garantie DENTAIRE du contrat SC-2024-00003, pour un plafond annuel de 40000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 4,
+          "reference_ligne": "PRE-202607-0000195",
+          "message": "cette prestation porte la consommation 2026 de 55100 a 100000 centimes sur la garantie AUDIO du contrat SC-2025-00005, pour un plafond annuel de 100000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 6,
+          "reference_ligne": "PRE-202607-0002278",
+          "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2023-00063, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 13,
+          "reference_ligne": "PRE-202607-0005031",
+          "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2024-00117, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.010927"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202607_R2-b902dba3",
+      "nom_fichier": "PRESTATIONS_OCE_202607_R2.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-07-01",
+      "sha256": "b902dba3f3781707fc14a7a40d5bb7f9cabf895c5f1eff5e38433569cff98ad9",
+      "taille_octets": 13254,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_OCE_202607_R2-b902dba3.csv",
+      "lignes_fichier": 178,
+      "lignes_chargees": 178,
+      "total_declare_cents": 6886500,
+      "total_calcule_cents": 6886500,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 54,
+      "detail_anomalies": [
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 2,
+          "reference_ligne": "PRE-202607-0000154",
+          "message": "cette prestation porte la consommation 2026 de 0 a 40000 centimes sur la garantie DENTAIRE du contrat SC-2024-00003, pour un plafond annuel de 40000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 4,
+          "reference_ligne": "PRE-202607-0000195",
+          "message": "cette prestation porte la consommation 2026 de 55100 a 100000 centimes sur la garantie AUDIO du contrat SC-2025-00005, pour un plafond annuel de 100000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 6,
+          "reference_ligne": "PRE-202607-0002278",
+          "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2023-00063, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 13,
+          "reference_ligne": "PRE-202607-0005031",
+          "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2024-00117, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 14,
+          "reference_ligne": "PRE-202607-0005079",
+          "message": "cette prestation porte la consommation 2026 de 0 a 90000 centimes sur la garantie DENTAIRE du contrat SC-2025-00097, pour un plafond annuel de 90000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.026898"
+    },
+    {
+      "reference_lot": "PRESTATIONS_PYR_202607-d66dfc55",
+      "nom_fichier": "PRESTATIONS_PYR_202607.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-07-01",
+      "sha256": "d66dfc55ed1a697913741ff5d0aee5b9ba1cd8823902c96af1201bfcb7774340",
+      "taille_octets": 14635,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_PYR_202607-d66dfc55.csv",
+      "lignes_fichier": 197,
+      "lignes_chargees": 197,
+      "total_declare_cents": 6953550,
+      "total_calcule_cents": 6953550,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 56,
+      "detail_anomalies": [
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 4,
+          "reference_ligne": "PRE-202607-0000543",
+          "message": "cette prestation porte la consommation 2026 de 0 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2026-00010, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 8,
+          "reference_ligne": "PRE-202607-0000705",
+          "message": "cette prestation porte la consommation 2026 de 0 a 27450 centimes sur la garantie OPTIQUE du contrat SC-2025-00017, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 9,
+          "reference_ligne": "PRE-202607-0000720",
+          "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2026-00015, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 15,
+          "reference_ligne": "PRE-202607-0001215",
+          "message": "cette prestation porte la consommation 2026 de 0 a 37250 centimes sur la garantie DENTAIRE du contrat SC-2024-00027, pour un plafond annuel de 40000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 21,
+          "reference_ligne": "PRE-202607-0001727",
+          "message": "cette prestation porte la consommation 2026 de 20900 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2024-00034, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.143585"
+    },
+    {
+      "reference_lot": "COTISATIONS_LIT_202608-5cdbe93f",
+      "nom_fichier": "COTISATIONS_LIT_202608.xlsx",
+      "type_flux": "cotisations",
+      "format": "xlsx",
+      "periode": "2026-08-01",
+      "sha256": "5cdbe93f96d2c6e0209b9597a35f21749f35c6662043cdbb7094242a834dc386",
+      "taille_octets": 25567,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_LIT_202608-5cdbe93f.xlsx",
+      "lignes_fichier": 348,
+      "lignes_chargees": 0,
+      "total_declare_cents": 3257304,
+      "total_calcule_cents": 3257304,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : acte_non_delegue (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 16,
+      "detail_anomalies": [
+        {
+          "code": "acte_non_delegue",
+          "severite": "bloquant",
+          "ligne_numero": 306,
+          "reference_ligne": "APP-PV-2026-00018-202608",
+          "message": "l'acte quittancement n'est pas delegue au cabinet le 2026-08-01 pour le produit 8 du porteur PV-2019-00002. Actes delegues a cette date : aucun"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 2,
+          "reference_ligne": "APP-PV-2019-00009-202608",
+          "message": "tarif mensuel par affilie de 2996 centimes contre 9024 centimes en mediane sur les 36 echeances connues de PV-2019-00009, ecart de 67%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 15,
+          "reference_ligne": "APP-PV-2019-00093-202608",
+          "message": "tarif mensuel par affilie de 2346 centimes contre 8298 centimes en mediane sur les 36 echeances connues de PV-2019-00093, ecart de 72%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 24,
+          "reference_ligne": "APP-PV-2019-00149-202608",
+          "message": "tarif mensuel par affilie de 30135 centimes contre 9171 centimes en mediane sur les 36 echeances connues de PV-2019-00149, ecart de 229%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 30,
+          "reference_ligne": "APP-PV-2019-00186-202608",
+          "message": "tarif mensuel par affilie de 18881 centimes contre 8651 centimes en mediane sur les 36 echeances connues de PV-2019-00186, ecart de 118%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:28.728151"
+    },
+    {
+      "reference_lot": "COTISATIONS_LIT_202608_R2-03d571c4",
+      "nom_fichier": "COTISATIONS_LIT_202608_R2.xlsx",
+      "type_flux": "cotisations",
+      "format": "xlsx",
+      "periode": "2026-08-01",
+      "sha256": "03d571c4cadc3e42f8cf0ed9af76a0735c70d935a48d06334de9cc54135941f9",
+      "taille_octets": 25556,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_LIT_202608_R2-03d571c4.xlsx",
+      "lignes_fichier": 348,
+      "lignes_chargees": 348,
+      "total_declare_cents": 3257304,
+      "total_calcule_cents": 3257304,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 16,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 2,
+          "reference_ligne": "APP-PV-2019-00009-202608",
+          "message": "tarif mensuel par affilie de 2996 centimes contre 9024 centimes en mediane sur les 36 echeances connues de PV-2019-00009, ecart de 67%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 15,
+          "reference_ligne": "APP-PV-2019-00093-202608",
+          "message": "tarif mensuel par affilie de 2346 centimes contre 8298 centimes en mediane sur les 36 echeances connues de PV-2019-00093, ecart de 72%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 24,
+          "reference_ligne": "APP-PV-2019-00149-202608",
+          "message": "tarif mensuel par affilie de 30135 centimes contre 9171 centimes en mediane sur les 36 echeances connues de PV-2019-00149, ecart de 229%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 30,
+          "reference_ligne": "APP-PV-2019-00186-202608",
+          "message": "tarif mensuel par affilie de 18881 centimes contre 8651 centimes en mediane sur les 36 echeances connues de PV-2019-00186, ecart de 118%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 41,
+          "reference_ligne": "APP-PV-2020-00062-202608",
+          "message": "tarif mensuel par affilie de 2391 centimes contre 7616 centimes en mediane sur les 36 echeances connues de PV-2020-00062, ecart de 69%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:28.916125"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202608-0b7e7e9d",
+      "nom_fichier": "COTISATIONS_OCE_202608.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-08-01",
+      "sha256": "0b7e7e9dfa4cc778e81664844687003f214c0136e7fa5b526c6a7fec80ab824a",
+      "taille_octets": 53029,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_OCE_202608-0b7e7e9d.csv",
+      "lignes_fichier": 467,
+      "lignes_chargees": 0,
+      "total_declare_cents": 6298261,
+      "total_calcule_cents": 6298261,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : doublon_cle_metier (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 29,
+      "detail_anomalies": [
+        {
+          "code": "doublon_cle_metier",
+          "severite": "bloquant",
+          "ligne_numero": 182,
+          "reference_ligne": "APP-SI-2022-00139-202608",
+          "message": "cle metier reference_appel = APP-SI-2022-00139-202608 presente sur les lignes [182, 183]"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 23,
+          "reference_ligne": "APP-SI-2019-00069-202608",
+          "message": "tarif mensuel par affilie de 23802 centimes contre 7383 centimes en mediane sur les 36 echeances connues de SI-2019-00069, ecart de 222%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 35,
+          "reference_ligne": "APP-SI-2019-00113-202608",
+          "message": "tarif mensuel par affilie de 16104 centimes contre 5872 centimes en mediane sur les 36 echeances connues de SI-2019-00113, ecart de 174%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 53,
+          "reference_ligne": "APP-SI-2019-00239-202608",
+          "message": "tarif mensuel par affilie de 10098 centimes contre 3605 centimes en mediane sur les 36 echeances connues de SI-2019-00239, ecart de 180%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 73,
+          "reference_ligne": "APP-SI-2020-00113-202608",
+          "message": "tarif mensuel par affilie de 1330 centimes contre 5483 centimes en mediane sur les 36 echeances connues de SI-2020-00113, ecart de 76%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.183193"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202608_R2-7d511586",
+      "nom_fichier": "COTISATIONS_OCE_202608_R2.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-08-01",
+      "sha256": "7d511586898ca3ec19f04b0744f12efc2f0e3b6bf07878b998f4de4886a61fc3",
+      "taille_octets": 53029,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_OCE_202608_R2-7d511586.csv",
+      "lignes_fichier": 467,
+      "lignes_chargees": 467,
+      "total_declare_cents": 6298261,
+      "total_calcule_cents": 6298261,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 29,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 23,
+          "reference_ligne": "APP-SI-2019-00069-202608",
+          "message": "tarif mensuel par affilie de 23802 centimes contre 7383 centimes en mediane sur les 36 echeances connues de SI-2019-00069, ecart de 222%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 35,
+          "reference_ligne": "APP-SI-2019-00113-202608",
+          "message": "tarif mensuel par affilie de 16104 centimes contre 5872 centimes en mediane sur les 36 echeances connues de SI-2019-00113, ecart de 174%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 53,
+          "reference_ligne": "APP-SI-2019-00239-202608",
+          "message": "tarif mensuel par affilie de 10098 centimes contre 3605 centimes en mediane sur les 36 echeances connues de SI-2019-00239, ecart de 180%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 73,
+          "reference_ligne": "APP-SI-2020-00113-202608",
+          "message": "tarif mensuel par affilie de 1330 centimes contre 5483 centimes en mediane sur les 36 echeances connues de SI-2020-00113, ecart de 76%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 107,
+          "reference_ligne": "APP-SI-2021-00049-202608",
+          "message": "tarif mensuel par affilie de 17147 centimes contre 4280 centimes en mediane sur les 36 echeances connues de SI-2021-00049, ecart de 301%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.212702"
+    },
+    {
+      "reference_lot": "COTISATIONS_PYR_202608-bbde47eb",
+      "nom_fichier": "COTISATIONS_PYR_202608.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-08-01",
+      "sha256": "bbde47eb1e0be55021e1be0effe3fe491a78e0ba8878c6f33f1e1755087d1ab0",
+      "taille_octets": 42554,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_PYR_202608-bbde47eb.csv",
+      "lignes_fichier": 371,
+      "lignes_chargees": 371,
+      "total_declare_cents": 5571429,
+      "total_calcule_cents": 5571429,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 19,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 16,
+          "reference_ligne": "APP-SI-2019-00074-202608",
+          "message": "tarif mensuel par affilie de 17416 centimes contre 5276 centimes en mediane sur les 36 echeances connues de SI-2019-00074, ecart de 230%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 61,
+          "reference_ligne": "APP-SI-2020-00116-202608",
+          "message": "tarif mensuel par affilie de 3273 centimes contre 9717 centimes en mediane sur les 36 echeances connues de SI-2020-00116, ecart de 66%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 69,
+          "reference_ligne": "APP-SI-2020-00203-202608",
+          "message": "tarif mensuel par affilie de 33040 centimes contre 10055 centimes en mediane sur les 36 echeances connues de SI-2020-00203, ecart de 229%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 80,
+          "reference_ligne": "APP-SI-2021-00022-202608",
+          "message": "tarif mensuel par affilie de 1589 centimes contre 8625 centimes en mediane sur les 36 echeances connues de SI-2021-00022, ecart de 82%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 102,
+          "reference_ligne": "APP-SI-2021-00137-202608",
+          "message": "tarif mensuel par affilie de 28601 centimes contre 8808 centimes en mediane sur les 36 echeances connues de SI-2021-00137, ecart de 225%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.510438"
+    },
+    {
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202608-12492954",
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202608.csv",
+      "type_flux": "encaissements",
+      "format": "csv",
+      "periode": "2026-08-01",
+      "sha256": "124929546e4cdc84a66600e9398e2f31d7f1fba0e4b2aaeab5a27bfc3dbbd89e",
+      "taille_octets": 93953,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\ENCAISSEMENTS_BANQUE_202608-12492954.csv",
+      "lignes_fichier": 812,
+      "lignes_chargees": 812,
+      "total_declare_cents": 9348544,
+      "total_calcule_cents": 9348544,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 0,
+      "detail_anomalies": [],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.798415"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202608-144a2fb7",
+      "nom_fichier": "PRESTATIONS_OCE_202608.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-08-01",
+      "sha256": "144a2fb734bf8534ed59759e7969e9b62edbdad61a436e5a94e073c0b8639357",
+      "taille_octets": 13340,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_OCE_202608-144a2fb7.csv",
+      "lignes_fichier": 179,
+      "lignes_chargees": 0,
+      "total_declare_cents": 6111150,
+      "total_calcule_cents": 6111150,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : periode_incoherente (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 52,
+      "detail_anomalies": [
+        {
+          "code": "periode_incoherente",
+          "severite": "bloquant",
+          "ligne_numero": 136,
+          "reference_ligne": "PRE-202608-0031915",
+          "message": "periode debutant le 2024-12-18 anterieure a la date d'effet de SI-2025-00094, fixee au 2025-02-01"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 1,
+          "reference_ligne": "PRE-202608-0002126",
+          "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2025-00041, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 5,
+          "reference_ligne": "PRE-202608-0002300",
+          "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2023-00064, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 8,
+          "reference_ligne": "PRE-202608-0002473",
+          "message": "cette prestation porte la consommation 2026 de 0 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2024-00053, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 15,
+          "reference_ligne": "PRE-202608-0004968",
+          "message": "cette prestation porte la consommation 2026 de 0 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2026-00058, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.054423"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202608_R2-f707b4d1",
+      "nom_fichier": "PRESTATIONS_OCE_202608_R2.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-08-01",
+      "sha256": "f707b4d110256048ff7b84149d1c08a182a9fe4f87511423f0eab2cf59e04b16",
+      "taille_octets": 13340,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_OCE_202608_R2-f707b4d1.csv",
+      "lignes_fichier": 179,
+      "lignes_chargees": 179,
+      "total_declare_cents": 6111150,
+      "total_calcule_cents": 6111150,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 52,
+      "detail_anomalies": [
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 1,
+          "reference_ligne": "PRE-202608-0002126",
+          "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2025-00041, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 5,
+          "reference_ligne": "PRE-202608-0002300",
+          "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2023-00064, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 8,
+          "reference_ligne": "PRE-202608-0002473",
+          "message": "cette prestation porte la consommation 2026 de 0 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2024-00053, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 15,
+          "reference_ligne": "PRE-202608-0004968",
+          "message": "cette prestation porte la consommation 2026 de 0 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2026-00058, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 18,
+          "reference_ligne": "PRE-202608-0005099",
+          "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2024-00125, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.068950"
+    },
+    {
+      "reference_lot": "PRESTATIONS_PYR_202608-5fdb8bd6",
+      "nom_fichier": "PRESTATIONS_PYR_202608.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-08-01",
+      "sha256": "5fdb8bd60c1efd2305b35a6094dc62c31e7331abaa60cc77fc9295542593f4de",
+      "taille_octets": 15630,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_PYR_202608-5fdb8bd6.csv",
+      "lignes_fichier": 211,
+      "lignes_chargees": 211,
+      "total_declare_cents": 7123450,
+      "total_calcule_cents": 7123450,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 50,
+      "detail_anomalies": [
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 3,
+          "reference_ligne": "PRE-202608-0000427",
+          "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2023-00006, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 7,
+          "reference_ligne": "PRE-202608-0000648",
+          "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2025-00015, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 16,
+          "reference_ligne": "PRE-202608-0001419",
+          "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2026-00018, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 25,
+          "reference_ligne": "PRE-202608-0003214",
+          "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2024-00073, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 29,
+          "reference_ligne": "PRE-202608-0003759",
+          "message": "cette prestation porte la consommation 2026 de 0 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2024-00082, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.171174"
+    },
+    {
+      "reference_lot": "COTISATIONS_LIT_202609-c1fe1712",
+      "nom_fichier": "COTISATIONS_LIT_202609.xlsx",
+      "type_flux": "cotisations",
+      "format": "xlsx",
+      "periode": "2026-09-01",
+      "sha256": "c1fe1712baf71e45aaa4f37d1dcdae668101b302e2831f11c751a48e81779237",
+      "taille_octets": 25147,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_LIT_202609-c1fe1712.xlsx",
+      "lignes_fichier": 342,
+      "lignes_chargees": 342,
+      "total_declare_cents": 3003291,
+      "total_calcule_cents": 3003291,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 20,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 6,
+          "reference_ligne": "APP-PV-2019-00021-202609",
+          "message": "tarif mensuel par affilie de 26855 centimes contre 9609 centimes en mediane sur les 36 echeances connues de PV-2019-00021, ecart de 179%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 30,
+          "reference_ligne": "APP-PV-2019-00186-202609",
+          "message": "tarif mensuel par affilie de 2760 centimes contre 8651 centimes en mediane sur les 36 echeances connues de PV-2019-00186, ecart de 68%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 62,
+          "reference_ligne": "APP-PV-2020-00200-202609",
+          "message": "tarif mensuel par affilie de 28501 centimes contre 8884 centimes en mediane sur les 36 echeances connues de PV-2020-00200, ecart de 221%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 68,
+          "reference_ligne": "APP-PV-2021-00048-202609",
+          "message": "tarif mensuel par affilie de 24106 centimes contre 7389 centimes en mediane sur les 36 echeances connues de PV-2021-00048, ecart de 226%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 80,
+          "reference_ligne": "APP-PV-2021-00139-202609",
+          "message": "tarif mensuel par affilie de 3391 centimes contre 8520 centimes en mediane sur les 36 echeances connues de PV-2021-00139, ecart de 60%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.002250"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202609-b44db9ea",
+      "nom_fichier": "COTISATIONS_OCE_202609.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "b44db9eace5d097b99c1a4bced94810a20922775029f84e7fde9aca5c8622e17",
+      "taille_octets": 53077,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_OCE_202609-b44db9ea.csv",
+      "lignes_fichier": 468,
+      "lignes_chargees": 0,
+      "total_declare_cents": 6070416,
+      "total_calcule_cents": 6065313,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 32,
+      "detail_anomalies": [
+        {
+          "code": "schema_invalide",
+          "severite": "bloquant",
+          "ligne_numero": 422,
+          "reference_ligne": "APP-SI-2026-00022-202609",
+          "message": "ligne illisible : date_echeance : date illisible : '31/02/2026', format attendu JJ/MM/AAAA"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 14,
+          "reference_ligne": "APP-SI-2019-00033-202609",
+          "message": "tarif mensuel par affilie de 31335 centimes contre 9696 centimes en mediane sur les 36 echeances connues de SI-2019-00033, ecart de 223%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 21,
+          "reference_ligne": "APP-SI-2019-00060-202609",
+          "message": "tarif mensuel par affilie de 13842 centimes contre 4357 centimes en mediane sur les 36 echeances connues de SI-2019-00060, ecart de 218%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 38,
+          "reference_ligne": "APP-SI-2019-00158-202609",
+          "message": "tarif mensuel par affilie de 1750 centimes contre 5233 centimes en mediane sur les 36 echeances connues de SI-2019-00158, ecart de 67%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 39,
+          "reference_ligne": "APP-SI-2019-00160-202609",
+          "message": "tarif mensuel par affilie de 14889 centimes contre 4586 centimes en mediane sur les 36 echeances connues de SI-2019-00160, ecart de 225%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.295315"
+    },
+    {
+      "reference_lot": "COTISATIONS_OCE_202609_R2-2360e155",
+      "nom_fichier": "COTISATIONS_OCE_202609_R2.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "2360e15506c563b00df3c551972279e8317a78b560c5770d6858905651ec49c8",
+      "taille_octets": 53077,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_OCE_202609_R2-2360e155.csv",
+      "lignes_fichier": 468,
+      "lignes_chargees": 468,
+      "total_declare_cents": 6070416,
+      "total_calcule_cents": 6070416,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 32,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 14,
+          "reference_ligne": "APP-SI-2019-00033-202609",
+          "message": "tarif mensuel par affilie de 31335 centimes contre 9696 centimes en mediane sur les 36 echeances connues de SI-2019-00033, ecart de 223%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 21,
+          "reference_ligne": "APP-SI-2019-00060-202609",
+          "message": "tarif mensuel par affilie de 13842 centimes contre 4357 centimes en mediane sur les 36 echeances connues de SI-2019-00060, ecart de 218%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 38,
+          "reference_ligne": "APP-SI-2019-00158-202609",
+          "message": "tarif mensuel par affilie de 1750 centimes contre 5233 centimes en mediane sur les 36 echeances connues de SI-2019-00158, ecart de 67%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 39,
+          "reference_ligne": "APP-SI-2019-00160-202609",
+          "message": "tarif mensuel par affilie de 14889 centimes contre 4586 centimes en mediane sur les 36 echeances connues de SI-2019-00160, ecart de 225%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 57,
+          "reference_ligne": "APP-SI-2020-00023-202609",
+          "message": "tarif mensuel par affilie de 4999 centimes contre 15094 centimes en mediane sur les 36 echeances connues de SI-2020-00023, ecart de 67%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.324957"
+    },
+    {
+      "reference_lot": "COTISATIONS_PYR_202609-e6cd06e8",
+      "nom_fichier": "COTISATIONS_PYR_202609.csv",
+      "type_flux": "cotisations",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "e6cd06e829ddfb372e9a1eeb0d346ccd1e816cfeeffe8ff5e9ab3897460af577",
+      "taille_octets": 42500,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_PYR_202609-e6cd06e8.csv",
+      "lignes_fichier": 371,
+      "lignes_chargees": 371,
+      "total_declare_cents": 5382882,
+      "total_calcule_cents": 5382882,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 18,
+      "detail_anomalies": [
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 8,
+          "reference_ligne": "APP-SI-2019-00010-202609",
+          "message": "tarif mensuel par affilie de 29380 centimes contre 10586 centimes en mediane sur les 36 echeances connues de SI-2019-00010, ecart de 178%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 11,
+          "reference_ligne": "APP-SI-2019-00020-202609",
+          "message": "tarif mensuel par affilie de 1912 centimes contre 5637 centimes en mediane sur les 36 echeances connues de SI-2019-00020, ecart de 66%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 12,
+          "reference_ligne": "APP-SI-2019-00025-202609",
+          "message": "tarif mensuel par affilie de 3431 centimes contre 8642 centimes en mediane sur les 36 echeances connues de SI-2019-00025, ecart de 60%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 85,
+          "reference_ligne": "APP-SI-2021-00042-202609",
+          "message": "tarif mensuel par affilie de 24626 centimes contre 7530 centimes en mediane sur les 36 echeances connues de SI-2021-00042, ecart de 227%"
+        },
+        {
+          "code": "montant_atypique",
+          "severite": "avertissement",
+          "ligne_numero": 100,
+          "reference_ligne": "APP-SI-2021-00126-202609",
+          "message": "tarif mensuel par affilie de 4332 centimes contre 10989 centimes en mediane sur les 36 echeances connues de SI-2021-00126, ecart de 61%"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.594500"
+    },
+    {
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-a9b2eef4",
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202609.csv",
+      "type_flux": "encaissements",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "a9b2eef4616dfbb184a88b0d32bb82824a6e95910f8ec10f550abcbcaec99cc5",
+      "taille_octets": 93908,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\ENCAISSEMENTS_BANQUE_202609-a9b2eef4.csv",
+      "lignes_fichier": 812,
+      "lignes_chargees": 0,
+      "total_declare_cents": 9102326,
+      "total_calcule_cents": 9102326,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 0,
+      "detail_anomalies": [
+        {
+          "code": "schema_invalide",
+          "severite": "bloquant",
+          "ligne_numero": 341,
+          "reference_ligne": "ENC-20260903-0002718",
+          "message": "ligne illisible : montant : montant illisible : '#N/A', attendu un nombre a deux decimales au plus"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.900375"
+    },
+    {
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609_R2-d82bc99e",
+      "nom_fichier": "ENCAISSEMENTS_BANQUE_202609_R2.csv",
+      "type_flux": "encaissements",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "d82bc99e2c8eb10615ac5b1ba23a76b0df30ee4e12347dccb9c9bfc1cfb25971",
+      "taille_octets": 93909,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\ENCAISSEMENTS_BANQUE_202609_R2-d82bc99e.csv",
+      "lignes_fichier": 812,
+      "lignes_chargees": 812,
+      "total_declare_cents": 9110459,
+      "total_calcule_cents": 9110459,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 0,
+      "detail_anomalies": [],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:29.922093"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202609-ed12b821",
+      "nom_fichier": "PRESTATIONS_OCE_202609.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "ed12b82153ceafebb7f8e4fc82b4227fcdefe632caa82d033c6f8e0eb9fa4d31",
+      "taille_octets": 19519,
+      "statut": "rejete",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_OCE_202609-ed12b821.csv",
+      "lignes_fichier": 266,
+      "lignes_chargees": 0,
+      "total_declare_cents": 5363700,
+      "total_calcule_cents": 5363700,
+      "motif_rejet": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : adherent_inconnu (1)",
+      "anomalies_bloquantes": 1,
+      "avertissements": 35,
+      "detail_anomalies": [
+        {
+          "code": "adherent_inconnu",
+          "severite": "bloquant",
+          "ligne_numero": 239,
+          "reference_ligne": "PRE-202609-0043643",
+          "message": "adherent A9990001 absent du portefeuille"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 2,
+          "reference_ligne": "PRE-202609-0000104",
+          "message": "cette prestation porte la consommation 2026 de 0 a 90000 centimes sur la garantie DENTAIRE du contrat SC-2025-00001, pour un plafond annuel de 90000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 29,
+          "reference_ligne": "PRE-202609-0005311",
+          "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2025-00116, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 32,
+          "reference_ligne": "PRE-202609-0005409",
+          "message": "cette prestation porte la consommation 2026 de 0 a 56400 centimes sur la garantie AUDIO du contrat SC-2025-00124, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 39,
+          "reference_ligne": "PRE-202609-0006348",
+          "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2026-00089, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.095939"
+    },
+    {
+      "reference_lot": "PRESTATIONS_OCE_202609_R2-d7b3bba9",
+      "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "d7b3bba99716b41022819fcef34cb4cd06b815929ee3f8b82dd6361adf4ca07a",
+      "taille_octets": 19518,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_OCE_202609_R2-d7b3bba9.csv",
+      "lignes_fichier": 266,
+      "lignes_chargees": 266,
+      "total_declare_cents": 5363700,
+      "total_calcule_cents": 5363700,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 35,
+      "detail_anomalies": [
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 2,
+          "reference_ligne": "PRE-202609-0000104",
+          "message": "cette prestation porte la consommation 2026 de 0 a 90000 centimes sur la garantie DENTAIRE du contrat SC-2025-00001, pour un plafond annuel de 90000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 29,
+          "reference_ligne": "PRE-202609-0005311",
+          "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2025-00116, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 32,
+          "reference_ligne": "PRE-202609-0005409",
+          "message": "cette prestation porte la consommation 2026 de 0 a 56400 centimes sur la garantie AUDIO du contrat SC-2025-00124, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 39,
+          "reference_ligne": "PRE-202609-0006348",
+          "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2026-00089, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 44,
+          "reference_ligne": "PRE-202609-0006737",
+          "message": "cette prestation porte la consommation 2026 de 0 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2026-00094, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.112007"
+    },
+    {
+      "reference_lot": "PRESTATIONS_PYR_202609-46e842a4",
+      "nom_fichier": "PRESTATIONS_PYR_202609.csv",
+      "type_flux": "prestations",
+      "format": "csv",
+      "periode": "2026-09-01",
+      "sha256": "46e842a45a6fde0873f5205610f7eeb5c1718c79182cb2b3c237b804aa8fb4db",
+      "taille_octets": 23961,
+      "statut": "charge",
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_PYR_202609-46e842a4.csv",
+      "lignes_fichier": 327,
+      "lignes_chargees": 327,
+      "total_declare_cents": 7573500,
+      "total_calcule_cents": 7573500,
+      "motif_rejet": null,
+      "anomalies_bloquantes": 0,
+      "avertissements": 39,
+      "detail_anomalies": [
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 6,
+          "reference_ligne": "PRE-202609-0000617",
+          "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2026-00011, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 27,
+          "reference_ligne": "PRE-202609-0001415",
+          "message": "cette prestation porte la consommation 2026 de 0 a 188000 centimes sur la garantie DENTAIRE du contrat SC-2023-00033, pour un plafond annuel de 200000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 31,
+          "reference_ligne": "PRE-202609-0001496",
+          "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2023-00035, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 33,
+          "reference_ligne": "PRE-202609-0001613",
+          "message": "cette prestation porte la consommation 2026 de 25200 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2023-00039, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        },
+        {
+          "code": "prestation_proche_plafond",
+          "severite": "avertissement",
+          "ligne_numero": 40,
+          "reference_ligne": "PRE-202609-0002866",
+          "message": "cette prestation porte la consommation 2026 de 16400 a 30000 centimes sur la garantie OPTIQUE du contrat SC-2023-00073, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+        }
+      ],
+      "detecte_le": "2026-10-21T16:50:27",
+      "traite_le": "2026-10-21T18:50:30.206174"
+    }
+  ]
+}

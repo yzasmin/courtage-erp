@@ -1,0 +1,30 @@
+{
+  "periodes": [
+    "2026-07-01",
+    "2026-08-01",
+    "2026-09-01"
+  ],
+  "appels_examines": 3776,
+  "commissions": {
+    "creees": 3704,
+    "mises_a_jour": 0,
+    "inchangees": 0,
+    "supprimees": 0,
+    "montant_cents": 7934683
+  },
+  "retrocessions": {
+    "creees": 2978,
+    "mises_a_jour": 0,
+    "inchangees": 0,
+    "supprimees": 0,
+    "montant_cents": 3889554
+  },
+  "appels_ecartes": {
+    "apporteur_sans_retrocession": 726,
+    "aucun_encaissement_rapproche": 72
+  },
+  "assiettes_de_repli": {
+    "assiette_appelee_car_encaissement_non_delegue": 1184
+  },
+  "periodes_sans_releve_bancaire_charge": []
+}

@@ -1,0 +1,316 @@
+{
+  "periodes": [
+    "2026-07-01",
+    "2026-08-01",
+    "2026-09-01"
+  ],
+  "bordereaux_de_commissions": 9,
+  "bordereaux_de_retrocessions": 24,
+  "crees": 33,
+  "mis_a_jour": 0,
+  "inchanges": 0,
+  "lignes_rattachees": 6682,
+  "montant_commissions_cents": 7934683,
+  "montant_retrocessions_cents": 3889554,
+  "fichiers": [
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BC-LIT-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BC-OCE-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BC-PYR-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP01-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP02-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP03-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP04-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP05-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP06-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP07-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202607\\BR-AP08-202607.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BC-LIT-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BC-OCE-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BC-PYR-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP01-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP02-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP03-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP04-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP05-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP06-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP07-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202608\\BR-AP08-202608.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BC-LIT-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BC-OCE-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BC-PYR-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP01-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP02-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP03-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP04-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP05-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP06-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP07-202609.csv",
+    "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\bordereaux\\202609\\BR-AP08-202609.csv"
+  ],
+  "bordereaux_en_base": [
+    {
+      "reference": "BC-LIT-202607",
+      "type": "commissions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 392,
+      "montant_cents": 680191,
+      "destinataire": "LIT"
+    },
+    {
+      "reference": "BC-OCE-202607",
+      "type": "commissions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 551,
+      "montant_cents": 1793848,
+      "destinataire": "OCE"
+    },
+    {
+      "reference": "BC-PYR-202607",
+      "type": "commissions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 442,
+      "montant_cents": 2028109,
+      "destinataire": "PYR"
+    },
+    {
+      "reference": "BR-AP01-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 138,
+      "montant_cents": 192402,
+      "destinataire": "AP01"
+    },
+    {
+      "reference": "BR-AP02-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 156,
+      "montant_cents": 365070,
+      "destinataire": "AP02"
+    },
+    {
+      "reference": "BR-AP03-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 151,
+      "montant_cents": 388660,
+      "destinataire": "AP03"
+    },
+    {
+      "reference": "BR-AP04-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 121,
+      "montant_cents": 145037,
+      "destinataire": "AP04"
+    },
+    {
+      "reference": "BR-AP05-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 148,
+      "montant_cents": 311997,
+      "destinataire": "AP05"
+    },
+    {
+      "reference": "BR-AP06-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 146,
+      "montant_cents": 358800,
+      "destinataire": "AP06"
+    },
+    {
+      "reference": "BR-AP07-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 133,
+      "montant_cents": 209181,
+      "destinataire": "AP07"
+    },
+    {
+      "reference": "BR-AP08-202607",
+      "type": "retrocessions",
+      "periode": "2026-07-01",
+      "nombre_lignes": 114,
+      "montant_cents": 209899,
+      "destinataire": "AP08"
+    },
+    {
+      "reference": "BC-LIT-202608",
+      "type": "commissions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 338,
+      "montant_cents": 423885,
+      "destinataire": "LIT"
+    },
+    {
+      "reference": "BC-OCE-202608",
+      "type": "commissions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 452,
+      "montant_cents": 678693,
+      "destinataire": "OCE"
+    },
+    {
+      "reference": "BC-PYR-202608",
+      "type": "commissions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 371,
+      "montant_cents": 649268,
+      "destinataire": "PYR"
+    },
+    {
+      "reference": "BR-AP01-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 121,
+      "montant_cents": 156729,
+      "destinataire": "AP01"
+    },
+    {
+      "reference": "BR-AP02-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 132,
+      "montant_cents": 84424,
+      "destinataire": "AP02"
+    },
+    {
+      "reference": "BR-AP03-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 122,
+      "montant_cents": 127535,
+      "destinataire": "AP03"
+    },
+    {
+      "reference": "BR-AP04-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 97,
+      "montant_cents": 36529,
+      "destinataire": "AP04"
+    },
+    {
+      "reference": "BR-AP05-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 137,
+      "montant_cents": 126357,
+      "destinataire": "AP05"
+    },
+    {
+      "reference": "BR-AP06-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 118,
+      "montant_cents": 160546,
+      "destinataire": "AP06"
+    },
+    {
+      "reference": "BR-AP07-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 116,
+      "montant_cents": 112059,
+      "destinataire": "AP07"
+    },
+    {
+      "reference": "BR-AP08-202608",
+      "type": "retrocessions",
+      "periode": "2026-08-01",
+      "nombre_lignes": 94,
+      "montant_cents": 63790,
+      "destinataire": "AP08"
+    },
+    {
+      "reference": "BC-LIT-202609",
+      "type": "commissions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 332,
+      "montant_cents": 392139,
+      "destinataire": "LIT"
+    },
+    {
+      "reference": "BC-OCE-202609",
+      "type": "commissions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 455,
+      "montant_cents": 663310,
+      "destinataire": "OCE"
+    },
+    {
+      "reference": "BC-PYR-202609",
+      "type": "commissions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 371,
+      "montant_cents": 625240,
+      "destinataire": "PYR"
+    },
+    {
+      "reference": "BR-AP01-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 120,
+      "montant_cents": 152861,
+      "destinataire": "AP01"
+    },
+    {
+      "reference": "BR-AP02-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 134,
+      "montant_cents": 84587,
+      "destinataire": "AP02"
+    },
+    {
+      "reference": "BR-AP03-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 128,
+      "montant_cents": 127657,
+      "destinataire": "AP03"
+    },
+    {
+      "reference": "BR-AP04-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 91,
+      "montant_cents": 30708,
+      "destinataire": "AP04"
+    },
+    {
+      "reference": "BR-AP05-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 140,
+      "montant_cents": 124545,
+      "destinataire": "AP05"
+    },
+    {
+      "reference": "BR-AP06-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 120,
+      "montant_cents": 158632,
+      "destinataire": "AP06"
+    },
+    {
+      "reference": "BR-AP07-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 101,
+      "montant_cents": 96193,
+      "destinataire": "AP07"
+    },
+    {
+      "reference": "BR-AP08-202609",
+      "type": "retrocessions",
+      "periode": "2026-09-01",
+      "nombre_lignes": 100,
+      "montant_cents": 65356,
+      "destinataire": "AP08"
+    }
+  ]
+}

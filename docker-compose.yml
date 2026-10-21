@@ -1,0 +1,330 @@
+# Pile du mini-ERP de courtage. `docker compose up -d --build` suffit.
+#
+# Dimensionnement : la machine virtuelle Docker de ce poste dispose d'environ 3,75 Go
+# (mesure du 19/10/2026 : `docker info` annonce 4 031 537 152 octets). Les limites memoire ci-dessous
+# sont donc explicites, service par service. Sans limite, l'ordonnanceur Airflow du module 2 gonfle
+# jusqu'a faire tomber le poste entier.
+#
+# Ce que la pile contient au module 1 : PostgreSQL et l'application ERP. Les services Airflow du
+# module 2 s'y ajouteront, avec un executeur local et sans Celery ni Redis, pour tenir dans l'enveloppe.
+#
+# Le meme code tourne sans Docker, sur SQLite : voir `make installer` puis `make migrer`. C'est le chemin
+# de developpement rapide, et celui d'un relecteur qui n'a pas Docker.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-courtage}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-courtage}
+      POSTGRES_DB: ${POSTGRES_DB:-courtage}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      # Cree la base des metadonnees d'Airflow des le premier demarrage, pour que le module 2 n'ait
+      # pas a modifier ce fichier. Un seul moteur PostgreSQL, deux bases distinctes : un seul cout
+      # memoire fixe, et les metadonnees de l'orchestrateur restent separees des donnees metier.
+      - ./docker/init-postgres.sql:/docker-entrypoint-initdb.d/10-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-courtage} -d ${POSTGRES_DB:-courtage}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    mem_limit: ${POSTGRES_MEM_LIMIT:-512m}
+    # Expose en local seulement, pour pouvoir inspecter la base avec un client sans l'ouvrir au reseau.
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+
+  # Monte le schema puis genere le jeu de demonstration. Service a execution unique : les services qui
+  # en dependent attendent qu'il se termine avec le code 0.
+  erp-init:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.erp
+    image: courtage-erp:0.1.0
+    environment: &env-erp
+      COURTAGE_BASE_URL: postgresql+psycopg://${POSTGRES_USER:-courtage}:${POSTGRES_PASSWORD:-courtage}@postgres:5432/${POSTGRES_DB:-courtage}
+      COURTAGE_GRAINE: ${COURTAGE_GRAINE:-20261019}
+      COURTAGE_DATE_REFERENCE: ${COURTAGE_DATE_REFERENCE:-2026-09-30}
+    command: ["sh", "-c", "courtage migrer && courtage generer --si-vide"]
+    restart: "no"
+    mem_limit: ${ERP_MEM_LIMIT:-512m}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  erp:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.erp
+    image: courtage-erp:0.1.0
+    environment: *env-erp
+    command: ["courtage", "servir", "--hote", "0.0.0.0", "--port", "8000"]
+    # Publie sur la boucle locale seulement, comme PostgreSQL. Une demonstration n'a aucune raison
+    # d'ouvrir l'application sur toutes les interfaces du poste : sur un reseau d'entreprise ou un
+    # reseau public, `0.0.0.0` expose la base de demonstration a qui passe par la. Pour y acceder
+    # depuis une autre machine, changer cette ligne sciemment.
+    ports:
+      - "127.0.0.1:${ERP_PORT:-8000}:8000"
+    restart: unless-stopped
+    mem_limit: ${ERP_MEM_LIMIT:-512m}
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/sante', timeout=3).status == 200 else 1)\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+    depends_on:
+      erp-init:
+        condition: service_completed_successfully
+
+  # Service a la demande : `docker compose run --rm erp-cli <commande>`.
+  # C'est lui qui execute les preuves (migrations, empreinte de generation, tests) sur PostgreSQL.
+  erp-cli:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.erp
+    image: courtage-erp:0.1.0
+    environment: *env-erp
+    profiles: ["cli"]
+    entrypoint: []
+    command: ["courtage", "--aide"]
+    restart: "no"
+    mem_limit: ${ERP_MEM_LIMIT:-512m}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # --- Module 2 : orchestration des flux financiers ---------------------------------------------
+  #
+  # Dimensionnement, et c'est la contrainte qui a dicte toute cette section. La machine virtuelle
+  # Docker de ce poste dispose d'environ 3,75 Go. Airflow en executeur local tient dans cette
+  # enveloppe, Airflow en executeur Celery non : Celery demande un courtier de messages, Redis, et des
+  # processus de travail separes, soit deux services de plus pour une charge qui tient dans un seul
+  # processus. Il n'y a donc ni Celery ni Redis ici, et les limites memoire sont declarees service par
+  # service. Sans limite explicite, un ordonnanceur qui gonfle fait tomber le poste entier.
+  #
+  # Les metadonnees d'Airflow vivent dans la base `airflow` du meme serveur PostgreSQL, creee des le
+  # premier demarrage par `docker/init-postgres.sql`. Un seul moteur a demarrer, donc un seul cout
+  # memoire fixe, et les metadonnees de l'orchestrateur restent separees des donnees metier.
+
+  # Simule le courrier du mois : depose dans le dossier d'arrivee les bordereaux des compagnies, le
+  # releve bancaire et les bordereaux de prestations, avec leurs anomalies et leur manifeste de verite
+  # terrain. Service a execution unique, comme `erp-init`.
+  # Prepare l'espace de travail partage, et c'est le seul service de la pile qui tourne en root.
+  #
+  # Pourquoi il existe. Sur un clone vierge, `./data/flux` n'existe pas : il est volontairement hors du
+  # depot, puisque son contenu est regenere a la demande. Docker cree alors le dossier du point de
+  # montage au nom de root, et tous les autres services, qui tournent sans privileges, ne peuvent plus
+  # y ecrire. C'est exactement ce qui faisait echouer l'integration continue :
+  # `PermissionError: [Errno 13] Permission denied: '/data/flux/arrivee'`. Sur le poste de
+  # developpement, le dossier existait deja et le defaut restait invisible.
+  #
+  # Ce que fait ce service : il cree les sous-dossiers de la chaine et ouvre le groupe 0 en ecriture sur
+  # l'espace des flux et sur `results/`. Tous les autres services gardent un utilisateur sans
+  # privileges et le groupe 0, donc ils ecrivent par le groupe sans jamais devenir root. Le proprietaire
+  # des fichiers deja presents dans `results/` n'est pas change, pour qu'un relecteur garde la main sur
+  # son depot.
+  #
+  # Pourquoi passer par le groupe 0 et non par l'identifiant d'utilisateur de l'hote. L'image Airflow
+  # ne resout un identifiant arbitraire que par son propre point d'entree, et les services
+  # d'initialisation remplacent ce point d'entree par `bash`. Essai fait en integration continue avec
+  # l'identifiant de l'executeur : `KeyError: getpwuid(): uid not found: 1001`. Tous les services
+  # gardent donc l'utilisateur 50000 de l'image Airflow, et c'est l'appartenance au groupe 0 qui leur
+  # ouvre l'ecriture. Consequence a connaitre sur un hote Linux : les fichiers que la pile depose dans
+  # `results/` appartiennent a 50000, et il faut `sudo chown` pour les reprendre a la main.
+  espace-flux:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.erp
+    image: courtage-erp:0.1.0
+    user: "0:0"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        set -e
+        mkdir -p /data/flux/arrivee /data/flux/archive /data/flux/rejets /opt/courtage/results
+        # Sur Docker Desktop (Windows, macOS), le systeme de fichiers monte ne porte pas les droits
+        # POSIX et refuse ces deux appels ; le montage y est deja ouvert en ecriture. Sur un montage
+        # Linux reel, ils sont indispensables. L'echec de l'un ou l'autre n'est donc pas une erreur en
+        # soi, et c'est le controle qui suit qui tranche.
+        chgrp -R 0 /data/flux /opt/courtage/results || echo "chgrp refuse par le montage"
+        chmod -R g+rwX /data/flux /opt/courtage/results || echo "chmod refuse par le montage"
+        # Le vrai controle : le groupe 0 doit pouvoir ecrire dans chaque dossier, puisque c'est par lui
+        # que les autres services ecrivent. Tolerer l'echec des deux commandes ci-dessus sans verifier
+        # le resultat laisserait un defaut de droits ressortir trois taches plus loin, sous la forme
+        # d'une permission refusee sans rapport visible avec sa cause.
+        for dossier in /data/flux /data/flux/arrivee /data/flux/archive /data/flux/rejets /opt/courtage/results; do
+          mode=`stat -c '%a' "$$dossier"`
+          groupe=`expr \( $$mode / 10 \) % 10`
+          if [ `expr $$groupe % 4` -lt 2 ]; then
+            echo "ECHEC : le groupe 0 ne peut pas ecrire dans $$dossier, droits $$mode" >&2
+            exit 1
+          fi
+          echo "$$dossier : droits $$mode, groupe en ecriture"
+        done
+    restart: "no"
+    mem_limit: 128m
+    volumes:
+      - ./data/flux:/data/flux
+      - ./results:/opt/courtage/results
+
+  flux-init:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.erp
+    image: courtage-erp:0.1.0
+    environment:
+      <<: *env-erp
+      COURTAGE_FLUX_RACINE: /data/flux
+      COURTAGE_RESULTATS: /opt/courtage/results
+    command: ["courtage", "flux", "generer"]
+    restart: "no"
+    mem_limit: ${ERP_MEM_LIMIT:-512m}
+    # Meme identifiant d'utilisateur que les services Airflow, et c'est indispensable. Les deux
+    # conteneurs partagent le dossier des flux : celui-ci y depose les fichiers, celui-la les deplace
+    # dans l'archive. L'image de l'ERP tourne sous l'utilisateur 10001 et celle d'Airflow sous 50000 ;
+    # des fichiers ecrits par le premier ne sont pas deplacables par le second, et l'archivage echoue
+    # sur une permission refusee. Essai fait, erreur constatee, correction ici.
+    user: "50000:0"
+    volumes:
+      - ./data/flux:/data/flux
+      - ./results:/opt/courtage/results
+    depends_on:
+      erp-init:
+        condition: service_completed_successfully
+      espace-flux:
+        condition: service_completed_successfully
+
+  airflow-init:
+    build: &build-airflow
+      context: .
+      dockerfile: docker/Dockerfile.airflow
+    image: courtage-airflow:0.1.0
+    environment: &env-airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER:-courtage}:${POSTGRES_PASSWORD:-courtage}@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      # Parallelisme volontairement bas : la chaine est sequentielle par nature, et deux taches
+      # simultanees sur ce poste ne gagneraient rien tout en doublant la memoire.
+      AIRFLOW__CORE__PARALLELISM: "4"
+      AIRFLOW__CORE__MAX_ACTIVE_TASKS_PER_DAG: "2"
+      AIRFLOW__SCHEDULER__PARSING_PROCESSES: "1"
+      AIRFLOW__WEBSERVER__WORKERS: "2"
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "False"
+      AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY:-}
+      AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.session
+      # Vues par le client metier appele par les taches du graphe.
+      COURTAGE_BASE_URL: postgresql+psycopg://${POSTGRES_USER:-courtage}:${POSTGRES_PASSWORD:-courtage}@postgres:5432/${POSTGRES_DB:-courtage}
+      COURTAGE_FLUX_RACINE: /data/flux
+      COURTAGE_FENETRE_RAPPROCHEMENT_JOURS: ${COURTAGE_FENETRE_RAPPROCHEMENT_JOURS:-15}
+      # Sans cette variable, les comptes rendus atterrissent dans l'environnement virtuel du
+      # conteneur, hors de tout volume, et disparaissent avec lui.
+      COURTAGE_RESULTATS: /opt/courtage/results
+      # Vues par dbt, via son profil.
+      COURTAGE_PG_HOTE: postgres
+      COURTAGE_PG_PORT: "5432"
+      COURTAGE_PG_UTILISATEUR: ${POSTGRES_USER:-courtage}
+      COURTAGE_PG_MOTDEPASSE: ${POSTGRES_PASSWORD:-courtage}
+      COURTAGE_PG_BASE: ${POSTGRES_DB:-courtage}
+      DBT_TARGET_PATH: cible
+      DBT_PROJECT_DIR: /opt/courtage/dbt
+      DBT_PROFILES_DIR: /opt/courtage/dbt
+    volumes: &volumes-airflow
+      - ./dags:/opt/airflow/dags:ro
+      - ./dbt:/opt/courtage/dbt
+      - ./data/flux:/data/flux
+      - ./results:/opt/courtage/results
+      - airflow-logs:/opt/airflow/logs
+    user: "50000:0"
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        set -e
+        airflow db migrate
+        airflow users create --username "${AIRFLOW_ADMIN:-admin}" \
+          --password "${AIRFLOW_ADMIN_MOTDEPASSE:-courtage}" \
+          --firstname Gestion --lastname Cabinet --role Admin \
+          --email gestion@exemple.invalid || true
+    restart: "no"
+    mem_limit: ${AIRFLOW_MEM_LIMIT:-768m}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      espace-flux:
+        condition: service_completed_successfully
+
+  airflow-scheduler:
+    build: *build-airflow
+    image: courtage-airflow:0.1.0
+    environment: *env-airflow
+    volumes: *volumes-airflow
+    user: "50000:0"
+    command: ["scheduler"]
+    restart: unless-stopped
+    mem_limit: ${AIRFLOW_MEM_LIMIT:-768m}
+    healthcheck:
+      test: ["CMD-SHELL", "airflow jobs check --job-type SchedulerJob --hostname \"$${HOSTNAME}\""]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+      flux-init:
+        condition: service_completed_successfully
+
+  airflow-webserver:
+    build: *build-airflow
+    image: courtage-airflow:0.1.0
+    environment: *env-airflow
+    volumes: *volumes-airflow
+    user: "50000:0"
+    command: ["webserver"]
+    # Boucle locale seulement, meme raison que pour l'application ERP. L'interface Airflow donne
+    # acces aux journaux et au declenchement des graphes : c'est le service de la pile qu'il est le
+    # moins souhaitable d'exposer.
+    ports:
+      - "127.0.0.1:${AIRFLOW_PORT:-8080}:8080"
+    restart: unless-stopped
+    # Limite propre, plus haute que celle de l'ordonnanceur. Mesure du 20/10/2026 avec
+    # `docker stats` : le serveur web occupait 706,6 Mio pour une limite de 768 Mio, soit 92 pour
+    # cent, ce qui l'expose a une interruption par le noyau au premier pic. L'ordonnanceur, lui,
+    # tenait a 577,9 Mio. Les deux limites sont donc dissociees au lieu d'etre alignees sur la plus
+    # basse, et les valeurs retenues viennent de la mesure, pas d'une estimation.
+    mem_limit: ${AIRFLOW_WEB_MEM_LIMIT:-1024m}
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail --silent http://localhost:8080/health || exit 1"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+      start_period: 40s
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+
+  # Service a la demande, pour lancer dbt a la main : `docker compose run --rm dbt build`.
+  dbt:
+    build: *build-airflow
+    image: courtage-airflow:0.1.0
+    environment: *env-airflow
+    volumes: *volumes-airflow
+    user: "50000:0"
+    profiles: ["cli"]
+    # `--project-dir` et `--profiles-dir` ne sont pas des options globales de dbt : elles appartiennent
+    # a la sous-commande. Les placer dans l'entrypoint, donc avant `build`, produisait
+    # « No such option: --project-dir ». Elles passent desormais par l'environnement, ce qui laisse
+    # `docker compose run --rm dbt <sous-commande>` fonctionner pour n'importe quelle sous-commande.
+    entrypoint: ["/opt/dbt-venv/bin/dbt"]
+    command: ["build"]
+    restart: "no"
+    mem_limit: ${AIRFLOW_MEM_LIMIT:-768m}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+  airflow-logs:

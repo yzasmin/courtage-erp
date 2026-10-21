@@ -1,0 +1,30 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+logs/
+data/arrivee/
+data/archive/
+*.db
+*.sqlite3
+.DS_Store
+*.stackdump
+# Power BI : le .pbix binaire n est pas versionne, le projet PBIP l est
+powerbi/*.pbix
+
+# Notes de cadrage, conservees hors du depot
+docs/PROMPT.md
+docs/CIBLE.md
+
+# Module 2 : espace de travail des flux. Les fichiers recus sont regeneres a la demande par
+# `courtage flux generer`, et leurs empreintes sont consignees dans results/flux_generation.json.
+data/flux/
+
+# Artefacts dbt : cible de compilation, journaux, paquets.
+dbt/cible/
+dbt/logs/
+dbt/dbt_packages/
+# Identifiant anonyme genere par dbt au premier lancement, propre a chaque poste.
+dbt/.user.yml

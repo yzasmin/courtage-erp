@@ -1,0 +1,24 @@
+{
+  "fenetre_jours": 15,
+  "lignes_examinees": 2588,
+  "par_statut": {
+    "ecart": 16,
+    "non_trouve": 24,
+    "partiel": 34,
+    "rapproche": 2488
+  },
+  "appels_reexamines": 11,
+  "par_methode": {
+    "aucune": 24,
+    "montant_date": 294,
+    "reference": 2244
+  },
+  "actes_non_delegues_ignores": 26,
+  "mouvements_absents_du_coeur_erp": 31,
+  "ecart_total_cents": -107926,
+  "lots": [
+    "15",
+    "16",
+    "18"
+  ]
+}
