@@ -15,6 +15,9 @@ sources:
       - name: compagnie
       - name: apporteur
       - name: produit
+      - name: convention_delegation
+      - name: convention_produit
+      - name: acte_delegue
       - name: garantie
       - name: formule
       - name: formule_garantie

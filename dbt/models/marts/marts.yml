@@ -66,3 +66,148 @@ models:
                 arguments:
                   values: [true]
                   quote: false
+
+  # --- Module 3 : modele en etoile du pilotage -----------------------------------------------------
+
+  - name: dim_branche
+    description: Branche d'assurance (sante individuelle, sante collective, prevoyance).
+    columns:
+      - name: branche_id
+        tests: [unique, not_null]
+
+  - name: dim_adherent
+    description: >
+      Adherent avec departement et tranche d'age a la date d'arret. Ni nom ni coordonnees : un tableau de
+      bord n'en a pas besoin.
+    columns:
+      - name: adherent_id
+        tests: [unique, not_null]
+      - name: tranche_age
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ['moins de 25 ans', '25 a 34 ans', '35 a 44 ans', '45 a 54 ans', '55 a 64 ans', '65 ans et plus']
+
+  - name: fct_cotisations_acquises
+    description: >
+      Cotisations acquises hors taxe, une ligne par appel et par mois couvert, au prorata des jours. La
+      cotisation acquise est le denominateur du ratio sinistres sur primes ; la cotisation emise de
+      fct_cotisations n'est pas substituable.
+    columns:
+      - name: appel_id
+        tests:
+          - not_null
+          - relationships:
+                arguments:
+                  to: ref('fct_cotisations')
+                  field: appel_id
+      - name: mois_acquisition
+        tests:
+          - not_null
+          - relationships:
+                arguments:
+                  to: ref('dim_date')
+                  field: date_jour
+      - name: cotisation_acquise_ht_euros
+        tests: [not_null, montant_non_negatif]
+      - name: produit_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_produit')
+                  field: produit_id
+      - name: apporteur_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_apporteur')
+                  field: apporteur_id
+
+  - name: fct_mouvements_portefeuille
+    description: >
+      Affaires nouvelles et resiliations, une ligne par mouvement. L'apporteur et la cotisation sont ceux
+      de la version du contrat au jour du mouvement.
+    columns:
+      - name: mouvement_id
+        tests: [unique, not_null]
+      - name: type_mouvement
+        tests:
+          - not_null
+          - accepted_values:
+                arguments:
+                  values: ['affaire_nouvelle', 'resiliation']
+      - name: date_mouvement
+        tests:
+          - not_null
+          - relationships:
+                arguments:
+                  to: ref('dim_date')
+                  field: date_jour
+      - name: adherent_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_adherent')
+                  field: adherent_id
+      - name: produit_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_produit')
+                  field: produit_id
+      - name: branche_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_branche')
+                  field: branche_id
+      - name: apporteur_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_apporteur')
+                  field: apporteur_id
+      - name: cotisation_annualisee_euros
+        tests: [not_null, montant_non_negatif]
+
+  - name: fct_portefeuille_mensuel
+    description: >
+      Portefeuille a chaque fin de mois, une ligne par contrat au portefeuille. Un stock : il se lit a une
+      date et ne s'additionne pas dans le temps.
+    columns:
+      - name: date_cliche
+        tests:
+          - not_null
+          - relationships:
+                arguments:
+                  to: ref('dim_date')
+                  field: date_jour
+      - name: statut_contrat
+        tests:
+          - accepted_values:
+                arguments:
+                  values: ['en_cours', 'suspendu']
+      - name: adherent_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_adherent')
+                  field: adherent_id
+      - name: produit_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_produit')
+                  field: produit_id
+      - name: branche_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_branche')
+                  field: branche_id
+      - name: apporteur_id
+        tests:
+          - relationships:
+                arguments:
+                  to: ref('dim_apporteur')
+                  field: apporteur_id
