@@ -308,6 +308,10 @@ exposure (`tableau_de_bord_pilotage`, onze marts en parents), visible dans le li
 | Production par apporteur | 834 affaires et 655 274,04 € annualisés en 2025, dix apporteurs | `03_production_par_apporteur` |
 | Portefeuille par branche | 3 926 contrats, dont 36 suspendus, et 3 478 836,36 € annualisés au 30/09/2026 | `04_portefeuille_par_branche` |
 
+### Intégration continue
+
+Exécution 39685738522 sur le commit `97dcc4f` : réussie en 3 min 26 s (suite de 238 tests, style, 7 tests du projet Power BI). `gh run list --repo yzasmin/courtage-erp` donne l'état courant.
+
 ### Défauts trouvés pendant le module
 
 | Défaut | Comment il a été trouvé | État |
