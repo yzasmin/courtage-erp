@@ -3,16 +3,16 @@
   "lots_traites": 18,
   "lots_ignores": 0,
   "lots_rejetes": 9,
-  "lignes_chargees": 7722,
+  "lignes_chargees": 8443,
   "details": [
     {
-      "reference_lot": "COTISATIONS_LIT_202607-71ae9db7",
+      "reference_lot": "COTISATIONS_LIT_202607-015f42f8",
       "statut": "charge",
       "lignes_chargees": 405,
-      "avertissements": 21
+      "avertissements": 22
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202607_copie-71ae9db7",
+      "reference_lot": "COTISATIONS_LIT_202607_copie-015f42f8",
       "statut": "rejete",
       "lignes_fichier": 405,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : fichier_deja_charge (1)",
@@ -21,7 +21,7 @@
       ]
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202608-5cdbe93f",
+      "reference_lot": "COTISATIONS_LIT_202608-7f1bf595",
       "statut": "rejete",
       "lignes_fichier": 348,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : acte_non_delegue (1)",
@@ -30,19 +30,19 @@
       ]
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202608_R2-03d571c4",
+      "reference_lot": "COTISATIONS_LIT_202608_R2-e72332ef",
       "statut": "charge",
       "lignes_chargees": 348,
-      "avertissements": 16
+      "avertissements": 17
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202609-c1fe1712",
+      "reference_lot": "COTISATIONS_LIT_202609-2243c5f9",
       "statut": "charge",
       "lignes_chargees": 342,
       "avertissements": 20
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202607-d9442664",
+      "reference_lot": "COTISATIONS_OCE_202607-1c008c61",
       "statut": "rejete",
       "lignes_fichier": 562,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : contrat_inconnu (1)",
@@ -51,13 +51,13 @@
       ]
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202607_R2-eee1a91d",
+      "reference_lot": "COTISATIONS_OCE_202607_R2-1f0599b2",
       "statut": "charge",
       "lignes_chargees": 562,
-      "avertissements": 37
+      "avertissements": 33
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202608-0b7e7e9d",
+      "reference_lot": "COTISATIONS_OCE_202608-7c8d7b7a",
       "statut": "rejete",
       "lignes_fichier": 467,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : doublon_cle_metier (1)",
@@ -66,13 +66,13 @@
       ]
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202608_R2-7d511586",
+      "reference_lot": "COTISATIONS_OCE_202608_R2-8985a3d5",
       "statut": "charge",
       "lignes_chargees": 467,
-      "avertissements": 29
+      "avertissements": 27
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202609-b44db9ea",
+      "reference_lot": "COTISATIONS_OCE_202609-93ec2214",
       "statut": "rejete",
       "lignes_fichier": 468,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
@@ -81,25 +81,25 @@
       ]
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202609_R2-2360e155",
+      "reference_lot": "COTISATIONS_OCE_202609_R2-6b3c0c30",
       "statut": "charge",
       "lignes_chargees": 468,
-      "avertissements": 32
+      "avertissements": 27
     },
     {
-      "reference_lot": "COTISATIONS_PYR_202607-cdfee976",
+      "reference_lot": "COTISATIONS_PYR_202607-eb608b9a",
       "statut": "charge",
       "lignes_chargees": 442,
-      "avertissements": 26
+      "avertissements": 24
     },
     {
-      "reference_lot": "COTISATIONS_PYR_202608-bbde47eb",
+      "reference_lot": "COTISATIONS_PYR_202608-90f6a7fb",
       "statut": "charge",
       "lignes_chargees": 371,
       "avertissements": 19
     },
     {
-      "reference_lot": "COTISATIONS_PYR_202609-e6cd06e8",
+      "reference_lot": "COTISATIONS_PYR_202609-6ecdd278",
       "statut": "charge",
       "lignes_chargees": 371,
       "avertissements": 18
@@ -117,7 +117,7 @@
       "avertissements": 0
     },
     {
-      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-a9b2eef4",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-844c38a8",
       "statut": "rejete",
       "lignes_fichier": 812,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
@@ -132,67 +132,67 @@
       "avertissements": 0
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202607-4550f66b",
+      "reference_lot": "PRESTATIONS_OCE_202607-09351cdb",
       "statut": "rejete",
-      "lignes_fichier": 178,
+      "lignes_fichier": 286,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : total_incoherent (1)",
       "anomalies": [
         "total_incoherent"
       ]
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202607_R2-b902dba3",
+      "reference_lot": "PRESTATIONS_OCE_202607_R2-fd6c1ec6",
       "statut": "charge",
-      "lignes_chargees": 178,
-      "avertissements": 54
+      "lignes_chargees": 286,
+      "avertissements": 27
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202608-144a2fb7",
+      "reference_lot": "PRESTATIONS_OCE_202608-2dee8c19",
       "statut": "rejete",
-      "lignes_fichier": 179,
+      "lignes_fichier": 283,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : periode_incoherente (1)",
       "anomalies": [
         "periode_incoherente"
       ]
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202608_R2-f707b4d1",
+      "reference_lot": "PRESTATIONS_OCE_202608_R2-3bca0afc",
       "statut": "charge",
-      "lignes_chargees": 179,
-      "avertissements": 52
+      "lignes_chargees": 283,
+      "avertissements": 27
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202609-ed12b821",
+      "reference_lot": "PRESTATIONS_OCE_202609-949f6674",
       "statut": "rejete",
-      "lignes_fichier": 266,
+      "lignes_fichier": 451,
       "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : adherent_inconnu (1)",
       "anomalies": [
         "adherent_inconnu"
       ]
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202609_R2-d7b3bba9",
+      "reference_lot": "PRESTATIONS_OCE_202609_R2-a89577ed",
       "statut": "charge",
-      "lignes_chargees": 266,
-      "avertissements": 35
+      "lignes_chargees": 451,
+      "avertissements": 38
     },
     {
-      "reference_lot": "PRESTATIONS_PYR_202607-d66dfc55",
+      "reference_lot": "PRESTATIONS_PYR_202607-b9e13c90",
       "statut": "charge",
-      "lignes_chargees": 197,
-      "avertissements": 56
+      "lignes_chargees": 317,
+      "avertissements": 41
     },
     {
-      "reference_lot": "PRESTATIONS_PYR_202608-5fdb8bd6",
+      "reference_lot": "PRESTATIONS_PYR_202608-0a12c02d",
       "statut": "charge",
-      "lignes_chargees": 211,
-      "avertissements": 50
+      "lignes_chargees": 308,
+      "avertissements": 30
     },
     {
-      "reference_lot": "PRESTATIONS_PYR_202609-46e842a4",
+      "reference_lot": "PRESTATIONS_PYR_202609-8a393282",
       "statut": "charge",
-      "lignes_chargees": 327,
-      "avertissements": 39
+      "lignes_chargees": 434,
+      "avertissements": 33
     }
   ]
 }

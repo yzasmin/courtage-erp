@@ -24,7 +24,7 @@ sur un contrat Pyrene, serait un defaut.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date, timedelta
 from random import Random
 
@@ -45,12 +45,14 @@ from courtage.generateur.parametres import (
     DEBUT_HISTORIQUE,
     DELAI_ENCAISSEMENT_JOURS,
     DELAI_REGLEMENT_JOURS,
+    ECHELLE_SINISTRALITE,
     PART_APPEL_IMPAYE,
     PART_APPEL_PARTIEL,
     PART_PRESTATION_REJETEE,
     POIDS_MOYEN_PAIEMENT,
     POIDS_SAISON_PRESTATIONS,
     PRESTATIONS_PAR_AN_SELON_AGE,
+    PROFILS_CONSOMMATION,
     TAUX_TAXE_BP,
 )
 from courtage.generateur.portefeuille import ContratGenere, PoliceGeneree, Portefeuille
@@ -543,6 +545,7 @@ def _genere_prestations(
 
         age = age_a_la_date(contrat.adherent_naissance, debut_garantie)
         nb_par_an = _nb_prestations_annuelles(alea, age)
+        facteur_consommation = _facteur_de_consommation(alea)
         nb_total = max(0, round(nb_par_an * jours_de_garantie / 365))
 
         # Premiere passe : les tirages aleatoires, dans leur ordre de tirage. Rien n'est decide ici sur
@@ -551,7 +554,10 @@ def _genere_prestations(
         for _ in range(nb_total):
             # Le mois est tire selon la saisonnalite, puis replie dans la fenetre de garantie.
             mois_tire = tire_pondere_indices(alea, POIDS_SAISON_PRESTATIONS) + 1
-            annees_possibles = sorted({debut_garantie.year + ecart for ecart in range(0, 4)})
+            # Toutes les annees de la garantie : limiter le tirage aux quatre premieres annees du contrat
+            # concentrait les soins d'un contrat ancien sur ses debuts, et un contrat de 2019 ne
+            # consommait plus rien en 2025.
+            annees_possibles = list(range(debut_garantie.year, fin_garantie.year + 1))
             # Le jour est tire d'abord, puis la date complete est confrontee a la fenetre de
             # garantie. Filtrer sur le premier du mois laissait passer des soins posterieurs a la
             # resiliation, donc des prestations servies sur un contrat deja sorti.
@@ -608,6 +614,9 @@ def _genere_prestations(
         # 70 prestations reglees depassaient le reste de plafond a leur date. Le tri est stable, et les
         # identifiants sont attribues apres lui : la reference d'une prestation suit donc l'ordre des
         # soins du contrat.
+        tirages = _calibre_sur_la_cotisation(
+            tirages, contrat, debut_garantie, fin_garantie, ECHELLE_SINISTRALITE[code_branche] * facteur_consommation
+        )
         tirages.sort(key=lambda tirage: tirage.date_soins)
 
         for tirage in tirages:
@@ -679,6 +688,79 @@ def _genere_prestations(
             )
 
     return prestations
+
+
+_MOYENNE_PROFILS = sum(poids * (bas + haut) / 2 for poids, bas, haut in PROFILS_CONSOMMATION) / sum(
+    poids for poids, _bas, _haut in PROFILS_CONSOMMATION
+)
+
+
+def _facteur_de_consommation(alea: Random) -> float:
+    """Multiplicateur de consommation d'un contrat, de moyenne un, a queue lourde.
+
+    Tire une seule fois par contrat, avant tout autre alea de ses soins, pour que la suite aleatoire ne
+    depende pas du nombre de soins retenus.
+    """
+    indice = tire_pondere_indices(alea, [poids for poids, _bas, _haut in PROFILS_CONSOMMATION])
+    _poids, bas, haut = PROFILS_CONSOMMATION[indice]
+    return alea.uniform(bas, haut) / _MOYENNE_PROFILS
+
+
+def _cotisation_garantie_par_annee(
+    contrat: ContratGenere, debut_garantie: date, fin_garantie: date
+) -> dict[int, float]:
+    """Cotisation mensuelle hors taxe, en centimes, **courue** par annee civile pendant la garantie.
+
+    Mois par mois, au tarif en vigueur le premier du mois, au prorata des jours de garantie du mois et hors
+    suspension : une garantie suspendue ne donne lieu a aucun appel, donc a aucune cotisation courue.
+    """
+    par_annee: dict[int, float] = {}
+    mois = debut_garantie.replace(day=1)
+    while mois < fin_garantie:
+        suivant = ajoute_mois(mois, 1)
+        debut = max(mois, debut_garantie)
+        fin = min(suivant, fin_garantie)
+        jours = (fin - debut).days
+        for debut_suspension, fin_suspension in contrat.suspensions:
+            jours -= max(0, (min(fin, fin_suspension) - max(debut, debut_suspension)).days)
+        if jours > 0:
+            tarif = _valeur_a_la_date(contrat.paliers_cotisation, mois)
+            par_annee[mois.year] = par_annee.get(mois.year, 0.0) + tarif * jours / (suivant - mois).days
+        mois = suivant
+    return par_annee
+
+
+def _calibre_sur_la_cotisation(
+    tirages: list[_TirageSoin],
+    contrat: ContratGenere,
+    debut_garantie: date,
+    fin_garantie: date,
+    sinistralite_du_contrat: float,
+) -> list[_TirageSoin]:
+    """Met a l'echelle les montants demandes pour que les remboursements suivent la cotisation du contrat.
+
+    Sur toute la duree de garantie du contrat : le remboursement theorique des soins non rejetes (taux de
+    la formule en vigueur, avant plafond) est rendu egal a `sinistralite_du_contrat` fois la cotisation
+    courue. Le rapport des prestations aux cotisations est donc porte par chaque contrat, a sa propre
+    echelle, au lieu d'un facteur global. Le calibrage porte sur la duree entiere et non sur chaque annee,
+    pour garder des annees sans aucun soin : un contrat jeune n'en a pas chaque annee, et les imposer
+    gonflerait la consommation des contrats qui consomment peu. Les plafonds, les rejets et les
+    reglements en cours, appliques ensuite, retranchent leur part. Les montants restent multiples de
+    50 centimes, comme les tirages d'origine, et d'au moins 50 centimes.
+    """
+    cotisation_courue = sum(_cotisation_garantie_par_annee(contrat, debut_garantie, fin_garantie).values())
+    theorique = sum(
+        applique_taux(tirage.montant_demande, tirage.taux_remboursement_bp)
+        for tirage in tirages
+        if not tirage.rejetee
+    )
+    if theorique <= 0 or cotisation_courue <= 0:
+        return tirages
+    echelle = sinistralite_du_contrat * cotisation_courue / theorique
+    return [
+        replace(tirage, montant_demande=max(50, round(tirage.montant_demande * echelle / 50) * 50))
+        for tirage in tirages
+    ]
 
 
 def _montant_demande(alea: Random, code_garantie: str) -> int:

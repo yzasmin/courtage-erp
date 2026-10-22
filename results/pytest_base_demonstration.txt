@@ -1,7 +1,7 @@
-........................................................................ [ 29%]
-........................................................................ [ 59%]
-.......................s................................................ [ 89%]
-.........................                                                [100%]
+........................................................................ [ 28%]
+........................................................................ [ 57%]
+..........................s............................................. [ 86%]
+...................................                                      [100%]
 ============================== warnings summary ===============================
 tests/test_api.py::test_l_etat_de_service_repond
   C:\Users\33769\Desktop\Offre d'emploi\Portfolio\projets-data\courtage-erp\tests\conftest.py:214: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
@@ -23,4 +23,4 @@ tests/test_api.py::test_toutes_les_reponses_d_erreur_ont_le_meme_format
     result = context.run(func, *args)
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-240 passed, 1 skipped, 10 warnings in 69.22s (0:01:09)
+250 passed, 1 skipped, 10 warnings in 73.77s (0:01:13)

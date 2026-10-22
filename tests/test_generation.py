@@ -21,7 +21,7 @@ from pathlib import Path
 from random import Random
 
 import pytest
-from sqlalchemy import extract, func, select
+from sqlalchemy import extract, func, select, text
 from sqlalchemy.orm import Session
 
 from courtage.config import RACINE_PROJET
@@ -209,6 +209,74 @@ def test_les_prestations_suivent_la_saisonnalite(session) -> None:
     # Le mois le plus creux doit etre juillet ou aout, comme les poids le prevoient.
     mois_le_plus_creux = min(par_mois, key=lambda m: par_mois[m])
     assert mois_le_plus_creux in (7, 8)
+
+
+@pytest.mark.parametrize("annee", [2024, 2025])
+def test_le_ratio_sinistres_sur_primes_est_plausible_dans_chaque_branche(session, annee) -> None:
+    """Les prestations suivent la cotisation : sante individuelle et collective, 65 a 90 pour cent.
+
+    Avant le calibrage des demandes sur la cotisation du contrat, le ratio depassait 150 pour cent. Cette
+    mesure est une approximation (cotisations emises dans l'annee, hors taxe, au lieu d'acquises), assez
+    proche pour garder la fourchette ; le ratio publie, sur les acquises, est celui de `docs/kpi.md`.
+    La prevoyance est absente : le cabinet n'y regle aucune prestation.
+    """
+    if not _base_de_demonstration_presente(session):
+        pytest.skip("base de test sans portefeuille genere")
+    debut, fin = date(annee, 1, 1), date(annee + 1, 1, 1)
+    prestations = dict(
+        session.execute(
+            text(
+                "select b.code, sum(pr.montant_rembourse_cents) from prestation pr"
+                " join contrat c on c.id = pr.contrat_id join produit p on p.id = c.produit_id"
+                " join branche b on b.id = p.branche_id"
+                " where pr.statut = 'reglee' and pr.date_reglement >= :debut and pr.date_reglement < :fin"
+                " group by b.code"
+            ),
+            {"debut": debut, "fin": fin},
+        ).all()
+    )
+    cotisations = dict(
+        session.execute(
+            text(
+                "select b.code, sum(a.montant_ht_cents) from appel_cotisation a"
+                " left join contrat c on c.id = a.contrat_id"
+                " left join police_collective pc on pc.id = a.police_id"
+                " join produit p on p.id = coalesce(c.produit_id, pc.produit_id)"
+                " join branche b on b.id = p.branche_id"
+                " where a.date_echeance >= :debut and a.date_echeance < :fin group by b.code"
+            ),
+            {"debut": debut, "fin": fin},
+        ).all()
+    )
+    assert "PV" not in prestations, "aucune prestation de prevoyance : l'acte n'est pas delegue"
+    for branche in ("SI", "SC"):
+        ratio = prestations[branche] / cotisations[branche]
+        assert 0.65 <= ratio <= 0.90, f"{branche} {annee} : ratio {ratio:.2f} hors de la fourchette"
+
+
+def test_la_consommation_est_dispersee_et_non_uniforme(session) -> None:
+    """Beaucoup de contrats consomment peu, une minorite beaucoup : un ratio uniforme serait aussi faux
+    qu'un ratio demesure. Les 10 pour cent de contrats les plus consommateurs portent au moins le tiers
+    des remboursements, et une part notable des contrats n'a aucune prestation reglee."""
+    if not _base_de_demonstration_presente(session):
+        pytest.skip("base de test sans portefeuille genere")
+    totaux = sorted(
+        (
+            ligne[0] or 0
+            for ligne in session.execute(
+                text(
+                    "select (select sum(pr.montant_rembourse_cents) from prestation pr"
+                    " where pr.contrat_id = c.id and pr.statut = 'reglee') from contrat c"
+                    " join produit p on p.id = c.produit_id join branche b on b.id = p.branche_id"
+                    " where b.code in ('SI', 'SC') and c.statut <> 'devis'"
+                )
+            )
+        ),
+        reverse=True,
+    )
+    dixieme = max(1, len(totaux) // 10)
+    assert sum(totaux[:dixieme]) >= sum(totaux) / 3
+    assert sum(1 for total in totaux if total == 0) / len(totaux) >= 0.03
 
 
 def test_les_poids_de_saison_couvrent_les_douze_mois() -> None:

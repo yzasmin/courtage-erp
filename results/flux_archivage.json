@@ -6,88 +6,88 @@
   "lignes_chargees": 0,
   "details": [
     {
-      "reference_lot": "COTISATIONS_LIT_202607-71ae9db7",
+      "reference_lot": "COTISATIONS_LIT_202607-015f42f8",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_LIT_202607-71ae9db7.xlsx",
-      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_LIT_202607-015f42f8.xlsx",
+      "sha256": "015f42f86ca26cee4c5f9bf9ba72acc29c674e55211653abb3631d705847407a"
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202607_copie-71ae9db7",
+      "reference_lot": "COTISATIONS_LIT_202607_copie-015f42f8",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_LIT_202607_copie-71ae9db7.xlsx",
-      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_LIT_202607_copie-015f42f8.xlsx",
+      "sha256": "015f42f86ca26cee4c5f9bf9ba72acc29c674e55211653abb3631d705847407a"
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202608-5cdbe93f",
+      "reference_lot": "COTISATIONS_LIT_202608-7f1bf595",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_LIT_202608-5cdbe93f.xlsx",
-      "sha256": "5cdbe93f96d2c6e0209b9597a35f21749f35c6662043cdbb7094242a834dc386"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_LIT_202608-7f1bf595.xlsx",
+      "sha256": "7f1bf595aa96708dfabd5a2a5cfc6daf1cbd7776b9cfa59b35a3097dc9cc80e6"
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202608_R2-03d571c4",
+      "reference_lot": "COTISATIONS_LIT_202608_R2-e72332ef",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_LIT_202608_R2-03d571c4.xlsx",
-      "sha256": "03d571c4cadc3e42f8cf0ed9af76a0735c70d935a48d06334de9cc54135941f9"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_LIT_202608_R2-e72332ef.xlsx",
+      "sha256": "e72332ef8c4ca879179daeb78e72ba90356f0182d88fea24198e8ccda60f2093"
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202609-c1fe1712",
+      "reference_lot": "COTISATIONS_LIT_202609-2243c5f9",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_LIT_202609-c1fe1712.xlsx",
-      "sha256": "c1fe1712baf71e45aaa4f37d1dcdae668101b302e2831f11c751a48e81779237"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_LIT_202609-2243c5f9.xlsx",
+      "sha256": "2243c5f99c38a76b483d75fa5c05df0dad9394e125e9dd1a2e25791407f6cc26"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202607-d9442664",
+      "reference_lot": "COTISATIONS_OCE_202607-1c008c61",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_OCE_202607-d9442664.csv",
-      "sha256": "d9442664f0e70a904c84112d6d2548738cdd51d8acc057144866c21d21a0d34f"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_OCE_202607-1c008c61.csv",
+      "sha256": "1c008c61e5c55525440c57bf9b8b6d78b61eca6590e5256864bc219b3e1822d0"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202607_R2-eee1a91d",
+      "reference_lot": "COTISATIONS_OCE_202607_R2-1f0599b2",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_OCE_202607_R2-eee1a91d.csv",
-      "sha256": "eee1a91d19beb113af2f82b4fdb53367b2d804e199a56a41a96fb74d2c91b909"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_OCE_202607_R2-1f0599b2.csv",
+      "sha256": "1f0599b29c5a93ecacec2e1b0faeef48d26406a0e179a707a20a0b7aabaf93a2"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202608-0b7e7e9d",
+      "reference_lot": "COTISATIONS_OCE_202608-7c8d7b7a",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_OCE_202608-0b7e7e9d.csv",
-      "sha256": "0b7e7e9dfa4cc778e81664844687003f214c0136e7fa5b526c6a7fec80ab824a"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_OCE_202608-7c8d7b7a.csv",
+      "sha256": "7c8d7b7aeb90cce1821d4ad34369c3d2221bd97a73e1950bf89dcba7d2bf6307"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202608_R2-7d511586",
+      "reference_lot": "COTISATIONS_OCE_202608_R2-8985a3d5",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_OCE_202608_R2-7d511586.csv",
-      "sha256": "7d511586898ca3ec19f04b0744f12efc2f0e3b6bf07878b998f4de4886a61fc3"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_OCE_202608_R2-8985a3d5.csv",
+      "sha256": "8985a3d5f22f8fbf96c384cfbca56d967ca528fee9aebe7a456a5452419e7371"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202609-b44db9ea",
+      "reference_lot": "COTISATIONS_OCE_202609-93ec2214",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_OCE_202609-b44db9ea.csv",
-      "sha256": "b44db9eace5d097b99c1a4bced94810a20922775029f84e7fde9aca5c8622e17"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_OCE_202609-93ec2214.csv",
+      "sha256": "93ec22148441acf0b89453d427243009ffa2332dde6308cc861f378881d28438"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202609_R2-2360e155",
+      "reference_lot": "COTISATIONS_OCE_202609_R2-6b3c0c30",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_OCE_202609_R2-2360e155.csv",
-      "sha256": "2360e15506c563b00df3c551972279e8317a78b560c5770d6858905651ec49c8"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_OCE_202609_R2-6b3c0c30.csv",
+      "sha256": "6b3c0c30b432472611b41a27ea1ad71326654ee6a7b758e25655bc261d481e99"
     },
     {
-      "reference_lot": "COTISATIONS_PYR_202607-cdfee976",
+      "reference_lot": "COTISATIONS_PYR_202607-eb608b9a",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_PYR_202607-cdfee976.csv",
-      "sha256": "cdfee976331671b9472757ea4e7fe9bb58f2ce2f6e9fe8a44cd3d1fd54d1efd2"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\COTISATIONS_PYR_202607-eb608b9a.csv",
+      "sha256": "eb608b9ada77de4c1e30e8427be67699dad64020d033e1dda70271f8c1f1dd19"
     },
     {
-      "reference_lot": "COTISATIONS_PYR_202608-bbde47eb",
+      "reference_lot": "COTISATIONS_PYR_202608-90f6a7fb",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_PYR_202608-bbde47eb.csv",
-      "sha256": "bbde47eb1e0be55021e1be0effe3fe491a78e0ba8878c6f33f1e1755087d1ab0"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\COTISATIONS_PYR_202608-90f6a7fb.csv",
+      "sha256": "90f6a7fb2328cdf3b5ae131faab1eeecce366cb746e8b14990ce69ad7fdb51bc"
     },
     {
-      "reference_lot": "COTISATIONS_PYR_202609-e6cd06e8",
+      "reference_lot": "COTISATIONS_PYR_202609-6ecdd278",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_PYR_202609-e6cd06e8.csv",
-      "sha256": "e6cd06e829ddfb372e9a1eeb0d346ccd1e816cfeeffe8ff5e9ab3897460af577"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\COTISATIONS_PYR_202609-6ecdd278.csv",
+      "sha256": "6ecdd2781eaeffd5c085575b2972e0982602fbdbec669dd932142be73be748c9"
     },
     {
       "reference_lot": "ENCAISSEMENTS_BANQUE_202607-398f8227",
@@ -102,10 +102,10 @@
       "sha256": "124929546e4cdc84a66600e9398e2f31d7f1fba0e4b2aaeab5a27bfc3dbbd89e"
     },
     {
-      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-a9b2eef4",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-844c38a8",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\ENCAISSEMENTS_BANQUE_202609-a9b2eef4.csv",
-      "sha256": "a9b2eef4616dfbb184a88b0d32bb82824a6e95910f8ec10f550abcbcaec99cc5"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\ENCAISSEMENTS_BANQUE_202609-844c38a8.csv",
+      "sha256": "844c38a8928661ceffb1102e5a633b2e41e30d94607ba4d02bbfdd93d1f83c94"
     },
     {
       "reference_lot": "ENCAISSEMENTS_BANQUE_202609_R2-d82bc99e",
@@ -114,58 +114,58 @@
       "sha256": "d82bc99e2c8eb10615ac5b1ba23a76b0df30ee4e12347dccb9c9bfc1cfb25971"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202607-4550f66b",
+      "reference_lot": "PRESTATIONS_OCE_202607-09351cdb",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_OCE_202607-4550f66b.csv",
-      "sha256": "4550f66b8e83e0fb90099beeacc8fb91a597f5280d5e0f102151496de9404ebe"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_OCE_202607-09351cdb.csv",
+      "sha256": "09351cdbbabfb3dd8d96889d28344aae17a7eb1c83ed6c98a46a8f4c66cf5aa3"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202607_R2-b902dba3",
+      "reference_lot": "PRESTATIONS_OCE_202607_R2-fd6c1ec6",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_OCE_202607_R2-b902dba3.csv",
-      "sha256": "b902dba3f3781707fc14a7a40d5bb7f9cabf895c5f1eff5e38433569cff98ad9"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_OCE_202607_R2-fd6c1ec6.csv",
+      "sha256": "fd6c1ec6f8f3b04faddae87047c40bc9c5214f295ecaaef9f90730d41338cc4c"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202608-144a2fb7",
+      "reference_lot": "PRESTATIONS_OCE_202608-2dee8c19",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_OCE_202608-144a2fb7.csv",
-      "sha256": "144a2fb734bf8534ed59759e7969e9b62edbdad61a436e5a94e073c0b8639357"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_OCE_202608-2dee8c19.csv",
+      "sha256": "2dee8c196e60778ddfd4d4cccf6d592da96e92f104e0633c5fa8a6afaeeccc88"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202608_R2-f707b4d1",
+      "reference_lot": "PRESTATIONS_OCE_202608_R2-3bca0afc",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_OCE_202608_R2-f707b4d1.csv",
-      "sha256": "f707b4d110256048ff7b84149d1c08a182a9fe4f87511423f0eab2cf59e04b16"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_OCE_202608_R2-3bca0afc.csv",
+      "sha256": "3bca0afc8dfc84006a52b7c95f20563f21913c536c13f9021f5a58a079885845"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202609-ed12b821",
+      "reference_lot": "PRESTATIONS_OCE_202609-949f6674",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_OCE_202609-ed12b821.csv",
-      "sha256": "ed12b82153ceafebb7f8e4fc82b4227fcdefe632caa82d033c6f8e0eb9fa4d31"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_OCE_202609-949f6674.csv",
+      "sha256": "949f6674bb5049ef36f362949bf88f3b301dee4bf44d06902d41cfbe61774643"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202609_R2-d7b3bba9",
+      "reference_lot": "PRESTATIONS_OCE_202609_R2-a89577ed",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_OCE_202609_R2-d7b3bba9.csv",
-      "sha256": "d7b3bba99716b41022819fcef34cb4cd06b815929ee3f8b82dd6361adf4ca07a"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_OCE_202609_R2-a89577ed.csv",
+      "sha256": "a89577ed1152b26f216aed80cd0b7c3e91f09ea1908a05c6366e6c8f2a4a69d4"
     },
     {
-      "reference_lot": "PRESTATIONS_PYR_202607-d66dfc55",
+      "reference_lot": "PRESTATIONS_PYR_202607-b9e13c90",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_PYR_202607-d66dfc55.csv",
-      "sha256": "d66dfc55ed1a697913741ff5d0aee5b9ba1cd8823902c96af1201bfcb7774340"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202607\\PRESTATIONS_PYR_202607-b9e13c90.csv",
+      "sha256": "b9e13c9084e85ca3de36bd41fe3482d27fb62e60da7cfcb3ae4cde3d9ecb667f"
     },
     {
-      "reference_lot": "PRESTATIONS_PYR_202608-5fdb8bd6",
+      "reference_lot": "PRESTATIONS_PYR_202608-0a12c02d",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_PYR_202608-5fdb8bd6.csv",
-      "sha256": "5fdb8bd60c1efd2305b35a6094dc62c31e7331abaa60cc77fc9295542593f4de"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202608\\PRESTATIONS_PYR_202608-0a12c02d.csv",
+      "sha256": "0a12c02d8001158e9820b8aeb24d4217990591bef1ae0d7f23dbbae1b7f5247c"
     },
     {
-      "reference_lot": "PRESTATIONS_PYR_202609-46e842a4",
+      "reference_lot": "PRESTATIONS_PYR_202609-8a393282",
       "statut": "archive",
-      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_PYR_202609-46e842a4.csv",
-      "sha256": "46e842a45a6fde0873f5205610f7eeb5c1718c79182cb2b3c237b804aa8fb4db"
+      "chemin_archive": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\archive\\202609\\PRESTATIONS_PYR_202609-8a393282.csv",
+      "sha256": "8a393282e864ddb5cf73f7f1817694f714a736010e9af486e255d5bfd218f61f"
     }
   ]
 }

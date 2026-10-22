@@ -1,13 +1,13 @@
 {
-  "manifeste": "C:\\Users\\33769\\AppData\\Local\\Temp\\claude\\m2v3\\flux\\manifeste-anomalies.json",
+  "manifeste": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\manifeste-anomalies.json",
   "ensemble": {
-    "injectees": 433,
-    "signalees": 901,
-    "vrais_positifs": 394,
-    "faux_positifs": 507,
-    "faux_negatifs": 39,
-    "rappel": 0.9099,
-    "precision": 0.4373
+    "injectees": 453,
+    "signalees": 630,
+    "vrais_positifs": 412,
+    "faux_positifs": 218,
+    "faux_negatifs": 41,
+    "rappel": 0.9095,
+    "precision": 0.654
   },
   "par_code": {
     "acte_non_delegue": {
@@ -56,13 +56,13 @@
       "precision": 1.0
     },
     "montant_atypique": {
-      "injectees": 362,
-      "signalees": 355,
-      "vrais_positifs": 325,
-      "faux_positifs": 30,
-      "faux_negatifs": 37,
-      "rappel": 0.8978,
-      "precision": 0.9155
+      "injectees": 346,
+      "signalees": 333,
+      "vrais_positifs": 305,
+      "faux_positifs": 28,
+      "faux_negatifs": 41,
+      "rappel": 0.8815,
+      "precision": 0.9159
     },
     "periode_incoherente": {
       "injectees": 1,
@@ -74,13 +74,13 @@
       "precision": 1.0
     },
     "prestation_proche_plafond": {
-      "injectees": 62,
-      "signalees": 537,
-      "vrais_positifs": 60,
-      "faux_positifs": 477,
-      "faux_negatifs": 2,
-      "rappel": 0.9677,
-      "precision": 0.1117
+      "injectees": 98,
+      "signalees": 288,
+      "vrais_positifs": 98,
+      "faux_positifs": 190,
+      "faux_negatifs": 0,
+      "rappel": 1.0,
+      "precision": 0.3403
     },
     "schema_invalide": {
       "injectees": 2,
@@ -103,13 +103,13 @@
   },
   "par_severite": {
     "avertissement": {
-      "injectees": 424,
-      "signalees": 892,
-      "vrais_positifs": 385,
-      "faux_positifs": 507,
-      "faux_negatifs": 39,
-      "rappel": 0.908,
-      "precision": 0.4316
+      "injectees": 444,
+      "signalees": 621,
+      "vrais_positifs": 403,
+      "faux_positifs": 218,
+      "faux_negatifs": 41,
+      "rappel": 0.9077,
+      "precision": 0.649
     },
     "bloquant": {
       "injectees": 9,
@@ -123,87 +123,159 @@
   },
   "exemples_faux_positifs": [
     {
-      "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
-      "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202609-0036085",
-      "ligne_numero": 224,
+      "nom_fichier": "COTISATIONS_OCE_202608.csv",
+      "code": "montant_atypique",
+      "reference_ligne": "APP-SI-2021-00069-202608",
+      "ligne_numero": 111,
       "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SI-2024-00156, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+      "message": "tarif mensuel par affilie de 3500 centimes contre 9898 centimes en mediane sur les 36 echeances connues de SI-2021-00069, ecart de 65%"
     },
     {
-      "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
+      "nom_fichier": "PRESTATIONS_PYR_202608.csv",
       "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202609-0002175",
-      "ligne_numero": 6,
+      "reference_ligne": "PRE-202608-0027518",
+      "ligne_numero": 219,
       "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2024-00044, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+      "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SI-2026-00030, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
     },
     {
-      "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
+      "nom_fichier": "PRESTATIONS_PYR_202608.csv",
       "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202609-0046289",
-      "ligne_numero": 274,
+      "reference_ligne": "PRE-202608-0005868",
+      "ligne_numero": 59,
       "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SI-2024-00237, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+      "message": "cette prestation porte la consommation 2026 de 0 a 90000 centimes sur la garantie DENTAIRE du contrat SC-2026-00081, pour un plafond annuel de 90000 centimes : le seuil d'alerte est franchi"
     },
     {
-      "nom_fichier": "PRESTATIONS_OCE_202607_R2.csv",
+      "nom_fichier": "PRESTATIONS_OCE_202609.csv",
       "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202607-0022440",
-      "ligne_numero": 100,
+      "reference_ligne": "PRE-202609-0020480",
+      "ligne_numero": 162,
       "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 90000 centimes sur la garantie DENTAIRE du contrat SI-2025-00010, pour un plafond annuel de 90000 centimes : le seuil d'alerte est franchi"
-    },
-    {
-      "nom_fichier": "PRESTATIONS_OCE_202607_R2.csv",
-      "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202607-0004952",
-      "ligne_numero": 14,
-      "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2025-00090, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
+      "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2020-00124, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
     },
     {
       "nom_fichier": "PRESTATIONS_OCE_202607.csv",
       "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202607-0022440",
-      "ligne_numero": 100,
+      "reference_ligne": "PRE-202607-0016367",
+      "ligne_numero": 80,
       "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 90000 centimes sur la garantie DENTAIRE du contrat SI-2025-00010, pour un plafond annuel de 90000 centimes : le seuil d'alerte est franchi"
-    },
-    {
-      "nom_fichier": "PRESTATIONS_OCE_202607.csv",
-      "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202607-0004952",
-      "ligne_numero": 14,
-      "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 15000 centimes sur la garantie OPTIQUE du contrat SC-2025-00090, pour un plafond annuel de 15000 centimes : le seuil d'alerte est franchi"
-    },
-    {
-      "nom_fichier": "PRESTATIONS_OCE_202607_R2.csv",
-      "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202607-0032299",
-      "ligne_numero": 129,
-      "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 43050 centimes sur la garantie OPTIQUE du contrat SI-2023-00101, pour un plafond annuel de 50000 centimes : le seuil d'alerte est franchi"
-    },
-    {
-      "nom_fichier": "PRESTATIONS_OCE_202608.csv",
-      "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202608-0005426",
-      "ligne_numero": 16,
-      "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 27900 centimes sur la garantie OPTIQUE du contrat SC-2025-00119, pour un plafond annuel de 30000 centimes : le seuil d'alerte est franchi"
+      "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SC-2024-00386, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
     },
     {
       "nom_fichier": "PRESTATIONS_OCE_202608_R2.csv",
       "code": "prestation_proche_plafond",
-      "reference_ligne": "PRE-202608-0032431",
-      "ligne_numero": 123,
+      "reference_ligne": "PRE-202608-0006321",
+      "ligne_numero": 35,
       "severite": "avertissement",
-      "message": "cette prestation porte la consommation 2026 de 0 a 25000 centimes sur la garantie AUDIO du contrat SI-2024-00123, pour un plafond annuel de 25000 centimes : le seuil d'alerte est franchi"
+      "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SC-2026-00091, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
+      "code": "prestation_proche_plafond",
+      "reference_ligne": "PRE-202609-0031585",
+      "ligne_numero": 266,
+      "severite": "avertissement",
+      "message": "cette prestation porte la consommation 2026 de 0 a 100000 centimes sur la garantie AUDIO du contrat SI-2025-00085, pour un plafond annuel de 100000 centimes : le seuil d'alerte est franchi"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_PYR_202608.csv",
+      "code": "prestation_proche_plafond",
+      "reference_ligne": "PRE-202608-0024872",
+      "ligne_numero": 206,
+      "severite": "avertissement",
+      "message": "cette prestation porte la consommation 2026 de 0 a 51500 centimes sur la garantie AUDIO du contrat SI-2022-00029, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+    },
+    {
+      "nom_fichier": "PRESTATIONS_OCE_202607_R2.csv",
+      "code": "prestation_proche_plafond",
+      "reference_ligne": "PRE-202607-0038250",
+      "ligne_numero": 224,
+      "severite": "avertissement",
+      "message": "cette prestation porte la consommation 2026 de 0 a 60000 centimes sur la garantie AUDIO du contrat SI-2026-00076, pour un plafond annuel de 60000 centimes : le seuil d'alerte est franchi"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202607_R2.csv",
+      "code": "montant_atypique",
+      "reference_ligne": "APP-SI-2022-00195-202607",
+      "ligne_numero": 280,
+      "severite": "avertissement",
+      "message": "tarif mensuel par affilie de 8305 centimes contre 4049 centimes en mediane sur les 36 echeances connues de SI-2022-00195, ecart de 105%"
     }
   ],
   "exemples_faux_negatifs": [
+    {
+      "nom_fichier": "COTISATIONS_OCE_202607_R2.csv",
+      "reference_lot": "COTISATIONS_OCE_202607_R2",
+      "ligne_numero": 213,
+      "reference_ligne": "APP-SI-2021-00236-202607",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 5816 a 2210 centimes, facteur 0.38"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202608.csv",
+      "reference_lot": "COTISATIONS_OCE_202608",
+      "ligne_numero": 147,
+      "reference_ligne": "APP-SI-2021-00231-202608",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 10720 a 4074 centimes, facteur 0.38"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202607.csv",
+      "reference_lot": "COTISATIONS_OCE_202607",
+      "ligne_numero": 213,
+      "reference_ligne": "APP-SI-2021-00236-202607",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 5816 a 2210 centimes, facteur 0.38"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202608.csv",
+      "reference_lot": "COTISATIONS_OCE_202608",
+      "ligne_numero": 294,
+      "reference_ligne": "APP-SI-2024-00138-202608",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 7417 a 2818 centimes, facteur 0.38"
+    },
+    {
+      "nom_fichier": "COTISATIONS_LIT_202608_R2.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202608_R2",
+      "ligne_numero": 110,
+      "reference_ligne": "APP-PV-2022-00148-202608",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 9015 a 3426 centimes, facteur 0.38"
+    },
+    {
+      "nom_fichier": "COTISATIONS_LIT_202608_R2.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202608_R2",
+      "ligne_numero": 199,
+      "reference_ligne": "APP-PV-2024-00119-202608",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 8164 a 3102 centimes, facteur 0.38"
+    },
+    {
+      "nom_fichier": "COTISATIONS_OCE_202609.csv",
+      "reference_lot": "COTISATIONS_OCE_202609",
+      "ligne_numero": 82,
+      "reference_ligne": "APP-SI-2020-00147-202609",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 6341 a 2029 centimes, facteur 0.32"
+    },
+    {
+      "nom_fichier": "COTISATIONS_PYR_202609.csv",
+      "reference_lot": "COTISATIONS_PYR_202609",
+      "ligne_numero": 81,
+      "reference_ligne": "APP-SI-2021-00027-202609",
+      "code": "montant_atypique",
+      "severite": "avertissement",
+      "detail": "montant hors taxe porte de 6576 a 2499 centimes, facteur 0.38"
+    },
     {
       "nom_fichier": "COTISATIONS_LIT_202608.xlsx",
       "reference_lot": "COTISATIONS_LIT_202608",
@@ -214,149 +286,77 @@
       "detail": "montant hors taxe porte de 9575 a 3638 centimes, facteur 0.38"
     },
     {
-      "nom_fichier": "COTISATIONS_LIT_202608_R2.xlsx",
-      "reference_lot": "COTISATIONS_LIT_202608_R2",
-      "ligne_numero": 1,
-      "reference_ligne": "APP-PV-2019-00003-202608",
+      "nom_fichier": "COTISATIONS_LIT_202607.xlsx",
+      "reference_lot": "COTISATIONS_LIT_202607",
+      "ligne_numero": 150,
+      "reference_ligne": "APP-PV-2022-00088-202607",
       "code": "montant_atypique",
       "severite": "avertissement",
-      "detail": "montant hors taxe porte de 9575 a 3638 centimes, facteur 0.38"
-    },
-    {
-      "nom_fichier": "PRESTATIONS_OCE_202609.csv",
-      "reference_lot": "PRESTATIONS_OCE_202609",
-      "ligne_numero": 110,
-      "reference_ligne": "PRE-202609-0016722",
-      "code": "prestation_proche_plafond",
-      "severite": "avertissement",
-      "detail": "consommation annuelle portee de 34000 a 37600 centimes, pour un plafond de 40000"
-    },
-    {
-      "nom_fichier": "COTISATIONS_OCE_202609_R2.csv",
-      "reference_lot": "COTISATIONS_OCE_202609_R2",
-      "ligne_numero": 274,
-      "reference_ligne": "APP-SI-2024-00055-202609",
-      "code": "montant_atypique",
-      "severite": "avertissement",
-      "detail": "montant hors taxe porte de 10862 a 4128 centimes, facteur 0.38"
-    },
-    {
-      "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
-      "reference_lot": "PRESTATIONS_OCE_202609_R2",
-      "ligne_numero": 110,
-      "reference_ligne": "PRE-202609-0016722",
-      "code": "prestation_proche_plafond",
-      "severite": "avertissement",
-      "detail": "consommation annuelle portee de 34000 a 37600 centimes, pour un plafond de 40000"
-    },
-    {
-      "nom_fichier": "COTISATIONS_PYR_202609.csv",
-      "reference_lot": "COTISATIONS_PYR_202609",
-      "ligne_numero": 116,
-      "reference_ligne": "APP-SI-2021-00200-202609",
-      "code": "montant_atypique",
-      "severite": "avertissement",
-      "detail": "montant hors taxe porte de 9321 a 3542 centimes, facteur 0.38"
-    },
-    {
-      "nom_fichier": "COTISATIONS_OCE_202609.csv",
-      "reference_lot": "COTISATIONS_OCE_202609",
-      "ligne_numero": 365,
-      "reference_ligne": "APP-SI-2025-00083-202609",
-      "code": "montant_atypique",
-      "severite": "avertissement",
-      "detail": "montant hors taxe porte de 7220 a 2310 centimes, facteur 0.32"
-    },
-    {
-      "nom_fichier": "COTISATIONS_OCE_202608_R2.csv",
-      "reference_lot": "COTISATIONS_OCE_202608_R2",
-      "ligne_numero": 78,
-      "reference_ligne": "APP-SI-2020-00140-202608",
-      "code": "montant_atypique",
-      "severite": "avertissement",
-      "detail": "montant hors taxe porte de 3500 a 9100 centimes, facteur 2.6"
-    },
-    {
-      "nom_fichier": "COTISATIONS_OCE_202607.csv",
-      "reference_lot": "COTISATIONS_OCE_202607",
-      "ligne_numero": 118,
-      "reference_ligne": "APP-SI-2020-00147-202607",
-      "code": "montant_atypique",
-      "severite": "avertissement",
-      "detail": "montant hors taxe porte de 6341 a 2410 centimes, facteur 0.38"
-    },
-    {
-      "nom_fichier": "COTISATIONS_OCE_202609.csv",
-      "reference_lot": "COTISATIONS_OCE_202609",
-      "ligne_numero": 274,
-      "reference_ligne": "APP-SI-2024-00055-202609",
-      "code": "montant_atypique",
-      "severite": "avertissement",
-      "detail": "montant hors taxe porte de 10862 a 4128 centimes, facteur 0.38"
+      "detail": "montant hors taxe porte de 8812 a 3349 centimes, facteur 0.38"
     }
   ],
   "lots_rejetes": [
     {
-      "reference_lot": "COTISATIONS_LIT_202607_copie-89f1610f",
+      "reference_lot": "COTISATIONS_LIT_202607_copie-015f42f8",
       "nom_fichier": "COTISATIONS_LIT_202607_copie.xlsx",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : fichier_deja_charge (1)",
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : fichier_deja_charge (1)",
       "lignes_fichier": 405,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202608-2349eb27",
+      "reference_lot": "COTISATIONS_LIT_202608-7f1bf595",
       "nom_fichier": "COTISATIONS_LIT_202608.xlsx",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : acte_non_delegue (1)",
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : acte_non_delegue (1)",
       "lignes_fichier": 348,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202607-093bc166",
+      "reference_lot": "COTISATIONS_OCE_202607-1c008c61",
       "nom_fichier": "COTISATIONS_OCE_202607.csv",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : contrat_inconnu (1)",
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : contrat_inconnu (1)",
       "lignes_fichier": 562,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202608-66b5cda1",
+      "reference_lot": "COTISATIONS_OCE_202608-7c8d7b7a",
       "nom_fichier": "COTISATIONS_OCE_202608.csv",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : doublon_cle_metier (1)",
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : doublon_cle_metier (1)",
       "lignes_fichier": 467,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202609-6c4ab1e4",
+      "reference_lot": "COTISATIONS_OCE_202609-93ec2214",
       "nom_fichier": "COTISATIONS_OCE_202609.csv",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
       "lignes_fichier": 468,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-8f252349",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-844c38a8",
       "nom_fichier": "ENCAISSEMENTS_BANQUE_202609.csv",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)",
       "lignes_fichier": 812,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202607-311cc17b",
+      "reference_lot": "PRESTATIONS_OCE_202607-09351cdb",
       "nom_fichier": "PRESTATIONS_OCE_202607.csv",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : total_incoherent (1)",
-      "lignes_fichier": 190,
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : total_incoherent (1)",
+      "lignes_fichier": 286,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202608-d9a70cf0",
+      "reference_lot": "PRESTATIONS_OCE_202608-2dee8c19",
       "nom_fichier": "PRESTATIONS_OCE_202608.csv",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : periode_incoherente (1)",
-      "lignes_fichier": 171,
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : periode_incoherente (1)",
+      "lignes_fichier": 283,
       "lignes_chargees": 0
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202609-5f32d570",
+      "reference_lot": "PRESTATIONS_OCE_202609-949f6674",
       "nom_fichier": "PRESTATIONS_OCE_202609.csv",
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : adherent_inconnu (1)",
-      "lignes_fichier": 287,
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : adherent_inconnu (1)",
+      "lignes_fichier": 451,
       "lignes_chargees": 0
     }
   ]

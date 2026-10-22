@@ -9,8 +9,8 @@
   "appels_cotisation": 51324,
   "lignes_appel_cotisation": 23855,
   "encaissements": 37154,
-  "prestations": 49398,
+  "prestations": 49970,
   "sequences_recalees": [],
   "moteur": "sqlite",
-  "duree_generation_s": 12.83
+  "duree_generation_s": 14.3
 }

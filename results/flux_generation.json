@@ -3,29 +3,29 @@
   "dossier_arrivee": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\arrivee",
   "manifeste": "C:\\Users\\33769\\Desktop\\Offre d'emploi\\Portfolio\\projets-data\\courtage-erp\\data\\flux\\manifeste-anomalies.json",
   "nombre_lots": 27,
-  "lignes_totales": 11407,
-  "lignes_anormales": 424,
-  "part_lignes_anormales": 0.0372,
+  "lignes_totales": 12525,
+  "lignes_anormales": 451,
+  "part_lignes_anormales": 0.036,
   "anomalies_par_code": {
     "acte_non_delegue": 1,
     "adherent_inconnu": 1,
     "contrat_inconnu": 1,
     "doublon_cle_metier": 1,
     "fichier_deja_charge": 1,
-    "montant_atypique": 362,
+    "montant_atypique": 346,
     "periode_incoherente": 1,
-    "prestation_proche_plafond": 55,
+    "prestation_proche_plafond": 98,
     "schema_invalide": 2,
     "total_incoherent": 1
   },
   "anomalies_par_severite": {
-    "avertissement": 417,
+    "avertissement": 444,
     "bloquant": 9
   },
   "lots": [
     {
       "rang": 1,
-      "reference_lot": "COTISATIONS_LIT_202607-71ae9db7",
+      "reference_lot": "COTISATIONS_LIT_202607-015f42f8",
       "nom_fichier": "COTISATIONS_LIT_202607.xlsx",
       "type_flux": "cotisations",
       "format": "xlsx",
@@ -33,12 +33,12 @@
       "code_compagnie": "LIT",
       "nombre_lignes": 405,
       "derive_de": null,
-      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766",
-      "taille_octets": 29178
+      "sha256": "015f42f86ca26cee4c5f9bf9ba72acc29c674e55211653abb3631d705847407a",
+      "taille_octets": 29156
     },
     {
       "rang": 2,
-      "reference_lot": "COTISATIONS_OCE_202607-d9442664",
+      "reference_lot": "COTISATIONS_OCE_202607-1c008c61",
       "nom_fichier": "COTISATIONS_OCE_202607.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -46,12 +46,12 @@
       "code_compagnie": "OCE",
       "nombre_lignes": 562,
       "derive_de": null,
-      "sha256": "d9442664f0e70a904c84112d6d2548738cdd51d8acc057144866c21d21a0d34f",
-      "taille_octets": 63993
+      "sha256": "1c008c61e5c55525440c57bf9b8b6d78b61eca6590e5256864bc219b3e1822d0",
+      "taille_octets": 63994
     },
     {
       "rang": 3,
-      "reference_lot": "COTISATIONS_PYR_202607-cdfee976",
+      "reference_lot": "COTISATIONS_PYR_202607-eb608b9a",
       "nom_fichier": "COTISATIONS_PYR_202607.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -59,8 +59,8 @@
       "code_compagnie": "PYR",
       "nombre_lignes": 442,
       "derive_de": null,
-      "sha256": "cdfee976331671b9472757ea4e7fe9bb58f2ce2f6e9fe8a44cd3d1fd54d1efd2",
-      "taille_octets": 50744
+      "sha256": "eb608b9ada77de4c1e30e8427be67699dad64020d033e1dda70271f8c1f1dd19",
+      "taille_octets": 50745
     },
     {
       "rang": 4,
@@ -77,33 +77,33 @@
     },
     {
       "rang": 5,
-      "reference_lot": "PRESTATIONS_OCE_202607-4550f66b",
+      "reference_lot": "PRESTATIONS_OCE_202607-09351cdb",
       "nom_fichier": "PRESTATIONS_OCE_202607.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-07-01",
       "code_compagnie": "OCE",
-      "nombre_lignes": 178,
+      "nombre_lignes": 286,
       "derive_de": null,
-      "sha256": "4550f66b8e83e0fb90099beeacc8fb91a597f5280d5e0f102151496de9404ebe",
-      "taille_octets": 13254
+      "sha256": "09351cdbbabfb3dd8d96889d28344aae17a7eb1c83ed6c98a46a8f4c66cf5aa3",
+      "taille_octets": 20910
     },
     {
       "rang": 6,
-      "reference_lot": "PRESTATIONS_PYR_202607-d66dfc55",
+      "reference_lot": "PRESTATIONS_PYR_202607-b9e13c90",
       "nom_fichier": "PRESTATIONS_PYR_202607.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-07-01",
       "code_compagnie": "PYR",
-      "nombre_lignes": 197,
+      "nombre_lignes": 317,
       "derive_de": null,
-      "sha256": "d66dfc55ed1a697913741ff5d0aee5b9ba1cd8823902c96af1201bfcb7774340",
-      "taille_octets": 14635
+      "sha256": "b9e13c9084e85ca3de36bd41fe3482d27fb62e60da7cfcb3ae4cde3d9ecb667f",
+      "taille_octets": 23166
     },
     {
       "rang": 7,
-      "reference_lot": "COTISATIONS_LIT_202608-5cdbe93f",
+      "reference_lot": "COTISATIONS_LIT_202608-7f1bf595",
       "nom_fichier": "COTISATIONS_LIT_202608.xlsx",
       "type_flux": "cotisations",
       "format": "xlsx",
@@ -111,12 +111,12 @@
       "code_compagnie": "LIT",
       "nombre_lignes": 348,
       "derive_de": null,
-      "sha256": "5cdbe93f96d2c6e0209b9597a35f21749f35c6662043cdbb7094242a834dc386",
-      "taille_octets": 25567
+      "sha256": "7f1bf595aa96708dfabd5a2a5cfc6daf1cbd7776b9cfa59b35a3097dc9cc80e6",
+      "taille_octets": 25589
     },
     {
       "rang": 8,
-      "reference_lot": "COTISATIONS_OCE_202608-0b7e7e9d",
+      "reference_lot": "COTISATIONS_OCE_202608-7c8d7b7a",
       "nom_fichier": "COTISATIONS_OCE_202608.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -124,12 +124,12 @@
       "code_compagnie": "OCE",
       "nombre_lignes": 467,
       "derive_de": null,
-      "sha256": "0b7e7e9dfa4cc778e81664844687003f214c0136e7fa5b526c6a7fec80ab824a",
-      "taille_octets": 53029
+      "sha256": "7c8d7b7aeb90cce1821d4ad34369c3d2221bd97a73e1950bf89dcba7d2bf6307",
+      "taille_octets": 53016
     },
     {
       "rang": 9,
-      "reference_lot": "COTISATIONS_PYR_202608-bbde47eb",
+      "reference_lot": "COTISATIONS_PYR_202608-90f6a7fb",
       "nom_fichier": "COTISATIONS_PYR_202608.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -137,8 +137,8 @@
       "code_compagnie": "PYR",
       "nombre_lignes": 371,
       "derive_de": null,
-      "sha256": "bbde47eb1e0be55021e1be0effe3fe491a78e0ba8878c6f33f1e1755087d1ab0",
-      "taille_octets": 42554
+      "sha256": "90f6a7fb2328cdf3b5ae131faab1eeecce366cb746e8b14990ce69ad7fdb51bc",
+      "taille_octets": 42563
     },
     {
       "rang": 10,
@@ -155,33 +155,33 @@
     },
     {
       "rang": 11,
-      "reference_lot": "PRESTATIONS_OCE_202608-144a2fb7",
+      "reference_lot": "PRESTATIONS_OCE_202608-2dee8c19",
       "nom_fichier": "PRESTATIONS_OCE_202608.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-08-01",
       "code_compagnie": "OCE",
-      "nombre_lignes": 179,
+      "nombre_lignes": 283,
       "derive_de": null,
-      "sha256": "144a2fb734bf8534ed59759e7969e9b62edbdad61a436e5a94e073c0b8639357",
-      "taille_octets": 13340
+      "sha256": "2dee8c196e60778ddfd4d4cccf6d592da96e92f104e0633c5fa8a6afaeeccc88",
+      "taille_octets": 20629
     },
     {
       "rang": 12,
-      "reference_lot": "PRESTATIONS_PYR_202608-5fdb8bd6",
+      "reference_lot": "PRESTATIONS_PYR_202608-0a12c02d",
       "nom_fichier": "PRESTATIONS_PYR_202608.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-08-01",
       "code_compagnie": "PYR",
-      "nombre_lignes": 211,
+      "nombre_lignes": 308,
       "derive_de": null,
-      "sha256": "5fdb8bd60c1efd2305b35a6094dc62c31e7331abaa60cc77fc9295542593f4de",
-      "taille_octets": 15630
+      "sha256": "0a12c02d8001158e9820b8aeb24d4217990591bef1ae0d7f23dbbae1b7f5247c",
+      "taille_octets": 22472
     },
     {
       "rang": 13,
-      "reference_lot": "COTISATIONS_LIT_202609-c1fe1712",
+      "reference_lot": "COTISATIONS_LIT_202609-2243c5f9",
       "nom_fichier": "COTISATIONS_LIT_202609.xlsx",
       "type_flux": "cotisations",
       "format": "xlsx",
@@ -189,12 +189,12 @@
       "code_compagnie": "LIT",
       "nombre_lignes": 342,
       "derive_de": null,
-      "sha256": "c1fe1712baf71e45aaa4f37d1dcdae668101b302e2831f11c751a48e81779237",
-      "taille_octets": 25147
+      "sha256": "2243c5f99c38a76b483d75fa5c05df0dad9394e125e9dd1a2e25791407f6cc26",
+      "taille_octets": 25122
     },
     {
       "rang": 14,
-      "reference_lot": "COTISATIONS_OCE_202609-b44db9ea",
+      "reference_lot": "COTISATIONS_OCE_202609-93ec2214",
       "nom_fichier": "COTISATIONS_OCE_202609.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -202,12 +202,12 @@
       "code_compagnie": "OCE",
       "nombre_lignes": 468,
       "derive_de": null,
-      "sha256": "b44db9eace5d097b99c1a4bced94810a20922775029f84e7fde9aca5c8622e17",
+      "sha256": "93ec22148441acf0b89453d427243009ffa2332dde6308cc861f378881d28438",
       "taille_octets": 53077
     },
     {
       "rang": 15,
-      "reference_lot": "COTISATIONS_PYR_202609-e6cd06e8",
+      "reference_lot": "COTISATIONS_PYR_202609-6ecdd278",
       "nom_fichier": "COTISATIONS_PYR_202609.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -215,12 +215,12 @@
       "code_compagnie": "PYR",
       "nombre_lignes": 371,
       "derive_de": null,
-      "sha256": "e6cd06e829ddfb372e9a1eeb0d346ccd1e816cfeeffe8ff5e9ab3897460af577",
-      "taille_octets": 42500
+      "sha256": "6ecdd2781eaeffd5c085575b2972e0982602fbdbec669dd932142be73be748c9",
+      "taille_octets": 42496
     },
     {
       "rang": 16,
-      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-a9b2eef4",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-844c38a8",
       "nom_fichier": "ENCAISSEMENTS_BANQUE_202609.csv",
       "type_flux": "encaissements",
       "format": "csv",
@@ -228,38 +228,38 @@
       "code_compagnie": null,
       "nombre_lignes": 812,
       "derive_de": null,
-      "sha256": "a9b2eef4616dfbb184a88b0d32bb82824a6e95910f8ec10f550abcbcaec99cc5",
+      "sha256": "844c38a8928661ceffb1102e5a633b2e41e30d94607ba4d02bbfdd93d1f83c94",
       "taille_octets": 93908
     },
     {
       "rang": 17,
-      "reference_lot": "PRESTATIONS_OCE_202609-ed12b821",
+      "reference_lot": "PRESTATIONS_OCE_202609-949f6674",
       "nom_fichier": "PRESTATIONS_OCE_202609.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-09-01",
       "code_compagnie": "OCE",
-      "nombre_lignes": 266,
+      "nombre_lignes": 451,
       "derive_de": null,
-      "sha256": "ed12b82153ceafebb7f8e4fc82b4227fcdefe632caa82d033c6f8e0eb9fa4d31",
-      "taille_octets": 19519
+      "sha256": "949f6674bb5049ef36f362949bf88f3b301dee4bf44d06902d41cfbe61774643",
+      "taille_octets": 32558
     },
     {
       "rang": 18,
-      "reference_lot": "PRESTATIONS_PYR_202609-46e842a4",
+      "reference_lot": "PRESTATIONS_PYR_202609-8a393282",
       "nom_fichier": "PRESTATIONS_PYR_202609.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-09-01",
       "code_compagnie": "PYR",
-      "nombre_lignes": 327,
+      "nombre_lignes": 434,
       "derive_de": null,
-      "sha256": "46e842a45a6fde0873f5205610f7eeb5c1718c79182cb2b3c237b804aa8fb4db",
-      "taille_octets": 23961
+      "sha256": "8a393282e864ddb5cf73f7f1817694f714a736010e9af486e255d5bfd218f61f",
+      "taille_octets": 31351
     },
     {
       "rang": 2,
-      "reference_lot": "COTISATIONS_OCE_202607_R2-eee1a91d",
+      "reference_lot": "COTISATIONS_OCE_202607_R2-1f0599b2",
       "nom_fichier": "COTISATIONS_OCE_202607_R2.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -267,25 +267,25 @@
       "code_compagnie": "OCE",
       "nombre_lignes": 562,
       "derive_de": "COTISATIONS_OCE_202607",
-      "sha256": "eee1a91d19beb113af2f82b4fdb53367b2d804e199a56a41a96fb74d2c91b909",
-      "taille_octets": 63992
+      "sha256": "1f0599b29c5a93ecacec2e1b0faeef48d26406a0e179a707a20a0b7aabaf93a2",
+      "taille_octets": 63993
     },
     {
       "rang": 5,
-      "reference_lot": "PRESTATIONS_OCE_202607_R2-b902dba3",
+      "reference_lot": "PRESTATIONS_OCE_202607_R2-fd6c1ec6",
       "nom_fichier": "PRESTATIONS_OCE_202607_R2.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-07-01",
       "code_compagnie": "OCE",
-      "nombre_lignes": 178,
+      "nombre_lignes": 286,
       "derive_de": "PRESTATIONS_OCE_202607",
-      "sha256": "b902dba3f3781707fc14a7a40d5bb7f9cabf895c5f1eff5e38433569cff98ad9",
-      "taille_octets": 13254
+      "sha256": "fd6c1ec6f8f3b04faddae87047c40bc9c5214f295ecaaef9f90730d41338cc4c",
+      "taille_octets": 20910
     },
     {
       "rang": 7,
-      "reference_lot": "COTISATIONS_LIT_202608_R2-03d571c4",
+      "reference_lot": "COTISATIONS_LIT_202608_R2-e72332ef",
       "nom_fichier": "COTISATIONS_LIT_202608_R2.xlsx",
       "type_flux": "cotisations",
       "format": "xlsx",
@@ -293,12 +293,12 @@
       "code_compagnie": "LIT",
       "nombre_lignes": 348,
       "derive_de": "COTISATIONS_LIT_202608",
-      "sha256": "03d571c4cadc3e42f8cf0ed9af76a0735c70d935a48d06334de9cc54135941f9",
-      "taille_octets": 25556
+      "sha256": "e72332ef8c4ca879179daeb78e72ba90356f0182d88fea24198e8ccda60f2093",
+      "taille_octets": 25573
     },
     {
       "rang": 8,
-      "reference_lot": "COTISATIONS_OCE_202608_R2-7d511586",
+      "reference_lot": "COTISATIONS_OCE_202608_R2-8985a3d5",
       "nom_fichier": "COTISATIONS_OCE_202608_R2.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -306,25 +306,25 @@
       "code_compagnie": "OCE",
       "nombre_lignes": 467,
       "derive_de": "COTISATIONS_OCE_202608",
-      "sha256": "7d511586898ca3ec19f04b0744f12efc2f0e3b6bf07878b998f4de4886a61fc3",
-      "taille_octets": 53029
+      "sha256": "8985a3d5f22f8fbf96c384cfbca56d967ca528fee9aebe7a456a5452419e7371",
+      "taille_octets": 53016
     },
     {
       "rang": 11,
-      "reference_lot": "PRESTATIONS_OCE_202608_R2-f707b4d1",
+      "reference_lot": "PRESTATIONS_OCE_202608_R2-3bca0afc",
       "nom_fichier": "PRESTATIONS_OCE_202608_R2.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-08-01",
       "code_compagnie": "OCE",
-      "nombre_lignes": 179,
+      "nombre_lignes": 283,
       "derive_de": "PRESTATIONS_OCE_202608",
-      "sha256": "f707b4d110256048ff7b84149d1c08a182a9fe4f87511423f0eab2cf59e04b16",
-      "taille_octets": 13340
+      "sha256": "3bca0afc8dfc84006a52b7c95f20563f21913c536c13f9021f5a58a079885845",
+      "taille_octets": 20629
     },
     {
       "rang": 14,
-      "reference_lot": "COTISATIONS_OCE_202609_R2-2360e155",
+      "reference_lot": "COTISATIONS_OCE_202609_R2-6b3c0c30",
       "nom_fichier": "COTISATIONS_OCE_202609_R2.csv",
       "type_flux": "cotisations",
       "format": "csv",
@@ -332,7 +332,7 @@
       "code_compagnie": "OCE",
       "nombre_lignes": 468,
       "derive_de": "COTISATIONS_OCE_202609",
-      "sha256": "2360e15506c563b00df3c551972279e8317a78b560c5770d6858905651ec49c8",
+      "sha256": "6b3c0c30b432472611b41a27ea1ad71326654ee6a7b758e25655bc261d481e99",
       "taille_octets": 53077
     },
     {
@@ -350,20 +350,20 @@
     },
     {
       "rang": 17,
-      "reference_lot": "PRESTATIONS_OCE_202609_R2-d7b3bba9",
+      "reference_lot": "PRESTATIONS_OCE_202609_R2-a89577ed",
       "nom_fichier": "PRESTATIONS_OCE_202609_R2.csv",
       "type_flux": "prestations",
       "format": "csv",
       "periode": "2026-09-01",
       "code_compagnie": "OCE",
-      "nombre_lignes": 266,
+      "nombre_lignes": 451,
       "derive_de": "PRESTATIONS_OCE_202609",
-      "sha256": "d7b3bba99716b41022819fcef34cb4cd06b815929ee3f8b82dd6361adf4ca07a",
-      "taille_octets": 19518
+      "sha256": "a89577ed1152b26f216aed80cd0b7c3e91f09ea1908a05c6366e6c8f2a4a69d4",
+      "taille_octets": 32557
     },
     {
       "rang": 1,
-      "reference_lot": "COTISATIONS_LIT_202607_copie-71ae9db7",
+      "reference_lot": "COTISATIONS_LIT_202607_copie-015f42f8",
       "nom_fichier": "COTISATIONS_LIT_202607_copie.xlsx",
       "type_flux": "cotisations",
       "format": "xlsx",
@@ -371,9 +371,9 @@
       "code_compagnie": "LIT",
       "nombre_lignes": 405,
       "derive_de": "COTISATIONS_LIT_202607",
-      "sha256": "71ae9db7e57303437e10012c60befc9fb3cb7e2de2eb818fbe930743629c9766",
-      "taille_octets": 29178
+      "sha256": "015f42f86ca26cee4c5f9bf9ba72acc29c674e55211653abb3631d705847407a",
+      "taille_octets": 29156
     }
   ],
-  "duree_s": 3.81
+  "duree_s": 3.5
 }

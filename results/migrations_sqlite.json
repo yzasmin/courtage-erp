@@ -1,5 +1,5 @@
 {
-  "mesure_le": "2026-10-21T16:47:54Z",
+  "mesure_le": "2026-10-21T23:16:32Z",
   "moteur": "sqlite",
   "python": "3.12.0",
   "revisions": [
@@ -17,84 +17,84 @@
   "tables_en_trop_au_sommet": [],
   "residus_apres_descente_complete": [],
   "tables_apres_remontee": 31,
-  "duree_totale_s": 2.27,
+  "duree_totale_s": 6.45,
   "etapes": [
     {
       "sens": "montee",
       "revision": "0001",
-      "duree_s": 0.234,
+      "duree_s": 0.438,
       "tables_apres": 20
     },
     {
       "sens": "montee",
       "revision": "0002",
-      "duree_s": 0.047,
+      "duree_s": 0.094,
       "tables_apres": 23
     },
     {
       "sens": "montee",
       "revision": "0003",
-      "duree_s": 0.188,
+      "duree_s": 0.344,
       "tables_apres": 25
     },
     {
       "sens": "montee",
       "revision": "0004",
-      "duree_s": 0.109,
+      "duree_s": 0.328,
       "tables_apres": 31
     },
     {
       "sens": "montee",
       "revision": "0005",
-      "duree_s": 0.188,
+      "duree_s": 0.328,
       "tables_apres": 31
     },
     {
       "sens": "montee",
       "revision": "0006",
-      "duree_s": 0.031,
+      "duree_s": 0.047,
       "tables_apres": 31
     },
     {
       "sens": "descente",
       "revision": "0006",
       "vers": "0005",
-      "duree_s": 0.031,
+      "duree_s": 0.047,
       "tables_apres": 31
     },
     {
       "sens": "descente",
       "revision": "0005",
       "vers": "0004",
-      "duree_s": 0.141,
+      "duree_s": 0.219,
       "tables_apres": 31
     },
     {
       "sens": "descente",
       "revision": "0004",
       "vers": "0003",
-      "duree_s": 0.093,
+      "duree_s": 0.156,
       "tables_apres": 25
     },
     {
       "sens": "descente",
       "revision": "0003",
       "vers": "0002",
-      "duree_s": 0.204,
+      "duree_s": 0.407,
       "tables_apres": 23
     },
     {
       "sens": "descente",
       "revision": "0002",
       "vers": "0001",
-      "duree_s": 0.046,
+      "duree_s": 0.093,
       "tables_apres": 20
     },
     {
       "sens": "descente",
       "revision": "0001",
       "vers": "base",
-      "duree_s": 0.204,
+      "duree_s": 0.406,
       "tables_apres": 0
     }
   ]

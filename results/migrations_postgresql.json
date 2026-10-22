@@ -1,12 +1,14 @@
 {
-  "mesure_le": "2026-10-20T11:22:52Z",
+  "mesure_le": "2026-10-21T23:08:31Z",
   "moteur": "postgresql",
   "python": "3.12.0",
   "revisions": [
     "0001",
     "0002",
     "0003",
-    "0004"
+    "0004",
+    "0005",
+    "0006"
   ],
   "conforme": true,
   "tables_attendues": 31,
@@ -15,58 +17,84 @@
   "tables_en_trop_au_sommet": [],
   "residus_apres_descente_complete": [],
   "tables_apres_remontee": 31,
-  "duree_totale_s": 4.72,
+  "duree_totale_s": 5.28,
   "etapes": [
     {
       "sens": "montee",
       "revision": "0001",
-      "duree_s": 0.922,
+      "duree_s": 0.719,
       "tables_apres": 20
     },
     {
       "sens": "montee",
       "revision": "0002",
-      "duree_s": 0.156,
+      "duree_s": 0.14,
       "tables_apres": 23
     },
     {
       "sens": "montee",
       "revision": "0003",
-      "duree_s": 0.219,
+      "duree_s": 0.203,
       "tables_apres": 25
     },
     {
       "sens": "montee",
       "revision": "0004",
-      "duree_s": 0.282,
+      "duree_s": 0.344,
+      "tables_apres": 31
+    },
+    {
+      "sens": "montee",
+      "revision": "0005",
+      "duree_s": 0.109,
+      "tables_apres": 31
+    },
+    {
+      "sens": "montee",
+      "revision": "0006",
+      "duree_s": 0.109,
+      "tables_apres": 31
+    },
+    {
+      "sens": "descente",
+      "revision": "0006",
+      "vers": "0005",
+      "duree_s": 0.078,
+      "tables_apres": 31
+    },
+    {
+      "sens": "descente",
+      "revision": "0005",
+      "vers": "0004",
+      "duree_s": 0.078,
       "tables_apres": 31
     },
     {
       "sens": "descente",
       "revision": "0004",
       "vers": "0003",
-      "duree_s": 0.172,
+      "duree_s": 0.203,
       "tables_apres": 25
     },
     {
       "sens": "descente",
       "revision": "0003",
       "vers": "0002",
-      "duree_s": 0.125,
+      "duree_s": 0.156,
       "tables_apres": 23
     },
     {
       "sens": "descente",
       "revision": "0002",
       "vers": "0001",
-      "duree_s": 0.109,
+      "duree_s": 0.125,
       "tables_apres": 20
     },
     {
       "sens": "descente",
       "revision": "0001",
       "vers": "base",
-      "duree_s": 0.375,
+      "duree_s": 0.406,
       "tables_apres": 0
     }
   ]

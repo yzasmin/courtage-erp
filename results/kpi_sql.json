@@ -2,51 +2,51 @@
   "01_ratio_sinistres_primes": [
     {
       "periode": "2024",
-      "prestations_reglees_euros": 3230842.0,
+      "prestations_reglees_euros": 1388870.5,
       "cotisations_acquises_euros": 1818408.62,
-      "ratio_sinistres_primes_pct": 177.6741
+      "ratio_sinistres_primes_pct": 76.3784
     },
     {
       "periode": "2025",
-      "prestations_reglees_euros": 3393705.0,
+      "prestations_reglees_euros": 1774778.5,
       "cotisations_acquises_euros": 2218682.28,
-      "ratio_sinistres_primes_pct": 152.9604
+      "ratio_sinistres_primes_pct": 79.9925
     },
     {
       "periode": "2026 (9 mois)",
-      "prestations_reglees_euros": 2279066.0,
+      "prestations_reglees_euros": 1355414.5,
       "cotisations_acquises_euros": 1880726.55,
-      "ratio_sinistres_primes_pct": 121.1801
+      "ratio_sinistres_primes_pct": 72.0687
     }
   ],
   "01b_ratio_sinistres_primes_pieges": [
     {
       "periode": "2024",
-      "reference_pct": 177.67,
-      "en_date_de_soins_pct": 178.69,
-      "sur_emises_pct": 174.56,
-      "sur_tous_produits_pct": 126.19,
-      "sur_ttc_emis_pct": 154.11,
+      "reference_pct": 76.38,
+      "en_date_de_soins_pct": 78.59,
+      "sur_emises_pct": 75.04,
+      "sur_tous_produits_pct": 54.25,
+      "sur_ttc_emis_pct": 66.25,
       "cotisations_acquises_euros": 1818408.62,
       "cotisations_emises_euros": 1850865.85
     },
     {
       "periode": "2025",
-      "reference_pct": 152.96,
-      "en_date_de_soins_pct": 153.93,
-      "sur_emises_pct": 151.39,
-      "sur_tous_produits_pct": 109.67,
-      "sur_ttc_emis_pct": 133.65,
+      "reference_pct": 79.99,
+      "en_date_de_soins_pct": 79.92,
+      "sur_emises_pct": 79.17,
+      "sur_tous_produits_pct": 57.35,
+      "sur_ttc_emis_pct": 69.89,
       "cotisations_acquises_euros": 2218682.28,
       "cotisations_emises_euros": 2241765.21
     },
     {
       "periode": "2026 (9 mois)",
-      "reference_pct": 121.18,
-      "en_date_de_soins_pct": 111.43,
-      "sur_emises_pct": 133.27,
-      "sur_tous_produits_pct": 91.25,
-      "sur_ttc_emis_pct": 117.66,
+      "reference_pct": 72.07,
+      "en_date_de_soins_pct": 67.11,
+      "sur_emises_pct": 79.26,
+      "sur_tous_produits_pct": 54.27,
+      "sur_ttc_emis_pct": 69.97,
       "cotisations_acquises_euros": 1880726.55,
       "cotisations_emises_euros": 1710100.57
     }

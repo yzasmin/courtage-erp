@@ -5,14 +5,14 @@
     "rejete": 9
   },
   "lots_rejetes": 9,
-  "lignes_rejetees_au_total": 3710,
+  "lignes_rejetees_au_total": 4082,
   "lots_rejetes_ayant_ecrit": [],
   "lots_charges": 18,
   "lots_charges_au_compteur_incoherent": [],
   "conforme": true,
   "detail": [
     {
-      "reference_lot": "COTISATIONS_LIT_202607_copie-89f1610f",
+      "reference_lot": "COTISATIONS_LIT_202607_copie-015f42f8",
       "nom_fichier": "COTISATIONS_LIT_202607_copie.xlsx",
       "type_flux": "cotisations",
       "lignes_dans_le_fichier": 405,
@@ -21,10 +21,10 @@
       "codes_bloquants": [
         "fichier_deja_charge"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : fichier_deja_charge (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : fichier_deja_charge (1)"
     },
     {
-      "reference_lot": "COTISATIONS_LIT_202608-2349eb27",
+      "reference_lot": "COTISATIONS_LIT_202608-7f1bf595",
       "nom_fichier": "COTISATIONS_LIT_202608.xlsx",
       "type_flux": "cotisations",
       "lignes_dans_le_fichier": 348,
@@ -33,10 +33,10 @@
       "codes_bloquants": [
         "acte_non_delegue"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : acte_non_delegue (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : acte_non_delegue (1)"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202607-093bc166",
+      "reference_lot": "COTISATIONS_OCE_202607-1c008c61",
       "nom_fichier": "COTISATIONS_OCE_202607.csv",
       "type_flux": "cotisations",
       "lignes_dans_le_fichier": 562,
@@ -45,10 +45,10 @@
       "codes_bloquants": [
         "contrat_inconnu"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : contrat_inconnu (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : contrat_inconnu (1)"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202608-66b5cda1",
+      "reference_lot": "COTISATIONS_OCE_202608-7c8d7b7a",
       "nom_fichier": "COTISATIONS_OCE_202608.csv",
       "type_flux": "cotisations",
       "lignes_dans_le_fichier": 467,
@@ -57,10 +57,10 @@
       "codes_bloquants": [
         "doublon_cle_metier"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : doublon_cle_metier (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : doublon_cle_metier (1)"
     },
     {
-      "reference_lot": "COTISATIONS_OCE_202609-6c4ab1e4",
+      "reference_lot": "COTISATIONS_OCE_202609-93ec2214",
       "nom_fichier": "COTISATIONS_OCE_202609.csv",
       "type_flux": "cotisations",
       "lignes_dans_le_fichier": 468,
@@ -69,10 +69,10 @@
       "codes_bloquants": [
         "schema_invalide"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : schema_invalide (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)"
     },
     {
-      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-8f252349",
+      "reference_lot": "ENCAISSEMENTS_BANQUE_202609-844c38a8",
       "nom_fichier": "ENCAISSEMENTS_BANQUE_202609.csv",
       "type_flux": "encaissements",
       "lignes_dans_le_fichier": 812,
@@ -81,43 +81,43 @@
       "codes_bloquants": [
         "schema_invalide"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : schema_invalide (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : schema_invalide (1)"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202607-311cc17b",
+      "reference_lot": "PRESTATIONS_OCE_202607-09351cdb",
       "nom_fichier": "PRESTATIONS_OCE_202607.csv",
       "type_flux": "prestations",
-      "lignes_dans_le_fichier": 190,
+      "lignes_dans_le_fichier": 286,
       "lignes_annoncees_chargees": 0,
       "lignes_reellement_en_base": 0,
       "codes_bloquants": [
         "total_incoherent"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : total_incoherent (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : total_incoherent (1)"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202608-d9a70cf0",
+      "reference_lot": "PRESTATIONS_OCE_202608-2dee8c19",
       "nom_fichier": "PRESTATIONS_OCE_202608.csv",
       "type_flux": "prestations",
-      "lignes_dans_le_fichier": 171,
+      "lignes_dans_le_fichier": 283,
       "lignes_annoncees_chargees": 0,
       "lignes_reellement_en_base": 0,
       "codes_bloquants": [
         "periode_incoherente"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : periode_incoherente (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : periode_incoherente (1)"
     },
     {
-      "reference_lot": "PRESTATIONS_OCE_202609-5f32d570",
+      "reference_lot": "PRESTATIONS_OCE_202609-949f6674",
       "nom_fichier": "PRESTATIONS_OCE_202609.csv",
       "type_flux": "prestations",
-      "lignes_dans_le_fichier": 287,
+      "lignes_dans_le_fichier": 451,
       "lignes_annoncees_chargees": 0,
       "lignes_reellement_en_base": 0,
       "codes_bloquants": [
         "adherent_inconnu"
       ],
-      "motif": "lot rejete en totalite sur 1 anomalie(s) bloquante(s) : adherent_inconnu (1)"
+      "motif": "lot rejeté en totalité sur 1 anomalie(s) bloquante(s) : adherent_inconnu (1)"
     }
   ]
 }

@@ -128,6 +128,23 @@ POIDS_SAISON_PRESTATIONS = (118, 105, 104, 96, 94, 88, 62, 58, 97, 108, 122, 128
 #: Bornes (minimum, maximum) par age limite superieur.
 PRESTATIONS_PAR_AN_SELON_AGE = ((25, (0, 4)), (40, (1, 6)), (55, (2, 9)), (70, (3, 12)), (200, (4, 14)))
 
+#: Echelle de sinistralite par branche : rapport du remboursement **theorique** d'un contrat (taux de la
+#: formule, avant plafond) a la cotisation hors taxe que ce contrat a courue. Le montant des demandes de
+#: chaque contrat est calibre sur sa cotisation : sans ce lien, les prestations etaient tirees par tranche
+#: d'age et par garantie, sans rapport avec ce que le contrat paie, et le ratio sinistres sur primes
+#: depassait 150 pour cent. Cette echelle n'est pas le ratio publie : les contrats sans aucun soin, les
+#: plafonds annuels, les rejets et les prestations encore en cours en retranchent une part. Les valeurs
+#: sont donc **mesurees**, branche par branche, pour que le ratio publie (`docs/kpi.md`) tombe dans la
+#: fourchette d'un portefeuille sante viable. Une valeur par branche, car les formules n'ont ni les memes
+#: taux de remboursement ni les memes plafonds.
+ECHELLE_SINISTRALITE = {"SI": 1.42, "SC": 1.62}
+
+#: Profils de consommation d'un contrat : (poids, borne basse, borne haute) du multiplicateur de la
+#: echelle de sinistralite. Beaucoup de contrats consomment peu, une minorite consomme beaucoup : un ratio uniforme
+#: serait aussi faux qu'un ratio demesure. Les multiplicateurs sont ensuite divises par leur moyenne
+#: theorique, pour que la sinistralite d'ensemble reste celle de `ECHELLE_SINISTRALITE`.
+PROFILS_CONSOMMATION = ((55, 0.05, 0.45), (35, 0.8, 1.6), (10, 2.5, 5.0))
+
 #: Part des prestations rejetees, par exemple hors garantie ou hors delai de declaration.
 PART_PRESTATION_REJETEE = 0.045
 

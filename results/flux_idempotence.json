@@ -32,29 +32,29 @@
   ],
   "comptes_avant": {
     "lot_fichier": 27,
-    "anomalie_lot": 901,
+    "anomalie_lot": 630,
     "brut_cotisation": 3776,
     "brut_encaissement": 2588,
-    "brut_prestation": 1347,
+    "brut_prestation": 2079,
     "rapprochement_ligne": 2562,
-    "commission": 2520,
-    "retrocession": 2050,
-    "bordereau": 30
+    "commission": 3704,
+    "retrocession": 2978,
+    "bordereau": 33
   },
   "comptes_apres": {
     "lot_fichier": 27,
-    "anomalie_lot": 901,
+    "anomalie_lot": 630,
     "brut_cotisation": 3776,
     "brut_encaissement": 2588,
-    "brut_prestation": 1347,
+    "brut_prestation": 2079,
     "rapprochement_ligne": 2562,
-    "commission": 2520,
-    "retrocession": 2050,
-    "bordereau": 30
+    "commission": 3704,
+    "retrocession": 2978,
+    "bordereau": 33
   },
   "tables_modifiees": {},
-  "empreinte_avant": "9dd4b4bd693ccfe84e237d22646f6ad0466581c06e483db78a0dfd98cdae7b3d",
-  "empreinte_apres": "9dd4b4bd693ccfe84e237d22646f6ad0466581c06e483db78a0dfd98cdae7b3d",
+  "empreinte_avant": "c40b184f93ffd8b57ee807bc7f8b8adcfffe3b76ac454b8180a560778699b84e",
+  "empreinte_apres": "c40b184f93ffd8b57ee807bc7f8b8adcfffe3b76ac454b8180a560778699b84e",
   "empreintes_identiques": true,
   "conforme": true,
   "comptes_rendus_du_second_passage": {
@@ -88,6 +88,7 @@
         "partiel": 34,
         "rapproche": 2488
       },
+      "appels_reexamines": 0,
       "par_methode": {
         "aucune": 24,
         "montant_date": 294,
@@ -107,21 +108,23 @@
       "commissions": {
         "creees": 0,
         "mises_a_jour": 0,
-        "inchangees": 2520,
+        "inchangees": 3704,
         "supprimees": 0,
-        "montant_cents": 4632066
+        "montant_cents": 7934683
       },
       "retrocessions": {
         "creees": 0,
         "mises_a_jour": 0,
-        "inchangees": 2050,
+        "inchangees": 2978,
         "supprimees": 0,
-        "montant_cents": 2318274
+        "montant_cents": 3889554
       },
       "appels_ecartes": {
-        "apporteur_sans_retrocession": 470,
-        "aucun_encaissement_rapproche": 72,
-        "encaissement_non_delegue_assiette_inconnue": 1184
+        "apporteur_sans_retrocession": 726,
+        "aucun_encaissement_rapproche": 72
+      },
+      "assiettes_de_repli": {
+        "assiette_appelee_car_encaissement_non_delegue": 1184
       },
       "periodes_sans_releve_bancaire_charge": []
     },
@@ -131,14 +134,14 @@
         "2026-08-01",
         "2026-09-01"
       ],
-      "bordereaux_de_commissions": 6,
+      "bordereaux_de_commissions": 9,
       "bordereaux_de_retrocessions": 24,
       "crees": 0,
       "mis_a_jour": 0,
-      "inchanges": 30,
+      "inchanges": 33,
       "lignes_rattachees": 0,
-      "montant_commissions_cents": 4632066,
-      "montant_retrocessions_cents": 2318274
+      "montant_commissions_cents": 7934683,
+      "montant_retrocessions_cents": 3889554
     }
   }
 }
