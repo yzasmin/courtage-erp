@@ -442,6 +442,12 @@ et évalué, captures des pages Synthèse et Sinistres sur primes reprises. Les 
 Portefeuille n'ont pas changé de chiffres. Trois tests ajoutés dans `tests/test_generation.py` (ratio plausible par
 branche et par exercice, dispersion), exécutés sur les deux moteurs.
 
+### Défaut de test révélé par l'intégration continue
+
+`test_archive_ne_recouvre_pas_une_piece_deja_archivee` comparait un lot à `lots[1]`, lu sans `order by` : sur PostgreSQL,
+l'ordre des lignes est l'ordre physique et il a changé, le test a échoué dans l'intégration continue alors qu'il passait
+sur le poste. Il compare désormais des ensembles de références. C'était un défaut du test, pas du code.
+
 ### Ce qui reste
 
 - **Le 2026 de santé individuelle est à 69,62 %**, sous la fourchette de 70 à 85 %, sur 9 mois seulement : ce n'est pas un

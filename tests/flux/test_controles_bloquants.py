@@ -399,4 +399,7 @@ def test_archive_ne_recouvre_pas_une_piece_deja_archivee(session, espace_flux, l
         assert empreinte_fichier(chemin) == lot.sha256, (
             "l'empreinte enregistree doit toujours decrire le fichier archive"
         )
-    assert premier.reference_lot != lots[1].reference_lot
+    # Les deux lots ont des references distinctes. Sans `order by`, PostgreSQL rend les lignes dans l'ordre
+    # physique, qui change apres une mise a jour : comparer a `lots[1]` passait ou echouait selon l'ordre.
+    assert len({lot.reference_lot for lot in lots}) == 2
+    assert premier.reference_lot in {lot.reference_lot for lot in lots}
