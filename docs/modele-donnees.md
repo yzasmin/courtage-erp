@@ -438,5 +438,5 @@ rattaché à un adhérent inexistant, puis échouerait en production. C'est pos�
 vérifié par un test.
 
 La preuve de la portabilité n'est pas une affirmation : la même graine produit la **même empreinte
-SHA-256** sur les deux moteurs, sur 178 086 lignes. Voir `results/reproductibilite_sqlite.json` et
+SHA-256** sur les deux moteurs, sur 178 658 lignes. Voir `results/reproductibilite_sqlite.json` et
 `results/reproductibilite_postgresql.json`.

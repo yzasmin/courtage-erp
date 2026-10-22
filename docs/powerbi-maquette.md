@@ -116,7 +116,7 @@ Pour le pilotage du portefeuille : ce que le cabinet gère aujourd'hui.
 
 ## Limites assumées
 
-- **Le niveau absolu du ratio sinistres sur primes n'est pas réaliste** (plus de 100 %) : c'est le calibrage du générateur de données, expliqué dans `docs/kpi.md`. Le tableau de bord le montre tel quel plutôt que de le masquer.
+- **Les ratios sont ceux d'une donnée synthétique calibrée** : les prestations sont reliées aux cotisations par le générateur (`docs/kpi.md`), de façon à donner 76 à 81 % sur les exercices complets. La fourchette est un choix de simulation, pas une observation.
 - **Les tableaux des pages sont étroits** : sur la mise en page de 1 280 pixels, les colonnes de droite se lisent en faisant défiler. Les captures sont prises à 59 % de zoom.
 - **Les segments d'année ne sont pas synchronisés entre les pages** : chaque page porte le sien, coché sur 2025.
 - **Aucune actualisation planifiée** : les CSV sont régénérés à la demande. Un déploiement réel passerait par une connexion directe à la base et une passerelle de données, ce que ce projet ne fait pas.

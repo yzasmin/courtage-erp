@@ -4,7 +4,7 @@
 
 ## État en une ligne
 
-**Module 1, cœur ERP : fait et prouvé sur les deux moteurs. Module 2, flux financiers : fait et
+**Module 1, cœur ERP : fait et prouvé sur les deux moteurs, avec des prestations reliées aux cotisations depuis le 22/10. Module 2, flux financiers : fait et
 mesuré. Module 3, pilotage : fait, projet Power BI ouvert et mesures contrôlées contre le SQL.** Reste la
 capture d'écran du graphe Airflow (module 2), qui demande le moteur Docker.
 
@@ -75,10 +75,10 @@ Toutes ces valeurs viennent d'une exécution enregistrée dans `results/`. Aucun
 | Appels de cotisation | 51 324, dont les appels groupés des polices | idem |
 | Lignes d'appel groupé | 23 855 | idem |
 | Encaissements | 37 154 | idem |
-| Prestations | 49 398 | idem |
-| **Total des lignes empreintées** | **178 086** | `results/reproductibilite_sqlite.json` |
+| Prestations | 49 970 | idem |
+| **Total des lignes empreintées** | **178 658** | `results/reproductibilite_sqlite.json` |
 
-Durée de génération : 11,62 s sur SQLite (`results/generation.json`, champ `duree_generation_s`).
+Durée de génération : 14,30 s sur SQLite (`results/generation.json`, champ `duree_generation_s`).
 La mesure sur PostgreSQL en conteneur n'a pas été reprise après la régénération : elle n'est donc plus
 citée ici plutôt que d'être recopiée périmée.
 
@@ -90,9 +90,9 @@ citée ici plutôt que d'être recopiée périmée.
 | Migrations qui montent et redescendent, PostgreSQL | conforme, 6 révisions, 31 tables, aucun résidu | `results/migrations_postgresql.json` |
 | Génération reproductible, SQLite | deux exécutions, empreinte identique | `results/reproductibilite_sqlite.json` |
 | Génération reproductible, PostgreSQL | deux exécutions, empreinte identique | `results/reproductibilite_postgresql.json` |
-| **Même empreinte sur les deux moteurs** | `3311d29fe0bf7f4c2e2b3d24948fabd5d7021ea814b95cc0447b59acdfa0ed03` | les deux fichiers ci-dessus |
-| Suite de tests, base temporaire | 231 passés, 10 sautés | `results/pytest.txt` |
-| Suite de tests, base de démonstration | 240 passés, 1 sauté | `results/pytest_base_demonstration.txt` |
+| **Même empreinte sur les deux moteurs** | `ff90a24da37721ff684efa5f0bbfee43730c3ef7c1d356910803ccfcf9546ff5` | les deux fichiers ci-dessus |
+| Suite de tests, base temporaire | 238 passés, 13 sautés | `results/pytest.txt` |
+| Suite de tests, base de démonstration | 250 passés, 1 sauté | `results/pytest_base_demonstration.txt` |
 | Suite de tests, PostgreSQL | produite par l'intégration continue, voir l'artefact du travail `le meme code sur la base de production` | `results/pytest_postgresql.txt` |
 | Cohérence métier des données, deux moteurs | 18 contrôles, tous conformes | `results/coherence_metier.json` |
 | Les tests détectent les défauts qu'ils couvrent | 9 mutations, toutes détectées | `results/mutation.json` |
@@ -118,9 +118,10 @@ qui sont dimensionnés pour un exécuteur local sans Celery ni Redis.
 
 ### Pourquoi l'empreinte a changé
 
-L'empreinte du jeu de démonstration est passée de `fea8ef82…` à `f22fe41f…`, puis à `3311d29f…`, et le
-nombre de lignes de 168 901 à 178 814, puis à 178 086. Les deux derniers changements sont expliqués plus
-bas, dans la section « Reprise du 21/10/2026 ». C'est normal et voulu : **les données ont changé parce que le modèle métier a été
+L'empreinte du jeu de démonstration est passée de `fea8ef82…` à `f22fe41f…`, puis à `3311d29f…`, puis à
+`ff90a24d…`, et le nombre de lignes de 168 901 à 178 814, puis à 178 086, puis à 178 658. Les deux
+changements du 21/10 sont expliqués plus bas, dans la section « Reprise du 21/10/2026 », le dernier dans la
+section « Recalibrage de la sinistralité du 22/10/2026 ». C'est normal et voulu : **les données ont changé parce que le modèle métier a été
 corrigé.** Une empreinte qui serait restée identique après ces corrections aurait signifié qu'elles
 n'avaient rien produit.
 
@@ -199,7 +200,7 @@ graphe Airflow les appelle en ligne de commande plutôt que d'importer le code m
 
 | Preuve | Fichier | Résultat mesuré |
 | --- | --- | --- |
-| Sortie de `dbt build` | `dbt_build.txt` | 153 réussites, 4 avertissements, 0 erreur |
+| Sortie de `dbt build` | `dbt_build.txt` | 199 réussites, 4 avertissements, 0 erreur (le modèle en étoile du module 3 compris) |
 | Journal d'exécution par lot | `flux_journal_lots.json` | un lot par fichier, avec empreinte, verdict et motif |
 | Rapport de détection | `flux_rapport_detection.json` | rappel et précision par code et par sévérité |
 | Rejet intégral d'un lot | `flux_rejet_integral.json` | 9 lots rejetés, 0 ligne écrite |
@@ -303,7 +304,7 @@ exposure (`tableau_de_bord_pilotage`, onze marts en parents), visible dans le li
 
 | Indicateur | Valeur | Source |
 | --- | --- | --- |
-| Ratio sinistres sur primes | 177,67 % en 2024, 152,96 % en 2025, 121,18 % sur 9 mois de 2026 | `results/kpi_sql.json`, `01_ratio_sinistres_primes` |
+| Ratio sinistres sur primes | 76,38 % en 2024, 79,99 % en 2025, 72,07 % sur 9 mois de 2026 | `results/kpi_sql.json`, `01_ratio_sinistres_primes` |
 | Taux de résiliation | 10,98 % en 2024, 11,67 % en 2025, 8,67 % sur 9 mois de 2026 (11,59 % annualisé) | `02_taux_resiliation` |
 | Production par apporteur | 834 affaires et 655 274,04 € annualisés en 2025, dix apporteurs | `03_production_par_apporteur` |
 | Portefeuille par branche | 3 926 contrats, dont 36 suspendus, et 3 478 836,36 € annualisés au 30/09/2026 | `04_portefeuille_par_branche` |
@@ -319,13 +320,11 @@ Exécution 39685738522 sur le commit `97dcc4f` : réussie en 3 min 26 s (suite d
 | Le recalcul SQL des commissions ignorait la règle D24, que le code applique : deux tests de sévérité erreur échouaient sur 1 184 appels | premier `dbt build` complet sur la base régénérée | **corrigé** (D31), voir `docs/lessons/p8-sql-et-application-appliquent-la-meme-regle.md` |
 | Un test passait de 4 secondes à 24 minutes après la correction | commande dépassant son délai, requête encore active dans `pg_stat_activity` | **corrigé** : modèle matérialisé en table, 2 secondes |
 | La base PostgreSQL du compose contenait un jeu antérieur à la reprise du 21/10 (50 126 prestations et 2 520 commissions au lieu de 49 398 et 3 704) | comptage avant le premier build | **corrigé** : base recréée et régénérée, empreinte `3311d29f…` retrouvée, identique à SQLite |
-| Le ratio sinistres sur primes dépasse 100 % sur toutes les périodes | premières valeurs mesurées | **ouvert** : le générateur tire les prestations sans lien avec les cotisations (`docs/kpi.md`) |
+| Le ratio sinistres sur primes dépassait 100 % sur toutes les périodes (177,67 %, 152,96 %, 121,18 %) | premières valeurs mesurées | **corrigé le 22/10** : le générateur reliait mal les prestations aux cotisations ; voir D32 et la section « Recalibrage de la sinistralité » |
 | Power BI Desktop installé est en 2.159.883.0, non en 2.157.1354.0 | `Get-AppxPackage` | consigné, vérification faite sur la version installée |
 
 ### Limites ouvertes
 
-- **Le niveau absolu du ratio sinistres sur primes n'est pas réaliste.** Corriger le calibrage du générateur change
-  l'empreinte du jeu et tous les chiffres du dépôt : décision à prendre pour l'ensemble du projet.
 - **L'intégration continue n'exécute pas dbt** (il demande PostgreSQL et la chaîne de flux). Le défaut D24 est resté
   invisible pour cette raison. Les tests de `tests/test_pbip.py` couvrent la cohérence du projet Power BI sans Power BI.
 - **Le projet Power BI versionné porte un chemin d'exemple** pour les données : à adapter après un clone
@@ -350,7 +349,7 @@ Sans Docker, sur SQLite, pour développer et tester vite :
 ```bash
 make installer
 make regenerer        # redescend le schema, le remonte, regenere le jeu de demonstration
-make tests            # 193 tests sur une base temporaire
+make tests            # 238 tests sur une base temporaire
 make servir           # http://127.0.0.1:8000
 ```
 
@@ -373,6 +372,9 @@ make tests-demonstration         # active les tests de signaux realistes
 
 ## Journal
 
+- **22/10/2026, recalibrage** : prestations reliées aux cotisations (D32), nouvelle empreinte `ff90a24d…`, ratio
+  sinistres sur primes de 76,38 % en 2024 et 79,99 % en 2025. Toutes les preuves, la chaîne de flux, dbt, les
+  indicateurs et le projet Power BI ont été rejoués.
 - **22/10/2026** : module 3 réalisé. Modèle en étoile complété (cotisations acquises, mouvements, cliché
   mensuel du portefeuille, adhérent, branche), quatre indicateurs définis avec leurs pièges chiffrés, projet
   Power BI PBIP ouvert dans Power BI Desktop et actualisé par commande, 302 comparaisons DAX contre SQL sans
@@ -396,6 +398,59 @@ make tests-demonstration         # active les tests de signaux realistes
   modèle (la note de cadrage metier, `la note de cadrage metier, conservee hors du depot`) et le chargement des
   skills exacts de `docs/SKILLS.md`.
 
+## Recalibrage de la sinistralité du 22/10/2026
+
+Décision de Yasmina : le ratio sinistres sur primes de 177 % n'était pas plausible, et les chiffres devaient
+être corrigés avant la page de présentation. Décision D32.
+
+### Le mécanisme
+
+1. **Les demandes de chaque contrat sont calibrées sur sa cotisation courue** (hors suspension), avec une échelle par
+   branche (`ECHELLE_SINISTRALITE` : santé individuelle 1,42, santé collective 1,62), et non par un facteur global.
+2. **Chaque contrat tire un multiplicateur de consommation à queue lourde** : 55 % de petits consommateurs, 35 % de
+   moyens, 10 % de gros. Mesuré sur 2 066 contrats de 2025 : 8,9 % sans prestation, médiane à 45 % de leur cotisation,
+   neuvième décile à 200 %, et 39,9 % des remboursements portés par les 10 % de contrats les plus consommateurs.
+3. **Les soins sont tirés sur toute la durée de garantie**, et non sur les quatre premières années du contrat : un contrat
+   de 2019 ne consommait plus rien en 2025, ce qui expliquait une partie de l'écart.
+
+### Ce qui n'a pas bougé
+
+Les plafonds annuels cumulés dans l'ordre des dates, l'absence de prestation pendant une suspension et l'absence de
+rejet prématuré sont inchangés : les 18 contrôles de cohérence métier passent sur les deux moteurs, avec zéro anomalie
+sur ces trois points (`results/coherence_metier.json`). La prévoyance n'a toujours aucune prestation : l'acte n'est pas
+délégué, et le ratio publié porte sur les produits à prestations déléguées. Les contrats, avenants, appels,
+encaissements, commissions (3 704, 79 346,83 €), rétrocessions, bordereaux, résiliations, production et portefeuille sont
+identiques : seules les prestations et ce qui en dépend ont changé.
+
+### Mesures avant et après
+
+| Mesure | Avant | Après | Source |
+| --- | --- | --- | --- |
+| Prestations (lignes) | 49 398 | 49 970 | `results/generation.json` |
+| Empreinte du jeu | `3311d29f…` | `ff90a24d…`, identique sur SQLite et PostgreSQL | `results/reproductibilite_*.json` |
+| Ratio 2024 | 177,67 % | 76,38 % | `results/kpi_sql.json` |
+| Ratio 2025 | 152,96 % | 79,99 % | idem |
+| Ratio 2026, 9 mois | 121,18 % | 72,07 % | idem |
+| Santé collective, 2025 | 156,85 % | 79,48 % (75,55 % en 2024) | `results/concordance_dax_sql.csv` |
+| Santé individuelle, 2025 | 148,01 % | 80,64 % (77,33 % en 2024) | idem |
+| Anomalies d'avertissement des flux | 780 | 621 | `results/flux_journal_lots.json` |
+| Concordance DAX contre SQL | 302 comparaisons | 302 comparaisons, écart maximal 2,9e-14 | `results/concordance_dax_sql.json` |
+
+Preuves rejouées : migrations, reproductibilité, cohérence métier, contraintes, mutation (9 défauts sur 9 détectés), chaîne
+de flux et idempotence, `dbt build` (199 réussites, 4 avertissements, 0 erreur), indicateurs, projet Power BI actualisé
+et évalué, captures des pages Synthèse et Sinistres sur primes reprises. Les pages Résiliations, Production et
+Portefeuille n'ont pas changé de chiffres. Trois tests ajoutés dans `tests/test_generation.py` (ratio plausible par
+branche et par exercice, dispersion), exécutés sur les deux moteurs.
+
+### Ce qui reste
+
+- **Le 2026 de santé individuelle est à 69,62 %**, sous la fourchette de 70 à 85 %, sur 9 mois seulement : ce n'est pas un
+  exercice complet, et le calibrage vise les exercices complets.
+- **Les prestations de 2020 à 2023 n'ont pas de cotisation en face dans le quittancement** (premier appel du 01/10/2023),
+  donc aucun ratio ne peut être lu avant 2024.
+- **L'échelle de sinistralité est un paramètre mesuré**, pas une loi : changer les formules ou les plafonds oblige à la
+  remesurer.
+
 ## Reprise du 21/10/2026 : corrections issues de la vérification indépendante
 
 Ce qui a changé dans les données, et pourquoi. Deux régénérations successives, deux empreintes.
@@ -405,6 +460,7 @@ Ce qui a changé dans les données, et pourquoi. Deux régénérations successiv
 | `f22fe41f…` | 178 814 | état avant la reprise |
 | `a8c542b2…` | 178 086 | le générateur enregistre les suspensions encore ouvertes à la fin de l'historique, et le plafond annuel se consomme dans l'ordre des dates de soins et non dans l'ordre de génération |
 | `3311d29f…` | 178 086 | les libellés du référentiel et les commentaires d'avenants sont accentués, et le type d'apporteur `salarie` devient `direct` : ce sont des données, donc l'empreinte change |
+| `ff90a24d…` | 178 658 | recalibrage de la sinistralité, 22/10/2026 : les prestations sont calibrées sur la cotisation de chaque contrat (section « Recalibrage de la sinistralité ») |
 
 La reproductibilité n'est pas entamée : deux exécutions de même graine donnent la même empreinte, sur
 les deux moteurs. C'est le jeu qui a changé, pas la façon de le produire.
@@ -430,7 +486,7 @@ les deux moteurs. C'est le jeu qui a changé, pas la façon de le produire.
 | --- | --- | --- |
 | Lots reçus | 27, dont 9 rejetés | `results/flux_journal_lots.json` |
 | Anomalies bloquantes | 9 | idem |
-| Anomalies d'avertissement | 780 | idem |
+| Anomalies d'avertissement | 621 | idem |
 | Écarts de rapprochement, partiels et écarts | 50 | `results/flux_rapprochement.json` |
 | Mouvements qu'aucun appel ne réclame | 24 | idem |
 | Appels dont le statut a été redéduit | 11 | idem, champ `appels_reexamines` |

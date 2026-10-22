@@ -81,6 +81,12 @@ même profil, les aligner sur la valeur la plus basse était une erreur de dimen
 | D30 Périmètre du ratio sinistres sur primes | Produits dont une convention de délégation en vigueur confie la gestion des prestations, lu dans `dim_produit` | Tous les produits | La prévoyance a des cotisations et aucune prestation chez le cabinet : tous produits, le ratio de 2025 tombe de 152,96 % à 109,67 %. |
 | D31 Recalcul SQL des commissions | Reprend la règle D24 : repli sur la cotisation appelée hors taxe quand l'encaissement n'est pas délégué ; matérialisé en table | Laisser le recalcul en vue sans la règle | Défaut préexistant trouvé par le module 3 : le contrôle ignorait D24 et deux tests échouaient sur 1 184 appels. La table évite une dérive du plan (24 minutes mesurées sur une vue). Voir `docs/lessons/p8-sql-et-application-appliquent-la-meme-regle.md`. |
 
+### Recalibrage de la sinistralité, 22/10/2026
+
+| Décision | Choix retenu | Alternative écartée | Raison |
+| --- | --- | --- | --- |
+| D32 Lien entre prestations et cotisations | Les demandes de chaque contrat sont calibrées sur sa cotisation courue (hors suspension), avec une échelle par branche et un multiplicateur de consommation à queue lourde ; les soins sont tirés sur toute la durée de garantie | Un facteur global sur les montants, ou garder le tirage par tranche d'âge | Mesuré avant : ratio de 177,67 % en 2024 et 152,96 % en 2025, et un contrat de 2019 ne consommait plus rien en 2025 car ses soins étaient limités à ses quatre premières années. Un facteur global aurait laissé des incohérences par branche, les formules n'ayant ni les mêmes taux ni les mêmes plafonds. Après : 76,38 % en 2024 et 79,99 % en 2025, entre 75,55 et 80,64 % par branche. Les plafonds, rejets et suspensions de la reprise du 21/10 sont inchangés, vérifiés par les 18 contrôles de cohérence. Voir `docs/lessons/p8-relier-les-flux-generes-entre-eux.md`. |
+
 ## Journal des contraintes de la machine
 
 | Date | Constat | Conséquence |

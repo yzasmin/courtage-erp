@@ -7,7 +7,7 @@ Quatre indicateurs de pilotage d'un courtier délégataire, chacun défini avec 
 | Convention | Valeur | Raison |
 | --- | --- | --- |
 | Date d'arrêt de l'historique | 30/09/2026, dernier jour de `dim_date` | l'historique simulé s'arrête là, 2026 ne compte donc que 9 mois |
-| Première période exploitable | l'année 2024 | le quittancement ne commence qu'en octobre 2023 (premier appel du 01/10/2023) : avant 2024, une cotisation acquise n'existe que pour trois mois, et le ratio n'a pas de dénominateur. En 2023, le ratio mesuré est d'environ 802 % pour cette seule raison |
+| Première période exploitable | l'année 2024 | le quittancement ne commence qu'en octobre 2023 (premier appel du 01/10/2023) : avant 2024, une cotisation acquise n'existe que pour trois mois, et le ratio n'a pas de dénominateur. En 2023, le ratio mesuré est d'environ 272 % pour cette seule raison |
 | Montants | hors taxe, en euros | la taxe est reversée à l'État, elle n'est ni une prime du cabinet ni une charge de la compagnie |
 | Unité de portefeuille | le contrat individuel ou le bulletin d'affiliation d'un salarié à une police collective | c'est l'unité de gestion du modèle (`docs/modele-donnees.md`) |
 | Un contrat suspendu | reste au portefeuille, sans cotisation annualisée | la garantie est interrompue, pas le lien contractuel, et le contrat peut être remis en vigueur |
@@ -32,17 +32,28 @@ Le modèle en étoile qui porte ces indicateurs est décrit dans `docs/powerbi-m
 
 | Période | Prestations réglées | Cotisations acquises | Ratio |
 | --- | --- | --- | --- |
-| 2024 | 3 230 842,00 € | 1 818 408,62 € | 177,67 % |
-| 2025 | 3 393 705,00 € | 2 218 682,28 € | 152,96 % |
-| 2026 (9 mois) | 2 279 066,00 € | 1 880 726,55 € | 121,18 % |
+| 2024 | 1 388 870,50 € | 1 818 408,62 € | 76,38 % |
+| 2025 | 1 774 778,50 € | 2 218 682,28 € | 79,99 % |
+| 2026 (9 mois) | 1 355 414,50 € | 1 880 726,55 € | 72,07 % |
 
-Par branche en 2025 : santé collective 156,85 % (1 947 830,50 € sur 1 241 810,12 €), santé individuelle 148,01 % (1 445 874,50 € sur 976 872,15 €). La prévoyance n'a pas de ratio : voir le piège 1.
+Par branche et par exercice :
+
+| Branche | 2024 | 2025 | 2026 (9 mois) |
+| --- | --- | --- | --- |
+| Santé collective | 75,55 % (734 989,00 € sur 972 798,84 €) | 79,48 % (987 049,00 € sur 1 241 810,12 €) | 73,84 % |
+| Santé individuelle | 77,33 % (653 881,50 € sur 845 609,78 €) | 80,64 % (787 729,50 € sur 976 872,15 €) | 69,62 % |
+
+La prévoyance n'a pas de ratio : voir le piège 1. Les exercices complets, 2024 et 2025, tombent dans la fourchette de 70 à 85 % que vise le calibrage ; 2026 ne compte que 9 mois, dont la santé individuelle est à 69,62 %.
 
 Source : `results/kpi_sql.json` et `results/concordance_dax_sql.csv`.
 
-### Ce que ce chiffre dit de la donnée de démonstration
+### Comment la donnée de démonstration relie les prestations aux cotisations
 
-**Un ratio sinistres sur primes supérieur à 100 % n'est pas un résultat d'assurance crédible : c'est un défaut de calibrage du générateur de données, et il reste ouvert.** Le calcul est juste, il est reproduit à l'identique par deux moteurs : en 2025, 3 393 705,00 € de prestations réglées pour 2 218 682,28 € de cotisations acquises. La cause est dans le générateur : le nombre de prestations par adhérent est tiré selon la tranche d'âge (`PRESTATIONS_PAR_AN_SELON_AGE` dans `generateur/parametres.py`) et leur montant selon la garantie (`_montant_demande` dans `generateur/financier.py`), sans aucun lien avec le niveau des cotisations. Il rembourse plus qu'il ne perçoit. Ce défaut n'invalide ni la définition de l'indicateur ni la chaîne de calcul, il interdit de lire la valeur absolue. Seules les comparaisons entre définitions (les pièges ci-dessous) et la tendance gardent un sens. Corriger le calibrage change l'empreinte du jeu et tous les chiffres du dépôt : c'est une décision à prendre pour tout le projet, pas dans ce module.
+Le générateur calibre le montant des demandes de chaque contrat sur **sa propre cotisation** (`_calibre_sur_la_cotisation` dans `generateur/financier.py`) : le remboursement théorique des soins d'un contrat est rendu égal à une échelle de sinistralité (`ECHELLE_SINISTRALITE` dans `generateur/parametres.py`, une valeur par branche) multipliée par la cotisation qu'il a courue, hors suspension. Chaque contrat porte donc son rapport à sa cotisation, au lieu d'un facteur global. L'échelle n'est pas le ratio publié : les contrats sans aucun soin, les plafonds, les rejets et les prestations en cours en retranchent une part, et ses valeurs ont été mesurées pour que le ratio publié, branche par branche, tombe dans la fourchette d'un portefeuille santé viable.
+
+La consommation reste dispersée, ce qui est la propriété à garder : chaque contrat tire un multiplicateur de consommation à queue lourde (55 % de petits consommateurs, 35 % de moyens, 10 % de gros). Mesuré sur 2 066 contrats en garantie toute l'année 2025 (`sql/kpi/05_dispersion_consommation.sql`) : 8,9 % n'ont aucune prestation réglée, le contrat médian consomme 45 % de sa cotisation, le troisième quartile 106 %, le neuvième décile 200 %, le centième 528 %, et les 10 % de contrats les plus consommateurs portent 39,9 % des remboursements.
+
+Avant ce calibrage, les prestations étaient tirées par tranche d'âge et par garantie sans rapport avec la cotisation, et les soins d'un contrat étaient limités à ses quatre premières années de garantie : le ratio atteignait 177,67 % en 2024, 152,96 % en 2025 et 121,18 % sur 9 mois de 2026. Ce défaut a été corrigé le 22/10/2026 (D32 dans `docs/DECISIONS.md`) ; l'empreinte du jeu a changé en conséquence. La prévoyance reste sans prestation, puisque l'acte n'est pas délégué : le ratio publié porte sur le périmètre délégué, ce que vérifie `dim_produit.gestion_prestations_deleguee` et le test `test_le_ratio_sinistres_sur_primes_est_plausible_dans_chaque_branche`.
 
 ### Les pièges, avec leur effet mesuré
 
@@ -50,11 +61,11 @@ Le même numérateur, rapporté à un autre dénominateur ou lu sur un autre pé
 
 | Variante | 2024 | 2025 | 2026 (9 mois) | Pourquoi elle est fausse |
 | --- | --- | --- | --- | --- |
-| **Référence** : règlement, acquises, périmètre délégué | 177,67 % | 152,96 % | 121,18 % | |
-| Sur cotisations **émises** au lieu d'acquises | 174,56 % | 151,39 % | 133,27 % | une cotisation émise couvre une période qui déborde sur d'autres : en 2026, 1 710 100,57 € émis contre 1 880 726,55 € acquis, soit un écart de 9,1 % qui se retourne d'une année sur l'autre |
-| Prestations en **date de soins** | 178,69 % | 153,93 % | 111,43 % | les soins récents ne sont pas tous réglés : l'écart atteint près de dix points sur 2026 |
-| Tous produits, **prévoyance comprise** | 126,19 % | 109,67 % | 91,25 % | la prévoyance n'a aucune prestation chez le cabinet, ses cotisations diluent le ratio |
-| Sur cotisations **TTC** émises | 154,11 % | 133,65 % | 117,66 % | la taxe n'est pas une prime |
+| **Référence** : règlement, acquises, périmètre délégué | 76,38 % | 79,99 % | 72,07 % | |
+| Sur cotisations **émises** au lieu d'acquises | 75,04 % | 79,17 % | 79,26 % | une cotisation émise couvre une période qui déborde sur d'autres : en 2026, 1 710 100,57 € émis contre 1 880 726,55 € acquis, soit un écart de 9,1 % qui se retourne d'une année sur l'autre, et le ratio gagne sept points sans que rien n'ait changé |
+| Prestations en **date de soins** | 78,59 % | 79,92 % | 67,11 % | les soins récents ne sont pas tous réglés : l'écart atteint cinq points sur 2026 |
+| Tous produits, **prévoyance comprise** | 54,25 % | 57,35 % | 54,27 % | la prévoyance n'a aucune prestation chez le cabinet, ses cotisations diluent le ratio de 18 à 23 points |
+| Sur cotisations **TTC** émises | 66,25 % | 69,89 % | 69,97 % | la taxe n'est pas une prime : le ratio paraît dix points meilleur qu'il n'est en 2024 et 2025 |
 
 1. **Périmètre de délégation.** Les produits de prévoyance (compagnie qui n'a pas délégué les prestations) ont des cotisations dans le quittancement du cabinet et aucune prestation. Un ratio calculé sur eux est un artefact. Le périmètre est porté par `dim_produit.gestion_prestations_deleguee`, lu dans les conventions de délégation, jamais écrit en dur.
 2. **Acquises contre émises.** Le dénominateur est la part de risque courue dans la période, pas ce qui a été appelé. La répartition au prorata des jours est testée : pour tout appel dont la période est écoulée, la somme des parts égale le montant appelé au centime près (`assert_cotisations_acquises_egales_aux_emises`).
@@ -186,13 +197,13 @@ Les mesures DAX ont été évaluées par le moteur local de Power BI Desktop, pu
 
 | Mesure | Contexte | DAX | SQL | Écart relatif |
 | --- | --- | --- | --- | --- |
-| Ratio sinistres sur primes | 2025 | 1,5296038700209 | 1,5296038700208916 | 5,5e-15 |
-| Ratio sinistres sur primes | 2025, santé collective | 1,56854132713871 | 1,5685413271387119 | 1,1e-15 |
-| Ratio sinistres sur primes | 2026 | 1,21180083268643 | 1,2118008326864245 | 4,6e-15 |
+| Ratio sinistres sur primes | 2025 | 0,79992458449685 | 0,7999245844968472 | 3,5e-15 |
+| Ratio sinistres sur primes | 2025, santé collective | 0,79484695840369 | 0,7948469584036898 | 2,8e-16 |
+| Ratio sinistres sur primes | 2026 | 0,720686640814817 | 0,7206866408148135 | 4,9e-15 |
 | Taux de résiliation | 2025 | 0,116651277316097 | 0,11665127731609726 | 2,3e-15 |
 | Taux de résiliation | 2025, santé collective | 0,145224940805051 | 0,1452249408050513 | 2,1e-15 |
 | Taux de résiliation annualisé | 2026 | 0,115868203071227 | 0,11586820307122683 | 1,4e-15 |
-| Contrôle ratio sur cotisations émises | 2025 | 1,51385389730444 | 1,513853897304437 | 1,9e-15 |
+| Contrôle ratio sur cotisations émises | 2025 | 0,791687948444878 | 0,7916879484448776 | 5,6e-16 |
 | Cotisation annualisée des affaires nouvelles | 2025 | 655 274,04 | 655 274,04 | 0 |
 | Cotisation annualisée des affaires nouvelles | 2025, AP06 | 74 565,84 | 74 565,84 | 0 |
 | Affaires nouvelles | 2025, AP06 | 94 | 94 | 0 |

@@ -445,5 +445,17 @@
       "annualisee_statut_courant_euros": 3478836.36,
       "annualisee_suspendus_inclus_euros": 3511851.36
     }
+  ],
+  "05_dispersion_consommation": [
+    {
+      "contrats": 2066,
+      "pct_sans_prestation": 8.9,
+      "mediane_pct": 45.0,
+      "p75_pct": 106.0,
+      "p90_pct": 200.0,
+      "p99_pct": 528.0,
+      "part_des_10pct_les_plus_consommateurs": 39.9,
+      "ratio_global_pct": 81.2
+    }
   ]
 }

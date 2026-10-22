@@ -133,6 +133,7 @@ légale affirmée.
 | Paramètre | Valeur | Statut |
 | --- | --- | --- |
 | Nombre de prestations par adhérent et par an | 0 à 14 selon l'âge et la formule | hypothèse de simulation |
+| Montant des demandes | calibré sur la cotisation courue de chaque contrat, avec une échelle par branche (santé individuelle 1,42, santé collective 1,62) et un multiplicateur de consommation à queue lourde (55 % de petits, 35 % de moyens, 10 % de gros consommateurs) | hypothèse de simulation, mesurée pour que le ratio sinistres sur primes publié tombe entre 70 et 85 % sur les exercices complets |
 | Saisonnalité | creux en juillet et en août, pic en novembre, décembre et janvier | hypothèse de simulation, calquée sur un rythme de consommation de soins plausible |
 | Postes de garantie simulés | soins courants, hospitalisation, optique, dentaire, audiologie, décès, incapacité, invalidité | vocabulaire métier, pas une valeur numérique |
 | Plafonds annuels par garantie et par formule | 150 à 2 000 euros selon le poste et le niveau | hypothèse de simulation |

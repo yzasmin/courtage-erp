@@ -130,7 +130,7 @@ réelle. L'intégration continue rejoue l'ensemble sur SQLite et sur PostgreSQL,
 | Cohérence métier des données | 18 contrôles, tous conformes | `results/coherence_metier.json` |
 | La base refuse les écritures interdites | 5 insertions SQL directes sur 5 refusées | `results/contraintes_sqlite.json` |
 | Les tests détectent les défauts qu'ils couvrent | 9 défauts réintroduits, 9 détectés | `results/mutation.json` |
-| Suite de tests | 231 passés, 10 sautés | `results/pytest.txt` |
+| Suite de tests | 238 passés, 13 sautés | `results/pytest.txt` |
 | Détection des anomalies contre la vérité terrain | rappel et précision par contrôle | `results/flux_rapport_detection.json` |
 | Journal d'exécution par lot | 27 lots, 9 rejetés | `results/flux_journal_lots.json` |
 | Alerte sur lot rejeté | code de retour 1 sur les 9 rejets du jeu | `results/flux_alerte_rejets.json` |
