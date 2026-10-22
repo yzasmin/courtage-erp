@@ -1,12 +1,13 @@
-État réel du projet courtage-erp : ce qui est fait, ce qui reste, et comment reprendre. Mis à jour le 22/10/2026.
+État réel du projet courtage-erp : ce qui est fait, ce qui reste, et comment reprendre. Mis à jour le 22/10/2026 (module 6 livré).
 
 # Avancement
 
 ## État en une ligne
 
 **Module 1, cœur ERP : fait et prouvé sur les deux moteurs, avec des prestations reliées aux cotisations depuis le 22/10. Module 2, flux financiers : fait et
-mesuré. Module 3, pilotage : fait, projet Power BI ouvert et mesures contrôlées contre le SQL.** Reste la
-capture d'écran du graphe Airflow (module 2), qui demande le moteur Docker.
+mesuré. Module 3, pilotage : fait, projet Power BI ouvert et mesures contrôlées contre le SQL.** Module 6,
+documentation et présentation : fait, hors modules 4 et 5 qui **ne sont pas réalisés**. La capture du graphe
+Airflow existe (`docs/captures/08-graphe-airflow.jpg`) mais date d'avant l'ajout de la tâche `alerter`.
 
 | Étape | État |
 | --- | --- |
@@ -14,10 +15,10 @@ capture d'écran du graphe Airflow (module 2), qui demande le moteur Docker.
 | 1, cœur ERP | **fait**, preuves dans `results/` |
 | 2, flux financiers Airflow et dbt | **fait**, preuves dans `results/`, une capture d'écran en attente |
 | 3, pilotage Power BI | **fait**, preuves dans `results/`, captures dans `docs/captures/08` à `13` |
-| 4a, agent de pré-remplissage | à faire, dépend de l'étape 2 |
-| 4b, RAG conditions générales | à faire, si le temps le permet |
-| 5, prédiction de résiliation | à faire, dépend de l'étape 2 |
-| 6, documentation finale et page de presentation | à faire, en dernier |
+| 4a, agent de pré-remplissage | **non réalisé** : l'écran « À valider » affiche un message d'attente |
+| 4b, RAG conditions générales | **non réalisé** |
+| 5, prédiction de résiliation | **non réalisé**, aucun modèle entraîné ni métrique publiée |
+| 6, documentation finale et page de présentation | **fait** : README, `docs/DEMO.md`, `docs/POUR-LA-DIRECTION.md`, fiche et teaser du portfolio, fiche d'entretien. Le rendu de la vidéo et le build du site restent à lancer |
 
 ## Module 1 : ce qui est livré
 
@@ -168,9 +169,9 @@ Tous ont été trouvés par les tests ou par le passage sur PostgreSQL, et aucun
 
 ### Module 2 : ce qui reste
 
-- **Capture d'écran du graphe Airflow.** Demande le moteur Docker, arrêté sur ce poste. Procédure dans
-  `results/airflow_execution.md`. La capture du lineage dbt est faite,
-  `docs/captures/07-lineage-dbt-commissions.jpg`.
+- **Capture d'écran du graphe Airflow : faite**, `docs/captures/08-graphe-airflow.jpg`, mais antérieure à
+  l'ajout de la tâche `alerter` (la capture montre treize tâches, le graphe en compte quatorze). À reprendre
+  si la pile Docker est relancée.
 - **Vérification par un sous-agent à contexte vierge** qui relit la spécification du module 2 et rend
   « critère : conforme ou non conforme : preuve ».
 
@@ -311,7 +312,7 @@ exposure (`tableau_de_bord_pilotage`, onze marts en parents), visible dans le li
 
 ### Intégration continue
 
-Exécution 39685738522 sur le commit `97dcc4f` : réussie en 3 min 26 s (suite de 238 tests, style, 7 tests du projet Power BI). `gh run list --repo yzasmin/courtage-erp` donne l'état courant.
+Dernière exécution : 39720480639 sur le commit `8a81132`, réussie en 3 min 25 s. La précédente (39720045926, recalibrage D32) avait échoué sur un test dépendant de l'ordre des lignes sous PostgreSQL, corrigé depuis. Exécution 39685738522 sur le commit `97dcc4f` : réussie en 3 min 26 s (suite de 238 tests, style, 7 tests du projet Power BI). `gh run list --repo yzasmin/courtage-erp` donne l'état courant.
 
 ### Défauts trouvés pendant le module
 
@@ -372,6 +373,11 @@ make tests-demonstration         # active les tests de signaux realistes
 
 ## Journal
 
+- **22/10/2026, module 6** : README mis à jour (module 3 livré, modules 4 et 5 déclarés non réalisés, preuves du
+  module 3, limites), `docs/DEMO.md` (parcours de deux minutes, deux chemins de démarrage), `docs/POUR-LA-DIRECTION.md`,
+  dossier `teaser/` (`variables.json`, `figure.py`, `figure.png` tracé depuis `results/powerbi/`). Dans le portfolio :
+  fiche `08-courtage-erp.md`, quatre captures et un graphique, fiche d'entretien. Non lancé : `npm run build` du site
+  et rendu de la vidéo, qui sont centralisés. Aucune mesure n'a été rejouée, tous les chiffres viennent de `results/`.
 - **22/10/2026, recalibrage** : prestations reliées aux cotisations (D32), nouvelle empreinte `ff90a24d…`, ratio
   sinistres sur primes de 76,38 % en 2024 et 79,99 % en 2025. Toutes les preuves, la chaîne de flux, dbt, les
   indicateurs et le projet Power BI ont été rejoués.

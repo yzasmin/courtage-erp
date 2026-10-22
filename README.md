@@ -47,11 +47,13 @@ flowchart LR
     T4 --> T5
     B2 --> A1 --> A2
     B1 --> A2
-    B3 -.-> P["Power BI<br/>module 3, à venir"]
+    B3 --> P["Projet Power BI<br/>4 indicateurs, 5 pages"]
 ```
 
 Un lot rejeté par les contrôles ne laisse aucune ligne en base, et la tâche terminale `alerter` fait
-échouer le graphe pour que le rejet se voie dans Airflow.
+échouer le graphe pour que le rejet se voie dans Airflow. Les modules 4 et 5 (agent de pré-remplissage,
+prédiction de résiliation) n'apparaissent pas sur ce schéma parce qu'ils n'existent pas : voir « Ce qui n'est
+pas fait ».
 
 ## Démarrage
 
@@ -118,6 +120,33 @@ Les transformations dbt sont en couches, des sources aux marts, avec leurs tests
 commissions sont calculées au taux en vigueur à la date d'échéance de l'appel, pas au taux du jour,
 faute de quoi une revalorisation du barème réécrirait des bordereaux déjà réglés.
 
+### Module 3, pilotage
+
+Le problème : un dirigeant lit quatre chiffres, le ratio de sinistres sur primes, le taux de résiliation,
+la production par apporteur et le portefeuille par branche, et chacun se calcule de plusieurs façons qui
+donnent des résultats différents. Sur ce jeu, le ratio de 2024 vaut 76,38 % rapporté aux cotisations
+acquises des produits dont le cabinet règle les prestations, et 54,25 % si on le rapporte à tous les
+produits, prévoyance comprise, qui n'a aucune prestation déléguée. `docs/kpi.md` définit chaque
+indicateur une fois, chiffre ses pièges et renvoie à la requête SQL de contrôle.
+
+Le choix technique est un modèle en étoile construit en dbt (cotisations acquises réparties au prorata des
+jours, cliché de fin de mois du portefeuille, mouvements d'affaires nouvelles et de résiliations), lu par un
+projet Power BI versionné en texte (format PBIP, modèle TMDL) avec 26 mesures commentées. La raison : une
+mesure DAX qu'on ne peut pas comparer à une requête SQL est un chiffre qu'on croit sur parole. Le dépôt
+compare donc 21 mesures sur 46 contextes, soit 302 comparaisons, et l'écart relatif maximal est de 2,9e-14.
+Le tableau de bord est déclaré dans dbt comme une exposition, ce qui le rend visible dans le lineage.
+
+Ce module a aussi mis au jour un défaut du jeu de données : le premier ratio de sinistres sur primes
+dépassait 100 % sur toutes les périodes, parce que le générateur ne reliait pas les prestations aux
+cotisations. Il a été corrigé le 22/10 (décision D32) et les chiffres du dépôt ont été remesurés. L'historique
+complet est dans `docs/PROGRESS.md`.
+
+### Module 6, documentation et présentation
+
+Ce dépôt, `docs/DEMO.md` (le parcours de deux minutes) et `docs/POUR-LA-DIRECTION.md` (la correspondance
+entre chaque module livré et un besoin d'éditeur de logiciel de courtage). La page de présentation vit dans
+le portfolio, pas ici.
+
 ### Preuves
 
 Chaque chiffre publié dans la documentation vient d'un fichier de `results/`, produit par une exécution
@@ -131,9 +160,23 @@ réelle. L'intégration continue rejoue l'ensemble sur SQLite et sur PostgreSQL,
 | La base refuse les écritures interdites | 5 insertions SQL directes sur 5 refusées | `results/contraintes_sqlite.json` |
 | Les tests détectent les défauts qu'ils couvrent | 9 défauts réintroduits, 9 détectés | `results/mutation.json` |
 | Suite de tests | 238 passés, 13 sautés | `results/pytest.txt` |
-| Détection des anomalies contre la vérité terrain | rappel et précision par contrôle | `results/flux_rapport_detection.json` |
+| Détection des anomalies injectées | contrôles bloquants : 9 sur 9 trouvées, aucun faux positif ; avertissements : rappel 0,908 et précision 0,649 | `results/flux_rapport_detection.json` |
 | Journal d'exécution par lot | 27 lots, 9 rejetés | `results/flux_journal_lots.json` |
 | Alerte sur lot rejeté | code de retour 1 sur les 9 rejets du jeu | `results/flux_alerte_rejets.json` |
+| Transformations dbt | 52 modèles, 151 tests, 3 expositions : 199 réussites, 4 avertissements, 0 erreur | `results/dbt_build.txt` |
+| Mesures Power BI contre le SQL | 302 comparaisons, écart relatif maximal 2,9e-14 | `results/concordance_dax_sql.csv` |
+| Indicateurs de pilotage | ratio sinistres sur primes de 76,38 % en 2024 et 79,99 % en 2025 | `results/kpi_sql.json` |
+
+## Ce qui n'est pas fait
+
+Les modules 4 et 5 de la spécification n'existent pas dans ce dépôt, et rien n'y est branché par avance.
+
+- **Module 4a, agent de pré-remplissage de dossiers par un modèle de langage : non réalisé.** L'écran
+  « À valider » existe et affiche une file vide, mais aucun modèle de langage n'est appelé.
+- **Module 4b, recherche dans les conditions générales : non réalisé.**
+- **Module 5, prédiction de résiliation : non réalisé.** Aucun modèle n'est entraîné, aucune métrique de
+  prédiction n'est publiée. Le taux de résiliation du module 3 est un indicateur descriptif, pas une
+  prédiction.
 
 ## Limites assumées
 
@@ -151,13 +194,25 @@ réelle. L'intégration continue rejoue l'ensemble sur SQLite et sur PostgreSQL,
   sans historisation, à la différence d'un contrat individuel.
 - **Le domaine des énumérations n'est pas tenu par la base.** Il l'est par la validation applicative,
   pour une raison de portabilité expliquée dans `docs/modele-donnees.md`.
-- **Les modules 3 à 6 restent à faire** : pilotage Power BI, agent de pré-remplissage, prédiction de
-  résiliation, page de présentation. L'état exact est dans `docs/PROGRESS.md`.
+- **Les modules 4 et 5 ne sont pas faits** : agent de pré-remplissage, recherche dans les conditions
+  générales, prédiction de résiliation. Voir « Ce qui n'est pas fait ».
+- **L'intégration continue n'exécute pas dbt**, qui demande PostgreSQL et la chaîne de flux. Un défaut de
+  règle de commission est resté invisible pour cette raison jusqu'au premier `dbt build` complet.
+- **Le projet Power BI porte un chemin d'exemple** vers les données : après un clone, il faut le régénérer
+  avec `make pbip DONNEES=...`. Les CSV (18 Mo) ne sont pas versionnés, et les captures viennent d'un seul
+  poste.
+- **Le portefeuille n'a pas de ratio lisible avant 2024** : le quittancement simulé commence le 01/10/2023.
+- **Ni automobile ni dommages** : le jeu couvre la santé individuelle, la santé collective et la prévoyance.
+  Les taux, formules et périmètres sont des données paramétrables par produit, mais aucune autre branche n'a
+  été modélisée ni testée.
 
 ## Où regarder
 
 | Fichier | Contenu |
 | --- | --- |
+| `docs/DEMO.md` | le parcours de deux minutes, écran par écran |
+| `docs/POUR-LA-DIRECTION.md` | chaque module livré, relié à un besoin de gestion |
+| `docs/kpi.md` | définition des quatre indicateurs et leurs pièges chiffrés |
 | `docs/PROGRESS.md` | état réel, preuve par preuve, et comment reprendre |
 | `docs/flux-financiers.md` | la chaîne du module 2, étape par étape |
 | `docs/modele-donnees.md` | diagramme entité-association et justification de chaque choix |

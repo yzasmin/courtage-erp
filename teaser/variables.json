@@ -1,0 +1,14 @@
+{
+  "projectNumber": "08",
+  "title": "Mini-ERP de courtage",
+  "category": "ERP et flux financiers",
+  "stack1": "Airflow",
+  "stack2": "dbt",
+  "stack3": "PostgreSQL",
+  "metricLabel": "Lots rejetés en entier, aucune ligne écrite",
+  "metricValue": "9 sur 27",
+  "metric2Label": "Mesures Power BI comparées au SQL",
+  "metric2Value": "302",
+  "accent": "#F2B84B",
+  "figureCaption": "Ratio sinistres sur primes par exercice et par branche, jeu de données simulé"
+}
