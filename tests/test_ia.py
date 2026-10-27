@@ -109,6 +109,7 @@ def test_la_validation_humaine_cree_la_prestation(session, contrat_en_vigueur) -
     assert dossier.statut is StatutDossier.VALIDE
     assert prestation.montant_demande_cents == 9000
     assert prestation.date_soins == DATE_SOINS
+    assert prestation.date_reglement == date.today(), "le reglement date de la decision, pas des soins"
 
 
 def test_un_dossier_bloque_ne_se_valide_pas_et_un_rejet_doit_etre_motive(session, contrat_en_vigueur) -> None:

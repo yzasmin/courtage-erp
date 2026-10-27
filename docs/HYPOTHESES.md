@@ -146,6 +146,16 @@ légale affirmée.
 | Postes de garantie simulés | soins courants, hospitalisation, optique, dentaire, audiologie, décès, incapacité, invalidité | vocabulaire métier, pas une valeur numérique |
 | Plafonds annuels par garantie et par formule | 150 à 2 000 euros selon le poste et le niveau | hypothèse de simulation |
 | Délai entre la date des soins et le règlement | 2 à 30 jours | hypothèse de simulation |
+| Calcul du remboursement santé | le taux de la garantie s'applique aux **frais présentés**, plafonnés à ces frais, puis au plafond annuel | **simplification assumée** : la base de remboursement de l'assurance maladie et la part du régime obligatoire ne sont pas modélisées, voir ci-dessous |
+
+**Pourquoi le régime obligatoire n'est pas modélisé.** Une garantie santé s'exprime en pourcentage de la base
+de remboursement de la Sécurité sociale, et la complémentaire rembourse ce pourcentage diminué de la part déjà
+payée par le régime obligatoire, dans la limite des frais réels. Le dépôt ne simule ni la base de chaque acte
+ni le décompte du régime obligatoire : il applique le taux aux frais présentés. L'écart a été relevé par la
+vérification indépendante du 27/10/2026. Le corriger demanderait une base de remboursement par acte et un
+décompte du régime obligatoire dans les flux reçus, et changerait les 49 970 prestations générées, donc tous
+les rapports sinistres sur primes déjà mesurés. C'est le premier chantier qu'un vrai produit santé
+demanderait ; ici, il est déclaré plutôt que simulé à moitié.
 
 ## Anomalies injectées, pour le module 2
 

@@ -69,6 +69,9 @@ class DemandePrestation:
     code_garantie: str
     date_soins: date
     montant_demande_cents: int
+    #: Jour du reglement. Par defaut le jour de l'enregistrement : la version precedente reprenait la date
+    #: des soins, ce qui datait un reglement de plusieurs mois avant la decision qui l'autorisait.
+    date_reglement: date | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -190,7 +193,7 @@ def enregistre_prestation(
             adherent_id=contrat.adherent_id,
             garantie_id=garantie.id,
             date_soins=demande.date_soins,
-            date_reglement=demande.date_soins,
+            date_reglement=demande.date_reglement or date.today(),
             montant_demande_cents=demande.montant_demande_cents,
             montant_rembourse_cents=rembourse,
             statut=StatutPrestation.REGLEE,

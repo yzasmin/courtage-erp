@@ -38,14 +38,14 @@ appel réel au modèle, enregistrées avec leur nombre de jetons et leur latence
 
 | Document | Anomalie | Relevée | Message affiché au gestionnaire |
 | --- | --- | --- | --- |
-| doc-03-demande_remboursement.pdf | nom altere | oui | nom approchant : lu « Julie LAMMBERT », enregistre « Julie Lambert » (0.96) |
-| doc-05-demande_remboursement.pdf | soins avant effet | oui | contrat sans garantie en cours le 28/11/2023 (suspendu ou pas en vigueur) |
-| doc-07-demande_remboursement.pdf | adherent inexistant | oui | aucun adherent ne porte le numero A945230 |
-| doc-12-facture_optique.pdf | nom altere | oui | nom approchant : lu « Sylvie LUUCAS », enregistre « Sylvie Lucas » (0.96) |
-| doc-15-facture_optique.pdf | total faux | oui | le total ecrit (441.00 EUR) ne fait pas la somme des lignes (431.00 EUR) |
-| doc-20-facture_dentaire.pdf | nom altere | oui | nom approchant : lu « Celine DUFOOUR », enregistre « Celine Dufour » (0.96) |
-| doc-23-facture_dentaire.pdf | adherent inexistant | oui | aucun adherent ne porte le numero A976729 |
-| doc-24-facture_dentaire.pdf | total faux | oui | le total ecrit (247.92 EUR) ne fait pas la somme des lignes (237.92 EUR) |
+| doc-03-demande_remboursement.pdf | nom altere | oui | nom approchant : lu « Julie LAMMBERT », enregistré « Julie Lambert » (similarité 0,96) |
+| doc-05-demande_remboursement.pdf | soins avant effet | oui | contrat sans garantie en cours le 28/11/2023 (suspendu ou pas encore en vigueur) |
+| doc-07-demande_remboursement.pdf | adherent inexistant | oui | aucun adhérent ne porte le numéro A945230 |
+| doc-12-facture_optique.pdf | nom altere | oui | nom approchant : lu « Sylvie LUUCAS », enregistré « Sylvie Lucas » (similarité 0,96) |
+| doc-15-facture_optique.pdf | total faux | oui | le total écrit (441,00 €) ne fait pas la somme des lignes (431,00 €) |
+| doc-20-facture_dentaire.pdf | nom altere | oui | nom approchant : lu « Celine DUFOOUR », enregistré « Celine Dufour » (similarité 0,96) |
+| doc-23-facture_dentaire.pdf | adherent inexistant | oui | aucun adhérent ne porte le numéro A976729 |
+| doc-24-facture_dentaire.pdf | total faux | oui | le total écrit (247,92 €) ne fait pas la somme des lignes (237,92 €) |
 
 ## Documents sains bloqués à tort
 

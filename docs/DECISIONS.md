@@ -111,6 +111,7 @@ même profil, les aligner sur la valeur la plus basse était une erreur de dimen
 | D45 Attestation d'employeur pendant une suspension | Alerte, et non blocage | Le même blocage que pour un remboursement | Trouvé par l'évaluation : une attestation saine, datée pendant la suspension pour impayé du contrat collectif, était bloquée. Elle prouve une affiliation et ne paie rien ; un remboursement sur cette période reste bloqué |
 | D46 Mode hors ligne | Chaque réponse réelle est enregistrée avec l'empreinte SHA-256 de la requête (modèle, instructions, schéma, texte) ; le rejeu refuse une empreinte différente | Des réponses simulées écrites à la main | Les tests et l'évaluation passent sans clé, avec les chiffres d'un vrai appel, coût et latence compris. Changer les instructions sans réenregistrer fait échouer le rejeu au lieu de mesurer l'ancien comportement |
 | D47 Clé d'API | Lue dans l'environnement ; l'identifiant d'espace de travail aussi, pour une clé personnelle | La clé dans un fichier du dépôt | Aucun secret versionné. `.env.example` documente les deux variables |
+| D48 Calcul de la cible de résiliation | Jointure sur la date de résiliation de chaque contrat, une seule puisque le statut résilié est terminal | La sous-requête corrélée de la première version | Mesuré dans Airflow le 27/10 : la tâche des variables passe de 10 min 17 s à 43 s, pour une cible identique à l'unité près sur chaque 1er janvier. Lente, elle bloquait aussi le graphe des flux, qui attendait ses verrous pour reconstruire les marts |
 
 ## Journal des contraintes de la machine
 

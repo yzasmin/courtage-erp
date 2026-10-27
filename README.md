@@ -90,8 +90,8 @@ c'est sur cet état que se calcule une commission ou se règle une prestation. L
 l'historisation par avenants : chaque événement crée une version, et l'état à une date se reconstitue en
 relisant les avenants jusqu'à cette date. Le cache porté par la table `contrat` est comparé à cette
 reconstitution par un contrôle de cohérence, de sorte que les deux ne peuvent pas diverger en silence.
-Vingt-trois tables pour ce module, trente et une avec celles du module 2, cinq révisions de migration
-qui montent et redescendent sans résidu, et des contraintes de vérification en base plutôt que dans le
+Vingt-trois tables pour ce module, trente-trois avec celles des modules 2, 4a et 5, huit révisions de
+migration qui montent et redescendent sans résidu, et des contraintes de vérification en base plutôt que dans le
 seul code applicatif, parce qu'un ERP reçoit aussi des écritures par imports et par scripts de reprise. Le détail et la justification de chaque choix
 sont dans `docs/modele-donnees.md`.
 
@@ -193,12 +193,12 @@ réelle. L'intégration continue rejoue l'ensemble sur SQLite et sur PostgreSQL,
 
 | Preuve | Résultat | Fichier |
 | --- | --- | --- |
-| Migrations qui montent et redescendent | 6 révisions, 31 tables, aucun résidu | `results/migrations_sqlite.json` |
+| Migrations qui montent et redescendent | 8 révisions, 33 tables, aucun résidu, sur SQLite et PostgreSQL | `results/migrations_sqlite.json` |
 | Génération reproductible | même graine, même empreinte, sur les deux moteurs | `results/reproductibilite_sqlite.json` |
 | Cohérence métier des données | 18 contrôles, tous conformes | `results/coherence_metier.json` |
 | La base refuse les écritures interdites | 5 insertions SQL directes sur 5 refusées | `results/contraintes_sqlite.json` |
 | Les tests détectent les défauts qu'ils couvrent | 9 défauts réintroduits, 9 détectés | `results/mutation.json` |
-| Suite de tests | 238 passés, 13 sautés | `results/pytest.txt` |
+| Suite de tests | 255 passés, 13 sautés | `results/pytest.txt` |
 | Détection des anomalies injectées | contrôles bloquants : 9 sur 9 trouvées, aucun faux positif ; avertissements : rappel 0,908 et précision 0,649 | `results/flux_rapport_detection.json` |
 | Journal d'exécution par lot | 27 lots, 9 rejetés | `results/flux_journal_lots.json` |
 | Alerte sur lot rejeté | code de retour 1 sur les 9 rejets du jeu | `results/flux_alerte_rejets.json` |
@@ -227,6 +227,9 @@ réelle. L'intégration continue rejoue l'ensemble sur SQLite et sur PostgreSQL,
   sans historisation, à la différence d'un contrat individuel.
 - **Le domaine des énumérations n'est pas tenu par la base.** Il l'est par la validation applicative,
   pour une raison de portabilité expliquée dans `docs/modele-donnees.md`.
+- **Le remboursement santé est simplifié.** Le taux de la garantie s'applique aux frais présentés : la
+  base de remboursement de l'assurance maladie et la part du régime obligatoire ne sont pas modélisées.
+  Voir `docs/HYPOTHESES.md`, section Prestations.
 - **Le module 4b n'est pas fait** : recherche dans les conditions générales. Voir « Ce qui n'est pas fait ».
 - **L'agent de pré-remplissage lit des PDF produits par le dépôt**, au texte net. Un scan ou une photo
   demanderait une reconnaissance de caractères, que le dépôt n'a pas : un document sans texte est refusé

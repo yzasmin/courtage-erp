@@ -88,49 +88,49 @@
       "fichier": "doc-03-demande_remboursement.pdf",
       "anomalie": "nom_altere",
       "detectee": true,
-      "message": "nom approchant : lu « Julie LAMMBERT », enregistre « Julie Lambert » (0.96)"
+      "message": "nom approchant : lu « Julie LAMMBERT », enregistré « Julie Lambert » (similarité 0,96)"
     },
     {
       "fichier": "doc-05-demande_remboursement.pdf",
       "anomalie": "soins_avant_effet",
       "detectee": true,
-      "message": "contrat sans garantie en cours le 28/11/2023 (suspendu ou pas en vigueur)"
+      "message": "contrat sans garantie en cours le 28/11/2023 (suspendu ou pas encore en vigueur)"
     },
     {
       "fichier": "doc-07-demande_remboursement.pdf",
       "anomalie": "adherent_inexistant",
       "detectee": true,
-      "message": "aucun adherent ne porte le numero A945230"
+      "message": "aucun adhérent ne porte le numéro A945230"
     },
     {
       "fichier": "doc-12-facture_optique.pdf",
       "anomalie": "nom_altere",
       "detectee": true,
-      "message": "nom approchant : lu « Sylvie LUUCAS », enregistre « Sylvie Lucas » (0.96)"
+      "message": "nom approchant : lu « Sylvie LUUCAS », enregistré « Sylvie Lucas » (similarité 0,96)"
     },
     {
       "fichier": "doc-15-facture_optique.pdf",
       "anomalie": "total_faux",
       "detectee": true,
-      "message": "le total ecrit (441.00 EUR) ne fait pas la somme des lignes (431.00 EUR)"
+      "message": "le total écrit (441,00 €) ne fait pas la somme des lignes (431,00 €)"
     },
     {
       "fichier": "doc-20-facture_dentaire.pdf",
       "anomalie": "nom_altere",
       "detectee": true,
-      "message": "nom approchant : lu « Celine DUFOOUR », enregistre « Celine Dufour » (0.96)"
+      "message": "nom approchant : lu « Celine DUFOOUR », enregistré « Celine Dufour » (similarité 0,96)"
     },
     {
       "fichier": "doc-23-facture_dentaire.pdf",
       "anomalie": "adherent_inexistant",
       "detectee": true,
-      "message": "aucun adherent ne porte le numero A976729"
+      "message": "aucun adhérent ne porte le numéro A976729"
     },
     {
       "fichier": "doc-24-facture_dentaire.pdf",
       "anomalie": "total_faux",
       "detectee": true,
-      "message": "le total ecrit (247.92 EUR) ne fait pas la somme des lignes (237.92 EUR)"
+      "message": "le total écrit (247,92 €) ne fait pas la somme des lignes (237,92 €)"
     }
   ],
   "documents_sains_bloques_a_tort": [],

@@ -11,7 +11,7 @@ Airflow existe (`docs/captures/08-graphe-airflow.jpg`) mais date d'avant l'ajout
 
 | Étape | État |
 | --- | --- |
-| 0, connaître la cible | vérifié, 19/10/2026, `la note de cadrage metier, conservee hors du depot` |
+| 0, connaître la cible | vérifié, 19/10/2026, la note de cadrage métier, conservée hors du dépôt (`docs/CIBLE.md`, exclu par `.gitignore`) |
 | 1, cœur ERP | **fait**, preuves dans `results/` |
 | 2, flux financiers Airflow et dbt | **fait**, preuves dans `results/`, une capture d'écran en attente |
 | 3, pilotage Power BI | **fait**, preuves dans `results/`, captures dans `docs/captures/08` à `13` |
@@ -87,12 +87,12 @@ citée ici plutôt que d'être recopiée périmée.
 
 | Preuve | Résultat | Fichier |
 | --- | --- | --- |
-| Migrations qui montent et redescendent, SQLite | conforme, 6 révisions, 31 tables, aucun résidu | `results/migrations_sqlite.json` |
-| Migrations qui montent et redescendent, PostgreSQL | conforme, 6 révisions, 31 tables, aucun résidu | `results/migrations_postgresql.json` |
+| Migrations qui montent et redescendent, SQLite | conforme, 8 révisions, 33 tables, aucun résidu (rejoué le 27/10) | `results/migrations_sqlite.json` |
+| Migrations qui montent et redescendent, PostgreSQL | conforme, 8 révisions, 33 tables, aucun résidu (rejoué le 27/10, base temporaire) | `results/migrations_postgresql.json` |
 | Génération reproductible, SQLite | deux exécutions, empreinte identique | `results/reproductibilite_sqlite.json` |
 | Génération reproductible, PostgreSQL | deux exécutions, empreinte identique | `results/reproductibilite_postgresql.json` |
 | **Même empreinte sur les deux moteurs** | `ff90a24da37721ff684efa5f0bbfee43730c3ef7c1d356910803ccfcf9546ff5` | les deux fichiers ci-dessus |
-| Suite de tests, base temporaire | 238 passés, 13 sautés | `results/pytest.txt` |
+| Suite de tests, base temporaire | 255 passés, 13 sautés | `results/pytest.txt` |
 | Suite de tests, base de démonstration | 250 passés, 1 sauté | `results/pytest_base_demonstration.txt` |
 | Suite de tests, PostgreSQL | produite par l'intégration continue, voir l'artefact du travail `le meme code sur la base de production` | `results/pytest_postgresql.txt` |
 | Cohérence métier des données, deux moteurs | 18 contrôles, tous conformes | `results/coherence_metier.json` |
@@ -172,8 +172,8 @@ Tous ont été trouvés par les tests ou par le passage sur PostgreSQL, et aucun
 - **Capture d'écran du graphe Airflow : faite**, `docs/captures/08-graphe-airflow.jpg`, mais antérieure à
   l'ajout de la tâche `alerter` (la capture montre treize tâches, le graphe en compte quatorze). À reprendre
   si la pile Docker est relancée.
-- **Vérification par un sous-agent à contexte vierge** qui relit la spécification du module 2 et rend
-  « critère : conforme ou non conforme : preuve ».
+- **Vérification par un sous-agent à contexte vierge : faite le 27/10/2026** pour l'ensemble des modules,
+  voir « Vérification indépendante du 27/10/2026 ».
 
 ### Modules suivants
 
@@ -208,7 +208,7 @@ graphe Airflow les appelle en ligne de commande plutôt que d'importer le code m
 | Idempotence | `flux_idempotence.json` | 27 fichiers redéposés, empreinte d'état identique |
 | Rapprochement | `flux_rapprochement.json` | par statut et par méthode |
 | Commissions | `flux_commissions.json` | créées, mises à jour, inchangées, et appels écartés avec leur motif |
-| Bordereaux | `flux_bordereaux.json` | 6 bordereaux de commissions, 24 de rétrocessions |
+| Bordereaux | `flux_bordereaux.json` | 9 bordereaux de commissions, 24 de rétrocessions |
 | Exécution du graphe Airflow | `airflow_execution.md` | états des tâches et artefacts laissés sur le disque |
 
 Les captures sont dans `docs/captures/` : `06-lineage-dbt-complet.jpg` et
@@ -349,8 +349,8 @@ make concordance-kpi      # DAX contre SQL
   et leur vérité terrain ; 8 portent une anomalie volontaire.
 - **Extraction** : Claude Haiku 5.5, schéma JSON strict, revalidation Pydantic, réponses enregistrées avec
   l'empreinte de la requête ; mode hors ligne par défaut.
-- **Contrôles et dossiers** : table `dossier_pre_rempli` (migration 0008, appliquée sur SQLite, **pas encore
-  sur PostgreSQL** : Docker était arrêté), écran « Dossiers à valider », validation qui crée la prestation
+- **Contrôles et dossiers** : table `dossier_pre_rempli` (migration 0008, appliquée sur SQLite et, depuis
+  la reconstruction des images du 27/10, sur PostgreSQL), écran « Dossiers à valider », validation qui crée la prestation
   par `enregistre_prestation`, rejet motivé.
 - **Mesuré le 27/10 en appel réel** puis rejoué hors ligne à l'identique : précision 96,7 % (290 champs sur
   300), 20 documents entièrement exacts, anomalies 8 sur 8, aucun document sain bloqué, 0,000272 $ et
@@ -360,7 +360,7 @@ make concordance-kpi      # DAX contre SQL
 - **Deux règles corrigées par la mesure** : seuil de nom (D44, trouvé par les tests) et attestation pendant
   une suspension (D45, trouvé par l'évaluation).
 - **Tests** : 14 dans `tests/test_ia.py`, dont un verrou de non-régression qui rejoue les 30 réponses.
-- **Non fait** : vérification par un sous-agent à contexte vierge ; module 4b.
+- **Non fait** : module 4b. Vérification indépendante faite le 27/10, voir plus bas.
 
 ## Module 5 : ce qui est livré
 
@@ -375,12 +375,33 @@ make concordance-kpi      # DAX contre SQL
   par le générateur, dans le bon sens.
 - **Scoring** : `courtage ml scorer`, 3 926 contrats scorés au 01/09/2026 dans la table `score_resiliation`
   (migration 0007), affichés sur la fiche adhérent avec trois facteurs. Graphe Airflow mensuel
-  `courtage_scoring_resiliation`, **écrit mais pas encore exécuté dans Airflow** : l'image doit être
-  reconstruite avec l'option `ml`.
+  `courtage_scoring_resiliation` **exécuté avec succès dans Airflow le 27/10/2026**, après reconstruction de
+  l'image avec l'option `ml` : 1 min 06 s au total (variables 43 s, scoring 17 s) depuis l'optimisation de la
+  cible (D48).
 - **Tests** : 3 tests ajoutés (`tests/test_resiliation.py`) ; suite complète 241 réussis, 13 ignorés.
 - **Écart trouvé** : la sinistralité est déclarée comme cause dans les paramètres mais non appliquée par le
   générateur. Documentation corrigée, générateur inchangé (D35, `docs/HYPOTHESES.md`).
-- **Non fait** : vérification par un sous-agent à contexte vierge, reportée pour économiser l'usage.
+- **Vérification indépendante** : faite le 27/10, voir plus bas.
+
+## Vérification indépendante du 27/10/2026
+
+Un sous-agent à contexte vierge a relu la spécification, contrôlé chaque critère contre le code et des
+exécutions réelles, parcouru 250 écrans (tous en HTTP 200) et joué un dirigeant d'éditeur de logiciel de
+courtage. Verdict : code solide, démo pas prête. Corrections faites le jour même :
+
+| Défaut relevé | Correction |
+| --- | --- |
+| Parcours `DEMO.md` impossible sur SQLite : aucun score, aucun dossier | Chemin A : `courtage ia traiter` ajouté, score montré par capture (dbt demande PostgreSQL) ; chemin B : graphe de scoring déclenché et `erp-cli ia traiter` ; commandes sans `make`, qui n'est pas installé sous Windows ; minutage porté à 150 s avec deux étapes nouvelles |
+| Image de l'ERP ancienne (migration 0007 introuvable) et sans l'option `ia` | Images reconstruites, option `ia` ajoutée, migration 0008 appliquée sur PostgreSQL par `erp-init` |
+| Chiffres périmés (238 tests, 6 révisions, 31 tables, 6 bordereaux de commissions) | Preuves rejouées : 255 tests, 8 révisions et 33 tables sur SQLite et PostgreSQL ; 9 bordereaux |
+| Remboursement santé calculé sur les frais présentés, sans base de remboursement ni régime obligatoire | **Déclaré, pas corrigé** : le corriger changerait les 49 970 prestations générées et tous les ratios mesurés. Simplification affichée sur la fiche contrat, dans `HYPOTHESES.md` et dans les limites du README |
+| Cotisation annualisée de l'accueil et du réseau comptant les suspendus | Corrigée : seuls les contrats en cours, comme le définit `kpi.md` |
+| Date de règlement d'une prestation validée égale à la date des soins | Corrigée : jour de l'enregistrement par défaut, vérifiée par un test |
+| Écran des dossiers : messages sans accents, dates ISO, montants à point, « adhérent inconnu » suivi de « contrat rattaché » | Corrigé ; le contrat d'un adhérent introuvable passe en alerte « rattachement non vérifiable » |
+
+Restent à faire, hors de ces corrections : pousser le commit, mettre à jour la fiche du portfolio, préparer
+en entretien les points de vocabulaire relevés (AP05 « agent général », rejet intégral d'un relevé bancaire,
+moment du scoring).
 
 ## Commandes pour reprendre
 
@@ -389,7 +410,7 @@ Sans Docker, sur SQLite, pour développer et tester vite :
 ```bash
 make installer
 make regenerer        # redescend le schema, le remonte, regenere le jeu de demonstration
-make tests            # 238 tests sur une base temporaire
+make tests            # 255 tests sur une base temporaire
 make servir           # http://127.0.0.1:8000
 ```
 
@@ -411,6 +432,8 @@ make tests-demonstration         # active les tests de signaux realistes
 `make aide` liste toutes les commandes.
 
 ## Journal
+
+- **27/10/2026, vérification indépendante et corrections** : défauts 3 à 8 corrigés (voir « Vérification indépendante du 27/10/2026 »), images reconstruites, migration 0008 sur PostgreSQL, graphe de scoring exécuté pour la première fois dans Airflow, cible optimisée (D48), captures 14 et 15. Au redémarrage, l'ordonnanceur a repris deux exécutions planifiées du graphe des flux, qui ont réécrit les comptes rendus de `results/` sans rien recharger (idempotence observée) ; les comptes rendus de référence ont été restaurés depuis le dépôt et les deux graphes laissés en pause.
 
 - **27/10/2026, module 4a** : agent de pré-remplissage complet, évalué en appel réel sur Claude Haiku 5.5 (clé personnelle, donc en-tête d'espace de travail requis), décisions D41 à D47, leçon sur l'évaluation qui corrige les règles.
 
@@ -437,14 +460,14 @@ make tests-demonstration         # active les tests de signaux realistes
   par le graphe sur la pile. Le moteur Docker s'est arrêté en fin de session : la capture du graphe
   reste à prendre.
 
-- **19/10/2026, matin** : phase 0 terminée, `la note de cadrage metier, conservee hors du depot` écrit. Docker Desktop hors service sur le
+- **19/10/2026, matin** : phase 0 terminée, la note de cadrage métier, conservée hors du dépôt (`docs/CIBLE.md`, exclu par `.gitignore`) écrit. Docker Desktop hors service sur le
   poste, socket de télémétrie périmé.
 - **19/10/2026, après-midi** : Docker réparé par Yasmina, vérifié dans la session. Planification écrite
   (`PLAN.md`, `DECISIONS.md`, `HYPOTHESES.md`). Module 1 réalisé de bout en bout : modèle, migrations,
   domaine, générateur, API, interface, tests, preuves sur les deux moteurs, pile Docker exécutée sur le
   poste.
 - **19/10/2026** : deux consignes arrivées en cours de module et appliquées, la délégation de gestion au
-  modèle (la note de cadrage metier, `la note de cadrage metier, conservee hors du depot`) et le chargement des
+  modèle (la note de cadrage metier, la note de cadrage métier, conservée hors du dépôt (`docs/CIBLE.md`, exclu par `.gitignore`)) et le chargement des
   skills exacts de `docs/SKILLS.md`.
 
 ## Recalibrage de la sinistralité du 22/10/2026

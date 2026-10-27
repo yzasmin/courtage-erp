@@ -295,16 +295,22 @@ def soldes_de_contrat(session: Session, contrat_id: int) -> SoldesContrat:
 def liste_apporteurs(session: Session, a_la_date: date | None = None) -> list:
     """Reseau de distribution, avec la production de chaque apporteur.
 
-    La cotisation annualisee retenue est celle des contrats **en portefeuille**, c'est-a-dire en cours ou
-    suspendus. Y inclure les devis gonflerait la production d'affaires qui n'existent pas encore, et y
-    inclure les resilies gonflerait un portefeuille deja perdu.
+    Les contrats comptes sont ceux **en portefeuille**, en cours ou suspendus : y inclure les devis
+    gonflerait la production d'affaires qui n'existent pas encore, et y inclure les resilies un portefeuille
+    deja perdu. La cotisation annualisee, elle, ne retient que les contrats en cours : un contrat suspendu
+    n'est pas appele, comme le definit docs/kpi.md.
     """
     jour = a_la_date or date.today()
     agregat = (
         select(
             Contrat.apporteur_id.label("apporteur_id"),
             func.count(Contrat.id).label("contrats"),
-            func.coalesce(func.sum(Contrat.cotisation_mensuelle_cents), 0).label("cotisation_mensuelle"),
+            func.coalesce(
+                func.sum(
+                    case((Contrat.statut == StatutContrat.EN_COURS, Contrat.cotisation_mensuelle_cents), else_=0)
+                ),
+                0,
+            ).label("cotisation_mensuelle"),
         )
         .where(Contrat.statut.in_(STATUTS_EN_PORTEFEUILLE))
         .group_by(Contrat.apporteur_id)
@@ -379,9 +385,12 @@ def synthese_accueil(session: Session) -> SyntheseAccueil:
     par_statut = dict(
         session.execute(select(Contrat.statut, func.count(Contrat.id)).group_by(Contrat.statut)).all()
     )
+    # Les contrats suspendus restent au portefeuille, mais ils ne sont pas appeles : leur cotisation ne
+    # compte pas dans la cotisation annualisee. C'est le piege chiffre dans docs/kpi.md, et l'accueil le
+    # commettait (33 015,00 EUR de trop sur le jeu de demonstration).
     cotisation = session.scalar(
         select(func.coalesce(func.sum(Contrat.cotisation_mensuelle_cents), 0)).where(
-            Contrat.statut.in_(STATUTS_EN_PORTEFEUILLE)
+            Contrat.statut == StatutContrat.EN_COURS
         )
     )
     return SyntheseAccueil(

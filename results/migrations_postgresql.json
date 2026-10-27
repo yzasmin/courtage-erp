@@ -1,5 +1,5 @@
 {
-  "mesure_le": "2026-10-21T23:08:31Z",
+  "mesure_le": "2026-10-27T15:49:54Z",
   "moteur": "postgresql",
   "python": "3.12.0",
   "revisions": [
@@ -8,72 +8,100 @@
     "0003",
     "0004",
     "0005",
-    "0006"
+    "0006",
+    "0007",
+    "0008"
   ],
   "conforme": true,
-  "tables_attendues": 31,
-  "tables_au_sommet": 31,
+  "tables_attendues": 33,
+  "tables_au_sommet": 33,
   "tables_manquantes_au_sommet": [],
   "tables_en_trop_au_sommet": [],
   "residus_apres_descente_complete": [],
-  "tables_apres_remontee": 31,
-  "duree_totale_s": 5.28,
+  "tables_apres_remontee": 33,
+  "duree_totale_s": 6.19,
   "etapes": [
     {
       "sens": "montee",
       "revision": "0001",
-      "duree_s": 0.719,
+      "duree_s": 1.125,
       "tables_apres": 20
     },
     {
       "sens": "montee",
       "revision": "0002",
-      "duree_s": 0.14,
+      "duree_s": 0.25,
       "tables_apres": 23
     },
     {
       "sens": "montee",
       "revision": "0003",
-      "duree_s": 0.203,
+      "duree_s": 0.266,
       "tables_apres": 25
     },
     {
       "sens": "montee",
       "revision": "0004",
-      "duree_s": 0.344,
+      "duree_s": 0.375,
       "tables_apres": 31
     },
     {
       "sens": "montee",
       "revision": "0005",
-      "duree_s": 0.109,
+      "duree_s": 0.094,
       "tables_apres": 31
     },
     {
       "sens": "montee",
       "revision": "0006",
+      "duree_s": 0.141,
+      "tables_apres": 31
+    },
+    {
+      "sens": "montee",
+      "revision": "0007",
+      "duree_s": 0.125,
+      "tables_apres": 32
+    },
+    {
+      "sens": "montee",
+      "revision": "0008",
       "duree_s": 0.109,
+      "tables_apres": 33
+    },
+    {
+      "sens": "descente",
+      "revision": "0008",
+      "vers": "0007",
+      "duree_s": 0.125,
+      "tables_apres": 32
+    },
+    {
+      "sens": "descente",
+      "revision": "0007",
+      "vers": "0006",
+      "duree_s": 0.094,
       "tables_apres": 31
     },
     {
       "sens": "descente",
       "revision": "0006",
       "vers": "0005",
-      "duree_s": 0.078,
+      "duree_s": 0.094,
       "tables_apres": 31
     },
     {
       "sens": "descente",
       "revision": "0005",
       "vers": "0004",
-      "duree_s": 0.078,
+      "duree_s": 0.094,
       "tables_apres": 31
     },
     {
       "sens": "descente",
       "revision": "0004",
       "vers": "0003",
-      "duree_s": 0.203,
+      "duree_s": 0.204,
       "tables_apres": 25
     },
     {
@@ -94,7 +122,7 @@
       "sens": "descente",
       "revision": "0001",
       "vers": "base",
-      "duree_s": 0.406,
+      "duree_s": 0.391,
       "tables_apres": 0
     }
   ]

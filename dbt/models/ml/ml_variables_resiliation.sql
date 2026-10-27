@@ -78,10 +78,13 @@ revalorisation_a_date as (
     order by avenants.contrat_id, dates.date_observation, avenants.date_effet desc
 ),
 
+-- Une seule resiliation par contrat, puisque le statut resilie est terminal : une jointure par contrat
+-- remplace la sous-requete correlee de la premiere version, executee pour chacune des 180 000 lignes.
 resiliations as (
-    select contrat_id, date_effet as date_resiliation
+    select contrat_id, min(date_effet) as date_resiliation
     from avenants
     where type_avenant = 'resiliation'
+    group by contrat_id
 )
 
 select
@@ -108,12 +111,8 @@ select
     -- l'echeance decidee au 1er janvier prend effet au 1er janvier suivant, d'ou la borne incluse.
     case
         when version.date_observation + interval '12 months' > (select date_arret from arret) then null
-        when exists (
-            select 1 from resiliations
-            where resiliations.contrat_id = version.contrat_id
-                and resiliations.date_resiliation > version.date_observation
-                and resiliations.date_resiliation <= version.date_observation + interval '12 months'
-        ) then 1
+        when resiliations.date_resiliation > version.date_observation
+            and resiliations.date_resiliation <= version.date_observation + interval '12 months' then 1
         else 0
     end                                                                       as resilie_12_mois
 from version_a_date as version
@@ -127,4 +126,5 @@ join historique_a_date as historique
 left join revalorisation_a_date as revalorisation
     on revalorisation.contrat_id = version.contrat_id
     and revalorisation.date_observation = version.date_observation
+left join resiliations on resiliations.contrat_id = version.contrat_id
 where version.statut_contrat in ('en_cours', 'suspendu')

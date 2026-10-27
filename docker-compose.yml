@@ -88,6 +88,10 @@ services:
     profiles: ["cli"]
     entrypoint: []
     command: ["courtage", "--aide"]
+    # Documents recus et reponses enregistrees de l'agent de pre-remplissage (module 4a) :
+    # `docker compose run --rm erp-cli courtage ia traiter` depose les dossiers sans cle d'API.
+    volumes:
+      - ./data/ia:/app/data/ia:ro
     restart: "no"
     mem_limit: ${ERP_MEM_LIMIT:-512m}
     depends_on:

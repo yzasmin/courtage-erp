@@ -28,6 +28,7 @@ from sqlalchemy.orm import Session
 
 from courtage.domaine.avenants import EtatIntrouvable, etat_a_la_date
 from courtage.domaine.delegation import ActeNonDelegue, DelegationAmbigue, verifie_acte_delegue
+from courtage.domaine.montants import formate_euros
 from courtage.ia.extraction import MODELE, ChampsExtraits, Reponse
 from courtage.modeles import Adherent, Contrat, DossierPreRempli, StatutDossier
 from courtage.modeles.enums import ActeGestion
@@ -45,6 +46,8 @@ from courtage.services.prestations import (
 #: dans un nom de seize caracteres donne encore une similarite de 0,97, et un seuil a ce niveau la
 #: laissait passer sans signalement. Au-dessus de ce seuil, l'ecart est signale ; en dessous, il bloque.
 SEUIL_NOM_APPROCHANT = 0.80
+
+_STATUTS = {StatutDossier.A_VALIDER: "à valider", StatutDossier.VALIDE: "validé", StatutDossier.REJETE: "rejeté"}
 
 REFUS_METIER = (
     ReferenceInvalide,
@@ -98,33 +101,39 @@ def controle(
         adherent = session.get(Adherent, contrat.adherent_id)
     if adherent is None:
         resultats.append(
-            Controle("adherent", "bloquant", f"aucun adherent ne porte le numero {champs.numero_adherent}")
+            Controle("adherent", "bloquant", f"aucun adhérent ne porte le numéro {champs.numero_adherent}")
         )
     else:
-        resultats.append(Controle("adherent", "ok", f"adherent {adherent.numero_adherent} trouve"))
+        resultats.append(Controle("adherent", "ok", f"adhérent {adherent.numero_adherent} trouvé"))
 
     # 2. Le nom lu, rapproche par similarite du nom enregistre. L'ecart est affiche, jamais corrige.
     similarite = None
     if adherent is not None:
         similarite = similarite_nom(champs.prenom, champs.nom, adherent)
         lu = f"{champs.prenom or ''} {champs.nom or ''}".strip()
-        ecart = f"lu « {lu} », enregistre « {adherent.prenom} {adherent.nom} » ({similarite:.2f})"
+        indice = f"{similarite:.2f}".replace(".", ",")
+        ecart = f"lu « {lu} », enregistré « {adherent.prenom} {adherent.nom} » (similarité {indice})"
         if similarite == 1.0:
-            resultats.append(Controle("nom", "ok", f"nom conforme ({similarite:.2f})"))
+            resultats.append(Controle("nom", "ok", "nom conforme"))
         elif similarite >= SEUIL_NOM_APPROCHANT:
             resultats.append(Controle("nom", "alerte", f"nom approchant : {ecart}"))
         else:
-            resultats.append(Controle("nom", "bloquant", f"nom different : {ecart}"))
+            resultats.append(Controle("nom", "bloquant", f"nom différent : {ecart}"))
 
     # 3. Le contrat, et son rattachement a cet adherent.
     if contrat is None:
-        resultats.append(Controle("contrat", "bloquant", f"aucun contrat ne porte le numero {champs.numero_contrat}"))
+        resultats.append(Controle("contrat", "bloquant", f"aucun contrat ne porte le numéro {champs.numero_contrat}"))
     elif adherent is not None and contrat.adherent_id != adherent.id:
         resultats.append(
-            Controle("contrat", "bloquant", f"le contrat {contrat.numero_contrat} appartient a un autre adherent")
+            Controle("contrat", "bloquant", f"le contrat {contrat.numero_contrat} appartient à un autre adhérent")
+        )
+    elif adherent is None:
+        # Le contrat existe, mais l'adherent lu n'a pas ete trouve : le rattachement n'est pas verifiable.
+        resultats.append(
+            Controle("contrat", "alerte", f"contrat {contrat.numero_contrat} trouvé, rattachement non vérifiable")
         )
     else:
-        resultats.append(Controle("contrat", "ok", f"contrat {contrat.numero_contrat} rattache a l'adherent"))
+        resultats.append(Controle("contrat", "ok", f"contrat {contrat.numero_contrat} rattaché à l'adhérent"))
 
     # 4. La garantie a la date du document, reconstituee par les avenants.
     if contrat is not None and champs.date_document is not None:
@@ -141,7 +150,7 @@ def controle(
         if en_garantie:
             resultats.append(Controle("garantie_a_date", "ok", f"contrat en garantie le {jour}"))
         else:
-            message = f"contrat sans garantie en cours le {jour} (suspendu ou pas en vigueur)"
+            message = f"contrat sans garantie en cours le {jour} (suspendu ou pas encore en vigueur)"
             resultats.append(Controle("garantie_a_date", niveau, message))
     elif champs.date_document is None:
         resultats.append(Controle("garantie_a_date", "bloquant", "aucune date lue sur le document"))
@@ -159,19 +168,19 @@ def controle(
             Controle(
                 "montants",
                 "bloquant",
-                f"le total ecrit ({total / 100:.2f} EUR) ne fait pas la somme des lignes ({somme / 100:.2f} EUR)",
+                f"le total écrit ({formate_euros(total)}) ne fait pas la somme des lignes ({formate_euros(somme)})",
             )
         )
     else:
-        resultats.append(Controle("montants", "ok", f"total de {total / 100:.2f} EUR coherent avec les lignes"))
+        resultats.append(Controle("montants", "ok", f"total de {formate_euros(total)} cohérent avec les lignes"))
     if champs.code_garantie is None:
-        resultats.append(Controle("garantie_invoquee", "bloquant", "aucune garantie identifiee"))
+        resultats.append(Controle("garantie_invoquee", "bloquant", "aucune garantie identifiée"))
 
     # 6. La delegation de la gestion des prestations, a la date des soins.
     if contrat is not None and champs.date_document is not None:
         try:
             verifie_acte_delegue(session, contrat.produit_id, ActeGestion.GESTION_PRESTATIONS, champs.date_document)
-            resultats.append(Controle("delegation", "ok", "gestion des prestations deleguee au cabinet"))
+            resultats.append(Controle("delegation", "ok", "gestion des prestations déléguée au cabinet"))
         except (ActeNonDelegue, DelegationAmbigue) as refus:
             resultats.append(Controle("delegation", "bloquant", str(refus)))
     return resultats, adherent, contrat, similarite
@@ -227,10 +236,10 @@ def controles_du_dossier(dossier: DossierPreRempli) -> list[Controle]:
 def valide_dossier(session: Session, dossier: DossierPreRempli) -> None:
     """Decision humaine de validation : la seule voie vers une ecriture definitive."""
     if dossier.statut is not StatutDossier.A_VALIDER:
-        raise DossierNonValidable(f"le dossier est deja {dossier.statut.value}")
+        raise DossierNonValidable(f"le dossier est déjà {_STATUTS[dossier.statut]}")
     bloquants = [c for c in controles_du_dossier(dossier) if c.niveau == "bloquant"]
     if bloquants:
-        raise DossierNonValidable(f"controle bloquant : {bloquants[0].message}")
+        raise DossierNonValidable(f"contrôle bloquant : {bloquants[0].message}")
     champs = ChampsExtraits.model_validate_json(dossier.extraction)
     if champs.type_document != "attestation_employeur":
         demande = DemandePrestation(
@@ -251,9 +260,9 @@ def valide_dossier(session: Session, dossier: DossierPreRempli) -> None:
 
 def rejette_dossier(session: Session, dossier: DossierPreRempli, motif: str) -> None:
     if dossier.statut is not StatutDossier.A_VALIDER:
-        raise DossierNonValidable(f"le dossier est deja {dossier.statut.value}")
+        raise DossierNonValidable(f"le dossier est déjà {_STATUTS[dossier.statut]}")
     if not motif.strip():
-        raise DossierNonValidable("un rejet doit etre motive")
+        raise DossierNonValidable("un rejet doit être motivé")
     dossier.statut = StatutDossier.REJETE
     dossier.motif_rejet = motif.strip()[:300]
     dossier.decide_le = datetime.now()

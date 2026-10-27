@@ -59,6 +59,8 @@ routeur = APIRouter(tags=["interface"], include_in_schema=False)
 gabarits = Jinja2Templates(directory=str(DOSSIER_GABARITS))
 # Filtre de gabarit : `{{ contrat.statut | libelle }}` rend « en cours » et non « en_cours ».
 gabarits.env.filters["libelle"] = libelle
+gabarits.env.filters["euros"] = formate_euros
+gabarits.env.filters["date_fr"] = lambda iso: date.fromisoformat(str(iso)).strftime("%d/%m/%Y")
 
 
 def _rendu(
@@ -981,10 +983,9 @@ def _rend_dossiers(
     requete: Request, session: Session, message: str | None = None, message_type: str = "succes"
 ) -> HTMLResponse:
     lignes = []
+    # Une file d'attente se traite du plus ancien au plus recent ; les dossiers decides passent apres.
     dossiers = session.scalars(
-        select(DossierPreRempli).order_by(
-            DossierPreRempli.statut != StatutDossier.A_VALIDER, desc(DossierPreRempli.id)
-        )
+        select(DossierPreRempli).order_by(DossierPreRempli.statut != StatutDossier.A_VALIDER, DossierPreRempli.id)
     ).all()
     for dossier in dossiers:
         adherent = session.get(Adherent, dossier.adherent_id) if dossier.adherent_id else None
