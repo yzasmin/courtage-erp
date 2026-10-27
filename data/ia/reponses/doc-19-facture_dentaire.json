@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "032d9a774ea257ad39ce5c5d10649f5d14b1017a4a5d5951ccd8d2ea832a514a",
+  "reponse_texte": "{\"type_document\":\"facture_dentaire\",\"numero_adherent\":\"A003525\",\"nom\":\"NGUYEN\",\"prenom\":\"Francoise\",\"numero_contrat\":\"SI-2023-00099\",\"date_document\":\"2026-09-02\",\"emetteur\":\"Dr Claire Bousquet\",\"code_garantie\":\"DENTAIRE\",\"montant_total_cents\":97600,\"lignes\":[{\"libelle\":\"Inlay-core, dent 36\",\"montant_cents\":23600},{\"libelle\":\"Couronne ceramo-metallique, dent 26\",\"montant_cents\":74000}]}",
+  "jetons_entree": 1780,
+  "jetons_sortie": 193,
+  "latence_ms": 1578
+}

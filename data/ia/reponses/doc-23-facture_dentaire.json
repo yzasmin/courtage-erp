@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "b7378f7c270dfeea5897eae8f1764d6bc9246262ca3d4b43562171c4b0b5dd58",
+  "reponse_texte": "{\"type_document\":\"facture_dentaire\",\"numero_adherent\":\"A976729\",\"nom\":\"ROUSSEAU\",\"prenom\":\"Pascal\",\"numero_contrat\":\"SC-2021-00207\",\"date_document\":\"2026-09-16\",\"emetteur\":\"Dr Claire Bousquet\",\"code_garantie\":\"DENTAIRE\",\"montant_total_cents\":7992,\"lignes\":[{\"libelle\":\"Detartrage\",\"montant_cents\":2892},{\"libelle\":\"Soin conservateur, dent 15\",\"montant_cents\":5100}]}",
+  "jetons_entree": 1771,
+  "jetons_sortie": 184,
+  "latence_ms": 1603
+}

@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "013c7594fa27b872a9139deecf8fd9e64635acab898ff7bbd7219cc924a183e6",
+  "reponse_texte": "{\"type_document\":\"demande_remboursement\",\"numero_adherent\":\"A002272\",\"nom\":\"LOPEZ\",\"prenom\":\"Catherine\",\"numero_contrat\":\"SC-2023-00453\",\"date_document\":\"2023-11-28\",\"emetteur\":\"Cabinet Grossiste Delegataire - Service prestations\",\"code_garantie\":\"SOINS\",\"montant_total_cents\":9000,\"lignes\":[{\"libelle\":\"Consultation medecin generaliste\",\"montant_cents\":3000},{\"libelle\":\"Consultation specialiste\",\"montant_cents\":6000}]}",
+  "jetons_entree": 1786,
+  "jetons_sortie": 191,
+  "latence_ms": 2053
+}

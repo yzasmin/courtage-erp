@@ -7,13 +7,17 @@ SHELL := /bin/bash
 
 # Adresse de la base PostgreSQL du compose, vue depuis le poste. Sert aux preuves lancees en local
 # contre la base du conteneur, sans entrer dans le conteneur.
-POSTGRES_LOCAL ?= postgresql+psycopg://courtage:courtage@localhost:5432/courtage
+# 127.0.0.1 et non localhost : sous Windows, localhost tente d'abord IPv6, que le port publie par Docker
+# n'ecoute pas, et chaque connexion attendait environ deux minutes avant de se replier sur IPv4.
+POSTGRES_LOCAL ?= postgresql+psycopg://courtage:courtage@127.0.0.1:5432/courtage
 GRAINE ?= 20261019
 ADRESSE ?= http://127.0.0.1:8000
 
 .PHONY: aide installer migrer demigrer generer regenerer empreinte tests tests-demonstration style \
         servir pile arret journaux etat preuve-migrations preuve-reproductibilite preuve-postgres \
-        preuve-api preuve-coherence preuve-contraintes preuve-mutation preuves capture nettoyer \n        marts-pilotage preuve-kpi exporter-powerbi pbip concordance-kpi
+        preuve-api preuve-coherence preuve-contraintes preuve-mutation preuves capture nettoyer \
+        marts-pilotage preuve-kpi exporter-powerbi pbip concordance-kpi \
+        variables-ml entrainer-ml scorer-ml ia-generer ia-traiter ia-evaluer
 
 aide: ## Liste les commandes
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-24s\033[0m %s\n", $$1, $$2}'
@@ -21,7 +25,7 @@ aide: ## Liste les commandes
 # --- Sans Docker, sur SQLite -------------------------------------------------------------------
 
 installer: ## Installe l'environnement Python (uv)
-	python -m uv sync --frozen
+	python -m uv sync --frozen --extra ml --extra ia
 
 migrer: ## Monte le schema jusqu'a la derniere revision
 	python -m uv run courtage migrer
@@ -122,6 +126,24 @@ pbip: ## Regenere le projet Power BI ; passer DONNEES=<chemin absolu de powerbi/
 
 concordance-kpi: ## Compare les mesures DAX (results/powerbi) aux requetes SQL
 	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run python scripts/concordance_kpi.py
+
+variables-ml: ## Construit et teste les variables de resiliation, dont le test de non-fuite (dbt, PostgreSQL)
+	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run dbt build --project-dir dbt --profiles-dir dbt --target-path cible --select ml_variables_resiliation
+
+entrainer-ml: ## Apprend sur 2023 et 2024, mesure sur 2025, ecrit results/ml_resiliation.json
+	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run --extra ml courtage ml entrainer
+
+scorer-ml: ## Score le portefeuille a la derniere date d'observation et ecrit la table score_resiliation
+	COURTAGE_BASE_URL="$(POSTGRES_LOCAL)" python -m uv run --extra ml courtage ml scorer
+
+ia-generer: ## Ecrit les 30 documents de demonstration et leur verite terrain (module 4a)
+	python -m uv run --extra ia courtage ia generer
+
+ia-traiter: ## Depose un dossier a valider par document, en rejouant les reponses enregistrees
+	python -m uv run --extra ia courtage ia traiter
+
+ia-evaluer: ## Mesure l'extraction sur les 30 documents et ecrit docs/eval-extraction.md (hors ligne)
+	python -m uv run --extra ia courtage ia evaluer
 
 nettoyer: ## Supprime la pile Docker et ses volumes (destructif)
 	docker compose down -v

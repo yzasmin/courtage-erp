@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "df47ac3cd6d8e211a8fce61a21add4b1b281c7ed63db28dc6cab9004dacaf69f",
+  "reponse_texte": "{\"type_document\":\"attestation_employeur\",\"numero_adherent\":null,\"nom\":\"CHEVALIER\",\"prenom\":\"Stephanie\",\"numero_contrat\":\"SC-2025-00381\",\"date_document\":\"2026-06-20\",\"emetteur\":\"Menuiserie Clement SCOP\",\"code_garantie\":null,\"montant_total_cents\":null,\"lignes\":[]}",
+  "jetons_entree": 1808,
+  "jetons_sortie": 267,
+  "latence_ms": 2113
+}

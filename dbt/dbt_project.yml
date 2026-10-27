@@ -36,6 +36,9 @@ models:
     marts:
       +materialized: table
       +schema: marts
+    ml:
+      +materialized: table
+      +schema: ml
 
 tests:
   courtage:

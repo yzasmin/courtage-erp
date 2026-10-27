@@ -230,9 +230,13 @@ services:
       DBT_TARGET_PATH: cible
       DBT_PROJECT_DIR: /opt/courtage/dbt
       DBT_PROFILES_DIR: /opt/courtage/dbt
+      # Modele de resiliation (module 5), appris sur le poste par `courtage ml entrainer` et lu par la
+      # tache mensuelle de scoring.
+      COURTAGE_MODELE_ML: /opt/courtage/ml/modele_resiliation.joblib
     volumes: &volumes-airflow
       - ./dags:/opt/airflow/dags:ro
       - ./dbt:/opt/courtage/dbt
+      - ./ml:/opt/courtage/ml:ro
       - ./data/flux:/data/flux
       - ./results:/opt/courtage/results
       - airflow-logs:/opt/airflow/logs

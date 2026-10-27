@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "a4d5f4b666833c064f7c9f615d7acc971505e019f483c495f25fe854692352e4",
+  "reponse_texte": "{\"type_document\":\"attestation_employeur\",\"numero_adherent\":null,\"nom\":\"ROUSSEAU\",\"prenom\":\"Karim\",\"numero_contrat\":\"SC-2024-00403\",\"date_document\":\"2026-08-31\",\"emetteur\":\"Optique Vincent EURL\",\"code_garantie\":null,\"montant_total_cents\":null,\"lignes\":[]}",
+  "jetons_entree": 1803,
+  "jetons_sortie": 322,
+  "latence_ms": 2001
+}

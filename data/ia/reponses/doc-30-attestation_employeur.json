@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "f953ade764f5e602f7571fc76152791302208f4e6eae481aafecfdf457925010",
+  "reponse_texte": "{\"type_document\":\"attestation_employeur\",\"numero_adherent\":null,\"nom\":\"CLEMENT\",\"prenom\":\"Monique\",\"numero_contrat\":\"SC-2023-00040\",\"date_document\":\"2026-08-11\",\"emetteur\":\"Batiment Garcia SCOP\",\"code_garantie\":null,\"montant_total_cents\":null,\"lignes\":[]}",
+  "jetons_entree": 1802,
+  "jetons_sortie": 122,
+  "latence_ms": 1788
+}

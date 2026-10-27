@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "6896cf8ba23d664f64cd8cab9454c0eba2185259dc260d1bcc8a7f66eb2f6013",
+  "reponse_texte": "{\"type_document\":\"facture_dentaire\",\"numero_adherent\":\"A002924\",\"nom\":\"LAURENT\",\"prenom\":\"Pascal\",\"numero_contrat\":\"SI-2022-00037\",\"date_document\":\"2026-08-22\",\"emetteur\":\"Dr Malik Haddad\",\"code_garantie\":\"DENTAIRE\",\"montant_total_cents\":24792,\"lignes\":[{\"libelle\":\"Detartrage\",\"montant_cents\":2892},{\"libelle\":\"Inlay-core, dent 36\",\"montant_cents\":20900}]}",
+  "jetons_entree": 1770,
+  "jetons_sortie": 179,
+  "latence_ms": 1806
+}

@@ -12,6 +12,7 @@ defaut du logiciel.
 
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
 from datetime import date
 from typing import Annotated
@@ -36,8 +37,10 @@ from courtage.domaine.delegation import (
 from courtage.domaine.montants import euros_vers_centimes, formate_euros
 from courtage.flux.enums import SeveriteAnomalie, StatutLot
 from courtage.flux.modeles import AnomalieLot, LotFichier, RapprochementLigne
+from courtage.ia import traitement
 from courtage.interface import DOSSIER_GABARITS
 from courtage.interface.libelles import libelle
+from courtage.modeles import DossierPreRempli, ScoreResiliation, StatutDossier
 from courtage.modeles.collectif import LigneAppelCotisation, PoliceCollective
 from courtage.modeles.delegation import ActeDelegue, ConventionDelegation, ConventionProduit
 from courtage.modeles.enums import (
@@ -276,7 +279,7 @@ def liste_adherents(
 
 @routeur.get("/adherents/{numero_adherent}", response_class=HTMLResponse)
 def fiche_adherent(requete: Request, session: SessionDep, numero_adherent: str) -> HTMLResponse:
-    """Fiche adherent : identite, contrats, et l'emplacement du score de resiliation du module 5."""
+    """Fiche adherent : identite, contrats, et score de resiliation de chaque contrat (module 5)."""
     ligne = lecture.adherent_par_numero(session, numero_adherent)
     if ligne is None:
         return _page_introuvable(requete, f"Aucun adherent ne porte le numero {numero_adherent}.")
@@ -294,8 +297,40 @@ def fiche_adherent(requete: Request, session: SessionDep, numero_adherent: str) 
     return _rendu(
         requete,
         "adherent.html",
-        _contexte("adherents", adherent=adherent, entreprise=entreprise, contrats=contrats, age=age),
+        _contexte(
+            "adherents",
+            adherent=adherent,
+            entreprise=entreprise,
+            contrats=contrats,
+            age=age,
+            scores=_derniers_scores(session, adherent.id),
+        ),
     )
+
+
+def _derniers_scores(session: Session, adherent_id: int) -> list[tuple[str, ScoreResiliation]]:
+    """Dernier score de resiliation de chaque contrat de l'adherent, le plus risque en tete.
+
+    Un contrat resilie depuis le dernier scoring garde son dernier score : la fiche le montre tel qu'il
+    etait, avec sa date, plutot que de le faire disparaitre.
+    """
+    derniere_date = (
+        select(ScoreResiliation.contrat_id, func.max(ScoreResiliation.date_observation).label("date_max"))
+        .group_by(ScoreResiliation.contrat_id)
+        .subquery()
+    )
+    lignes = session.execute(
+        select(Contrat.numero_contrat, ScoreResiliation)
+        .join(ScoreResiliation, ScoreResiliation.contrat_id == Contrat.id)
+        .join(
+            derniere_date,
+            (derniere_date.c.contrat_id == ScoreResiliation.contrat_id)
+            & (derniere_date.c.date_max == ScoreResiliation.date_observation),
+        )
+        .where(Contrat.adherent_id == adherent_id)
+        .order_by(desc(ScoreResiliation.probabilite))
+    ).all()
+    return [(numero, score) for numero, score in lignes]
 
 
 @routeur.get("/contrats", response_class=HTMLResponse)
@@ -932,10 +967,80 @@ def anomalies(requete: Request, session: SessionDep) -> HTMLResponse:
     )
 
 
+@dataclass(frozen=True, slots=True)
+class _LigneDossier:
+    dossier: DossierPreRempli
+    champs: dict
+    controles: list
+    numero_adherent: str | None
+    numero_contrat: str | None
+    bloquant: bool
+
+
+def _rend_dossiers(
+    requete: Request, session: Session, message: str | None = None, message_type: str = "succes"
+) -> HTMLResponse:
+    lignes = []
+    dossiers = session.scalars(
+        select(DossierPreRempli).order_by(
+            DossierPreRempli.statut != StatutDossier.A_VALIDER, desc(DossierPreRempli.id)
+        )
+    ).all()
+    for dossier in dossiers:
+        adherent = session.get(Adherent, dossier.adherent_id) if dossier.adherent_id else None
+        contrat = session.get(Contrat, dossier.contrat_id) if dossier.contrat_id else None
+        controles = traitement.controles_du_dossier(dossier)
+        lignes.append(
+            _LigneDossier(
+                dossier=dossier,
+                champs=json.loads(dossier.extraction),
+                controles=controles,
+                numero_adherent=adherent.numero_adherent if adherent else None,
+                numero_contrat=contrat.numero_contrat if contrat else None,
+                bloquant=any(c.niveau == "bloquant" for c in controles),
+            )
+        )
+    a_valider = sum(1 for ligne in lignes if ligne.dossier.statut is StatutDossier.A_VALIDER)
+    return _rendu(
+        requete,
+        "validation_ia.html",
+        _contexte("validation", lignes=lignes, a_valider=a_valider, message=message, message_type=message_type),
+    )
+
+
 @routeur.get("/dossiers-a-valider", response_class=HTMLResponse)
-def dossiers_a_valider(requete: Request) -> HTMLResponse:
-    """Ecran de validation humaine des dossiers pre-remplis. Rempli par le module 4."""
-    return _rendu(requete, "validation_ia.html", _contexte("validation"))
+def dossiers_a_valider(requete: Request, session: SessionDep) -> HTMLResponse:
+    """Ecran de validation humaine des dossiers pre-remplis par l'agent (module 4a)."""
+    return _rend_dossiers(requete, session)
+
+
+@routeur.post("/dossiers-a-valider/{dossier_id}/decision", response_class=HTMLResponse)
+def decide_dossier(
+    requete: Request,
+    session: SessionDep,
+    dossier_id: int,
+    decision: Annotated[str, Form()],
+    motif: Annotated[str, Form()] = "",
+) -> HTMLResponse:
+    """Decision du gestionnaire. Valider un remboursement cree la prestation ; rien ne s'ecrit avant."""
+    dossier = session.get(DossierPreRempli, dossier_id)
+    if dossier is None:
+        return _page_introuvable(requete, f"Aucun dossier ne porte le numero {dossier_id}.")
+    try:
+        if decision == "valider":
+            traitement.valide_dossier(session, dossier)
+            message = f"Dossier {dossier.nom_fichier} validé."
+            if dossier.prestation_id:
+                prestation = session.get(Prestation, dossier.prestation_id)
+                message += f" Prestation {prestation.reference_prestation} enregistrée."
+        else:
+            traitement.rejette_dossier(session, dossier, motif)
+            message = f"Dossier {dossier.nom_fichier} rejeté."
+        session.commit()
+    except traitement.DossierNonValidable as refus:
+        session.rollback()
+        return _rend_dossiers(requete, session, f"Décision refusée : {refus}", "refus")
+    return _rend_dossiers(requete, session, message)
 
 
 @routeur.get("/reseau", response_class=HTMLResponse)

@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "19c4bbdc2e309d3ff44ab49e8fb9c49ea1ef3ef1a64b6aba6f64905d74a0ca65",
+  "reponse_texte": "{\"type_document\":\"facture_optique\",\"numero_adherent\":\"A005032\",\"nom\":\"MASSON\",\"prenom\":\"Helene\",\"numero_contrat\":\"SI-2020-00219\",\"date_document\":\"2026-07-14\",\"emetteur\":\"LUNETTERIE DES ARCEAUX\",\"code_garantie\":\"OPTIQUE\",\"montant_total_cents\":63100,\"lignes\":[{\"libelle\":\"Monture\",\"montant_cents\":11000},{\"libelle\":\"Verre progressif droit\",\"montant_cents\":25700},{\"libelle\":\"Verre progressif gauche\",\"montant_cents\":26400}]}",
+  "jetons_entree": 1768,
+  "jetons_sortie": 203,
+  "latence_ms": 1427
+}

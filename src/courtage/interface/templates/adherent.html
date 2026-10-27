@@ -24,10 +24,31 @@
 
     <section class="carte">
       <h2 style="margin-top: 0">Score de résiliation</h2>
-      <p class="sous-titre" style="margin: 0">
-        Le score de risque de resiliation et ses trois principaux facteurs s'afficheront ici.
-        Ils sont produits par le modele du module 5, qui n'est pas encore realise.
-      </p>
+      {% for numero_contrat, score in scores %}
+        <div class="score-resiliation">
+          <p style="margin: 0">
+            <span class="reference">{{ numero_contrat }}</span> :
+            <strong>{{ "%.0f" | format(score.probabilite * 100) }} %</strong> de risque de résiliation à douze mois,
+            décile {{ score.decile }} sur 10
+            {% if score.decile == 10 %}<span class="pastille suspendu">à contacter</span>{% endif %}
+          </p>
+          {% if score.facteur_1 %}
+            <ul class="discret" style="margin: 4px 0 10px">
+              {% for facteur in [score.facteur_1, score.facteur_2, score.facteur_3] if facteur %}
+                <li>{{ facteur }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      {% else %}
+        <p class="sous-titre" style="margin: 0">Aucun contrat de cet adhérent n'a encore été scoré.</p>
+      {% endfor %}
+      {% if scores %}
+        <p class="discret" style="margin: 0">
+          Score du {{ scores[0][1].date_observation.strftime('%d/%m/%Y') }}, modèle {{ scores[0][1].version_modele }}.
+          Les facteurs sont ceux qui poussent le risque à la hausse pour ce contrat. Données synthétiques.
+        </p>
+      {% endif %}
     </section>
   </div>
 

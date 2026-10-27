@@ -44,7 +44,7 @@ COPY --chown=airflow:root pyproject.toml uv.lock README.md /opt/courtage/
 COPY --chown=airflow:root src /opt/courtage/src
 RUN python -m venv /opt/courtage-venv \
     && /opt/courtage-venv/bin/pip install --no-cache-dir --upgrade pip \
-    && /opt/courtage-venv/bin/pip install --no-cache-dir /opt/courtage
+    && /opt/courtage-venv/bin/pip install --no-cache-dir "/opt/courtage[ml]"
 
 # --- Environnement dbt ----------------------------------------------------------------------------
 # Versions bornees : une version majeure ne doit pas entrer sans avoir ete testee, ici comme dans

@@ -4,8 +4,12 @@ Le parcours de deux minutes à montrer en entretien, écran par écran, avec les
 
 Le parcours suit les questions qu'un gestionnaire de courtier délégataire se pose un lundi matin : où en est
 mon contrat, quel fichier a-t-on refusé, qu'ai-je le droit de faire pour cette compagnie, et qu'est-ce que
-cela donne en chiffres pour la direction. Il ne montre que ce qui existe. Les modules 4 et 5 (agent de
-pré-remplissage, prédiction de résiliation) ne sont pas réalisés : si on les évoque, c'est pour le dire.
+cela donne en chiffres pour la direction. Il ne montre que ce qui existe. Le module 4b (conditions
+générales) n'est pas réalisé : si on l'évoque, c'est pour le dire. L'écran « Dossiers à valider » montre
+l'agent de pré-remplissage : un dossier avec l'alerte « nom approchant », puis un dossier bloqué pour total
+faux, et la validation d'un dossier sain qui crée sa prestation. Le score de résiliation du module 5
+se montre sur la fiche adhérent, en dix secondes, avant la clôture : ouvrir un adhérent du décile 10 (par
+exemple `A004928`) et lire ses trois facteurs à voix haute.
 
 ## Avant l'entretien : préparer le poste
 
@@ -125,7 +129,7 @@ contrôle ont un écart relatif maximal de 2,9e-14. »
 
 ### 2 min 00, fin
 
-Une phrase de clôture : « Les modules 4 et 5 ne sont pas faits, et le README le dit. Tout le reste est
+Une phrase de clôture : « La recherche dans les conditions générales n'est pas faite, et le README le dit. Tout le reste est
 rejouable par `make preuves`, et chaque chiffre vient d'un fichier de `results/`. »
 
 ## Si quelque chose ne marche pas

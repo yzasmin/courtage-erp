@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "e98bdbf9ed45bfc9c620c533349a1a32a03b3cde4104a643a2a889462776d3db",
+  "reponse_texte": "{\"type_document\":\"demande_remboursement\",\"numero_adherent\":\"A002959\",\"nom\":\"JOLY\",\"prenom\":\"Fatima\",\"numero_contrat\":\"SI-2025-00044\",\"date_document\":\"2026-06-10\",\"emetteur\":\"Cabinet Grossiste Delegataire - Service prestations\",\"code_garantie\":\"SOINS\",\"montant_total_cents\":2150,\"lignes\":[{\"libelle\":\"Seance de kinesitherapie\",\"montant_cents\":2150}]}",
+  "jetons_entree": 1767,
+  "jetons_sortie": 164,
+  "latence_ms": 1593
+}

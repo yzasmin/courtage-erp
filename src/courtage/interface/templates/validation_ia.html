@@ -3,49 +3,75 @@
 {% block contenu %}
   <h1>Dossiers pré-remplis à valider</h1>
   <p class="sous-titre">
-    File d'attente des dossiers extraits automatiquement de documents recus, avant toute ecriture
-    definitive dans le portefeuille.
+    Documents reçus lus par l'agent ({{ lignes[0].dossier.modele if lignes else "modèle de langage" }}),
+    confrontés au portefeuille, puis déposés ici. Rien n'est écrit dans le portefeuille avant votre décision :
+    valider un remboursement crée la prestation, après une nouvelle vérification de la délégation, de la
+    garantie à la date des soins et du plafond.
   </p>
+  {% if message %}<div class="message {{ message_type }}">{{ message }}</div>{% endif %}
 
-  <div class="message information">
-    <strong>Écran en attente du module 4.</strong>
-    L'agent de pre-remplissage lira les demandes de remboursement, les factures et les attestations
-    recues, en extraira les champs, les confrontera au portefeuille, puis deposera ici un dossier au
-    statut « a valider ». Cet ecran est le point de controle humain : rien n'est ecrit dans le
-    portefeuille sans qu'un gestionnaire l'ait valide depuis cette page.
-  </div>
+  {% if not lignes %}
+    <div class="message information">
+      Aucun dossier. Les documents se traitent avec <code>courtage ia traiter</code>.
+    </div>
+  {% else %}
+    <p>{{ a_valider }} dossier(s) à valider sur {{ lignes | length }}.</p>
+  {% endif %}
 
-  <div class="carte" style="padding: 0">
-    <table>
-      <thead>
-        <tr>
-          <th>Document</th><th>Type</th><th>Adhérent rapproché</th><th>Contrat</th>
-          <th class="nombre">Montant</th><th>Confiance</th><th>Statut</th><th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colspan="8" class="vide">
-            Aucun dossier en attente. Le module 4 n'est pas encore realise, donc aucun document n'a
-            encore ete traite.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  {% for ligne in lignes %}
+    {% set d = ligne.dossier %}
+    {% set c = ligne.champs %}
+    <section class="carte">
+      <h2 style="margin-top: 0">
+        <span class="reference">{{ d.nom_fichier }}</span>
+        <span class="pastille {{ 'en_cours' if d.statut.value == 'valide' else ('resilie' if d.statut.value == 'rejete' else 'suspendu') }}">
+          {{ {"a_valider": "à valider", "valide": "validé", "rejete": "rejeté"}[d.statut.value] }}
+        </span>
+      </h2>
+      <div class="colonnes">
+        <dl class="proprietes">
+          <dt>Type</dt><dd>{{ (c.type_document or "non lu") | replace("_", " ") }}</dd>
+          <dt>Émetteur</dt><dd>{{ c.emetteur or "-" }}</dd>
+          <dt>Adhérent lu</dt><dd>{{ c.prenom or "" }} {{ c.nom or "" }} <span class="reference">{{ c.numero_adherent or "" }}</span></dd>
+          <dt>Rapproché de</dt>
+          <dd>
+            {% if ligne.numero_adherent %}<a class="reference" href="/adherents/{{ ligne.numero_adherent }}">{{ ligne.numero_adherent }}</a>{% else %}aucun adhérent{% endif %}
+            {% if d.similarite_nom is not none %}, similarité du nom {{ "%.2f" | format(d.similarite_nom) }}{% endif %}
+          </dd>
+          <dt>Contrat</dt>
+          <dd>{% if ligne.numero_contrat %}<a class="reference" href="/contrats/{{ ligne.numero_contrat }}">{{ ligne.numero_contrat }}</a>{% else %}{{ c.numero_contrat or "-" }}{% endif %}</dd>
+          <dt>Date</dt><dd class="reference">{{ c.date_document or "-" }}</dd>
+          <dt>Garantie</dt><dd>{{ c.code_garantie or "-" }}</dd>
+          <dt>Total lu</dt><dd class="nombre">{{ "%.2f EUR" | format(d.montant_total_cents / 100) if d.montant_total_cents is not none else "-" }}</dd>
+        </dl>
+        <div>
+          <ul style="margin: 0; padding-left: 18px">
+            {% for controle in ligne.controles %}
+              <li>
+                <span class="pastille {{ {'ok': 'en_cours', 'alerte': 'suspendu', 'bloquant': 'resilie'}[controle.niveau] }}">{{ controle.niveau }}</span>
+                {{ controle.message }}
+              </li>
+            {% endfor %}
+          </ul>
+          <p class="discret" style="margin: 8px 0 0">
+            {{ d.jetons_entree }} jetons lus, {{ d.jetons_sortie }} écrits, {{ "%.4f" | format(d.cout_microdollars / 1000000) }} $, {{ d.latence_ms }} ms.
+          </p>
+        </div>
+      </div>
 
-  <h2>Ce que cet écran contrôlera</h2>
-  <section class="carte">
-    <p class="sous-titre" style="margin: 0 0 8px">
-      Les controles prevus avant qu'un dossier puisse etre propose a la validation, tels que la
-      specification du module 4 les fixe :
-    </p>
-    <ul>
-      <li>l'adhérent et le contrat cités existent réellement dans le portefeuille ;</li>
-      <li>le nom lu sur le document se rapproche du nom de l'adhérent par similarité, et l'écart est affiché ;</li>
-      <li>les montants sont cohérents entre eux et avec la garantie invoquée ;</li>
-      <li>le contrat était bien en vigueur à la date des soins, ce que la reconstitution à date établit ;</li>
-      <li>la gestion des prestations est déléguée au cabinet sur ce produit, sinon le dossier est rejeté.</li>
-    </ul>
-  </section>
+      {% if d.statut.value == "a_valider" %}
+        <form method="post" action="/dossiers-a-valider/{{ d.id }}/decision" class="actions" style="margin-top: 10px">
+          {% if not ligne.bloquant %}
+            <button class="bouton" name="decision" value="valider">Valider{% if c.type_document != "attestation_employeur" %} et créer la prestation{% endif %}</button>
+          {% endif %}
+          <input name="motif" placeholder="Motif du rejet" style="min-width: 260px">
+          <button class="bouton secondaire" name="decision" value="rejeter">Rejeter</button>
+        </form>
+      {% elif d.statut.value == "rejete" %}
+        <p class="discret">Rejeté : {{ d.motif_rejet }}</p>
+      {% elif d.prestation_id %}
+        <p class="discret">Prestation créée à la validation.</p>
+      {% endif %}
+    </section>
+  {% endfor %}
 {% endblock %}

@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "1e7d916774b5c72b48dd256de7887f664dd45c91ee0beb15e9a2b507a6f36d55",
+  "reponse_texte": "{\"type_document\":\"facture_optique\",\"numero_adherent\":\"A001351\",\"nom\":\"MULLER\",\"prenom\":\"Aurelie\",\"numero_contrat\":\"SC-2022-00187\",\"date_document\":\"2026-06-03\",\"emetteur\":\"VISION PLUS BEZIERS\",\"code_garantie\":\"OPTIQUE\",\"montant_total_cents\":46100,\"lignes\":[{\"libelle\":\"Monture\",\"montant_cents\":19300},{\"libelle\":\"Verre unifocal droit\",\"montant_cents\":13500},{\"libelle\":\"Verre unifocal gauche\",\"montant_cents\":13300}]}",
+  "jetons_entree": 1770,
+  "jetons_sortie": 203,
+  "latence_ms": 2249
+}

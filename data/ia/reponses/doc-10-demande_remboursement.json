@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "a89dc65331fc4c726395e12ba5ac37bf0c4bacbd6321bee1d3b8a2b832e9cdf1",
+  "reponse_texte": "{\"type_document\":\"demande_remboursement\",\"numero_adherent\":\"A002368\",\"nom\":\"GUERIN\",\"prenom\":\"Manon\",\"numero_contrat\":\"SC-2025-00466\",\"date_document\":\"2026-08-09\",\"emetteur\":\"Cabinet Grossiste Delegataire - Service prestations\",\"code_garantie\":\"SOINS\",\"montant_total_cents\":8240,\"lignes\":[{\"libelle\":\"Analyses de biologie\",\"montant_cents\":4250},{\"libelle\":\"Radiographie\",\"montant_cents\":3990}]}",
+  "jetons_entree": 1778,
+  "jetons_sortie": 183,
+  "latence_ms": 1998
+}

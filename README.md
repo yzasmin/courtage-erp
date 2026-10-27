@@ -51,9 +51,10 @@ flowchart LR
 ```
 
 Un lot rejeté par les contrôles ne laisse aucune ligne en base, et la tâche terminale `alerter` fait
-échouer le graphe pour que le rejet se voie dans Airflow. Les modules 4 et 5 (agent de pré-remplissage,
-prédiction de résiliation) n'apparaissent pas sur ce schéma parce qu'ils n'existent pas : voir « Ce qui n'est
-pas fait ».
+échouer le graphe pour que le rejet se voie dans Airflow. Un second graphe, mensuel, construit les
+variables de résiliation dans dbt puis écrit le score de chaque contrat en base (module 5). L'agent de
+pré-remplissage du module 4a lit les documents reçus et dépose des dossiers que seul un gestionnaire peut
+valider.
 
 ## Démarrage
 
@@ -141,6 +142,44 @@ dépassait 100 % sur toutes les périodes, parce que le générateur ne reliait 
 cotisations. Il a été corrigé le 22/10 (décision D32) et les chiffres du dépôt ont été remesurés. L'historique
 complet est dans `docs/PROGRESS.md`.
 
+### Module 4a, agent de pré-remplissage
+
+Le problème : un gestionnaire ressaisit à la main les demandes de remboursement, les factures d'opticien,
+les notes de dentiste et les attestations d'employeur qu'il reçoit. L'agent lit chaque document, en extrait
+dix champs par un modèle de langage (Claude Haiku 5.5) contraint par un schéma JSON strict, les confronte
+au portefeuille, puis dépose un dossier « à valider ». **Rien n'est écrit avant une décision humaine** :
+valider un remboursement crée la prestation par le service de saisie existant, qui revérifie la
+délégation, la garantie à la date des soins et le plafond. La base refuse elle-même une prestation
+rattachée à un dossier non validé.
+
+Mesuré sur 30 documents fictifs : 96,7 % des champs exacts, 100 % sur les identifiants, les dates et les
+montants ; les dix écarts portent tous sur l'émetteur des demandes, lu « Cabinet Grossiste Delegataire -
+Service prestations » quand la vérité terrain n'attend que le nom du cabinet. Les contrôles relèvent les 8
+anomalies volontaires (nom mal orthographié, adhérent inexistant, total faux, soins avant l'effet du
+contrat) et ne bloquent aucun document sain. Coût moyen : 0,00027 $ par document, latence moyenne
+1,8 seconde. Chaque réponse réelle est enregistrée : l'évaluation et les tests se rejouent sans clé
+d'API, et refusent une réponse devenue périmée. Détail dans `docs/eval-extraction.md`.
+
+### Module 5, prédiction de résiliation
+
+Le problème : au 1er janvier, jour de l'échéance et de la revalorisation, quels contrats vont partir dans
+l'année ? C'est le moment où le cabinet peut encore appeler l'adhérent ou revoir la formule.
+
+Les variables sont construites dans dbt à chaque 1er du mois, sans lire un seul avenant postérieur à la
+date d'observation, et un test dbt le revérifie à chaque construction. Apprentissage sur 2023 et 2024, test
+sur 2025, la dernière année dont les douze mois sont entièrement observés. Sur l'année de test, la
+régression logistique atteint une ROC-AUC de 0,645 et un lift de 2,22 sur le premier décile ; la formule
+qui a réellement servi à générer les résiliations, recalculée sur les mêmes contrats, plafonne à 0,662.
+LightGBM, prévu comme modèle plus performant, ne fait mieux sur aucune mesure : c'est donc la régression
+logistique qui est déployée. Ses quatre variables les plus influentes sont exactement les quatre causes
+écrites dans le générateur, dans le bon sens.
+
+Chaque mois, le graphe `courtage_scoring_resiliation` écrit la probabilité, le décile et les trois facteurs
+qui poussent le risque à la hausse, affichés sur la fiche adhérent en phrases de gestionnaire. **Les données
+sont synthétiques** : l'intérêt est la démarche (absence de fuite, validation dans le temps, choix du modèle
+simple quand le complexe ne fait pas mieux, explications lisibles), pas la performance. Détail et calibration
+dans `docs/eval-resiliation.md`.
+
 ### Module 6, documentation et présentation
 
 Ce dépôt, `docs/DEMO.md` (le parcours de deux minutes) et `docs/POUR-LA-DIRECTION.md` (la correspondance
@@ -169,14 +208,8 @@ réelle. L'intégration continue rejoue l'ensemble sur SQLite et sur PostgreSQL,
 
 ## Ce qui n'est pas fait
 
-Les modules 4 et 5 de la spécification n'existent pas dans ce dépôt, et rien n'y est branché par avance.
-
-- **Module 4a, agent de pré-remplissage de dossiers par un modèle de langage : non réalisé.** L'écran
-  « À valider » existe et affiche une file vide, mais aucun modèle de langage n'est appelé.
-- **Module 4b, recherche dans les conditions générales : non réalisé.**
-- **Module 5, prédiction de résiliation : non réalisé.** Aucun modèle n'est entraîné, aucune métrique de
-  prédiction n'est publiée. Le taux de résiliation du module 3 est un indicateur descriptif, pas une
-  prédiction.
+- **Module 4b, recherche dans les conditions générales : non réalisé.** Ni conditions générales
+  fictives, ni recherche, ni questions de test.
 
 ## Limites assumées
 
@@ -194,8 +227,13 @@ Les modules 4 et 5 de la spécification n'existent pas dans ce dépôt, et rien 
   sans historisation, à la différence d'un contrat individuel.
 - **Le domaine des énumérations n'est pas tenu par la base.** Il l'est par la validation applicative,
   pour une raison de portabilité expliquée dans `docs/modele-donnees.md`.
-- **Les modules 4 et 5 ne sont pas faits** : agent de pré-remplissage, recherche dans les conditions
-  générales, prédiction de résiliation. Voir « Ce qui n'est pas fait ».
+- **Le module 4b n'est pas fait** : recherche dans les conditions générales. Voir « Ce qui n'est pas fait ».
+- **L'agent de pré-remplissage lit des PDF produits par le dépôt**, au texte net. Un scan ou une photo
+  demanderait une reconnaissance de caractères, que le dépôt n'a pas : un document sans texte est refusé
+  explicitement.
+- **La sinistralité individuelle n'est pas une cause de résiliation dans le jeu**, bien que les paramètres
+  du générateur la prévoient : elle n'est pas appliquée, et le module 5 ne l'emploie pas. Voir
+  `docs/HYPOTHESES.md` et la décision D35.
 - **L'intégration continue n'exécute pas dbt**, qui demande PostgreSQL et la chaîne de flux. Un défaut de
   règle de commission est resté invisible pour cette raison jusqu'au premier `dbt build` complet.
 - **Le projet Power BI porte un chemin d'exemple** vers les données : après un clone, il faut le régénérer
@@ -213,6 +251,8 @@ Les modules 4 et 5 de la spécification n'existent pas dans ce dépôt, et rien 
 | `docs/DEMO.md` | le parcours de deux minutes, écran par écran |
 | `docs/POUR-LA-DIRECTION.md` | chaque module livré, relié à un besoin de gestion |
 | `docs/kpi.md` | définition des quatre indicateurs et leurs pièges chiffrés |
+| `docs/eval-extraction.md` | agent de pré-remplissage : précision par champ, anomalies relevées, coût et latence |
+| `docs/eval-resiliation.md` | prédiction de résiliation : découpage, mesures, calibration, causes retrouvées |
 | `docs/PROGRESS.md` | état réel, preuve par preuve, et comment reprendre |
 | `docs/flux-financiers.md` | la chaîne du module 2, étape par étape |
 | `docs/modele-donnees.md` | diagramme entité-association et justification de chaque choix |

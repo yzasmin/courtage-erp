@@ -1,0 +1,430 @@
+{
+  "version_modele": "logistique-resiliation-v1",
+  "graine": 20261019,
+  "dates_apprentissage": [
+    "2023-01-01",
+    "2024-01-01"
+  ],
+  "date_test": "2025-01-01",
+  "lignes_apprentissage": 4546,
+  "resiliations_apprentissage": 568,
+  "lignes_test": 3216,
+  "resiliations_test": 413,
+  "variables": [
+    "age",
+    "anciennete_mois",
+    "cotisation_mensuelle_cents",
+    "revalorisation_bp",
+    "nb_suspensions",
+    "nb_changements_formule",
+    "est_une_affiliation",
+    "est_suspendu",
+    "code_produit",
+    "code_branche",
+    "code_apporteur"
+  ],
+  "hyperparametres_lgbm": {
+    "n_estimators": 300,
+    "learning_rate": 0.03,
+    "num_leaves": 15,
+    "min_child_samples": 50,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 1.0,
+    "random_state": 20261019,
+    "deterministic": true,
+    "force_row_wise": true
+  },
+  "modele_deploye": "reference_logistique",
+  "reference_logistique": {
+    "roc_auc": 0.6453,
+    "pr_auc": 0.2184,
+    "brier": 0.1088,
+    "taux_resiliation_observe": 0.1284,
+    "taux_resiliation_premier_decile": 0.2857,
+    "lift_premier_decile": 2.22,
+    "probabilite_moyenne_predite": 0.1418,
+    "calibration_par_decile": [
+      {
+        "predite": 0.0399,
+        "observee": 0.0528
+      },
+      {
+        "predite": 0.0617,
+        "observee": 0.0683
+      },
+      {
+        "predite": 0.0785,
+        "observee": 0.0903
+      },
+      {
+        "predite": 0.0951,
+        "observee": 0.1087
+      },
+      {
+        "predite": 0.1122,
+        "observee": 0.1059
+      },
+      {
+        "predite": 0.1323,
+        "observee": 0.1118
+      },
+      {
+        "predite": 0.158,
+        "observee": 0.1215
+      },
+      {
+        "predite": 0.1898,
+        "observee": 0.1739
+      },
+      {
+        "predite": 0.231,
+        "observee": 0.1651
+      },
+      {
+        "predite": 0.3193,
+        "observee": 0.2857
+      }
+    ]
+  },
+  "lightgbm": {
+    "roc_auc": 0.6453,
+    "pr_auc": 0.204,
+    "brier": 0.1113,
+    "taux_resiliation_observe": 0.1284,
+    "taux_resiliation_premier_decile": 0.2547,
+    "lift_premier_decile": 1.98,
+    "probabilite_moyenne_predite": 0.1425,
+    "calibration_par_decile": [
+      {
+        "predite": 0.0262,
+        "observee": 0.0497
+      },
+      {
+        "predite": 0.0439,
+        "observee": 0.0528
+      },
+      {
+        "predite": 0.0608,
+        "observee": 0.0935
+      },
+      {
+        "predite": 0.0781,
+        "observee": 0.1087
+      },
+      {
+        "predite": 0.0989,
+        "observee": 0.1308
+      },
+      {
+        "predite": 0.1234,
+        "observee": 0.1149
+      },
+      {
+        "predite": 0.1554,
+        "observee": 0.1246
+      },
+      {
+        "predite": 0.1991,
+        "observee": 0.146
+      },
+      {
+        "predite": 0.2589,
+        "observee": 0.2087
+      },
+      {
+        "predite": 0.3804,
+        "observee": 0.2547
+      }
+    ]
+  },
+  "plafond_theorique_formule_du_generateur": {
+    "roc_auc": 0.6624,
+    "pr_auc": 0.2136,
+    "brier": 0.1075,
+    "taux_resiliation_observe": 0.1284,
+    "taux_resiliation_premier_decile": 0.2888,
+    "lift_premier_decile": 2.25,
+    "probabilite_moyenne_predite": 0.1248,
+    "calibration_par_decile": [
+      {
+        "predite": 0.0493,
+        "observee": 0.0636
+      },
+      {
+        "predite": 0.0704,
+        "observee": 0.0583
+      },
+      {
+        "predite": 0.0979,
+        "observee": 0.1236
+      },
+      {
+        "predite": 0.1308,
+        "observee": 0.1318
+      },
+      {
+        "predite": 0.1535,
+        "observee": 0.1255
+      },
+      {
+        "predite": 0.2345,
+        "observee": 0.24
+      },
+      {
+        "predite": 0.3774,
+        "observee": 0.3209
+      }
+    ]
+  },
+  "rapports_de_cotes_logistique": [
+    {
+      "variable": "code_apporteur_AP04",
+      "rapport_de_cotes": 1.759
+    },
+    {
+      "variable": "code_apporteur_AP06",
+      "rapport_de_cotes": 0.617
+    },
+    {
+      "variable": "revalorisation_bp",
+      "rapport_de_cotes": 1.575
+    },
+    {
+      "variable": "code_apporteur_AP08",
+      "rapport_de_cotes": 1.499
+    },
+    {
+      "variable": "anciennete_mois",
+      "rapport_de_cotes": 0.722
+    },
+    {
+      "variable": "code_apporteur_AP03",
+      "rapport_de_cotes": 0.791
+    },
+    {
+      "variable": "code_apporteur_AP07",
+      "rapport_de_cotes": 0.854
+    },
+    {
+      "variable": "age",
+      "rapport_de_cotes": 0.862
+    },
+    {
+      "variable": "code_apporteur_AP05",
+      "rapport_de_cotes": 0.862
+    },
+    {
+      "variable": "code_produit_SC-TPE",
+      "rapport_de_cotes": 1.159
+    },
+    {
+      "variable": "code_produit_SC-ARTISANS",
+      "rapport_de_cotes": 0.865
+    },
+    {
+      "variable": "code_apporteur_AP02",
+      "rapport_de_cotes": 1.104
+    },
+    {
+      "variable": "code_produit_SI-EQUILIBRE",
+      "rapport_de_cotes": 0.913
+    },
+    {
+      "variable": "code_apporteur_AP01",
+      "rapport_de_cotes": 0.916
+    },
+    {
+      "variable": "code_branche_SI",
+      "rapport_de_cotes": 0.928
+    },
+    {
+      "variable": "code_apporteur_AP09",
+      "rapport_de_cotes": 1.068
+    },
+    {
+      "variable": "code_produit_SI-SENIOR",
+      "rapport_de_cotes": 1.05
+    },
+    {
+      "variable": "code_apporteur_AP10",
+      "rapport_de_cotes": 0.953
+    },
+    {
+      "variable": "code_branche_PV",
+      "rapport_de_cotes": 1.048
+    },
+    {
+      "variable": "nb_changements_formule",
+      "rapport_de_cotes": 1.039
+    },
+    {
+      "variable": "code_produit_SI-ESSENTIEL",
+      "rapport_de_cotes": 0.968
+    },
+    {
+      "variable": "code_produit_PV-ARRET",
+      "rapport_de_cotes": 1.032
+    },
+    {
+      "variable": "est_une_affiliation",
+      "rapport_de_cotes": 1.026
+    },
+    {
+      "variable": "code_produit_PV-DECES",
+      "rapport_de_cotes": 1.015
+    },
+    {
+      "variable": "code_branche_SC",
+      "rapport_de_cotes": 1.004
+    },
+    {
+      "variable": "nb_suspensions",
+      "rapport_de_cotes": 0.997
+    },
+    {
+      "variable": "code_produit_SC-CADRES",
+      "rapport_de_cotes": 1.001
+    },
+    {
+      "variable": "cotisation_mensuelle_cents",
+      "rapport_de_cotes": 1.0
+    },
+    {
+      "variable": "est_suspendu",
+      "rapport_de_cotes": 1.0
+    }
+  ],
+  "importance_shap_globale_logistique": [
+    {
+      "variable": "revalorisation_bp",
+      "shap_moyen_absolu": 0.4349
+    },
+    {
+      "variable": "anciennete_mois",
+      "shap_moyen_absolu": 0.3462
+    },
+    {
+      "variable": "code_apporteur",
+      "shap_moyen_absolu": 0.2225
+    },
+    {
+      "variable": "age",
+      "shap_moyen_absolu": 0.1236
+    },
+    {
+      "variable": "code_produit",
+      "shap_moyen_absolu": 0.066
+    },
+    {
+      "variable": "code_branche",
+      "shap_moyen_absolu": 0.0435
+    },
+    {
+      "variable": "nb_changements_formule",
+      "shap_moyen_absolu": 0.0264
+    },
+    {
+      "variable": "est_une_affiliation",
+      "shap_moyen_absolu": 0.0253
+    },
+    {
+      "variable": "nb_suspensions",
+      "shap_moyen_absolu": 0.001
+    },
+    {
+      "variable": "cotisation_mensuelle_cents",
+      "shap_moyen_absolu": 0.0001
+    },
+    {
+      "variable": "est_suspendu",
+      "shap_moyen_absolu": 0.0
+    }
+  ],
+  "importance_shap_globale_lightgbm": [
+    {
+      "variable": "revalorisation_bp",
+      "shap_moyen_absolu": 0.5376
+    },
+    {
+      "variable": "anciennete_mois",
+      "shap_moyen_absolu": 0.3607
+    },
+    {
+      "variable": "code_apporteur",
+      "shap_moyen_absolu": 0.2314
+    },
+    {
+      "variable": "age",
+      "shap_moyen_absolu": 0.2069
+    },
+    {
+      "variable": "cotisation_mensuelle_cents",
+      "shap_moyen_absolu": 0.1386
+    },
+    {
+      "variable": "code_produit",
+      "shap_moyen_absolu": 0.0555
+    },
+    {
+      "variable": "code_branche",
+      "shap_moyen_absolu": 0.0265
+    },
+    {
+      "variable": "nb_changements_formule",
+      "shap_moyen_absolu": 0.0247
+    },
+    {
+      "variable": "est_une_affiliation",
+      "shap_moyen_absolu": 0.0126
+    },
+    {
+      "variable": "nb_suspensions",
+      "shap_moyen_absolu": 0.0021
+    },
+    {
+      "variable": "est_suspendu",
+      "shap_moyen_absolu": 0.0
+    }
+  ],
+  "causes_injectees_contre_modele": [
+    {
+      "cause": "revalorisation de 6 % ou plus",
+      "variable": "revalorisation_bp",
+      "effectif_expose": 1506,
+      "shap_moyen_expose": 0.6486,
+      "shap_moyen_non_expose": -0.1484,
+      "taux_observe_expose": 0.1746,
+      "taux_observe_non_expose": 0.0877
+    },
+    {
+      "cause": "anciennete de moins de 18 mois",
+      "variable": "anciennete_mois",
+      "effectif_expose": 1303,
+      "shap_moyen_expose": 0.2817,
+      "shap_moyen_non_expose": -0.3788,
+      "taux_observe_expose": 0.1742,
+      "taux_observe_non_expose": 0.0972
+    },
+    {
+      "cause": "60 ans ou plus",
+      "variable": "age",
+      "effectif_expose": 726,
+      "shap_moyen_expose": -0.2145,
+      "shap_moyen_non_expose": 0.055,
+      "taux_observe_expose": 0.0758,
+      "taux_observe_non_expose": 0.1438
+    },
+    {
+      "cause": "apporteurs AP04 et AP08",
+      "variable": "code_apporteur",
+      "effectif_expose": 601,
+      "shap_moyen_expose": 0.4999,
+      "shap_moyen_non_expose": -0.1099,
+      "taux_observe_expose": 0.1697,
+      "taux_observe_non_expose": 0.1189
+    }
+  ],
+  "duree_secondes": 3.1
+}

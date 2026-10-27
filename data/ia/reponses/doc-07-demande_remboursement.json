@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "37eb4c535835f1b34b714d955c3bdc17cba062c0750460758583c951b3778254",
+  "reponse_texte": "{\"type_document\":\"demande_remboursement\",\"numero_adherent\":\"A945230\",\"nom\":\"GIRARD\",\"prenom\":\"Laetitia\",\"numero_contrat\":\"SI-2026-00035\",\"date_document\":\"2026-09-13\",\"emetteur\":\"Cabinet Grossiste Delegataire - Service prestations\",\"code_garantie\":\"SOINS\",\"montant_total_cents\":1880,\"lignes\":[{\"libelle\":\"Pharmacie\",\"montant_cents\":1880}]}",
+  "jetons_entree": 1764,
+  "jetons_sortie": 161,
+  "latence_ms": 1364
+}

@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "880abbb8f7edaac7369425779dd4b760484d2aed8ff1706d8cdc67f0a946ef19",
+  "reponse_texte": "{\"type_document\":\"attestation_employeur\",\"numero_adherent\":null,\"nom\":\"LEMAIRE\",\"prenom\":\"Chantal\",\"numero_contrat\":\"SC-2025-00242\",\"date_document\":\"2026-08-01\",\"emetteur\":\"Restauration Roussel SAS\",\"code_garantie\":null,\"montant_total_cents\":null,\"lignes\":[]}",
+  "jetons_entree": 1805,
+  "jetons_sortie": 123,
+  "latence_ms": 1841
+}

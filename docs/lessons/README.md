@@ -35,6 +35,18 @@ et supprimer ce qui s'avère faux. Le préfixe `p8` rappelle qu'il s'agit du hui
 | [Relier les flux générés entre eux](p8-relier-les-flux-generes-entre-eux.md) | Des prestations tirées sans rapport avec les cotisations donnaient un ratio de 177 % ; calibrées sur la cotisation de chaque contrat, avec une consommation à queue lourde, elles donnent 76 à 81 %. |
 | [Actualiser et évaluer un PBIP depuis un script](p8-pbip-actualiser-et-evaluer-sans-cliquer.md) | Une commande TMSL remplace le clic sur Actualiser ; les mesures se comparent au SQL et la fenêtre se capture sans interface. |
 
+## Module 4a, agent de pré-remplissage
+
+| Leçon | Résumé |
+| --- | --- |
+| [L'évaluation corrige aussi les règles](p8-l-evaluation-corrige-aussi-les-regles.md) | Les tests ont trouvé un seuil de nom trop lâche, l'évaluation une règle trop stricte pour les attestations ; la vérité terrain n'a pas été retouchée pour gagner trois points. |
+
+## Module 5, prédiction de résiliation
+
+| Leçon | Résumé |
+| --- | --- |
+| [Mesurer le modèle contre le plafond du générateur](p8-mesurer-un-modele-contre-le-plafond-du-generateur.md) | Une ROC-AUC de 0,645 face à un plafond de 0,662 : la régression logistique est déployée, LightGBM ne faisant mieux sur aucune mesure. Aussi : un facteur déclaré mais non appliqué, et `localhost` lent sous Windows. |
+
 ## À lire aussi, hors de ce dépôt
 
 Les leçons des projets précédents du portfolio sont dans `Portfolio/site/docs/lessons/`. Deux sont

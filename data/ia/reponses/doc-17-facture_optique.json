@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "becc7696571b1ecc05eaf350ceb3ffdf7066124ff750c027690288acf6926052",
+  "reponse_texte": "{\"type_document\":\"facture_optique\",\"numero_adherent\":\"A000843\",\"nom\":\"LEFEBVRE\",\"prenom\":\"Daniel\",\"numero_contrat\":\"SC-2020-00037\",\"date_document\":\"2026-07-04\",\"emetteur\":\"VISION PLUS BEZIERS\",\"code_garantie\":\"OPTIQUE\",\"montant_total_cents\":63900,\"lignes\":[{\"libelle\":\"Monture\",\"montant_cents\":18500},{\"libelle\":\"Verre progressif droit\",\"montant_cents\":19200},{\"libelle\":\"Verre progressif gauche\",\"montant_cents\":26200}]}",
+  "jetons_entree": 1771,
+  "jetons_sortie": 204,
+  "latence_ms": 2213
+}

@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "825cbdc56181fac104ee5b14d85e0f2bc23c40d199d8daa095b541a8751c27fb",
+  "reponse_texte": "{\"type_document\":\"facture_optique\",\"numero_adherent\":\"A002695\",\"nom\":\"BRUN\",\"prenom\":\"Pierre\",\"numero_contrat\":\"SI-2021-00027\",\"date_document\":\"2026-09-07\",\"emetteur\":\"VISION PLUS BEZIERS\",\"code_garantie\":\"OPTIQUE\",\"montant_total_cents\":63500,\"lignes\":[{\"libelle\":\"Monture\",\"montant_cents\":18300},{\"libelle\":\"Verre progressif droit\",\"montant_cents\":24500},{\"libelle\":\"Verre progressif gauche\",\"montant_cents\":20700}]}",
+  "jetons_entree": 1767,
+  "jetons_sortie": 200,
+  "latence_ms": 2027
+}

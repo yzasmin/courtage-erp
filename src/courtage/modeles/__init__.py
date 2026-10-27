@@ -8,6 +8,7 @@ migrations generees.
 from courtage.modeles.base import Base
 from courtage.modeles.collectif import LigneAppelCotisation, PoliceCollective
 from courtage.modeles.delegation import ActeDelegue, ConventionDelegation, ConventionProduit
+from courtage.modeles.dossier import DossierPreRempli, StatutDossier
 from courtage.modeles.financier import (
     AppelCotisation,
     Bordereau,
@@ -29,6 +30,7 @@ from courtage.modeles.referentiel import (
     TauxRetrocession,
     TauxTaxe,
 )
+from courtage.modeles.scoring import ScoreResiliation
 
 __all__ = [
     "ActeDelegue",
@@ -44,6 +46,7 @@ __all__ = [
     "Contrat",
     "ConventionDelegation",
     "ConventionProduit",
+    "DossierPreRempli",
     "Encaissement",
     "EntrepriseSouscriptrice",
     "Formule",
@@ -54,6 +57,8 @@ __all__ = [
     "Prestation",
     "Produit",
     "Retrocession",
+    "ScoreResiliation",
+    "StatutDossier",
     "TauxCommission",
     "TauxRetrocession",
     "TauxTaxe",

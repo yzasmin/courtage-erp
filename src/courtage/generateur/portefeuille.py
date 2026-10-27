@@ -5,8 +5,9 @@ C'est ici que vivent les trois signaux realistes exiges par la specification :
 1. **Les hausses tarifaires a l'echeance du 1er janvier.** Chaque contrat en vigueur recoit un avenant de
    revalorisation au 1er janvier de chaque annee, d'une ampleur tiree par produit et par annee.
 2. **Les resiliations, avec des causes.** La probabilite de resiliation n'est pas uniforme : elle monte
-   apres une revalorisation forte, quand l'anciennete est faible, quand l'adherent ne consomme rien, et
-   chez deux apporteurs sur dix. Elle baisse pour les forts consommateurs et les plus de 60 ans. Ces
+   apres une revalorisation forte, quand l'anciennete est faible, et chez deux apporteurs sur dix. Elle
+   baisse chez les plus de 60 ans. La sinistralite individuelle, prevue a l'origine, n'est pas appliquee :
+   les prestations sont generees apres les contrats et n'existent pas au moment du tirage. Ces
    facteurs sont documentes dans `docs/HYPOTHESES.md` et c'est ce que le module 5 devra retrouver.
 3. **La saisonnalite des prestations**, qui est generee au module `financier`.
 

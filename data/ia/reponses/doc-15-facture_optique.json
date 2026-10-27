@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "d7d9bf733da94a6b614dbb0e51d586cbb9a04ab1a1386981e97a0089d77fbcd7",
+  "reponse_texte": "{\"type_document\":\"facture_optique\",\"numero_adherent\":\"A005023\",\"nom\":\"VINCENT\",\"prenom\":\"Patrick\",\"numero_contrat\":\"SI-2019-00207\",\"date_document\":\"2026-09-22\",\"emetteur\":\"LUNETTERIE DES ARCEAUX\",\"code_garantie\":\"OPTIQUE\",\"montant_total_cents\":44100,\"lignes\":[{\"libelle\":\"Monture\",\"montant_cents\":20900},{\"libelle\":\"Verre unifocal droit\",\"montant_cents\":12400},{\"libelle\":\"Verre unifocal gauche\",\"montant_cents\":9800}]}",
+  "jetons_entree": 1772,
+  "jetons_sortie": 207,
+  "latence_ms": 2031
+}

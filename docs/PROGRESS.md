@@ -1,4 +1,4 @@
-État réel du projet courtage-erp : ce qui est fait, ce qui reste, et comment reprendre. Mis à jour le 22/10/2026 (module 6 livré).
+État réel du projet courtage-erp : ce qui est fait, ce qui reste, et comment reprendre. Mis à jour le 27/10/2026 (module 5 livré).
 
 # Avancement
 
@@ -6,7 +6,7 @@
 
 **Module 1, cœur ERP : fait et prouvé sur les deux moteurs, avec des prestations reliées aux cotisations depuis le 22/10. Module 2, flux financiers : fait et
 mesuré. Module 3, pilotage : fait, projet Power BI ouvert et mesures contrôlées contre le SQL.** Module 6,
-documentation et présentation : fait, hors modules 4 et 5 qui **ne sont pas réalisés**. La capture du graphe
+documentation et présentation : fait. **Module 5, prédiction de résiliation : fait le 27/10.** **Module 4a, agent de pré-remplissage : fait le 27/10.** Module 4b **non réalisé**. La capture du graphe
 Airflow existe (`docs/captures/08-graphe-airflow.jpg`) mais date d'avant l'ajout de la tâche `alerter`.
 
 | Étape | État |
@@ -15,9 +15,9 @@ Airflow existe (`docs/captures/08-graphe-airflow.jpg`) mais date d'avant l'ajout
 | 1, cœur ERP | **fait**, preuves dans `results/` |
 | 2, flux financiers Airflow et dbt | **fait**, preuves dans `results/`, une capture d'écran en attente |
 | 3, pilotage Power BI | **fait**, preuves dans `results/`, captures dans `docs/captures/08` à `13` |
-| 4a, agent de pré-remplissage | **non réalisé** : l'écran « À valider » affiche un message d'attente |
+| 4a, agent de pré-remplissage | **fait** le 27/10/2026 : `docs/eval-extraction.md`, `results/ia_evaluation.json`, 30 réponses enregistrées dans `data/ia/reponses/` |
 | 4b, RAG conditions générales | **non réalisé** |
-| 5, prédiction de résiliation | **non réalisé**, aucun modèle entraîné ni métrique publiée |
+| 5, prédiction de résiliation | **fait** le 27/10/2026 : `docs/eval-resiliation.md`, `results/ml_resiliation.json`, `results/ml_scoring.json` |
 | 6, documentation finale et page de présentation | **fait** : README, `docs/DEMO.md`, `docs/POUR-LA-DIRECTION.md`, fiche et teaser du portfolio, fiche d'entretien. Le rendu de la vidéo et le build du site restent à lancer |
 
 ## Module 1 : ce qui est livré
@@ -343,6 +343,45 @@ make pbip DONNEES="C:\chemin\vers\courtage-erp\powerbi\donnees"
 make concordance-kpi      # DAX contre SQL
 ```
 
+## Module 4a : ce qui est livré
+
+- **Documents** : `courtage ia generer`, 30 PDF fictifs qui citent de vrais adhérents et contrats du jeu,
+  et leur vérité terrain ; 8 portent une anomalie volontaire.
+- **Extraction** : Claude Haiku 5.5, schéma JSON strict, revalidation Pydantic, réponses enregistrées avec
+  l'empreinte de la requête ; mode hors ligne par défaut.
+- **Contrôles et dossiers** : table `dossier_pre_rempli` (migration 0008, appliquée sur SQLite, **pas encore
+  sur PostgreSQL** : Docker était arrêté), écran « Dossiers à valider », validation qui crée la prestation
+  par `enregistre_prestation`, rejet motivé.
+- **Mesuré le 27/10 en appel réel** puis rejoué hors ligne à l'identique : précision 96,7 % (290 champs sur
+  300), 20 documents entièrement exacts, anomalies 8 sur 8, aucun document sain bloqué, 0,000272 $ et
+  1 807 ms en moyenne par document, 0,0081 $ pour les 30. Les 10 erreurs portent toutes sur l'émetteur des
+  demandes de remboursement (le modèle ajoute « Service prestations ») ; la vérité terrain n'a pas été
+  retouchée après coup.
+- **Deux règles corrigées par la mesure** : seuil de nom (D44, trouvé par les tests) et attestation pendant
+  une suspension (D45, trouvé par l'évaluation).
+- **Tests** : 14 dans `tests/test_ia.py`, dont un verrou de non-régression qui rejoue les 30 réponses.
+- **Non fait** : vérification par un sous-agent à contexte vierge ; module 4b.
+
+## Module 5 : ce qui est livré
+
+- **Variables** : modèle dbt `ml_variables_resiliation` (schéma `analytique_ml`), un 1er du mois par ligne de
+  janvier 2021 à septembre 2026, et deux tests : une ligne par contrat et par date, aucun avenant postérieur
+  lu. `dbt build` du modèle et de ses dépendances : 65 réussites, aucun échec.
+- **Apprentissage** : `courtage ml entrainer`, apprentissage sur les 1er janvier 2023 et 2024 (4 546 contrats,
+  568 résiliations), test sur le 1er janvier 2025 (3 216 contrats, 413 résiliations).
+- **Mesures sur 2025** : régression logistique ROC-AUC 0,645, PR-AUC 0,218, lift du premier décile 2,22 ;
+  LightGBM 0,645, 0,204, 1,98 ; plafond de la formule du générateur 0,662, 0,214, 2,25. La régression
+  logistique est déployée (D37). Les quatre variables les plus influentes sont les quatre causes appliquées
+  par le générateur, dans le bon sens.
+- **Scoring** : `courtage ml scorer`, 3 926 contrats scorés au 01/09/2026 dans la table `score_resiliation`
+  (migration 0007), affichés sur la fiche adhérent avec trois facteurs. Graphe Airflow mensuel
+  `courtage_scoring_resiliation`, **écrit mais pas encore exécuté dans Airflow** : l'image doit être
+  reconstruite avec l'option `ml`.
+- **Tests** : 3 tests ajoutés (`tests/test_resiliation.py`) ; suite complète 241 réussis, 13 ignorés.
+- **Écart trouvé** : la sinistralité est déclarée comme cause dans les paramètres mais non appliquée par le
+  générateur. Documentation corrigée, générateur inchangé (D35, `docs/HYPOTHESES.md`).
+- **Non fait** : vérification par un sous-agent à contexte vierge, reportée pour économiser l'usage.
+
 ## Commandes pour reprendre
 
 Sans Docker, sur SQLite, pour développer et tester vite :
@@ -372,6 +411,10 @@ make tests-demonstration         # active les tests de signaux realistes
 `make aide` liste toutes les commandes.
 
 ## Journal
+
+- **27/10/2026, module 4a** : agent de pré-remplissage complet, évalué en appel réel sur Claude Haiku 5.5 (clé personnelle, donc en-tête d'espace de travail requis), décisions D41 à D47, leçon sur l'évaluation qui corrige les règles.
+
+- **27/10/2026, module 5** : variables dbt, apprentissage et mesures, scoring mensuel, fiche adhérent, documentation (`docs/eval-resiliation.md`, D33 à D40, leçon du plafond). Adresse PostgreSQL du `Makefile` passée à `127.0.0.1`, et ligne `.PHONY` réparée.
 
 - **22/10/2026, module 6** : README mis à jour (module 3 livré, modules 4 et 5 déclarés non réalisés, preuves du
   module 3, limites), `docs/DEMO.md` (parcours de deux minutes, deux chemins de démarrage), `docs/POUR-LA-DIRECTION.md`,

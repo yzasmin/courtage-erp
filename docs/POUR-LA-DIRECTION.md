@@ -19,6 +19,8 @@ délégataire, et chaque affirmation ci-dessous renvoie à un fichier de `result
 | Savoir ce qui a été encaissé et ce qui ne l'a pas été | Rapprochement par référence, puis par montant et date dans une fenêtre paramétrable, avec la méthode conservée sur chaque ligne | `results/flux_rapprochement.json` : 2 588 lignes examinées : 2 488 rapprochées, 34 partielles, 16 en écart, 24 sans appel correspondant, 26 ignorées car l'acte n'est pas délégué | Le rapprochement bancaire d'un cabinet réel et ses libellés de virement |
 | Calculer commissions et rétrocessions au bon taux, et éditer les bordereaux | Taux valide à la date d'échéance de l'appel, pas à la date du calcul. Bordereaux mensuels par compagnie et par apporteur, en base et en CSV | `results/flux_commissions.json` : 3 704 commissions pour 79 346,83 euros, 2 978 rétrocessions pour 38 895,54 euros ; `results/flux_bordereaux.json` : 33 bordereaux | Le bordereau de commissions que la compagnie adresse au cabinet n'est pas ingéré : sur 1 184 appels, l'assiette de repli est la cotisation appelée hors taxe (décision D24) |
 | Piloter l'activité avec des indicateurs que la direction et la gestion lisent de la même façon | Quatre indicateurs définis une fois, avec leurs pièges chiffrés, une requête SQL de contrôle chacun, et un tableau de bord Power BI | `docs/kpi.md`, `results/kpi_sql.json`, `results/concordance_dax_sql.csv` : 302 comparaisons entre mesures et SQL, écart relatif maximal 2,9e-14 | Des valeurs de marché : le ratio sinistres sur primes de 76,38 % en 2024 est celui d'un générateur calibré par hypothèse |
+| Ne plus ressaisir les documents reçus, sans laisser un modèle écrire dans le portefeuille | Lecture par un modèle de langage en sortie structurée stricte, contrôles métier écrits en code, dossier à valider ; la validation passe par le service de saisie existant | `docs/eval-extraction.md`, `results/ia_evaluation.json` : 96,7 % des champs exacts sur 30 documents, 8 anomalies sur 8 relevées, 0,00027 $ par document | La lecture de scans ou de photos : les documents de démonstration ont un texte net |
+| Savoir quels adhérents risquent de partir à l'échéance, et pourquoi, à temps pour les appeler | Un score mensuel par contrat, son décile et les trois facteurs qui l'expliquent, sur la fiche adhérent. Variables calculées sans information postérieure, modèle mesuré sur une année qu'il n'a pas vue | `docs/eval-resiliation.md`, `results/ml_resiliation.json` : ROC-AUC 0,645 sur 2025 pour un plafond de 0,662 | Une performance sur un vrai portefeuille : les causes de résiliation du jeu sont celles que le générateur y a mises |
 | Installer et faire évoluer le schéma chez un client sans perdre de données | Migrations qui montent et redescendent sans résidu, même code sur PostgreSQL et SQLite, jeu de données identique octet pour octet sur les deux | `results/migrations_postgresql.json`, `results/reproductibilite_postgresql.json` (empreinte identique à SQLite) | Une migration depuis un autre logiciel, que le dépôt ne contient pas |
 
 ## Les trois lectures utiles
@@ -39,8 +41,7 @@ anomalie signalée est donc rejouable par n'importe qui, ce qui sert autant à u
 
 ## Ce que ce dépôt ne couvre pas
 
-- **Les modules 4 et 5 ne sont pas faits** : pas d'agent de pré-remplissage, pas de recherche dans les
-  conditions générales, pas de modèle de prédiction de résiliation.
+- **Le module 4b n'est pas fait** : pas de recherche dans les conditions générales.
 - **Aucune authentification ni gestion de droits.** L'interface et l'API sont ouvertes sur la boucle locale.
 - **Pas d'automobile ni de dommages.** Santé individuelle, santé collective, prévoyance.
 - **Pas de connexion à un concentrateur de tiers payant.** Les retours de prestations sont des fichiers

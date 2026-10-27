@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: ml_variables_resiliation
+    description: >
+      Variables de la prediction de resiliation (module 5), une ligne par contrat au portefeuille et par
+      date d'observation (chaque 1er du mois). Aucune variable ne lit un avenant d'effet posterieur a la
+      date d'observation. La cible `resilie_12_mois` est nulle quand sa fenetre de douze mois depasse la
+      date d'arret de l'historique.
+    columns:
+      - name: date_observation
+        data_tests: [not_null]
+      - name: contrat_id
+        data_tests: [not_null]
+      - name: age
+        data_tests: [not_null]
+      - name: anciennete_mois
+        data_tests: [not_null]
+      - name: resilie_12_mois
+        data_tests:
+          - accepted_values:
+              values: [0, 1]
+              quote: false

@@ -155,6 +155,21 @@ def construit_analyseur() -> argparse.ArgumentParser:
     # Les commandes de la chaine des flux financiers sont definies dans leur propre module, pour que le
     # module 2 n'alourdisse pas ce fichier et que son perimetre reste lisible.
     ajoute_commandes_flux(sous)
+    # La prediction de resiliation n'existe que si l'option `ml` est installee : l'image de l'ERP s'en
+    # passe, seuls le poste de developpement et l'image Airflow l'embarquent.
+    try:
+        from courtage.ml.cli import ajoute_commandes as ajoute_commandes_ml
+    except ImportError:
+        pass
+    else:
+        ajoute_commandes_ml(sous)
+    # Meme principe pour l'agent de pre-remplissage et l'option `ia`.
+    try:
+        from courtage.ia.cli import ajoute_commandes as ajoute_commandes_ia
+    except ImportError:
+        pass
+    else:
+        ajoute_commandes_ia(sous)
 
     return analyseur
 

@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "89a835e4e29426ce920c5ea12a582a53467e54f1d193492e2345b774008ad745",
+  "reponse_texte": "{\"type_document\":\"facture_dentaire\",\"numero_adherent\":\"A002900\",\"nom\":\"MASSON\",\"prenom\":\"Gilles\",\"numero_contrat\":\"SI-2020-00051\",\"date_document\":\"2026-06-16\",\"emetteur\":\"Dr Claire Bousquet\",\"code_garantie\":\"DENTAIRE\",\"montant_total_cents\":2892,\"lignes\":[{\"libelle\":\"Detartrage\",\"montant_cents\":2892}]}",
+  "jetons_entree": 1746,
+  "jetons_sortie": 151,
+  "latence_ms": 1340
+}

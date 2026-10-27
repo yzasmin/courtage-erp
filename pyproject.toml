@@ -19,6 +19,24 @@ dependencies = [
     "openpyxl>=3.1,<4",
 ]
 
+[project.optional-dependencies]
+# Prediction de resiliation (module 5). En option : l'application ERP n'en a pas besoin pour servir, seuls
+# l'entrainement et la tache de scoring du graphe Airflow l'installent. Pas de paquet `shap` : LightGBM
+# calcule lui-meme les valeurs SHAP exactes de ses arbres (`pred_contrib`), sans numba ni llvmlite.
+ml = [
+    "scikit-learn>=1.5,<2",
+    "lightgbm>=4.3,<5",
+    "pandas>=2.2,<3",
+]
+
+# Agent de pre-remplissage (module 4a) : appel du modele de langage, fabrication des PDF de demonstration
+# et lecture de leur texte. En option, comme `ml` : seule la commande `courtage ia` en a besoin.
+ia = [
+    "anthropic>=0.70",
+    "fpdf2>=2.7,<3",
+    "pypdf>=4.2",
+]
+
 [dependency-groups]
 # dbt est isole dans son propre groupe : il tire une cinquantaine de dependances dont l application
 # ERP n a aucun besoin, et seul le module 2 l utilise.

@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-27",
+  "mode": "enregistre",
+  "modele": "claude-haiku-5-5",
+  "documents": 30,
+  "documents_lus": 30,
+  "echecs_de_lecture": [],
+  "precision_globale": 0.9667,
+  "precision_par_champ": {
+    "type_document": 1.0,
+    "numero_adherent": 1.0,
+    "nom": 1.0,
+    "prenom": 1.0,
+    "numero_contrat": 1.0,
+    "date_document": 1.0,
+    "emetteur": 0.6667,
+    "code_garantie": 1.0,
+    "montant_total_cents": 1.0,
+    "somme_lignes_cents": 1.0
+  },
+  "documents_entierement_exacts": 20,
+  "erreurs": [
+    {
+      "fichier": "doc-01-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-02-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-03-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-04-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-05-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-06-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-07-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-08-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-09-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    },
+    {
+      "fichier": "doc-10-demande_remboursement.pdf",
+      "champ": "emetteur",
+      "attendu": "Cabinet Grossiste Delegataire",
+      "obtenu": "Cabinet Grossiste Delegataire - Service prestations"
+    }
+  ],
+  "anomalies_detectees": 8,
+  "anomalies_attendues": 8,
+  "detail_anomalies": [
+    {
+      "fichier": "doc-03-demande_remboursement.pdf",
+      "anomalie": "nom_altere",
+      "detectee": true,
+      "message": "nom approchant : lu « Julie LAMMBERT », enregistre « Julie Lambert » (0.96)"
+    },
+    {
+      "fichier": "doc-05-demande_remboursement.pdf",
+      "anomalie": "soins_avant_effet",
+      "detectee": true,
+      "message": "contrat sans garantie en cours le 28/11/2023 (suspendu ou pas en vigueur)"
+    },
+    {
+      "fichier": "doc-07-demande_remboursement.pdf",
+      "anomalie": "adherent_inexistant",
+      "detectee": true,
+      "message": "aucun adherent ne porte le numero A945230"
+    },
+    {
+      "fichier": "doc-12-facture_optique.pdf",
+      "anomalie": "nom_altere",
+      "detectee": true,
+      "message": "nom approchant : lu « Sylvie LUUCAS », enregistre « Sylvie Lucas » (0.96)"
+    },
+    {
+      "fichier": "doc-15-facture_optique.pdf",
+      "anomalie": "total_faux",
+      "detectee": true,
+      "message": "le total ecrit (441.00 EUR) ne fait pas la somme des lignes (431.00 EUR)"
+    },
+    {
+      "fichier": "doc-20-facture_dentaire.pdf",
+      "anomalie": "nom_altere",
+      "detectee": true,
+      "message": "nom approchant : lu « Celine DUFOOUR », enregistre « Celine Dufour » (0.96)"
+    },
+    {
+      "fichier": "doc-23-facture_dentaire.pdf",
+      "anomalie": "adherent_inexistant",
+      "detectee": true,
+      "message": "aucun adherent ne porte le numero A976729"
+    },
+    {
+      "fichier": "doc-24-facture_dentaire.pdf",
+      "anomalie": "total_faux",
+      "detectee": true,
+      "message": "le total ecrit (247.92 EUR) ne fait pas la somme des lignes (237.92 EUR)"
+    }
+  ],
+  "documents_sains_bloques_a_tort": [],
+  "latence_moyenne_ms": 1807,
+  "latence_max_ms": 3177,
+  "cout_moyen_dollars": 0.000272,
+  "cout_total_dollars": 0.008146,
+  "jetons_entree_moyens": 1778,
+  "jetons_sortie_moyens": 188
+}

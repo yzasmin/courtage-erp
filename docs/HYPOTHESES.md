@@ -116,11 +116,19 @@ ait quelque chose à apprendre. Les causes et leur poids sont des hypothèses.
 | --- | --- | --- |
 | Revalorisation tarifaire supérieure à 6 % | augmente nettement la probabilité de résiliation à l'échéance suivante | hypothèse de simulation |
 | Ancienneté inférieure à 18 mois | augmente la probabilité de résiliation | hypothèse de simulation |
-| Sinistralité individuelle très faible | augmente la probabilité de résiliation : l'adhérent ne voit pas le retour de sa cotisation | hypothèse de simulation |
-| Sinistralité individuelle très forte | diminue la probabilité de résiliation | hypothèse de simulation |
+| Sinistralité individuelle très faible | prévue pour augmenter la probabilité de résiliation, **non appliquée** : voir ci-dessous | paramètre déclaré, sans effet |
+| Sinistralité individuelle très forte | prévue pour la diminuer, **non appliquée** | paramètre déclaré, sans effet |
 | Apporteur | deux apporteurs sur dix portent un portefeuille plus volatil | hypothèse de simulation |
 | Âge supérieur à 60 ans | diminue la probabilité de résiliation | hypothèse de simulation |
 | Taux de résiliation annuel visé | environ 8 % à 12 % du portefeuille | hypothèse de simulation |
+
+**Écart constaté le 27/10/2026, en préparant le module 5.** Les facteurs de sinistralité existent dans
+`generateur/parametres.py` (`FACTEUR_SINISTRALITE_FAIBLE`, `FACTEUR_SINISTRALITE_FORTE`), mais la fonction
+`_probabilite_resiliation` ne les emploie pas : les contrats et leurs résiliations sont générés avant les
+prestations, qui n'existent donc pas encore au moment du tirage. Le générateur n'a pas été modifié, parce
+que cela changerait l'empreinte du jeu et tous les chiffres déjà mesurés des modules 1 à 3. Le module 5
+n'utilise pas de variable de sinistralité (décision D35) ; les quatre causes réellement appliquées sont la
+revalorisation, l'ancienneté, l'âge et l'apporteur. Les deux apporteurs volatils sont AP04 et AP08.
 
 Les motifs de résiliation employés dans le modèle de données sont du vocabulaire métier, pas des valeurs
 numériques : résiliation à l'échéance, résiliation infra-annuelle, non-paiement après mise en demeure,

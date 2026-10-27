@@ -1,0 +1,8 @@
+{
+  "modele": "claude-haiku-5-5",
+  "empreinte_requete": "e3a30e339fd43ba6184b5907e8d6bc87a0ddffa56193c30ef65b681b5e2da9de",
+  "reponse_texte": "{\"type_document\":\"facture_dentaire\",\"numero_adherent\":\"A005239\",\"nom\":\"PEREZ\",\"prenom\":\"Veronique\",\"numero_contrat\":\"SI-2022-00192\",\"date_document\":\"2026-06-27\",\"emetteur\":\"Dr Malik Haddad\",\"code_garantie\":\"DENTAIRE\",\"montant_total_cents\":54300,\"lignes\":[{\"libelle\":\"Couronne ceramo-metallique, dent 26\",\"montant_cents\":54300}]}",
+  "jetons_entree": 1762,
+  "jetons_sortie": 163,
+  "latence_ms": 1662
+}
