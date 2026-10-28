@@ -35,5 +35,9 @@ class Parametres(BaseSettings):
 
     echo_sql: bool = False
 
+    # Demonstration publique en ligne : affiche un bandeau qui previent que les donnees sont fictives et
+    # remises a zero a chaque redemarrage, puisque l'application n'a pas d'authentification.
+    mode_demonstration: bool = False
+
 
 parametres = Parametres()

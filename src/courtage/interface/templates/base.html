@@ -21,6 +21,12 @@
         <a href="/api/doc">API</a>
       </nav>
     </header>
+    {% if mode_demonstration %}
+      <div class="message information" style="margin: 0; border-radius: 0; text-align: center">
+        Démonstration en ligne : portefeuille entièrement fictif, ouvert à tous et remis à zéro à chaque
+        redémarrage. Vous pouvez saisir un contrat ou valider un dossier sans crainte.
+      </div>
+    {% endif %}
     <main>{% block contenu %}{% endblock %}</main>
     <footer>
       Données entièrement synthétiques, générées de façon déterministe. Les taux et tarifs sont des

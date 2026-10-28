@@ -100,6 +100,7 @@ def _contexte(page_active: str, **extra) -> dict:
     return {
         "titre_application": parametres.titre_application,
         "nom_cabinet": parametres.nom_cabinet,
+        "mode_demonstration": parametres.mode_demonstration,
         "page_active": page_active,
         # Deux dates distinctes, et les confondre trompait le lecteur. `aujourdhui` est la date du
         # poste : elle sert a pre-remplir un formulaire de saisie, ou la bonne valeur par defaut est
