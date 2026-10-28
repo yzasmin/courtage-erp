@@ -11,6 +11,10 @@ Données entièrement synthétiques, produites par le dépôt lui-même à grain
 aucun barème légal reproduit : chaque valeur métier est une hypothèse de simulation, listée dans
 `docs/HYPOTHESES.md`.
 
+**Démonstration en ligne : https://courtage-erp-demo.onrender.com/**. L'interface seule, sur un
+portefeuille fictif remis à zéro à chaque redémarrage ; la première page peut mettre une minute à
+s'afficher si le service était en veille. Elle se construit avec `deploy/demo/preparer.py`.
+
 ## Architecture
 
 ```mermaid
