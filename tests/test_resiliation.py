@@ -8,11 +8,12 @@ from __future__ import annotations
 
 from datetime import date
 
-import numpy as np
-import pandas as pd
 import pytest
 
 pytest.importorskip("lightgbm", reason="option `ml` non installee")
+
+import numpy as np
+import pandas as pd
 
 from courtage.ml import resiliation as r
 
