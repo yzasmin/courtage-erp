@@ -1,12 +1,12 @@
-"""Assemble le dossier du Space Hugging Face qui heberge la demonstration en ligne.
+"""Assemble le depot de la demonstration en ligne, heberge sur Render.
 
-Le Space est un depot a part. Ce script y copie le code de l'application, le Dockerfile et la fiche du
-Space, puis construit `demo.db` : la base SQLite locale (`courtage.db`, generee par `courtage generer`
+Ce depot est a part. Ce script y copie le code de l'application, le Dockerfile et le README de la
+demonstration, puis construit `demo.db` : la base SQLite locale (`courtage.db`, generee par `courtage generer`
 puis `courtage ia traiter`), a laquelle il ajoute les scores de resiliation exportes de PostgreSQL dans
 `data/demo/scores_resiliation.csv`, rattaches par numero de contrat. Les scores ne se calculent que sur
 PostgreSQL, parce que leurs variables viennent d'un modele dbt.
 
-Usage : python deploy/huggingface/preparer.py ../courtage-erp-space
+Usage : python deploy/demo/preparer.py ../courtage-erp-demo
 """
 
 from __future__ import annotations
@@ -60,7 +60,6 @@ def main() -> None:
             shutil.copyfile(source, erp / nom)
     shutil.copyfile(ICI / "Dockerfile", sortie / "Dockerfile")
     shutil.copyfile(ICI / "README.md", sortie / "README.md")
-    (sortie / ".gitattributes").write_text("*.db filter=lfs diff=lfs merge=lfs -text\n", encoding="utf-8")
     print(f"{construit_base(sortie / 'demo.db')} scores ajoutes a {sortie / 'demo.db'}")
 
 
